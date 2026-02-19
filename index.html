@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Cheat Sheets Center</title>
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+<style>
+:root {
+  --bg-main: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  --bg-card: white;
+  --text-main: white;
+  --text-card: #333;
+  --accent: #2c5364;
+  --section-title: #fff;
+}
+
+/* DARK MODE */
+body.dark {
+  --bg-main: #111;
+  --bg-card: #1e1e1e;
+  --text-main: #eee;
+  --text-card: #eee;
+  --accent: #4fa3ff;
+  --section-title: #4fa3ff;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+  transition: background 0.5s, color 0.5s;
+}
+
+/* MENU */
+nav {
+  background: rgba(0,0,0,0.4);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .links a {
+  color: white;
+  margin-right: 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav .links a:hover {
+  text-decoration: underline;
+}
+
+.toggle-theme {
+  cursor: pointer;
+  background: none;
+  border: 1px solid white;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+/* HEADER */
+header {
+  text-align: center;
+  padding: 40px 20px;
+  animation: fadeIn 1s ease;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 3em;
+}
+
+header p {
+  margin-top: 10px;
+  font-size: 1.2em;
+  color: #ddd;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* SECTIONS */
+section {
+  margin-bottom: 50px;
+  animation: slideUp 1s ease;
+}
+
+.section-title {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  border-left: 5px solid var(--accent);
+  padding-left: 15px;
+  color: var(--section-title);
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* CARD */
+.card {
+  background: var(--bg-card);
+  color: var(--text-card);
+  border-radius: 10px;
+  padding: 25px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px 15px;
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+/* ANIMAÇÕES */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="links">
+    <a href="index.html">Home</a>
+  </div>
+  <button class="toggle-theme" onclick="toggleTheme()">🌙/☀️</button>
+</nav>
+
+<header>
+  <h1>📘 Cheat Sheets Center</h1>
+  <p>Referências rápidas para linguagens e ferramentas de dados e desenvolvimento</p>
+</header>
+
+<div class="container">
+
+  <section>
+    <h2 class="section-title">🚀 Linguagens</h2>
+    <div class="grid">
+      
+      <div class="card">
+        <h2>🐍 Python</h2>
+        <p>Comandos essenciais da linguagem Python.</p>
+        <a href="python.html">Acessar</a>
+      </div>
+
+      <div class="card"> 
+        <h2>⚙️ Linguagem M</h2> 
+        <p>Motor de transformação de dados do Power Query.</p> 
+        <a href="powerquery_m.html">Acessar</a> 
+      </div>
+
+      <div class="card"> 
+        <h2>📊 DAX</h2> 
+        <p>Linguagem de fórmulas para análise de dados no Power BI.</p> 
+        <a href="dax.html">Acessar</a> 
+      </div>
+
+      <div class="card"> 
+        <h2>📊 Linguagem R</h2> 
+        <p>Linguagem focada em estatística, análise de dados e gráficos.</p> 
+        <a href="r_language.html">Acessar</a> 
+      </div>
+
+      <div class="card">
+        <h2>🔧 Git</h2>
+        <p>Controle de versão e colaboração.</p>
+        <a href="git.html">Acessar</a>
+      </div>
+      
+      <div class="card">
+        <h2>🗃 SQL</h2>
+        <p>Consultas, joins, agregações e funções.</p>
+        <a href="sql.html">Acessar</a>
+      </div>
+      
+      <div class="card"> 
+        <h2>🧩 HTML5</h2> 
+        <p>Linguagem de marcação essencial para estruturar toda a web.</p> 
+        <a href="html.html">Acessar</a> 
+      </div>
+    
+      <div class="card"> 
+        <h2>🎨 CSS</h2> 
+        <p>Estilização visual e layout para páginas web modernas.</p> 
+        <a href="css.html">Acessar</a> 
+      </div>
+
+      <div class="card">
+        <h2>📜 JavaScript</h2>
+        <p>Linguagem essencial para interatividade na web moderna.</p>
+        <a href="javascript.html">Acessar</a>
+      </div>
+
+    </div> 
+  </section>
+
+  <section>
+    <h2 class="section-title">🚀 Manipulação de Dados e Estatística</h2>
+    <div class="grid">
+      
+      <div class="card">
+        <h2>🐼 Pandas</h2>
+        <p>Manipulação e análise de dados com DataFrames.</p>
+        <a href="pandas.html">Acessar</a>
+      </div>
+      
+      <div class="card">
+        <h2>🔢 NumPy</h2>
+        <p>Computação numérica e arrays.</p>
+        <a href="numpy.html">Acessar</a>
+      </div>
+      
+      <div class="card"> 
+        <h2>🚀 SciPy</h2> 
+        <p>Ecossistema robusto para matemática, ciências e engenharia de alto nível.</p> 
+        <a href="scipy.html">Acessar</a> 
+      </div>
+
+
+      <div class="card"> 
+        <h2>⚖️ Naive Bayes</h2> 
+        <p>Classificação probabilística baseada na independência entre variáveis.</p> 
+        <a href="naive_bayes.html">Acessar</a> 
+      </div>
+      
+      <div class="card"> 
+        <h2>📈 StatsModels</h2> 
+        <p>Modelagem estatística, testes e exploração de dados em Python.</p> 
+        <a href="statsmodels.html">Acessar</a> 
+      </div>
+
+    </div> 
+  </section>
+  
+  <section>
+    <h2 class="section-title">🚀 Processamento de Linguagem Natural</h2>
+    <div class="grid">
+      
+      <div class="card">
+        <h2>🧠 NLTK</h2>
+        <p>Processamento de linguagem natural (NLP).</p>
+        <a href="nltk.html">Acessar</a>
+      </div>
+      
+      <div class="card"> 
+        <h2>🧠 SpaCy</h2> 
+        <p>Processamento de Linguagem Natural industrial e veloz em Python.</p> 
+        <a href="spacy.html">Acessar</a> 
+      </div>
+    
+      <div class="card"> 
+        <h2>🏺 Gensim</h2> 
+        <p>Modelagem de tópicos e similaridade de documentos em larga escala.</p> 
+        <a href="gensim.html">Acessar</a> 
+      </div>
+
+
+    </div> 
+  </section>
+
+
+
+  <section>
+    <h2 class="section-title">🚀 Visualização de Dados</h2>
+    <div class="grid">
+      <div class="card"> 
+        <h2>🎨 Matplotlib</h2> 
+        <p>Visualizações estáticas e interativas.</p> 
+        <a href="matplotlib.html">Acessar</a> 
+      </div>
+      <div class="card"> 
+        <h2>📊 Seaborn</h2> 
+        <p>Visualização de dados estatísticos informativa.</p> 
+        <a href="seaborn.html">Acessar</a> 
+      </div>
+      <div class="card"> 
+        <h2>📈 Plotly</h2> 
+        <p>Gráficos interativos e dashboards analíticos.</p> 
+        <a href="plotly.html">Acessar</a> 
+      </div>
+      <div class="card"> 
+        <h2>✨ Bokeh</h2> 
+        <p>Visualizações interativas e poderosas para navegadores web.</p> 
+        <a href="bokeh.html">Acessar</a> 
+      </div>
+      <div class="card"> 
+        <h2>🌿 Pydot</h2> 
+        <p>Geração e manipulação de grafos no formato DOT/Graphviz.</p> 
+        <a href="pydot.html">Acessar</a> 
+      </div>
+      <div class="card"> 
+        <h2>🚀 Dash</h2> 
+        <p>Dashboards analíticos interativos puramente em Python e Plotly.</p> 
+        <a href="dash.html">Acessar</a> 
+      </div>
+    </div> 
+  </section>
+
+  <section>
+    <h2 class="section-title">🚀 Machine Learning</h2>
+    <div class="grid">
+      
+      <div class="card"> 
+        <h2>⚙️ Scikit-learn</h2> 
+        <p>Mineração de dados e análise preditiva.</p> 
+        <a href="sklearn.html">Acessar</a> 
+      </div>
+  
+      <div class="card"> 
+        <h2>🚀 XGBoost</h2> 
+        <p>Algoritmos de Gradient Boosting de alta performance e escalabilidade.</p> 
+        <a href="xgboost.html">Acessar</a> 
+      </div>
+  
+      <div class="card"> 
+        <h2>🌿 LightGBM</h2> 
+        <p>Boosting rápido e leve focado em crescimento por folhas.</p> 
+        <a href="lightgbm.html">Acessar</a> 
+      </div>
+    
+    <div class="card"> 
+      <h2>🚀 CatBoost</h2> 
+      <p>Algoritmo de Gradient Boosting poderoso para variáveis categóricas.</p> 
+      <a href="catboost.html">Acessar</a> 
+    </div>
+
+    <div class="card"> 
+      <h2>💡 ELI5</h2> 
+      <p>Depuração de modelos ML e explicação de previsões complexas.</p> 
+      <a href="eli5.html">Acessar</a> 
+    </div>
+
+    <div class="card"> 
+      <h2>💎 PyCaret</h2> 
+      <p>Machine Learning de baixo código para fluxos de trabalho rápidos.</p> 
+      <a href="pycaret.html">Acessar</a> 
+    </div>
+
+    </div>
+  </section>
+  
+  <section>
+    <h2 class="section-title">🚀 Deep Learning</h2>
+    <div class="grid">
+      
+      <div class="card"> 
+        <h2>🔥 PyTorch</h2> 
+        <p>Framework líder para Deep Learning e redes neurais avançadas.</p> 
+        <a href="pytorch.html">Acessar</a> 
+      </div>
+
+    <div class="card"> 
+      <h2>🧠 Keras</h2> 
+      <p>Construção simples e rápida de redes neurais profundas.</p> 
+      <a href="keras.html">Acessar</a> 
+    </div>
+
+    <div class="card"> 
+      <h2>🧠 TensorFlow</h2> 
+      <p>Biblioteca completa para Deep Learning e Inteligência Artificial.</p> 
+      <a href="tensorflow.html">Acessar</a> 
+    </div>
+
+    </div>
+  </section>
+
+
+
+  
+  <section>
+    <h2 class="section-title">🚀 Web Scraping e Automação</h2>
+    <div class="grid">
+      
+      <div class="card"> 
+        <h2>🤖 Selenium</h2> 
+        <p>Automação de navegadores e testes web.</p> 
+        <a href="selenium.html">Acessar</a> 
+      </div>
+
+      <div class="card"> 
+        <h2>🍲 BeautifulSoup</h2> 
+        <p>Extração e análise de dados de ficheiros HTML e XML de forma simples e pythonica.</p> 
+        <a href="beatifulsoap.html">Acessar</a> 
+      </div>
+  
+      <div class="card"> 
+        <h2>🕷️ Scrapy</h2> 
+        <p>Framework potente para extração de dados e web crawling.</p> 
+        <a href="scrapy.html">Acessar</a> 
+      </div>
+
+    </div>
+  </section>
+  
+  <section>
+    <h2 class="section-title">🚀 Desenvolvimento Web</h2>
+    <div class="grid">
+      <div class="card">
+        <h2>👑 Streamlit</h2>
+        <p>Criação rápida de apps em Python.</p>
+        <a href="streamlit.html">Acessar</a>
+      </div>
+      <div class="card"> 
+        <h2>🏇 Django</h2> 
+        <p>Framework web Python para perfeccionistas com prazos apertados.</p> 
+        <a href="django.html">Acessar</a>
+      </div>
+      <div class="card"> 
+        <h2>⚡ Flask</h2> 
+        <p>Microframework web leve e flexível para Python.</p> 
+        <a href="flask.html">Acessar</a>
+      </div>
+      <div class="card"> 
+        <h2>✉️ Requests</h2> 
+        <p>HTTP para seres humanos. Simples, intuitiva e poderosa.</p> 
+        <a href="requests.html">Acessar</a> 
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">🛠️ Utilitários Python</h2>
+    <div class="grid">
+
+      <div class="card"> 
+        <h2>⚓ SQLAlchemy</h2> 
+        <p>Mapeamento objeto-relacional e consultas SQL potentes para Python.</p> 
+        <a href="sqlalchemy.html">Acessar</a> 
+      </div>
+      <div class="card">
+        <h2>⏱ Time</h2>
+        <p>Manipulação de tempo e medições.</p>
+        <a href="time.html">Acessar</a>
+      </div>
+      <div class="card">
+        <h2>📅 DateTime</h2>
+        <p>Manipulação de datas e fusos horários.</p>
+        <a href="datetime.html">Acessar</a>
+      </div>
+      <div class="card">
+        <h2>🔎 RE</h2>
+        <p>Expressões regulares para busca de texto.</p>
+        <a href="re.html">Acessar</a>
+      </div>
+      <div class="card">
+        <h2>🔑 JSON</h2>
+        <p>Serialização e leitura de dados JSON.</p>
+        <a href="json.html">Acessar</a>
+      </div>
+      <div class="card">
+        <h2>📄 CSV</h2>
+        <p>Leitura e escrita de arquivos CSV.</p>
+        <a href="csv.html">Acessar</a>
+      </div>
+      <div class="card"> 
+        <h2>👁️ OpenCV</h2> 
+        <p>Biblioteca poderosa para visão computacional e processamento de imagens.</p> 
+        <a href="opencv.html">Acessar</a> 
+      </div>
+      <div class="card">
+        <h2>📦 Collections</h2>
+        <p>Estruturas de dados especializadas.</p>
+        <a href="collections.html">Acessar</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  Cheat Sheets Center • Criado para estudo e consulta rápida
+</footer>
+
+<script>
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+}
+</script>
+
+</body>
+</html>

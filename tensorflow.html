@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>TensorFlow Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+/* Estilo para a nova coluna de índice */
+.col-index { width: 50px; text-align: center; font-weight: bold; color: #7f8c8d; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🧠 TensorFlow Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://www.tensorflow.org/" target="_blank">📖 Site oficial do TensorFlow (Documentação)</a></p>
+<input type="text" id="search_field" placeholder="Buscar comando, camada, otimizador ou função do TensorFlow...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th>
+<th>Comando / Função / Classe</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>pip install tensorflow</code></td><td>Instala a biblioteca principal via terminal</td><td><code>pip install tensorflow</code></td></tr>
+<tr><td class="col-index">2</td><td><code>import tensorflow as tf</code></td><td>Importa a biblioteca no script Python</td><td><code>import tensorflow as tf</code></td></tr>
+
+<tr><td class="col-index">3</td><td><code>tf.constant()</code></td><td>Cria um tensor constante</td><td><code>tf.constant([1, 2, 3])</code></td></tr>
+<tr><td class="col-index">4</td><td><code>tf.Variable()</code></td><td>Cria um tensor mutável (pesos)</td><td><code>tf.Variable(2.0)</code></td></tr>
+<tr><td class="col-index">5</td><td><code>tf.zeros()</code></td><td>Cria tensor preenchido com zeros</td><td><code>tf.zeros([3, 3])</code></td></tr>
+<tr><td class="col-index">6</td><td><code>tf.ones()</code></td><td>Cria tensor preenchido com uns</td><td><code>tf.ones([2, 2])</code></td></tr>
+<tr><td class="col-index">7</td><td><code>tf.fill()</code></td><td>Preenche tensor com valor específico</td><td><code>tf.fill([2, 2], 9)</code></td></tr>
+<tr><td class="col-index">8</td><td><code>tf.eye()</code></td><td>Cria uma matriz identidade</td><td><code>tf.eye(3)</code></td></tr>
+<tr><td class="col-index">9</td><td><code>tf.random.normal()</code></td><td>Gera valores com distribuição normal</td><td><code>tf.random.normal([2, 2])</code></td></tr>
+<tr><td class="col-index">10</td><td><code>tf.random.uniform()</code></td><td>Gera valores com distribuição uniforme</td><td><code>tf.random.uniform([5], 0, 1)</code></td></tr>
+<tr><td class="col-index">11</td><td><code>tf.cast()</code></td><td>Converte o tipo de dado do tensor</td><td><code>tf.cast(x, tf.float32)</code></td></tr>
+<tr><td class="col-index">12</td><td><code>tf.reshape()</code></td><td>Altera a forma (shape) de um tensor</td><td><code>tf.reshape(x, [1, 4])</code></td></tr>
+
+<tr><td class="col-index">13</td><td><code>tf.keras.Sequential()</code></td><td>Cria modelo de camadas sequenciais</td><td><code>model = Sequential()</code></td></tr>
+<tr><td class="col-index">14</td><td><code>model.add()</code></td><td>Adiciona uma camada ao modelo</td><td><code>model.add(layers.Dense(10))</code></td></tr>
+<tr><td class="col-index">15</td><td><code>model.compile()</code></td><td>Configura o processo de treino</td><td><code>model.compile(optimizer='adam', loss='mse')</code></td></tr>
+<tr><td class="col-index">16</td><td><code>model.fit()</code></td><td>Treina o modelo com os dados</td><td><code>model.fit(x_train, y_train, epochs=5)</code></td></tr>
+<tr><td class="col-index">17</td><td><code>model.evaluate()</code></td><td>Avalia a performance do modelo</td><td><code>model.evaluate(x_test, y_test)</code></td></tr>
+<tr><td class="col-index">18</td><td><code>model.predict()</code></td><td>Gera previsões para novos dados</td><td><code>model.predict(x_new)</code></td></tr>
+<tr><td class="col-index">19</td><td><code>model.summary()</code></td><td>Exibe arquitetura do modelo</td><td><code>model.summary()</code></td></tr>
+<tr><td class="col-index">20</td><td><code>model.save()</code></td><td>Salva o modelo completo em disco</td><td><code>model.save('meu_modelo.h5')</code></td></tr>
+<tr><td class="col-index">21</td><td><code>tf.keras.models.load_model()</code></td><td>Carrega um modelo salvo</td><td><code>tf.keras.models.load_model('model.h5')</code></td></tr>
+
+<tr><td class="col-index">22</td><td><code>layers.Dense()</code></td><td>Camada totalmente conectada</td><td><code>layers.Dense(64, activation='relu')</code></td></tr>
+<tr><td class="col-index">23</td><td><code>layers.Conv2D()</code></td><td>Camada de convolução 2D (imagens)</td><td><code>layers.Conv2D(32, (3,3))</code></td></tr>
+<tr><td class="col-index">24</td><td><code>layers.MaxPooling2D()</code></td><td>Reduz dimensionalidade (subamostragem)</td><td><code>layers.MaxPooling2D(pool_size=(2,2))</code></td></tr>
+<tr><td class="col-index">25</td><td><code>layers.Flatten()</code></td><td>Achata a entrada para 1D</td><td><code>layers.Flatten()</code></td></tr>
+<tr><td class="col-index">26</td><td><code>layers.Dropout()</code></td><td>Preveni overfitting desligando neurônios</td><td><code>layers.Dropout(0.2)</code></td></tr>
+<tr><td class="col-index">27</td><td><code>layers.LSTM()</code></td><td>Camada de rede recorrente Long-Short Term</td><td><code>layers.LSTM(128)</code></td></tr>
+<tr><td class="col-index">28</td><td><code>layers.BatchNormalization()</code></td><td>Normaliza as ativações da camada anterior</td><td><code>layers.BatchNormalization()</code></td></tr>
+<tr><td class="col-index">29</td><td><code>layers.Embedding()</code></td><td>Cria representações densas para NLP</td><td><code>layers.Embedding(input_dim=100, output_dim=4)</code></td></tr>
+<tr><td class="col-index">30</td><td><code>layers.Input()</code></td><td>Define a forma de entrada do modelo</td><td><code>layers.Input(shape=(28, 28))</code></td></tr>
+<tr><td class="col-index">31</td><td><code>layers.concatenate()</code></td><td>Concatena múltiplos tensores/camadas</td><td><code>layers.concatenate([x1, x2])</code></td></tr>
+
+<tr><td class="col-index">32</td><td><code>activation='relu'</code></td><td>Função de ativação ReLU</td><td><code>layers.Dense(32, activation='relu')</code></td></tr>
+<tr><td class="col-index">33</td><td><code>activation='sigmoid'</code></td><td>Função Sigmóide (probabilidade 0-1)</td><td><code>activation='sigmoid'</code></td></tr>
+<tr><td class="col-index">34</td><td><code>activation='softmax'</code></td><td>Ativação para classificação multiclasse</td><td><code>activation='softmax'</code></td></tr>
+<tr><td class="col-index">35</td><td><code>activation='tanh'</code></td><td>Função tangente hiperbólica</td><td><code>activation='tanh'</code></td></tr>
+
+<tr><td class="col-index">36</td><td><code>tf.keras.losses.MSE</code></td><td>Erro quadrático médio (regressão)</td><td><code>loss='mean_squared_error'</code></td></tr>
+<tr><td class="col-index">37</td><td><code>tf.keras.losses.BinaryCrossentropy</code></td><td>Perda para classificação binária</td><td><code>loss='binary_crossentropy'</code></td></tr>
+<tr><td class="col-index">38</td><td><code>tf.keras.losses.CategoricalCrossentropy</code></td><td>Perda para multiclasse (One-hot)</td><td><code>loss='categorical_crossentropy'</code></td></tr>
+<tr><td class="col-index">39</td><td><code>tf.keras.losses.SparseCategoricalCrossentropy</code></td><td>Perda para multiclasse (Inteiros)</td><td><code>loss='sparse_categorical_crossentropy'</code></td></tr>
+
+<tr><td class="col-index">40</td><td><code>tf.keras.optimizers.Adam()</code></td><td>Otimizador Adam (padrão popular)</td><td><code>optimizer=Adam(learning_rate=0.001)</code></td></tr>
+<tr><td class="col-index">41</td><td><code>tf.keras.optimizers.SGD()</code></td><td>Descida de gradiente estocástica</td><td><code>optimizer='sgd'</code></td></tr>
+<tr><td class="col-index">42</td><td><code>tf.keras.optimizers.RMSprop()</code></td><td>Otimizador RMSprop</td><td><code>optimizer='rmsprop'</code></td></tr>
+
+<tr><td class="col-index">43</td><td><code>metrics=['accuracy']</code></td><td>Mede acurácia de classificação</td><td><code>metrics=['accuracy']</code></td></tr>
+<tr><td class="col-index">44</td><td><code>metrics=['mae']</code></td><td>Erro médio absoluto</td><td><code>metrics=['mae']</code></td></tr>
+
+<tr><td class="col-index">45</td><td><code>callbacks.EarlyStopping()</code></td><td>Para o treino se a perda parar de cair</td><td><code>EarlyStopping(patience=3)</code></td></tr>
+<tr><td class="col-index">46</td><td><code>callbacks.ModelCheckpoint()</code></td><td>Salva o melhor modelo durante o treino</td><td><code>ModelCheckpoint('best.h5')</code></td></tr>
+<tr><td class="col-index">47</td><td><code>callbacks.TensorBoard()</code></td><td>Habilita visualização no TensorBoard</td><td><code>TensorBoard(log_dir='./logs')</code></td></tr>
+<tr><td class="col-index">48</td><td><code>callbacks.ReduceLROnPlateau()</code></td><td>Reduz taxa de aprendizado em estagnação</td><td><code>ReduceLROnPlateau()</code></td></tr>
+
+<tr><td class="col-index">49</td><td><code>tf.data.Dataset.from_tensor_slices()</code></td><td>Cria dataset a partir de arrays</td><td><code>Dataset.from_tensor_slices(data)</code></td></tr>
+<tr><td class="col-index">50</td><td><code>dataset.batch()</code></td><td>Divide o dataset em lotes</td><td><code>dataset.batch(32)</code></td></tr>
+<tr><td class="col-index">51</td><td><code>dataset.shuffle()</code></td><td>Embaralha os dados</td><td><code>dataset.shuffle(1000)</code></td></tr>
+<tr><td class="col-index">52</td><td><code>dataset.map()</code></td><td>Aplica função a todos elementos</td><td><code>dataset.map(lambda x: x/255)</code></td></tr>
+<tr><td class="col-index">53</td><td><code>dataset.prefetch()</code></td><td>Prepara lotes futuros (otimiza CPU/GPU)</td><td><code>dataset.prefetch(tf.data.AUTOTUNE)</code></td></tr>
+
+<tr><td class="col-index">54</td><td><code>tf.keras.preprocessing.image.load_img()</code></td><td>Carrega imagem de um caminho</td><td><code>load_img('cat.jpg')</code></td></tr>
+<tr><td class="col-index">55</td><td><code>tf.keras.preprocessing.text.Tokenizer()</code></td><td>Converte texto em sequências numéricas</td><td><code>tokenizer.fit_on_texts(sentencas)</code></td></tr>
+<tr><td class="col-index">56</td><td><code>tf.keras.utils.to_categorical()</code></td><td>Converte inteiros para One-hot encoding</td><td><code>to_categorical(labels)</code></td></tr>
+
+<tr><td class="col-index">57</td><td><code>tf.matmul()</code></td><td>Multiplicação de matrizes</td><td><code>tf.matmul(a, b)</code></td></tr>
+<tr><td class="col-index">58</td><td><code>tf.reduce_mean()</code></td><td>Calcula a média de elementos</td><td><code>tf.reduce_mean(tensor)</code></td></tr>
+<tr><td class="col-index">59</td><td><code>tf.reduce_sum()</code></td><td>Calcula a soma de elementos</td><td><code>tf.reduce_sum(tensor)</code></td></tr>
+<tr><td class="col-index">60</td><td><code>tf.argmax()</code></td><td>Retorna índice do maior valor</td><td><code>tf.argmax(predicoes, axis=1)</code></td></tr>
+<tr><td class="col-index">61</td><td><code>tf.square()</code></td><td>Calcula o quadrado de cada elemento</td><td><code>tf.square(x)</code></td></tr>
+<tr><td class="col-index">62</td><td><code>tf.nn.relu()</code></td><td>Aplica ReLU em um tensor</td><td><code>tf.nn.relu(x)</code></td></tr>
+
+<tr><td class="col-index">63</td><td><code>@tf.function</code></td><td>Transforma função Python em Grafo TF</td><td><code>@tf.function def treino():</code></td></tr>
+<tr><td class="col-index">64</td><td><code>tf.GradientTape()</code></td><td>Grava operações para diferenciação automática</td><td><code>with tf.GradientTape() as tape:</code></td></tr>
+<tr><td class="col-index">65</td><td><code>tape.gradient()</code></td><td>Calcula gradientes das variáveis</td><td><code>tape.gradient(loss, model.weights)</code></td></tr>
+
+<tr><td class="col-index">66</td><td><code>tf.config.list_physical_devices('GPU')</code></td><td>Lista GPUs disponíveis</td><td><code>tf.config.list_physical_devices('GPU')</code></td></tr>
+<tr><td class="col-index">67</td><td><code>tf.device()</code></td><td>Especifica dispositivo para execução</td><td><code>with tf.device('/GPU:0'):</code></td></tr>
+<tr><td class="col-index">68</td><td><code>tf.__version__</code></td><td>Verifica versão instalada</td><td><code>print(tf.__version__)</code></td></tr>
+
+<tr><td class="col-index">69</td><td><code>tf.expand_dims()</code></td><td>Adiciona dimensão ao tensor</td><td><code>tf.expand_dims(x, axis=0)</code></td></tr>
+<tr><td class="col-index">70</td><td><code>tf.squeeze()</code></td><td>Remove dimensões unitárias</td><td><code>tf.squeeze(x)</code></td></tr>
+<tr><td class="col-index">71</td><td><code>tf.concat()</code></td><td>Une tensores ao longo de um eixo</td><td><code>tf.concat([a, b], axis=0)</code></td></tr>
+<tr><td class="col-index">72</td><td><code>tf.stack()</code></td><td>Empilha tensores em nova dimensão</td><td><code>tf.stack([a, b])</code></td></tr>
+<tr><td class="col-index">73</td><td><code>tf.unstack()</code></td><td>Desempilha tensores</td><td><code>tf.unstack(x)</code></td></tr>
+<tr><td class="col-index">74</td><td><code>tf.split()</code></td><td>Divide tensor em partes</td><td><code>tf.split(x, num_or_size_splits=3)</code></td></tr>
+<tr><td class="col-index">75</td><td><code>tf.transpose()</code></td><td>Transpõe as dimensões do tensor</td><td><code>tf.transpose(x)</code></td></tr>
+<tr><td class="col-index">76</td><td><code>tf.clip_by_value()</code></td><td>Limita valores entre um mínimo e máximo</td><td><code>tf.clip_by_value(x, 0, 1)</code></td></tr>
+<tr><td class="col-index">77</td><td><code>tf.math.exp()</code></td><td>Exponencial de um tensor</td><td><code>tf.math.exp(x)</code></td></tr>
+<tr><td class="col-index">78</td><td><code>tf.math.log()</code></td><td>Logaritmo natural de um tensor</td><td><code>tf.math.log(x)</code></td></tr>
+<tr><td class="col-index">79</td><td><code>tf.math.sqrt()</code></td><td>Raiz quadrada</td><td><code>tf.math.sqrt(x)</code></td></tr>
+<tr><td class="col-index">80</td><td><code>tf.abs()</code></td><td>Valor absoluto</td><td><code>tf.abs(x)</code></td></tr>
+<tr><td class="col-index">81</td><td><code>tf.identity()</code></td><td>Cria uma cópia do tensor</td><td><code>tf.identity(x)</code></td></tr>
+<tr><td class="col-index">82</td><td><code>tf.where()</code></td><td>Condicional elemento a elemento</td><td><code>tf.where(x > 0, x, 0)</code></td></tr>
+<tr><td class="col-index">83</td><td><code>tf.norm()</code></td><td>Calcula a norma do tensor</td><td><code>tf.norm(x)</code></td></tr>
+<tr><td class="col-index">84</td><td><code>tf.one_hot()</code></td><td>Cria tensores one-hot</td><td><code>tf.one_hot(indices, depth)</code></td></tr>
+<tr><td class="col-index">85</td><td><code>layers.GlobalAveragePooling2D()</code></td><td>Pooling global para reduzir parâmetros</td><td><code>layers.GlobalAveragePooling2D()</code></td></tr>
+<tr><td class="col-index">86</td><td><code>layers.TimeDistributed()</code></td><td>Aplica camada a cada passo temporal</td><td><code>layers.TimeDistributed(layers.Dense(8))</code></td></tr>
+<tr><td class="col-index">87</td><td><code>layers.Bidirectional()</code></td><td>RNN que lê em ambos sentidos</td><td><code>layers.Bidirectional(layers.LSTM(10))</code></td></tr>
+<tr><td class="col-index">88</td><td><code>layers.SimpleRNN()</code></td><td>Camada de rede recorrente simples</td><td><code>layers.SimpleRNN(32)</code></td></tr>
+<tr><td class="col-index">89</td><td><code>layers.AlphaDropout()</code></td><td>Dropout que mantém média/variância</td><td><code>layers.AlphaDropout(0.1)</code></td></tr>
+<tr><td class="col-index">90</td><td><code>layers.GaussianNoise()</code></td><td>Adiciona ruído gaussiano (regularização)</td><td><code>layers.GaussianNoise(0.1)</code></td></tr>
+<tr><td class="col-index">91</td><td><code>layers.LeakyReLU()</code></td><td>ReLU com pequena inclinação negativa</td><td><code>layers.LeakyReLU(alpha=0.01)</code></td></tr>
+<tr><td class="col-index">92</td><td><code>layers.Add()</code></td><td>Soma elemento a elemento de camadas</td><td><code>layers.Add()([x1, x2])</code></td></tr>
+<tr><td class="col-index">93</td><td><code>layers.Multiply()</code></td><td>Multiplica elemento a elemento</td><td><code>layers.Multiply()([x1, x2])</code></td></tr>
+<tr><td class="col-index">94</td><td><code>tf.keras.utils.plot_model()</code></td><td>Gera gráfico da arquitetura (imagem)</td><td><code>plot_model(model, to_file='m.png')</code></td></tr>
+<tr><td class="col-index">95</td><td><code>tf.keras.backend.clear_session()</code></td><td>Limpa estado global do Keras</td><td><code>tf.keras.backend.clear_session()</code></td></tr>
+<tr><td class="col-index">96</td><td><code>tf.keras.constraints.MaxNorm()</code></td><td>Limita o peso máximo dos neurônios</td><td><code>kernel_constraint=MaxNorm(3)</code></td></tr>
+<tr><td class="col-index">97</td><td><code>tf.keras.initializers.HeNormal()</code></td><td>Inicializador de pesos He</td><td><code>kernel_initializer='he_normal'</code></td></tr>
+<tr><td class="col-index">98</td><td><code>tf.keras.regularizers.l2()</code></td><td>Regularização L2 (Penalidade de pesos)</td><td><code>kernel_regularizer=l2(0.01)</code></td></tr>
+<tr><td class="col-index">99</td><td><code>tf.image.resize()</code></td><td>Redimensiona imagens via código</td><td><code>tf.image.resize(img, [224, 224])</code></td></tr>
+<tr><td class="col-index">100</td><td><code>tf.image.flip_left_right()</code></td><td>Inverte imagem horizontalmente</td><td><code>tf.image.flip_left_right(img)</code></td></tr>
+<tr><td class="col-index">101</td><td><code>tf.image.rgb_to_grayscale()</code></td><td>Converte RGB para tons de cinza</td><td><code>tf.image.rgb_to_grayscale(img)</code></td></tr>
+<tr><td class="col-index">102</td><td><code>tf.io.read_file()</code></td><td>Lê conteúdo de arquivo binário</td><td><code>tf.io.read_file('path.jpg')</code></td></tr>
+<tr><td class="col-index">103</td><td><code>tf.strings.lower()</code></td><td>Converte strings para minúsculo</td><td><code>tf.strings.lower(texto)</code></td></tr>
+<tr><td class="col-index">104</td><td><code>tf.pad()</code></td><td>Adiciona preenchimento (padding)</td><td><code>tf.pad(tensor, paddings)</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

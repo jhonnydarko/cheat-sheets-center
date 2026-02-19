@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Plotly Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+/* Estilo para a coluna de índice */
+.col-index { width: 40px; text-align: center; color: #7f8c8d; font-weight: bold; background-color: #f9f9f9; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>📈 Plotly Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://plotly.com/python/" target="_blank">📊 Documentação Oficial do Plotly Python</a></p>
+<input type="text" id="search_field" placeholder="Buscar gráfico, parâmetro ou componente do Plotly...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th>
+<th>Comando / Função / Parâmetro</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>px.scatter()</code></td><td>Gráfico de dispersão interativo</td><td><code>px.scatter(df, x='x', y='y', color='cat')</code></td></tr>
+<tr><td class="col-index">2</td><td><code>px.line()</code></td><td>Gráfico de linhas (séries temporais)</td><td><code>px.line(df, x='data', y='valor')</code></td></tr>
+<tr><td class="col-index">3</td><td><code>px.area()</code></td><td>Gráfico de área preenchida</td><td><code>px.area(df, x='ano', y='pop')</code></td></tr>
+<tr><td class="col-index">4</td><td><code>px.density_contour()</code></td><td>Contornos de densidade 2D</td><td><code>px.density_contour(df, x='x', y='y')</code></td></tr>
+<tr><td class="col-index">5</td><td><code>px.density_heatmap()</code></td><td>Mapa de calor de densidade 2D</td><td><code>px.density_heatmap(df, x='x', y='y')</code></td></tr>
+
+<tr><td class="col-index">6</td><td><code>px.histogram()</code></td><td>Histograma com suporte a bins automáticos</td><td><code>px.histogram(df, x='total_bill')</code></td></tr>
+<tr><td class="col-index">7</td><td><code>px.box()</code></td><td>Boxplot interativo com outliers visíveis</td><td><code>px.box(df, y='gorjeta', x='dia')</code></td></tr>
+<tr><td class="col-index">8</td><td><code>px.violin()</code></td><td>Gráfico de violino (distribuição KDE)</td><td><code>px.violin(df, y='valor', box=True)</code></td></tr>
+<tr><td class="col-index">9</td><td><code>px.ecdf()</code></td><td>Função de distribuição cumulativa empírica</td><td><code>px.ecdf(df, x='valor')</code></td></tr>
+<tr><td class="col-index">10</td><td><code>px.strip()</code></td><td>Gráfico de tiras (pontos individuais)</td><td><code>px.strip(df, x='cat', y='val')</code></td></tr>
+
+<tr><td class="col-index">11</td><td><code>px.bar()</code></td><td>Gráfico de barras (empilhado ou lado a lado)</td><td><code>px.bar(df, x='mes', y='venda', barmode='group')</code></td></tr>
+<tr><td class="col-index">12</td><td><code>px.pie()</code></td><td>Gráfico de pizza</td><td><code>px.pie(df, values='pop', names='pais')</code></td></tr>
+<tr><td class="col-index">13</td><td><code>px.sunburst()</code></td><td>Gráfico solar hierárquico</td><td><code>px.sunburst(df, path=['dia', 'hora'], values='venda')</code></td></tr>
+<tr><td class="col-index">14</td><td><code>px.treemap()</code></td><td>Mapa de árvore para dados hierárquicos</td><td><code>px.treemap(df, path=['continente', 'pais'])</code></td></tr>
+<tr><td class="col-index">15</td><td><code>px.funnel()</code></td><td>Gráfico de funil (etapas de processo)</td><td><code>px.funnel(df, x='etapa', y='usuarios')</code></td></tr>
+<tr><td class="col-index">16</td><td><code>px.icicle()</code></td><td>Visualização de hierarquia em cascata</td><td><code>px.icicle(df, path=['A', 'B'])</code></td></tr>
+
+<tr><td class="col-index">17</td><td><code>px.choropleth()</code></td><td>Mapas coropléticos (preenchimento por região)</td><td><code>px.choropleth(df, locations='iso', color='pib')</code></td></tr>
+<tr><td class="col-index">18</td><td><code>px.scatter_geo()</code></td><td>Pontos em mapas geográficos</td><td><code>px.scatter_geo(df, locations='iso', size='pop')</code></td></tr>
+<tr><td class="col-index">19</td><td><code>px.scatter_mapbox()</code></td><td>Mapas detalhados via Mapbox</td><td><code>px.scatter_mapbox(df, lat='lat', lon='lon', zoom=3)</code></td></tr>
+<tr><td class="col-index">20</td><td><code>px.density_mapbox()</code></td><td>Mapa de calor sobre coordenadas geográficas</td><td><code>px.density_mapbox(df, lat='lat', lon='lon', z='val')</code></td></tr>
+
+<tr><td class="col-index">21</td><td><code>px.scatter_3d()</code></td><td>Dispersão em três dimensões</td><td><code>px.scatter_3d(df, x='x', y='y', z='z')</code></td></tr>
+<tr><td class="col-index">22</td><td><code>px.line_3d()</code></td><td>Linha em espaço tridimensional</td><td><code>px.line_3d(df, x='x', y='y', z='z')</code></td></tr>
+<tr><td class="col-index">23</td><td><code>px.scatter_matrix()</code></td><td>Matriz de dispersão (SPLOM)</td><td><code>px.scatter_matrix(df, dimensions=['a', 'b', 'c'])</code></td></tr>
+<tr><td class="col-index">24</td><td><code>px.parallel_coordinates()</code></td><td>Coordenadas paralelas para dados multivariados</td><td><code>px.parallel_coordinates(df, color='classe')</code></td></tr>
+<tr><td class="col-index">25</td><td><code>px.parallel_categories()</code></td><td>Visualização de fluxos categóricos</td><td><code>px.parallel_categories(df)</code></td></tr>
+
+<tr><td class="col-index">26</td><td><code>color=</code></td><td>Mapeia uma coluna para a cor dos elementos</td><td><code>color='continente'</code></td></tr>
+<tr><td class="col-index">27</td><td><code>symbol=</code></td><td>Mapeia uma coluna para o estilo do marcador</td><td><code>symbol='sexo'</code></td></tr>
+<tr><td class="col-index">28</td><td><code>size=</code></td><td>Mapeia uma coluna para o tamanho do marcador</td><td><code>size='populacao'</code></td></tr>
+<tr><td class="col-index">29</td><td><code>hover_name=</code></td><td>Define o título do tooltip (balão informativo)</td><td><code>hover_name='nome_cliente'</code></td></tr>
+<tr><td class="col-index">30</td><td><code>hover_data=</code></td><td>Adiciona colunas extras ao tooltip</td><td><code>hover_data=['idade', 'cargo']</code></td></tr>
+<tr><td class="col-index">31</td><td><code>text=</code></td><td>Exibe texto diretamente no gráfico</td><td><code>text='sigla'</code></td></tr>
+<tr><td class="col-index">32</td><td><code>facet_col=</code></td><td>Cria subplots em colunas baseado em uma variável</td><td><code>facet_col='ano'</code></td></tr>
+<tr><td class="col-index">33</td><td><code>facet_row=</code></td><td>Cria subplots em linhas baseado em uma variável</td><td><code>facet_row='regiao'</code></td></tr>
+<tr><td class="col-index">34</td><td><code>animation_frame=</code></td><td>Cria animação baseada no tempo ou categoria</td><td><code>animation_frame='ano'</code></td></tr>
+<tr><td class="col-index">35</td><td><code>animation_group=</code></td><td>Define consistência dos objetos entre frames</td><td><code>animation_group='pais'</code></td></tr>
+<tr><td class="col-index">36</td><td><code>trendline=</code></td><td>Adiciona linha de tendência ('ols' ou 'lowess')</td><td><code>trendline='ols'</code></td></tr>
+<tr><td class="col-index">37</td><td><code>marginal_x=</code></td><td>Adiciona gráfico marginal ('box', 'violin', 'rug')</td><td><code>marginal_x='box'</code></td></tr>
+<tr><td class="col-index">38</td><td><code>log_x= / log_y=</code></td><td>Ativa escala logarítmica nos eixos</td><td><code>log_x=True</code></td></tr>
+<tr><td class="col-index">39</td><td><code>color_discrete_sequence</code></td><td>Define paleta para cores categóricas</td><td><code>color_discrete_sequence=px.colors.qualitative.Plotly</code></td></tr>
+<tr><td class="col-index">40</td><td><code>color_continuous_scale</code></td><td>Define escala para cores numéricas</td><td><code>color_continuous_scale='Viridis'</code></td></tr>
+
+<tr><td class="col-index">41</td><td><code>go.Figure()</code></td><td>Cria objeto de figura base</td><td><code>fig = go.Figure()</code></td></tr>
+<tr><td class="col-index">42</td><td><code>fig.add_trace()</code></td><td>Adiciona uma nova camada/traço ao gráfico</td><td><code>fig.add_trace(go.Scatter(x=x, y=y))</code></td></tr>
+<tr><td class="col-index">43</td><td><code>go.Bar()</code></td><td>Objeto de barra de baixo nível</td><td><code>go.Bar(name='Vendas', x=meses, y=valores)</code></td></tr>
+<tr><td class="col-index">44</td><td><code>go.Heatmap()</code></td><td>Mapa de calor básico</td><td><code>go.Heatmap(z=[[1, 2], [3, 4]])</code></td></tr>
+<tr><td class="col-index">45</td><td><code>go.Candlestick()</code></td><td>Gráfico financeiro de velas</td><td><code>go.Candlestick(open=o, high=h, low=l, close=c)</code></td></tr>
+<tr><td class="col-index">46</td><td><code>go.Waterfall()</code></td><td>Gráfico de cascata financeira</td><td><code>go.Waterfall(x=['Venda', 'Custo'], y=[100, -40])</code></td></tr>
+<tr><td class="col-index">47</td><td><code>go.Sankey()</code></td><td>Diagrama de fluxos Sankey</td><td><code>go.Sankey(node=dict(...), link=dict(...))</code></td></tr>
+<tr><td class="col-index">48</td><td><code>go.Indicator()</code></td><td>Exibição de métricas (KPIs) e medidores</td><td><code>go.Indicator(mode='gauge+number', value=450)</code></td></tr>
+
+<tr><td class="col-index">49</td><td><code>fig.update_layout()</code></td><td>Atualiza títulos, legendas e dimensões</td><td><code>fig.update_layout(title='Meu Título', width=800)</code></td></tr>
+<tr><td class="col-index">50</td><td><code>fig.update_xaxes()</code></td><td>Customiza eixo X (rótulos, ranges, grades)</td><td><code>fig.update_xaxes(showgrid=False)</code></td></tr>
+<tr><td class="col-index">51</td><td><code>fig.update_yaxes()</code></td><td>Customiza eixo Y</td><td><code>fig.update_yaxes(title_text='Valores')</code></td></tr>
+<tr><td class="col-index">52</td><td><code>fig.update_traces()</code></td><td>Atualiza propriedades de todos os traços</td><td><code>fig.update_traces(marker_color='red')</code></td></tr>
+<tr><td class="col-index">53</td><td><code>fig.add_hline()</code></td><td>Adiciona linha horizontal de referência</td><td><code>fig.add_hline(y=100, line_dash='dash')</code></td></tr>
+<tr><td class="col-index">54</td><td><code>fig.add_vrect()</code></td><td>Adiciona um retângulo vertical de destaque</td><td><code>fig.add_vrect(x0=1, x1=2, fillcolor='blue')</code></td></tr>
+<tr><td class="col-index">55</td><td><code>fig.show()</code></td><td>Exibe o gráfico no navegador ou notebook</td><td><code>fig.show()</code></td></tr>
+<tr><td class="col-index">56</td><td><code>fig.write_html()</code></td><td>Exporta gráfico como arquivo HTML interativo</td><td><code>fig.write_html('grafico.html')</code></td></tr>
+<tr><td class="col-index">57</td><td><code>fig.write_image()</code></td><td>Exporta gráfico como imagem estática (PNG/JPG/PDF)</td><td><code>fig.write_image('plot.png')</code></td></tr>
+
+<tr><td class="col-index">58</td><td><code>make_subplots()</code></td><td>Cria grade de múltiplos gráficos (go)</td><td><code>make_subplots(rows=2, cols=2)</code></td></tr>
+<tr><td class="col-index">59</td><td><code>template=</code></td><td>Define o tema visual ('plotly_dark', 'seaborn', etc)</td><td><code>template='plotly_dark'</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

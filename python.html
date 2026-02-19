@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Python Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+
+/* Estilo para a coluna de índice */
+td:first-child { font-weight: bold; color: #7f8c8d; width: 30px; text-align: center; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🐍 Python Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://docs.python.org/3/" target="_blank">📚 Documentação Oficial do Python</a></p>
+<input type="text" id="search_field" placeholder="Buscar sintaxe, função ou método Python...">
+
+<table id="LeanguageTable">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Conceito / Função</th>
+            <th>O que faz</th>
+            <th>Exemplo</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr><td>1</td><td><code>print()</code></td><td>Exibe mensagens no console</td><td><code>print("Olá Mundo")</code></td></tr>
+        <tr><td>2</td><td><code>input()</code></td><td>Recebe entrada de dados do usuário</td><td><code>nome = input("Seu nome?")</code></td></tr>
+        <tr><td>3</td><td><code>type()</code></td><td>Verifica o tipo de dado de uma variável</td><td><code>type(10) # &lt;class 'int'&gt;</code></td></tr>
+        <tr><td>4</td><td><code>#</code></td><td>Comentário de uma linha</td><td><code># Isso é um comentário</code></td></tr>
+        <tr><td>5</td><td><code>""" """</code></td><td>Docstring ou comentário multi-linha</td><td><code>""" Explicação da função """</code></td></tr>
+
+        <tr><td>6</td><td><code>int()</code></td><td>Converte para número inteiro</td><td><code>int("10")</code></td></tr>
+        <tr><td>7</td><td><code>float()</code></td><td>Converte para número decimal</td><td><code>float(5) # 5.0</code></td></tr>
+        <tr><td>8</td><td><code>str()</code></td><td>Converte para string (texto)</td><td><code>str(100)</code></td></tr>
+        <tr><td>9</td><td><code>bool()</code></td><td>Converte para valor booleano</td><td><code>bool(1) # True</code></td></tr>
+
+        <tr><td>10</td><td><code>f-strings</code></td><td>Interpolação de variáveis em strings</td><td><code>f"Olá, {nome}!"</code></td></tr>
+        <tr><td>11</td><td><code>.upper() / .lower()</code></td><td>Maiúsculas / Minúsculas</td><td><code>"oi".upper()</code></td></tr>
+        <tr><td>12</td><td><code>.strip()</code></td><td>Remove espaços no início e fim</td><td><code>" texto ".strip()</code></td></tr>
+        <tr><td>13</td><td><code>.split()</code></td><td>Divide string em uma lista</td><td><code>"a,b".split(",")</code></td></tr>
+        <tr><td>14</td><td><code>.replace()</code></td><td>Substitui trechos de texto</td><td><code>"abc".replace("a", "x")</code></td></tr>
+        <tr><td>15</td><td><code>len()</code></td><td>Retorna o tamanho de um objeto</td><td><code>len("Python") # 6</code></td></tr>
+
+        <tr><td>16</td><td><code>list = []</code></td><td>Cria uma lista mutável</td><td><code>frutas = ["uva", "maçã"]</code></td></tr>
+        <tr><td>17</td><td><code>.append()</code></td><td>Adiciona item ao final da lista</td><td><code>lista.append("novo")</code></td></tr>
+        <tr><td>18</td><td><code>.pop()</code></td><td>Remove e retorna o último item</td><td><code>ultimo = lista.pop()</code></td></tr>
+        <tr><td>19</td><td><code>.insert()</code></td><td>Insere item em posição específica</td><td><code>lista.insert(0, "primeiro")</code></td></tr>
+        <tr><td>20</td><td><code>.remove()</code></td><td>Remove a primeira ocorrência do valor</td><td><code>lista.remove("uva")</code></td></tr>
+        <tr><td>21</td><td><code>[start:stop]</code></td><td>Slicing (fatiamento de listas/strings)</td><td><code>lista[1:3]</code></td></tr>
+
+        <tr><td>22</td><td><code>dict = {}</code></td><td>Cria mapa de chave-valor</td><td><code>carro = {"marca": "Ford"}</code></td></tr>
+        <tr><td>23</td><td><code>.keys()</code></td><td>Retorna todas as chaves</td><td><code>carro.keys()</code></td></tr>
+        <tr><td>24</td><td><code>.values()</code></td><td>Retorna todos os valores</td><td><code>carro.values()</code></td></tr>
+        <tr><td>25</td><td><code>.items()</code></td><td>Retorna pares chave-valor</td><td><code>carro.items()</code></td></tr>
+
+        <tr><td>26</td><td><code>if / elif / else</code></td><td>Estrutura condicional</td><td><code>if x > 0: print("Positivo")</code></td></tr>
+        <tr><td>27</td><td><code>for item in...</code></td><td>Loop para iteráveis</td><td><code>for i in range(5):</code></td></tr>
+        <tr><td>28</td><td><code>while...</code></td><td>Loop enquanto condição for verdadeira</td><td><code>while x < 10: x += 1</code></td></tr>
+        <tr><td>29</td><td><code>break</code></td><td>Interrompe o loop imediatamente</td><td><code>if erro: break</code></td></tr>
+        <tr><td>30</td><td><code>continue</code></td><td>Pula para a próxima iteração</td><td><code>if ignora: continue</code></td></tr>
+        <tr><td>31</td><td><code>range()</code></td><td>Gera sequência de números</td><td><code>range(0, 10, 2)</code></td></tr>
+
+        <tr><td>32</td><td><code>def</code></td><td>Define uma função</td><td><code>def soma(a, b): return a + b</code></td></tr>
+        <tr><td>33</td><td><code>lambda</code></td><td>Cria funções anônimas simples</td><td><code>dobro = lambda x: x * 2</code></td></tr>
+        <tr><td>34</td><td><code>*args / **kwargs</code></td><td>Argumentos variáveis / nomeados</td><td><code>def func(*args):</code></td></tr>
+        <tr><td>35</td><td><code>return</code></td><td>Retorna valor de uma função</td><td><code>return resultado</code></td></tr>
+
+        <tr><td>36</td><td><code>try / except</code></td><td>Trata exceções (erros)</td><td><code>try: x/0 except: print("Erro")</code></td></tr>
+        <tr><td>37</td><td><code>finally</code></td><td>Bloco que sempre executa</td><td><code>finally: fechar_arquivo()</code></td></tr>
+        <tr><td>38</td><td><code>raise</code></td><td>Lança uma exceção manualmente</td><td><code>raise ValueError("Inválido")</code></td></tr>
+
+        <tr><td>39</td><td><code>[x for x in...]</code></td><td>Cria lista de forma concisa</td><td><code>[i*2 for i in range(10)]</code></td></tr>
+
+        <tr><td>40</td><td><code>open()</code></td><td>Abre um arquivo</td><td><code>f = open("txt.txt", "r")</code></td></tr>
+        <tr><td>41</td><td><code>with open()</code></td><td>Abre arquivo com fechamento automático</td><td><code>with open("x.txt") as f:</code></td></tr>
+        <tr><td>42</td><td><code>.read() / .write()</code></td><td>Lê ou escreve no arquivo</td><td><code>f.write("Oi")</code></td></tr>
+
+        <tr><td>43</td><td><code>import</code></td><td>Importa um módulo</td><td><code>import math</code></td></tr>
+        <tr><td>44</td><td><code>from ... import</code></td><td>Importa item específico de módulo</td><td><code>from os import path</code></td></tr>
+        <tr><td>45</td><td><code>as</code></td><td>Define um apelido para o módulo</td><td><code>import pandas as pd</code></td></tr>
+
+        <tr><td>46</td><td><code>zip()</code></td><td>Combina múltiplos iteráveis</td><td><code>zip(nomes, idades)</code></td></tr>
+        <tr><td>47</td><td><code>enumerate()</code></td><td>Retorna índice e valor em um loop</td><td><code>for i, v in enumerate(lista):</code></td></tr>
+        <tr><td>48</td><td><code>map()</code></td><td>Aplica função em todos os itens</td><td><code>map(str.upper, lista)</code></td></tr>
+        <tr><td>49</td><td><code>filter()</code></td><td>Filtra itens de um iterável</td><td><code>filter(lambda x: x > 0, lista)</code></td></tr>
+        
+        <tr><td>50</td><td><code>sorted()</code></td><td>Retorna lista ordenada</td><td><code>sorted(lista, reverse=True)</code></td></tr>
+        <tr><td>51</td><td><code>sum()</code></td><td>Soma os itens de uma lista</td><td><code>sum([1, 2, 3])</code></td></tr>
+        <tr><td>52</td><td><code>tuple = ()</code></td><td>Cria uma sequência imutável (não permite alteração)</td><td><code>ponto = (10, 20)</code></td></tr>
+        <tr><td>53</td><td><code>set = {x}</code></td><td>Cria uma coleção de itens únicos não ordenados</td><td><code>s = {1, 2, 2, 3} # {1, 2, 3}</code></td></tr>
+        <tr><td>54</td><td><code>.add()</code></td><td>Adiciona um elemento a um set</td><td><code>meu_set.add(4)</code></td></tr>
+        <tr><td>55</td><td><code>.union()</code></td><td>Une dois sets eliminando duplicatas</td><td><code>s1.union(s2)</code></td></tr>
+        <tr><td>56</td><td><code>.intersection()</code></td><td>Retorna apenas elementos presentes em ambos os sets</td><td><code>s1.intersection(s2)</code></td></tr>
+        <tr><td>57</td><td><code>.difference()</code></td><td>Retorna elementos que existem em apenas um dos sets</td><td><code>s1.difference(s2)</code></td></tr>
+        <tr><td>58</td><td><code>.get()</code></td><td>Acessa valor de uma chave sem causar erro se não existir</td><td><code>carro.get("ano", 2024)</code></td></tr>
+        <tr><td>59</td><td><code>.update()</code></td><td>Atualiza o dicionário com novos pares chave-valor</td><td><code>d.update({"cor": "azul"})</code></td></tr>
+        
+        <tr><td>60</td><td><code>del</code></td><td>Remove um item ou objeto específico</td><td><code>del dicionario["chave"]</code></td></tr>
+        <tr><td>61</td><td><code>.clear()</code></td><td>Remove todos os itens de uma coleção</td><td><code>lista.clear()</code></td></tr>
+        <tr><td>62</td><td><code>abs()</code></td><td>Retorna o valor absoluto de um número</td><td><code>abs(-5) # 5</code></td></tr>
+        <tr><td>63</td><td><code>round()</code></td><td>Arredonda um número para n casas decimais</td><td><code>round(3.1415, 2)</code></td></tr>
+        <tr><td>64</td><td><code>min() / max()</code></td><td>Retorna o menor ou maior valor de um iterável</td><td><code>max([1, 5, 2])</code></td></tr>
+        <tr><td>65</td><td><code>any()</code></td><td>Retorna True se pelo menos um item for verdadeiro</td><td><code>any([False, True])</code></td></tr>
+        <tr><td>66</td><td><code>all()</code></td><td>Retorna True se todos os itens forem verdadeiros</td><td><code>all([True, True])</code></td></tr>
+        <tr><td>67</td><td><code>reversed()</code></td><td>Inverte a ordem dos itens de um iterável</td><td><code>list(reversed(lista))</code></td></tr>
+        <tr><td>68</td><td><code>.join()</code></td><td>Une itens de uma lista em uma string com separador</td><td><code>"-".join(["a", "b"])</code></td></tr>
+        <tr><td>69</td><td><code>.find()</code></td><td>Retorna o índice da primeira ocorrência de um termo</td><td><code>"banana".find("na")</code></td></tr>
+        
+        <tr><td>70</td><td><code>.isdigit()</code></td><td>Verifica se a string contém apenas números</td><td><code>"123".isdigit()</code></td></tr>
+        <tr><td>71</td><td><code>.isalpha()</code></td><td>Verifica se a string contém apenas letras</td><td><code>"Ola".isalpha()</code></td></tr>
+        <tr><td>72</td><td><code>.startswith()</code></td><td>Verifica se a string começa com determinado valor</td><td><code>txt.startswith("Oi")</code></td></tr>
+        <tr><td>73</td><td><code>.endswith()</code></td><td>Verifica se a string termina com determinado valor</td><td><code>arq.endswith(".py")</code></td></tr>
+        <tr><td>74</td><td><code>.capitalize()</code></td><td>Coloca a primeira letra da string em maiúsculo</td><td><code>"texto".capitalize()</code></td></tr>
+        <tr><td>75</td><td><code>class</code></td><td>Define uma nova classe (molde de objeto)</td><td><code>class Pessoa:</code></td></tr>
+        <tr><td>76</td><td><code>def __init__()</code></td><td>Método construtor para inicializar atributos</td><td><code>def __init__(self, nome):</code></td></tr>
+        <tr><td>77</td><td><code>self</code></td><td>Refere-se à instância atual do objeto</td><td><code>self.idade = 18</code></td></tr>
+        <tr><td>78</td><td><code>super()</code></td><td>Acessa métodos da classe pai (herança)</td><td><code>super().__init__()</code></td></tr>
+        <tr><td>79</td><td><code>isinstance()</code></td><td>Verifica se um objeto pertence a uma classe</td><td><code>isinstance(p, Pessoa)</code></td></tr>
+
+        <tr><td>80</td><td><code>{k: v for...}</code></td><td>Cria dicionário de forma concisa</td><td><code>{x: x**2 for x in range(3)}</code></td></tr>
+        <tr><td>81</td><td><code>(x for x in...)</code></td><td>Cria um gerador (mais leve que lista)</td><td><code>gen = (i for i in range(100))</code></td></tr>
+        <tr><td>82</td><td><code>pass</code></td><td>Palavra-chave vazia (espaço reservado)</td><td><code>def em_breve(): pass</code></td></tr>
+
+        <tr><td>83</td><td><code>random.random()</code></td><td>Gera um número decimal aleatório entre 0 e 1</td><td><code>import random; random.random()</code></td></tr>
+        <tr><td>84</td><td><code>random.randint()</code></td><td>Gera um número inteiro aleatório no intervalo</td><td><code>random.randint(1, 10)</code></td></tr>
+        <tr><td>85</td><td><code>random.choice()</code></td><td>Escolhe um item aleatório de uma lista</td><td><code>random.choice(["a", "b", "c"])</code></td></tr>
+        <tr><td>86</td><td><code>math.sqrt()</code></td><td>Calcula a raiz quadrada de um número</td><td><code>import math; math.sqrt(16)</code></td></tr>
+        <tr><td>87</td><td><code>math.ceil() / floor()</code></td><td>Arredonda para cima ou para baixo</td><td><code>math.ceil(4.2) # 5</code></td></tr>
+        <tr><td>88</td><td><code>os.getcwd()</code></td><td>Retorna o diretório de trabalho atual</td><td><code>import os; os.getcwd()</code></td></tr>
+        <tr><td>89</td><td><code>os.path.exists()</code></td><td>Verifica se um arquivo ou pasta existe</td><td><code>os.path.exists("teste.txt")</code></td></tr>
+        <tr><td>90</td><td><code>sys.argv</code></td><td>Lista de argumentos passados via terminal</td><td><code>import sys; print(sys.argv)</code></td></tr>
+        <tr><td>91</td><td><code>sys.exit()</code></td><td>Encerra a execução do programa</td><td><code>sys.exit()</code></td></tr>
+
+        <tr><td>92</td><td><code>datetime.now()</code></td><td>Retorna data e hora atuais</td><td><code>from datetime import datetime; datetime.now()</code></td></tr>
+        <tr><td>93</td><td><code>.strftime()</code></td><td>Formata data como string customizada</td><td><code>hoje.strftime("%d/%m/%Y")</code></td></tr>
+
+        <tr><td>94</td><td><code>json.dumps()</code></td><td>Converte dicionário para string JSON</td><td><code>import json; json.dumps(dados)</code></td></tr>
+        <tr><td>95</td><td><code>json.loads()</code></td><td>Converte string JSON para dicionário Python</td><td><code>json.loads(texto_json)</code></td></tr>
+
+        <tr><td>96</td><td><code>match / case</code></td><td>Estrutura de seleção (Python 3.10+)</td><td><code>match status: case 200: ...</code></td></tr>
+        <tr><td>97</td><td><code>assert</code></td><td>Verifica condição; lança erro se falsa</td><td><code>assert x > 0, "Erro!"</code></td></tr>
+        <tr><td>98</td><td><code>yield</code></td><td>Retorna valor em uma função geradora</td><td><code>yield item</code></td></tr>
+        <tr><td>99</td><td><code>with</code></td><td>Gerenciador de contexto (segurança de recursos)</td><td><code>with lock:</code></td></tr>
+
+        <tr><td>100</td><td><code>help()</code></td><td>Exibe a documentação de um objeto</td><td><code>help(str)</code></td></tr>
+        <tr><td>101</td><td><code>dir()</code></td><td>Lista todos os métodos/atributos de um objeto</td><td><code>dir(int)</code></td></tr>
+    
+      </tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

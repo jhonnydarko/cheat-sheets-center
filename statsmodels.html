@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>StatsModels Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+/* Estilo para a coluna de índice */
+th:first-child, td:first-child { width: 50px; text-align: center; font-weight: bold; color: #7f8c8d; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>📈 StatsModels Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://www.statsmodels.org/" target="_blank">📉 Site oficial do StatsModels (Documentação)</a></p>
+<input type="text" id="search_field" placeholder="Buscar modelo, teste estatístico ou parâmetro do StatsModels...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th>ID</th>
+<th>Comando / Função / Parâmetro</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td>1</td><td><code>sm.OLS()</code></td><td>Regressão Linear por Mínimos Quadrados Ordinários</td><td><code>sm.OLS(y, X).fit()</code></td></tr>
+<tr><td>2</td><td><code>sm.WLS()</code></td><td>Regressão por Mínimos Quadrados Ponderados</td><td><code>sm.WLS(y, X, weights=w).fit()</code></td></tr>
+<tr><td>3</td><td><code>sm.GLS()</code></td><td>Regressão por Mínimos Quadrados Generalizados</td><td><code>sm.GLS(y, X, sigma=s).fit()</code></td></tr>
+<tr><td>4</td><td><code>sm.RecursiveLS()</code></td><td>Mínimos Quadrados Recursivos</td><td><code>sm.RecursiveLS(y, X).fit()</code></td></tr>
+<tr><td>5</td><td><code>sm.QuantReg()</code></td><td>Regressão Quantílica</td><td><code>sm.QuantReg(y, X).fit(q=0.5)</code></td></tr>
+<tr><td>6</td><td><code>sm.Logit()</code></td><td>Regressão Logística (Logit)</td><td><code>sm.Logit(y, X).fit()</code></td></tr>
+<tr><td>7</td><td><code>sm.Probit()</code></td><td>Regressão Probit</td><td><code>sm.Probit(y, X).fit()</code></td></tr>
+<tr><td>8</td><td><code>sm.MNLogit()</code></td><td>Regressão Logística Multinomial</td><td><code>sm.MNLogit(y, X).fit()</code></td></tr>
+<tr><td>9</td><td><code>sm.Poisson()</code></td><td>Regressão de Poisson para contagem</td><td><code>sm.Poisson(y, X).fit()</code></td></tr>
+<tr><td>10</td><td><code>sm.NegativeBinomial()</code></td><td>Regressão Binomial Negativa</td><td><code>sm.NegativeBinomial(y, X).fit()</code></td></tr>
+<tr><td>11</td><td><code>sm.GLM()</code></td><td>Modelos Lineares Generalizados (Interface)</td><td><code>sm.GLM(y, X, family=sm.families.Binomial())</code></td></tr>
+<tr><td>12</td><td><code>sm.RLM()</code></td><td>Modelos Lineares Robustos</td><td><code>sm.RLM(y, X).fit()</code></td></tr>
+
+<tr><td>13</td><td><code>sm.tsa.ARIMA()</code></td><td>Modelo ARIMA (Autoregressivo, Integrado e Médias Móveis)</td><td><code>sm.tsa.ARIMA(df, order=(1,1,1))</code></td></tr>
+<tr><td>14</td><td><code>sm.tsa.SARIMAX()</code></td><td>Modelo ARIMA Sazonal com Variáveis Exógenas</td><td><code>sm.tsa.SARIMAX(y, order=(p,d,q), seasonal_order=(P,D,Q,s))</code></td></tr>
+<tr><td>15</td><td><code>sm.tsa.ExponentialSmoothing()</code></td><td>Suavização Exponencial (Holt-Winters)</td><td><code>sm.tsa.ExponentialSmoothing(y, trend='add').fit()</code></td></tr>
+<tr><td>16</td><td><code>sm.tsa.seasonal_decompose()</code></td><td>Decomposição clássica (tendência, sazonalidade, resíduo)</td><td><code>seasonal_decompose(df['valor'], model='additive')</code></td></tr>
+<tr><td>17</td><td><code>sm.tsa.stattools.adfuller()</code></td><td>Teste Augmented Dickey-Fuller para estacionariedade</td><td><code>adfuller(df['serie'])</code></td></tr>
+<tr><td>18</td><td><code>sm.tsa.stattools.kpss()</code></td><td>Teste KPSS para estacionariedade</td><td><code>kpss(df['serie'])</code></td></tr>
+<tr><td>19</td><td><code>sm.graphics.tsaplots.plot_acf()</code></td><td>Gráfico de Autocorrelação (ACF)</td><td><code>plot_acf(df['serie'])</code></td></tr>
+<tr><td>20</td><td><code>sm.graphics.tsaplots.plot_pacf()</code></td><td>Gráfico de Autocorrelação Parcial (PACF)</td><td><code>plot_pacf(df['serie'])</code></td></tr>
+<tr><td>21</td><td><code>sm.tsa.VAR()</code></td><td>Vetor Autoregressivo para séries multivariadas</td><td><code>sm.tsa.VAR(df).fit()</code></td></tr>
+
+<tr><td>22</td><td><code>sm.stats.anova_lm()</code></td><td>Tabela ANOVA para modelos lineares</td><td><code>sm.stats.anova_lm(model)</code></td></tr>
+<tr><td>23</td><td><code>sm.stats.ttest_ind()</code></td><td>Teste T para duas amostras independentes</td><td><code>sm.stats.ttest_ind(x1, x2)</code></td></tr>
+<tr><td>24</td><td><code>sm.stats.diagnostic.het_breuschpagan()</code></td><td>Teste de Breusch-Pagan para heterocedasticidade</td><td><code>het_breuschpagan(resids, X)</code></td></tr>
+<tr><td>25</td><td><code>sm.stats.diagnostic.lilliefors()</code></td><td>Teste de Lilliefors para normalidade</td><td><code>lilliefors(df['col'])</code></td></tr>
+<tr><td>26</td><td><code>sm.stats.diagnostic.acorr_ljungbox()</code></td><td>Teste Ljung-Box para independência de resíduos</td><td><code>acorr_ljungbox(resids)</code></td></tr>
+<tr><td>27</td><td><code>sm.stats.stattools.durbin_watson()</code></td><td>Estatística de Durbin-Watson para autocorrelação</td><td><code>durbin_watson(resids)</code></td></tr>
+<tr><td>28</td><td><code>sm.stats.outliers_influence.variance_inflation_factor()</code></td><td>Cálculo do VIF para multicolinearidade</td><td><code>variance_inflation_factor(X.values, i)</code></td></tr>
+
+<tr><td>29</td><td><code>smf.ols()</code></td><td>Regressão Linear usando fórmulas de string</td><td><code>smf.ols('y ~ x1 + x2', data=df).fit()</code></td></tr>
+<tr><td>30</td><td><code>smf.logit()</code></td><td>Regressão Logística usando fórmulas</td><td><code>smf.logit('y ~ x1', data=df).fit()</code></td></tr>
+<tr><td>31</td><td><code>smf.mixedlm()</code></td><td>Modelos Lineares de Efeitos Mistos</td><td><code>smf.mixedlm('y ~ x', df, groups=df['grp']).fit()</code></td></tr>
+
+<tr><td>32</td><td><code>model.summary()</code></td><td>Exibe relatório estatístico completo</td><td><code>results.summary()</code></td></tr>
+<tr><td>33</td><td><code>model.params</code></td><td>Retorna os coeficientes calculados</td><td><code>results.params</code></td></tr>
+<tr><td>34</td><td><code>model.pvalues</code></td><td>Retorna os p-valores de cada variável</td><td><code>results.pvalues</code></td></tr>
+<tr><td>35</td><td><code>model.rsquared</code></td><td>Coeficiente de Determinação (R²)</td><td><code>results.rsquared</code></td></tr>
+<tr><td>36</td><td><code>model.resid</code></td><td>Retorna os resíduos do modelo</td><td><code>results.resid</code></td></tr>
+<tr><td>37</td><td><code>model.predict()</code></td><td>Gera previsões a partir de novos dados</td><td><code>results.predict(new_X)</code></td></tr>
+<tr><td>38</td><td><code>model.conf_int()</code></td><td>Intervalos de confiança dos coeficientes</td><td><code>results.conf_int(alpha=0.05)</code></td></tr>
+<tr><td>39</td><td><code>model.aic</code></td><td>Critério de Informação de Akaike (AIC)</td><td><code>results.aic</code></td></tr>
+<tr><td>40</td><td><code>model.bic</code></td><td>Critério de Informação Bayesiano (BIC)</td><td><code>results.bic</code></td></tr>
+
+<tr><td>41</td><td><code>sm.add_constant()</code></td><td>Adiciona coluna de intercepto à matriz X</td><td><code>X = sm.add_constant(X)</code></td></tr>
+<tr><td>42</td><td><code>sm.datasets.get_rdataset()</code></td><td>Carrega datasets clássicos da linguagem R</td><td><code>sm.datasets.get_rdataset('mtcars').data</code></td></tr>
+<tr><td>43</td><td><code>sm.graphics.plot_regress_exog()</code></td><td>Gráficos diagnósticos de regressão</td><td><code>sm.graphics.plot_regress_exog(res, 'x1')</code></td></tr>
+
+<tr><td>44</td><td><code>missing=</code></td><td>Parâmetro para lidar com NaNs ('drop', 'raise')</td><td><code>sm.OLS(y, X, missing='drop')</code></td></tr>
+<tr><td>45</td><td><code>cov_type=</code></td><td>Tipo de estimador de matriz de covariância (HC1, HC3)</td><td><code>results.fit(cov_type='HC3')</code></td></tr>
+<tr><td>46</td><td><code>family=sm.families.Binomial()</code></td><td>Distribuição para GLM (Binomial)</td><td><code>family=sm.families.Binomial()</code></td></tr>
+<tr><td>47</td><td><code>family=sm.families.Gamma()</code></td><td>Distribuição para GLM (Gamma)</td><td><code>family=sm.families.Gamma()</code></td></tr>
+<tr><td>48</td><td><code>family=sm.families.Tweedie()</code></td><td>Distribuição para GLM (Tweedie)</td><td><code>family=sm.families.Tweedie()</code></td></tr>
+<tr><td>49</td><td><code>link=sm.families.links.Log()</code></td><td>Função de ligação log para modelos lineares</td><td><code>link=sm.families.links.Log()</code></td></tr>
+<tr><td>50</td><td><code>sm.stats.proportion_confint()</code></td><td>Intervalo de confiança para proporções</td><td><code>proportion_confint(count, nobs)</code></td></tr>
+<tr><td>51</td><td><code>sm.stats.DescrStatsW()</code></td><td>Estatística descritiva com pesos</td><td><code>sm.stats.DescrStatsW(data, weights=w)</code></td></tr>
+<tr><td>52</td><td><code>sm.stats.multicomp.pairwise_tukeyhsd()</code></td><td>Teste de Tukey para múltiplas comparações</td><td><code>pairwise_tukeyhsd(endog, groups)</code></td></tr>
+<tr><td>53</td><td><code>sm.graphics.influence_plot()</code></td><td>Gráfico de influência e outliers</td><td><code>sm.graphics.influence_plot(results)</code></td></tr>
+<tr><td>54</td><td><code>sm.graphics.plot_partregress_grid()</code></td><td>Gráficos de regressão parcial em grade</td><td><code>sm.graphics.plot_partregress_grid(results)</code></td></tr>
+<tr><td>55</td><td><code>sm.tsa.filters.hp_filter.hpfilter()</code></td><td>Filtro Hodrick-Prescott para tendências</td><td><code>cycle, trend = hpfilter(df)</code></td></tr>
+<tr><td>56</td><td><code>sm.tsa.stattools.grangercausalitytests()</code></td><td>Teste de Causalidade de Granger</td><td><code>grangercausalitytests(df, maxlag=2)</code></td></tr>
+<tr><td>57</td><td><code>sm.stats.power.TTestIndPower()</code></td><td>Cálculo de poder estatístico</td><td><code>TTestIndPower().solve_power(...)</code></td></tr>
+<tr><td>58</td><td><code>sm.stats.diagnostic.het_white()</code></td><td>Teste de White para heterocedasticidade</td><td><code>het_white(resids, X)</code></td></tr>
+<tr><td>59</td><td><code>sm.stats.diagnostic.linear_rainbow()</code></td><td>Teste Rainbow de linearidade</td><td><code>linear_rainbow(results)</code></td></tr>
+<tr><td>60</td><td><code>sm.stats.diagnostic.breaks_hansen()</code></td><td>Teste de instabilidade de parâmetros de Hansen</td><td><code>breaks_hansen(results)</code></td></tr>
+<tr><td>61</td><td><code>sm.nonparametric.kernel_regression.KernelReg()</code></td><td>Regressão por Kernel não paramétrica</td><td><code>KernelReg(y, X, var_type='c')</code></td></tr>
+<tr><td>62</td><td><code>sm.stats.proportions_ztest()</code></td><td>Teste Z para proporções</td><td><code>proportions_ztest(count, nobs)</code></td></tr>
+<tr><td>63</td><td><code>sm.stats.rank_compare_2indep()</code></td><td>Compara distribuições de duas amostras</td><td><code>rank_compare_2indep(x, y)</code></td></tr>
+<tr><td>64</td><td><code>sm.duration.HazardRegression()</code></td><td>Modelos de análise de sobrevivência</td><td><code>HazardRegression(y, X).fit()</code></td></tr>
+<tr><td>65</td><td><code>sm.stats.Mediation()</code></td><td>Análise de mediação estatística</td><td><code>Mediation(model_y, model_m, treat, mediator).fit()</code></td></tr>
+<tr><td>66</td><td><code>sm.robust.norms.HuberT()</code></td><td>Norma Huber para regressão robusta</td><td><code>sm.RLM(y, X, M=sm.robust.norms.HuberT())</code></td></tr>
+<tr><td>67</td><td><code>sm.robust.norms.TukeyBiweight()</code></td><td>Norma Tukey Biweight para RLM</td><td><code>M=sm.robust.norms.TukeyBiweight()</code></td></tr>
+<tr><td>68</td><td><code>sm.stats.multitest.multipletests()</code></td><td>Correções para testes múltiplos (Bonferroni, FDR)</td><td><code>multipletests(pvals, method='fdr_bh')</code></td></tr>
+<tr><td>69</td><td><code>sm.tsa.x13.x13_arima_analysis()</code></td><td>Interface para ajuste sazonal X-13ARIMA-SEATS</td><td><code>x13_arima_analysis(series)</code></td></tr>
+<tr><td>70</td><td><code>sm.graphics.qqplot()</code></td><td>Gráfico Quantil-Quantil (Q-Q Plot)</td><td><code>sm.graphics.qqplot(resids, line='s')</code></td></tr>
+<tr><td>71</td><td><code>sm.stats.diagnostic.compare_cox()</code></td><td>Teste de Cox para modelos não-aninhados</td><td><code>compare_cox(res1, res2)</code></td></tr>
+<tr><td>72</td><td><code>sm.stats.diagnostic.compare_j()</code></td><td>Teste J para especificação de modelos</td><td><code>compare_j(res1, res2)</code></td></tr>
+<tr><td>73</td><td><code>sm.stats.moment_helpers.corr2cov()</code></td><td>Converte correlação em covariância</td><td><code>corr2cov(corr, std)</code></td></tr>
+<tr><td>74</td><td><code>sm.stats.sandwich_covariance.cov_hac()</code></td><td>Covariância Robusta HAC</td><td><code>cov_hac(results)</code></td></tr>
+<tr><td>75</td><td><code>sm.stats.inter_rater.fleiss_kappa()</code></td><td>Kappa de Fleiss para concordância</td><td><code>fleiss_kappa(data)</code></td></tr>
+<tr><td>76</td><td><code>sm.multivariate.PCA()</code></td><td>Análise de Componentes Principais</td><td><code>PCA(df).factors</code></td></tr>
+<tr><td>77</td><td><code>sm.multivariate.Factor()</code></td><td>Análise Fatorial</td><td><code>Factor(df).fit()</code></td></tr>
+<tr><td>78</td><td><code>sm.multivariate.MANOVA()</code></td><td>MANOVA (Multivariate ANOVA)</td><td><code>MANOVA(endog, exog).mv_test()</code></td></tr>
+<tr><td>79</td><td><code>sm.stats.contingency_tables.Table()</code></td><td>Análise de tabelas de contingência</td><td><code>sm.stats.Table(df)</code></td></tr>
+<tr><td>80</td><td><code>sm.stats.DescrStatsW().tconfint_mean()</code></td><td>IC para a média com pesos</td><td><code>d1.tconfint_mean()</code></td></tr>
+<tr><td>81</td><td><code>sm.stats.GofStat()</code></td><td>Testes de bondade de ajuste (Goodness of fit)</td><td><code>GofStat(obs, exp)</code></td></tr>
+<tr><td>82</td><td><code>sm.graphics.gofplots.ProbPlot()</code></td><td>Cria objetos para plots de probabilidade</td><td><code>ProbPlot(data).qqplot()</code></td></tr>
+<tr><td>83</td><td><code>sm.iolib.summary2.Summary()</code></td><td>Versão alternativa de tabelas de resumo</td><td><code>Summary().add_df(df)</code></td></tr>
+<tr><td>84</td><td><code>sm.stats.anova.AnovaRM()</code></td><td>ANOVA para medidas repetidas</td><td><code>AnovaRM(df, 'y', 'id', within=['x']).fit()</code></td></tr>
+<tr><td>85</td><td><code>sm.stats.weightstats.CompareMeans()</code></td><td>Classe para comparar médias de duas amostras</td><td><code>CompareMeans(d1, d2)</code></td></tr>
+<tr><td>86</td><td><code>sm.tsa.seasonal.STL()</code></td><td>Decomposição STL (LOESS)</td><td><code>STL(df['val']).fit()</code></td></tr>
+<tr><td>87</td><td><code>sm.tsa.stattools.ccf()</code></td><td>Função de correlação cruzada</td><td><code>ccf(x, y)</code></td></tr>
+<tr><td>88</td><td><code>sm.tsa.statespace.SARIMAX()</code></td><td>Espaço de estados para modelos complexos</td><td><code>SARIMAX(y, order=(1,0,1))</code></td></tr>
+<tr><td>89</td><td><code>sm.graphics.boxplots.violinplot()</code></td><td>Gráfico de violino (estatístico)</td><td><code>sm.graphics.violinplot(data)</code></td></tr>
+<tr><td>90</td><td><code>sm.stats.diagnostic.normal_ad()</code></td><td>Teste de Anderson-Darling para normalidade</td><td><code>normal_ad(resids)</code></td></tr>
+<tr><td>91</td><td><code>sm.stats.diagnostic.recursive_olsresiduals()</code></td><td>Cálculo de resíduos recursivos</td><td><code>recursive_olsresiduals(results)</code></td></tr>
+<tr><td>92</td><td><code>sm.stats.mctools.StatTestMC()</code></td><td>Ferramenta para simulações Monte Carlo</td><td><code>StatTestMC(dist, stat)</code></td></tr>
+<tr><td>93</td><td><code>sm.tsa.forecasting.theta.ThetaModel()</code></td><td>Modelo de previsão Theta</td><td><code>ThetaModel(y).fit()</code></td></tr>
+<tr><td>94</td><td><code>sm.graphics.tsaplots.plot_predict()</code></td><td>Gráfico de previsões de séries temporais</td><td><code>results.plot_predict(start, end)</code></td></tr>
+<tr><td>95</td><td><code>sm.stats.proportion_effectsize()</code></td><td>Tamanho do efeito para proporções</td><td><code>proportion_effectsize(p1, p2)</code></td></tr>
+<tr><td>96</td><td><code>sm.stats.anova.anova_single()</code></td><td>ANOVA de fator único</td><td><code>anova_single(res)</code></td></tr>
+<tr><td>97</td><td><code>sm.tsa.ar_model.AutoReg()</code></td><td>Modelos Autoregressivos puros</td><td><code>AutoReg(y, lags=2).fit()</code></td></tr>
+<tr><td>98</td><td><code>sm.stats.outliers_influence.OLSInfluence()</code></td><td>Cálculo detalhado de influência e resíduos studentizados</td><td><code>OLSInfluence(results)</code></td></tr>
+<tr><td>99</td><td><code>sm.regression.quantile_regression.QuantReg()</code></td><td>Variação da regressão quantílica</td><td><code>QuantReg(y, X).fit()</code></td></tr>
+<tr><td>100</td><td><code>sm.stats.correlation_tools.FactoredPSDMatrix()</code></td><td>Ferramentas para matrizes de correlação</td><td><code>FactoredPSDMatrix(m)</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

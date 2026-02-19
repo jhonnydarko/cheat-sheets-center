@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>OpenCV Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #16a085; color: white; position: sticky; top: 0; }
+/* Estilo para a coluna de índice */
+.col-index { width: 50px; text-align: center; font-weight: bold; color: #7f8c8d; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>👁️ OpenCV Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://opencv.org/" target="_blank">📸 Site oficial do OpenCV (Documentação)</a></p>
+<input type="text" id="search_field" placeholder="Buscar por processamento, filtros, detecção de rostos...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th>
+<th>Comando / Função</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>cv2.imread()</code></td><td>Carrega uma imagem de um arquivo</td><td><code>img = cv2.imread('foto.jpg')</code></td></tr>
+<tr><td class="col-index">2</td><td><code>cv2.imshow()</code></td><td>Exibe uma imagem em uma janela</td><td><code>cv2.imshow('Janela', img)</code></td></tr>
+<tr><td class="col-index">3</td><td><code>cv2.imwrite()</code></td><td>Salva uma imagem no disco</td><td><code>cv2.imwrite('saida.png', img)</code></td></tr>
+<tr><td class="col-index">4</td><td><code>cv2.waitKey()</code></td><td>Aguarda pressionamento de tecla</td><td><code>cv2.waitKey(0)</code></td></tr>
+<tr><td class="col-index">5</td><td><code>cv2.destroyAllWindows()</code></td><td>Fecha todas as janelas abertas</td><td><code>cv2.destroyAllWindows()</code></td></tr>
+<tr><td class="col-index">6</td><td><code>cv2.VideoCapture()</code></td><td>Inicia captura de vídeo ou câmera</td><td><code>cap = cv2.VideoCapture(0)</code></td></tr>
+<tr><td class="col-index">7</td><td><code>cap.read()</code></td><td>Lê o próximo frame de um vídeo</td><td><code>ret, frame = cap.read()</code></td></tr>
+<tr><td class="col-index">8</td><td><code>cv2.cvtColor()</code></td><td>Converte o espaço de cores</td><td><code>cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</code></td></tr>
+<tr><td class="col-index">9</td><td><code>cv2.COLOR_BGR2RGB</code></td><td>Converte BGR (padrão) para RGB</td><td><code>cv2.cvtColor(img, cv2.COLOR_BGR2RGB)</code></td></tr>
+<tr><td class="col-index">10</td><td><code>cv2.COLOR_BGR2HSV</code></td><td>Converte para o espaço HSV</td><td><code>cv2.cvtColor(img, cv2.COLOR_BGR2HSV)</code></td></tr>
+<tr><td class="col-index">11</td><td><code>cv2.resize()</code></td><td>Redimensiona a imagem</td><td><code>cv2.resize(img, (width, height))</code></td></tr>
+<tr><td class="col-index">12</td><td><code>cv2.flip()</code></td><td>Inverte a imagem (espelhamento)</td><td><code>cv2.flip(img, 1)</code></td></tr>
+<tr><td class="col-index">13</td><td><code>cv2.rotate()</code></td><td>Rotaciona a imagem (90, 180, 270)</td><td><code>cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)</code></td></tr>
+<tr><td class="col-index">14</td><td><code>cv2.warpAffine()</code></td><td>Aplica transformação afim (translação/rotação)</td><td><code>cv2.warpAffine(img, M, (w, h))</code></td></tr>
+<tr><td class="col-index">15</td><td><code>cv2.getRotationMatrix2D()</code></td><td>Cria matriz para rotação customizada</td><td><code>cv2.getRotationMatrix2D(center, angle, scale)</code></td></tr>
+<tr><td class="col-index">16</td><td><code>cv2.line()</code></td><td>Desenha uma linha</td><td><code>cv2.line(img, p1, p2, (255,0,0), 2)</code></td></tr>
+<tr><td class="col-index">17</td><td><code>cv2.rectangle()</code></td><td>Desenha um retângulo</td><td><code>cv2.rectangle(img, p1, p2, (0,255,0), 3)</code></td></tr>
+<tr><td class="col-index">18</td><td><code>cv2.circle()</code></td><td>Desenha um círculo</td><td><code>cv2.circle(img, center, radius, color, -1)</code></td></tr>
+<tr><td class="col-index">19</td><td><code>cv2.putText()</code></td><td>Escreve texto na imagem</td><td><code>cv2.putText(img, 'Olá', pos, font, 1, color)</code></td></tr>
+<tr><td class="col-index">20</td><td><code>cv2.polylines()</code></td><td>Desenha polígonos</td><td><code>cv2.polylines(img, [pts], True, color)</code></td></tr>
+<tr><td class="col-index">21</td><td><code>cv2.blur()</code></td><td>Suavização simples (média)</td><td><code>cv2.blur(img, (5,5))</code></td></tr>
+<tr><td class="col-index">22</td><td><code>cv2.GaussianBlur()</code></td><td>Suavização Gaussiana</td><td><code>cv2.GaussianBlur(img, (5,5), 0)</code></td></tr>
+<tr><td class="col-index">23</td><td><code>cv2.medianBlur()</code></td><td>Filtro de mediana (remove ruído sal e pimenta)</td><td><code>cv2.medianBlur(img, 5)</code></td></tr>
+<tr><td class="col-index">24</td><td><code>cv2.bilateralFilter()</code></td><td>Suavização que preserva bordas</td><td><code>cv2.bilateralFilter(img, 9, 75, 75)</code></td></tr>
+<tr><td class="col-index">25</td><td><code>cv2.Canny()</code></td><td>Detector de bordas Canny</td><td><code>cv2.Canny(img, 100, 200)</code></td></tr>
+<tr><td class="col-index">26</td><td><code>cv2.threshold()</code></td><td>Limiarização (binarização) simples</td><td><code>ret, thresh = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)</code></td></tr>
+<tr><td class="col-index">27</td><td><code>cv2.adaptiveThreshold()</code></td><td>Binarização adaptativa</td><td><code>cv2.adaptiveThreshold(img, 255, ...)</code></td></tr>
+<tr><td class="col-index">28</td><td><code>cv2.Sobel()</code></td><td>Derivadas de Sobel (gradientes)</td><td><code>cv2.Sobel(img, cv2.CV_64F, 1, 0, ksize=5)</code></td></tr>
+<tr><td class="col-index">29</td><td><code>cv2.Laplacian()</code></td><td>Calcula o Laplaciano da imagem</td><td><code>cv2.Laplacian(img, cv2.CV_64F)</code></td></tr>
+<tr><td class="col-index">30</td><td><code>cv2.erode()</code></td><td>Erosão (encolhe áreas brancas)</td><td><code>cv2.erode(img, kernel, iterations=1)</code></td></tr>
+<tr><td class="col-index">31</td><td><code>cv2.dilate()</code></td><td>Dilatação (expande áreas brancas)</td><td><code>cv2.dilate(img, kernel, iterations=1)</code></td></tr>
+<tr><td class="col-index">32</td><td><code>cv2.morphologyEx()</code></td><td>Operações avançadas (Opening, Closing)</td><td><code>cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)</code></td></tr>
+<tr><td class="col-index">33</td><td><code>cv2.getStructuringElement()</code></td><td>Cria o kernel para morfologia</td><td><code>cv2.getStructuringElement(cv2.MORPH_RECT, (5,5))</code></td></tr>
+<tr><td class="col-index">34</td><td><code>cv2.findContours()</code></td><td>Encontra contornos em imagem binária</td><td><code>contours, hier = cv2.findContours(img, ...)</code></td></tr>
+<tr><td class="col-index">35</td><td><code>cv2.drawContours()</code></td><td>Desenha os contornos encontrados</td><td><code>cv2.drawContours(img, contours, -1, color, 2)</code></td></tr>
+<tr><td class="col-index">36</td><td><code>cv2.contourArea()</code></td><td>Calcula a área de um contorno</td><td><code>area = cv2.contourArea(cnt)</code></td></tr>
+<tr><td class="col-index">37</td><td><code>cv2.arcLength()</code></td><td>Calcula o perímetro de um contorno</td><td><code>perim = cv2.arcLength(cnt, True)</code></td></tr>
+<tr><td class="col-index">38</td><td><code>cv2.boundingRect()</code></td><td>Obtém o retângulo delimitador</td><td><code>x, y, w, h = cv2.boundingRect(cnt)</code></td></tr>
+<tr><td class="col-index">39</td><td><code>cv2.CascadeClassifier()</code></td><td>Carrega classificador Haar Cascade</td><td><code>face_cascade = cv2.CascadeClassifier('face.xml')</code></td></tr>
+<tr><td class="col-index">40</td><td><code>cascade.detectMultiScale()</code></td><td>Detecta objetos (ex: rostos)</td><td><code>faces = face_cascade.detectMultiScale(gray)</code></td></tr>
+<tr><td class="col-index">41</td><td><code>cv2.HoughLines()</code></td><td>Detecta linhas (Transformada de Hough)</td><td><code>cv2.HoughLines(edges, 1, np.pi/180, 200)</code></td></tr>
+<tr><td class="col-index">42</td><td><code>cv2.HoughCircles()</code></td><td>Detecta círculos</td><td><code>cv2.HoughCircles(img, cv2.HOUGH_GRADIENT, ...)</code></td></tr>
+<tr><td class="col-index">43</td><td><code>cv2.SIFT_create()</code></td><td>Inicia o detector SIFT</td><td><code>sift = cv2.SIFT_create()</code></td></tr>
+<tr><td class="col-index">44</td><td><code>cv2.ORB_create()</code></td><td>Inicia o detector ORB (alternativa gratuita)</td><td><code>orb = cv2.ORB_create()</code></td></tr>
+<tr><td class="col-index">45</td><td><code>detectAndCompute()</code></td><td>Encontra pontos chave e descritores</td><td><code>kp, des = orb.detectAndCompute(img, None)</code></td></tr>
+<tr><td class="col-index">46</td><td><code>cv2.BFMatcher()</code></td><td>Brute-Force Matcher para descritores</td><td><code>bf = cv2.BFMatcher(cv2.NORM_HAMMING)</code></td></tr>
+<tr><td class="col-index">47</td><td><code>cv2.calcHist()</code></td><td>Calcula o histograma da imagem</td><td><code>cv2.calcHist([img], [0], None, [256], [0,256])</code></td></tr>
+<tr><td class="col-index">48</td><td><code>cv2.equalizeHist()</code></td><td>Equalização de histograma (contraste)</td><td><code>cv2.equalizeHist(gray_img)</code></td></tr>
+<tr><td class="col-index">49</td><td><code>cv2.split()</code></td><td>Divide canais de cores (B, G, R)</td><td><code>b, g, r = cv2.split(img)</code></td></tr>
+<tr><td class="col-index">50</td><td><code>cv2.merge()</code></td><td>Une canais de cores</td><td><code>img = cv2.merge([b, g, r])</code></td></tr>
+<tr><td class="col-index">51</td><td><code>cv2.add()</code></td><td>Soma imagens (com saturação)</td><td><code>cv2.add(img1, img2)</code></td></tr>
+<tr><td class="col-index">52</td><td><code>cv2.addWeighted()</code></td><td>Sobreposição transparente (blending)</td><td><code>cv2.addWeighted(img1, 0.7, img2, 0.3, 0)</code></td></tr>
+<tr><td class="col-index">53</td><td><code>cv2.bitwise_and()</code></td><td>Operação lógica AND (Máscaras)</td><td><code>cv2.bitwise_and(img, img, mask=mask)</code></td></tr>
+<tr><td class="col-index">54</td><td><code>cv2.bitwise_not()</code></td><td>Inverte as cores (NOT)</td><td><code>cv2.bitwise_not(img)</code></td></tr>
+<tr><td class="col-index">55</td><td><code>cv2.absdiff()</code></td><td>Diferença absoluta (detecção de movimento)</td><td><code>cv2.absdiff(frame1, frame2)</code></td></tr>
+<tr><td class="col-index">56</td><td><code>cv2.copyMakeBorder()</code></td><td>Adiciona bordas/molduras</td><td><code>cv2.copyMakeBorder(img, 10, 10, 10, 10, ...)</code></td></tr>
+<tr><td class="col-index">57</td><td><code>cv2.floodFill()</code></td><td>Preenchimento de área conectada</td><td><code>cv2.floodFill(img, mask, seed, newVal)</code></td></tr>
+<tr><td class="col-index">58</td><td><code>cv2.inRange()</code></td><td>Filtra cores em um intervalo (Máscara)</td><td><code>cv2.inRange(hsv, lower, upper)</code></td></tr>
+<tr><td class="col-index">59</td><td><code>cv2.matchTemplate()</code></td><td>Busca uma imagem dentro de outra</td><td><code>cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)</code></td></tr>
+<tr><td class="col-index">60</td><td><code>cv2.minMaxLoc()</code></td><td>Encontra valores mín/máx em matriz</td><td><code>min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)</code></td></tr>
+<tr><td class="col-index">61</td><td><code>cv2.moments()</code></td><td>Calcula momentos de imagem (centroide)</td><td><code>M = cv2.moments(cnt)</code></td></tr>
+<tr><td class="col-index">62</td><td><code>cv2.convexHull()</code></td><td>Encontra o fecho convexo</td><td><code>hull = cv2.convexHull(cnt)</code></td></tr>
+<tr><td class="col-index">63</td><td><code>cv2.isContourConvex()</code></td><td>Verifica se contorno é convexo</td><td><code>cv2.isContourConvex(cnt)</code></td></tr>
+<tr><td class="col-index">64</td><td><code>cv2.approxPolyDP()</code></td><td>Simplifica a forma de um contorno</td><td><code>approx = cv2.approxPolyDP(cnt, epsilon, True)</code></td></tr>
+<tr><td class="col-index">65</td><td><code>cv2.grabCut()</code></td><td>Extração de foreground (fundo)</td><td><code>cv2.grabCut(img, mask, rect, ...)</code></td></tr>
+<tr><td class="col-index">66</td><td><code>cv2.distanceTransform()</code></td><td>Calcula distância para pixels zero</td><td><code>cv2.distanceTransform(img, cv2.DIST_L2, 5)</code></td></tr>
+<tr><td class="col-index">67</td><td><code>cv2.connectedComponents()</code></td><td>Rotula componentes conectados</td><td><code>num, labels = cv2.connectedComponents(img)</code></td></tr>
+<tr><td class="col-index">68</td><td><code>cv2.pyrUp()</code></td><td>Aumenta a pirâmide da imagem</td><td><code>cv2.pyrUp(img)</code></td></tr>
+<tr><td class="col-index">69</td><td><code>cv2.pyrDown()</code></td><td>Diminui a pirâmide da imagem</td><td><code>cv2.pyrDown(img)</code></td></tr>
+<tr><td class="col-index">70</td><td><code>cv2.remap()</code></td><td>Mapeamento genérico de pixels</td><td><code>cv2.remap(img, mapx, mapy, ...)</code></td></tr>
+<tr><td class="col-index">71</td><td><code>cv2.getPerspectiveTransform()</code></td><td>Matriz para correção de perspectiva</td><td><code>cv2.getPerspectiveTransform(pts1, pts2)</code></td></tr>
+<tr><td class="col-index">72</td><td><code>cv2.warpPerspective()</code></td><td>Aplica transformação de perspectiva</td><td><code>cv2.warpPerspective(img, M, (w,h))</code></td></tr>
+<tr><td class="col-index">73</td><td><code>cv2.VideoWriter()</code></td><td>Objeto para gravar arquivos de vídeo</td><td><code>out = cv2.VideoWriter('v.avi', fourcc, 20.0, size)</code></td></tr>
+<tr><td class="col-index">74</td><td><code>cv2.mean()</code></td><td>Calcula a média de cor por canal</td><td><code>cv2.mean(img)</code></td></tr>
+<tr><td class="col-index">75</td><td><code>cv2.setMouseCallback()</code></td><td>Captura eventos do mouse na janela</td><td><code>cv2.setMouseCallback('Janela', func)</code></td></tr>
+<tr><td class="col-index">76</td><td><code>cv2.createTrackbar()</code></td><td>Cria uma barra deslizante (slider)</td><td><code>cv2.createTrackbar('T', 'Janela', 0, 255, func)</code></td></tr>
+<tr><td class="col-index">77</td><td><code>cv2.getTrackbarPos()</code></td><td>Lê o valor atual do slider</td><td><code>cv2.getTrackbarPos('T', 'Janela')</code></td></tr>
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

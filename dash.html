@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Dash Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+/* Estilo para a coluna de índice */
+.col-index { width: 40px; text-align: center; color: #888; font-weight: bold; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🚀 Dash Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://dash.plotly.com/" target="_blank">📈 Site oficial do Dash (Documentação)</a></p>
+<input type="text" id="search_field" placeholder="Buscar componente, callback ou parâmetro do Dash...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th>
+<th>Comando / Função / Parâmetro</th>
+<th>O que faz</th>
+<th>Exemplo / Instalação</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>pip install dash</code></td><td>Instalação da biblioteca principal</td><td><code>pip install dash pandas</code></td></tr>
+
+<tr><td class="col-index">2</td><td><code>Dash(__name__)</code></td><td>Inicializa a aplicação Dash</td><td><code>app = Dash(__name__)</code></td></tr>
+<tr><td class="col-index">3</td><td><code>html.Div()</code></td><td>Cria um elemento de divisão (container)</td><td><code>html.Div(children='Olá Dash')</code></td></tr>
+<tr><td class="col-index">4</td><td><code>html.H1()</code></td><td>Cabeçalho de nível 1</td><td><code>html.H1('Meu Dashboard')</code></td></tr>
+<tr><td class="col-index">5</td><td><code>html.P()</code></td><td>Elemento de parágrafo</td><td><code>html.P('Texto descritivo')</code></td></tr>
+<tr><td class="col-index">6</td><td><code>html.Br()</code></td><td>Quebra de linha simples</td><td><code>html.Br()</code></td></tr>
+<tr><td class="col-index">7</td><td><code>html.Img()</code></td><td>Insere uma imagem</td><td><code>html.Img(src='/assets/logo.png')</code></td></tr>
+<tr><td class="col-index">8</td><td><code>html.Button()</code></td><td>Botão padrão HTML</td><td><code>html.Button('Clique', id='btn')</code></td></tr>
+<tr><td class="col-index">9</td><td><code>dcc.Graph()</code></td><td>Renderiza um gráfico Plotly</td><td><code>dcc.Graph(figure=fig)</code></td></tr>
+<tr><td class="col-index">10</td><td><code>dcc.Dropdown()</code></td><td>Menu de seleção suspensa</td><td><code>dcc.Dropdown(['A', 'B'], 'A')</code></td></tr>
+<tr><td class="col-index">11</td><td><code>dcc.Slider()</code></td><td>Controle deslizante numérico</td><td><code>dcc.Slider(0, 10, 1, value=5)</code></td></tr>
+<tr><td class="col-index">12</td><td><code>dcc.Input()</code></td><td>Campo de entrada de texto/número</td><td><code>dcc.Input(type='text')</code></td></tr>
+<tr><td class="col-index">13</td><td><code>dcc.Checklist()</code></td><td>Caixas de seleção múltipla</td><td><code>dcc.Checklist(['Op1', 'Op2'])</code></td></tr>
+<tr><td class="col-index">14</td><td><code>dcc.RadioItems()</code></td><td>Botões de rádio (seleção única)</td><td><code>dcc.RadioItems(['S', 'N'])</code></td></tr>
+<tr><td class="col-index">15</td><td><code>dcc.DatePickerRange()</code></td><td>Seleção de intervalo de datas</td><td><code>dcc.DatePickerRange(id='dt')</code></td></tr>
+<tr><td class="col-index">16</td><td><code>dcc.Markdown()</code></td><td>Renderiza texto em Markdown</td><td><code>dcc.Markdown('# Título MD')</code></td></tr>
+<tr><td class="col-index">17</td><td><code>dcc.Store()</code></td><td>Armazena dados no navegador do cliente</td><td><code>dcc.Store(id='session-data')</code></td></tr>
+<tr><td class="col-index">18</td><td><code>dcc.Interval()</code></td><td>Dispara callbacks periodicamente</td><td><code>dcc.Interval(interval=1000)</code></td></tr>
+<tr><td class="col-index">19</td><td><code>dcc.Link()</code></td><td>Link para navegação interna (SPA)</td><td><code>dcc.Link('Ir', href='/p1')</code></td></tr>
+<tr><td class="col-index">20</td><td><code>dcc.Location()</code></td><td>Monitora a URL do navegador</td><td><code>dcc.Location(id='url')</code></td></tr>
+<tr><td class="col-index">21</td><td><code>dcc.Loading()</code></td><td>Exibe spinner durante carregamento</td><td><code>dcc.Loading(children=[...])</code></td></tr>
+<tr><td class="col-index">22</td><td><code>dcc.Upload()</code></td><td>Componente para upload de arquivos</td><td><code>dcc.Upload('Arraste aqui')</code></td></tr>
+<tr><td class="col-index">23</td><td><code>dcc.Tabs()</code></td><td>Container para abas de navegação</td><td><code>dcc.Tabs(id='tabs', children=[...])</code></td></tr>
+<tr><td class="col-index">24</td><td><code>dcc.Tab()</code></td><td>Conteúdo de uma aba específica</td><td><code>dcc.Tab(label='Aba 1')</code></td></tr>
+<tr><td class="col-index">25</td><td><code>dcc.Clipboard()</code></td><td>Botão para copiar para área de transferência</td><td><code>dcc.Clipboard(target_id='copiar')</code></td></tr>
+
+<tr><td class="col-index">26</td><td><code>@callback()</code></td><td>Decorador para lógica interativa</td><td><code>@callback(Output(...), Input(...))</code></td></tr>
+<tr><td class="col-index">27</td><td><code>Output()</code></td><td>Define o destino do retorno do callback</td><td><code>Output('id', 'property')</code></td></tr>
+<tr><td class="col-index">28</td><td><code>Input()</code></td><td>Define o gatilho do callback</td><td><code>Input('btn', 'n_clicks')</code></td></tr>
+<tr><td class="col-index">29</td><td><code>State()</code></td><td>Lê valor sem disparar o callback</td><td><code>State('input', 'value')</code></td></tr>
+<tr><td class="col-index">30</td><td><code>ctx.triggered_id</code></td><td>Identifica qual ID disparou o callback</td><td><code>id = ctx.triggered_id</code></td></tr>
+<tr><td class="col-index">31</td><td><code>no_update</code></td><td>Impede a atualização de um Output</td><td><code>return dash.no_update</code></td></tr>
+<tr><td class="col-index">32</td><td><code>prevent_initial_call</code></td><td>Evita execução no carregamento da página</td><td><code>@callback(..., prevent_initial_call=True)</code></td></tr>
+<tr><td class="col-index">33</td><td><code>clientside_callback</code></td><td>Executa lógica JavaScript no cliente</td><td><code>clientside_callback("function...", ...)</code></td></tr>
+
+<tr><td class="col-index">34</td><td><code>dash_table.DataTable()</code></td><td>Tabela interativa avançada</td><td><code>dash_table.DataTable(df.to_dict('records'))</code></td></tr>
+<tr><td class="col-index">35</td><td><code>columns=</code></td><td>Define colunas da tabela</td><td><code>columns=[{"name": i, "id": i} for i in df.columns]</code></td></tr>
+<tr><td class="col-index">36</td><td><code>page_size=</code></td><td>Número de linhas por página</td><td><code>page_size=10</code></td></tr>
+<tr><td class="col-index">37</td><td><code>sort_action=</code></td><td>Habilita ordenação ('native')</td><td><code>sort_action='native'</code></td></tr>
+<tr><td class="col-index">38</td><td><code>filter_action=</code></td><td>Habilita filtros nas colunas</td><td><code>filter_action='native'</code></td></tr>
+<tr><td class="col-index">39</td><td><code>editable=True</code></td><td>Permite edição direta na célula</td><td><code>editable=True</code></td></tr>
+<tr><td class="col-index">40</td><td><code>row_selectable=</code></td><td>Habilita seleção de linhas ('single'/'multi')</td><td><code>row_selectable='multi'</code></td></tr>
+
+<tr><td class="col-index">41</td><td><code>style=</code></td><td>Dicionário de CSS inline</td><td><code>style={'color': 'red'}</code></td></tr>
+<tr><td class="col-index">42</td><td><code>className=</code></td><td>Atribui classe CSS externa</td><td><code>className='container-fluid'</code></td></tr>
+<tr><td class="col-index">43</td><td><code>external_stylesheets</code></td><td>Carrega CSS externo (ex: Bootstrap)</td><td><code>external_stylesheets=[dbc.themes.BOOTSTRAP]</code></td></tr>
+<tr><td class="col-index">44</td><td><code>app.layout</code></td><td>Define a estrutura da página</td><td><code>app.layout = html.Div(...)</code></td></tr>
+
+<tr><td class="col-index">45</td><td><code>pip install dash-bootstrap-components</code></td><td>Instalação do pacote Bootstrap</td><td><code>pip install dash-bootstrap-components</code></td></tr>
+<tr><td class="col-index">46</td><td><code>dbc.Container()</code></td><td>Container responsivo Bootstrap</td><td><code>dbc.Container(children, fluid=True)</code></td></tr>
+<tr><td class="col-index">47</td><td><code>dbc.Row()</code></td><td>Linha do sistema de grid</td><td><code>dbc.Row([dbc.Col(...)])</code></td></tr>
+<tr><td class="col-index">48</td><td><code>dbc.Col()</code></td><td>Coluna do sistema de grid</td><td><code>dbc.Col(width=6)</code></td></tr>
+<tr><td class="col-index">49</td><td><code>dbc.Card()</code></td><td>Container de cartão estilizado</td><td><code>dbc.Card(dbc.CardBody(...))</code></td></tr>
+<tr><td class="col-index">50</td><td><code>dbc.Navbar()</code></td><td>Barra de navegação superior</td><td><code>dbc.NavbarSimple(...)</code></td></tr>
+<tr><td class="col-index">51</td><td><code>dbc.Alert()</code></td><td>Mensagens de alerta coloridas</td><td><code>dbc.Alert("Erro!", color="danger")</code></td></tr>
+<tr><td class="col-index">52</td><td><code>dbc.Modal()</code></td><td>Janelas pop-up (diálogos)</td><td><code>dbc.Modal([dbc.ModalHeader(...)])</code></td></tr>
+
+<tr><td class="col-index">53</td><td><code>app.run(debug=True)</code></td><td>Inicia o servidor de desenvolvimento</td><td><code>if __name__ == '__main__': app.run(debug=True)</code></td></tr>
+
+<tr><td class="col-index">54</td><td><code>multi=True</code></td><td>Permite seleção múltipla no Dropdown</td><td><code>dcc.Dropdown(..., multi=True)</code></td></tr>
+<tr><td class="col-index">55</td><td><code>placeholder=</code></td><td>Texto de ajuda em campos vazios</td><td><code>placeholder='Selecione...'</code></td></tr>
+<tr><td class="col-index">56</td><td><code>clearable=False</code></td><td>Impede limpeza de seleção no Dropdown</td><td><code>clearable=False</code></td></tr>
+<tr><td class="col-index">57</td><td><code>persistence=True</code></td><td>Mantém estado após recarregar página</td><td><code>persistence=True</code></td></tr>
+<tr><td class="col-index">58</td><td><code>children=</code></td><td>Conteúdo interno de um componente</td><td><code>html.Div(children=[...])</code></td></tr>
+<tr><td class="col-index">59</td><td><code>id=</code></td><td>Identificador único para callbacks</td><td><code>id='meu-comp'</code></td></tr>
+<tr><td class="col-index">60</td><td><code>inline=True</code></td><td>Exibe Checklist horizontalmente</td><td><code>dcc.Checklist(..., inline=True)</code></td></tr>
+<tr><td class="col-index">61</td><td><code>options=</code></td><td>Lista de opções para seletores</td><td><code>options=[{'label': 'X', 'value': 1}]</code></td></tr>
+<tr><td class="col-index">62</td><td><code>value=</code></td><td>Valor inicial/atual do componente</td><td><code>value='padrão'</code></td></tr>
+<tr><td class="col-index">63</td><td><code>disabled=True</code></td><td>Desabilita o componente</td><td><code>disabled=True</code></td></tr>
+<tr><td class="col-index">64</td><td><code>max_length=</code></td><td>Limite de caracteres no Input</td><td><code>dcc.Input(max_length=10)</code></td></tr>
+<tr><td class="col-index">65</td><td><code>debounce=True</code></td><td>Envia valor apenas após Enter ou perda de foco</td><td><code>dcc.Input(debounce=True)</code></td></tr>
+<tr><td class="col-index">66</td><td><code>min=</code></td><td>Valor mínimo permitido</td><td><code>min=0</code></td></tr>
+<tr><td class="col-index">67</td><td><code>max=</code></td><td>Valor máximo permitido</td><td><code>max=100</code></td></tr>
+<tr><td class="col-index">68</td><td><code>step=</code></td><td>Incremento de valores</td><td><code>step=0.5</code></td></tr>
+<tr><td class="col-index">69</td><td><code>marks=</code></td><td>Rótulos customizados no Slider</td><td><code>marks={0: 'Início', 10: 'Fim'}</code></td></tr>
+<tr><td class="col-index">70</td><td><code>vertical=True</code></td><td>Altera Slider para orientação vertical</td><td><code>vertical=True</code></td></tr>
+<tr><td class="col-index">71</td><td><code>updatemode=</code></td><td>Quando o Slider envia dados ('mouseup'/'drag')</td><td><code>updatemode='drag'</code></td></tr>
+<tr><td class="col-index">72</td><td><code>href=</code></td><td>Destino de um link</td><td><code>html.A('Link', href='https://...')</code></td></tr>
+<tr><td class="col-index">73</td><td><code>target='_blank'</code></td><td>Abre link em nova aba</td><td><code>html.A(..., target='_blank')</code></td></tr>
+<tr><td class="col-index">74</td><td><code>dangerously_allow_html</code></td><td>Permite HTML em Markdown (Cuidado!)</td><td><code>dcc.Markdown(..., dangerously_allow_html=True)</code></td></tr>
+<tr><td class="col-index">75</td><td><code>mathjax=True</code></td><td>Habilita fórmulas matemáticas no Markdown</td><td><code>dcc.Markdown(..., mathjax=True)</code></td></tr>
+<tr><td class="col-index">76</td><td><code>loading_state</code></td><td>Propriedade de leitura do estado de carga</td><td><code>Input('comp', 'loading_state')</code></td></tr>
+<tr><td class="col-index">77</td><td><code>title=</code></td><td>Texto ao passar o mouse</td><td><code>html.Div(title='Dica')</code></td></tr>
+<tr><td class="col-index">78</td><td><code>n_clicks</code></td><td>Contador de cliques em botões</td><td><code>Input('btn', 'n_clicks')</code></td></tr>
+<tr><td class="col-index">79</td><td><code>n_clicks_timestamp</code></td><td>Timestamp do último clique</td><td><code>State('btn', 'n_clicks_timestamp')</code></td></tr>
+<tr><td class="col-index">80</td><td><code>active_tab</code></td><td>Identifica aba selecionada no DBC</td><td><code>Input('tabs', 'active_tab')</code></td></tr>
+<tr><td class="col-index">81</td><td><code>is_open</code></td><td>Controla visibilidade de Modal/Collapse</td><td><code>Output('modal', 'is_open')</code></td></tr>
+<tr><td class="col-index">82</td><td><code>key=</code></td><td>Ajuda o React a identificar mudanças em listas</td><td><code>html.Div(key='unique_id')</code></td></tr>
+<tr><td class="col-index">83</td><td><code>figure.update_layout()</code></td><td>Atualiza layout do gráfico Plotly</td><td><code>fig.update_layout(title='Gráfico')</code></td></tr>
+<tr><td class="col-index">84</td><td><code>figure.add_trace()</code></td><td>Adiciona nova série ao gráfico</td><td><code>fig.add_trace(go.Scatter(...))</code></td></tr>
+<tr><td class="col-index">85</td><td><code>px.scatter()</code></td><td>Cria dispersão rápida com Plotly Express</td><td><code>px.scatter(df, x='x', y='y')</code></td></tr>
+<tr><td class="col-index">86</td><td><code>px.bar()</code></td><td>Cria barras rápidas com Plotly Express</td><td><code>px.bar(df, x='cat', y='total')</code></td></tr>
+<tr><td class="col-index">87</td><td><code>px.line()</code></td><td>Cria linhas rápidas com Plotly Express</td><td><code>px.line(df, x='data', y='valor')</code></td></tr>
+<tr><td class="col-index">88</td><td><code>dash.register_page()</code></td><td>Registra página em apps multi-páginas</td><td><code>dash.register_page(__name__, path='/')</code></td></tr>
+<tr><td class="col-index">89</td><td><code>dash.page_container</code></td><td>Container onde as páginas são renderizadas</td><td><code>html.Div(dash.page_container)</code></td></tr>
+<tr><td class="col-index">90</td><td><code>suppress_callback_exceptions</code></td><td>Evita erros de IDs inexistentes no layout inicial</td><td><code>app = Dash(..., suppress_callback_exceptions=True)</code></td></tr>
+<tr><td class="col-index">91</td><td><code>assets_folder=</code></td><td>Define pasta de arquivos estáticos</td><td><code>app = Dash(assets_folder='static')</code></td></tr>
+<tr><td class="col-index">92</td><td><code>requests_pathname_prefix</code></td><td>Configuração para deploy em subpastas</td><td><code>app = Dash(requests_pathname_prefix='/app/')</code></td></tr>
+<tr><td class="col-index">93</td><td><code>server = app.server</code></td><td>Expõe a instância Flask para o Gunicorn</td><td><code>server = app.server</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

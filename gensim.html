@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Gensim Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+/* Centraliza a coluna do índice */
+td:first-child, th:first-child { text-align: center; width: 50px; font-weight: bold; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🏺 Gensim Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://radimrehurek.com/gensim/" target="_blank">📖 Site oficial do Gensim (Documentação)</a></p>
+<input type="text" id="search_field" placeholder="Buscar comando, modelo ou parâmetro do Gensim...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th>#</th>
+<th>Comando / Função</th>
+<th>O que faz</th>
+<th>Exemplo / Instalação</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td>1</td><td><code>pip install gensim</code></td><td>Instala a biblioteca Gensim</td><td><code>pip install gensim</code></td></tr>
+
+<tr><td>2</td><td><code>corpora.Dictionary()</code></td><td>Cria um mapeamento entre palavras e IDs</td><td><code>dct = corpora.Dictionary(textos)</code></td></tr>
+<tr><td>3</td><td><code>doc2bow()</code></td><td>Converte documento para formato Bag-of-Words</td><td><code>dct.doc2bow(["olá", "mundo"])</code></td></tr>
+<tr><td>4</td><td><code>simple_preprocess()</code></td><td>Tokenização e limpeza básica de texto</td><td><code>simple_preprocess(texto)</code></td></tr>
+<tr><td>5</td><td><code>Dictionary.filter_extremes()</code></td><td>Remove palavras muito raras ou muito comuns</td><td><code>dct.filter_extremes(no_below=5)</code></td></tr>
+<tr><td>6</td><td><code>Dictionary.save()</code></td><td>Salva o dicionário em disco</td><td><code>dct.save('dict.gensim')</code></td></tr>
+
+<tr><td>7</td><td><code>models.LdaModel()</code></td><td>Treina modelo Latent Dirichlet Allocation</td><td><code>lda = models.LdaModel(corpus, num_topics=10)</code></td></tr>
+<tr><td>8</td><td><code>get_document_topics()</code></td><td>Retorna tópicos de um documento específico</td><td><code>lda.get_document_topics(bow)</code></td></tr>
+<tr><td>9</td><td><code>print_topics()</code></td><td>Exibe as palavras mais relevantes de cada tópico</td><td><code>lda.print_topics(num_words=5)</code></td></tr>
+<tr><td>10</td><td><code>update()</code></td><td>Atualiza o modelo com novos documentos</td><td><code>lda.update(novo_corpus)</code></td></tr>
+<tr><td>11</td><td><code>models.LdaMulticore()</code></td><td>Versão paralela (mais rápida) do LDA</td><td><code>models.LdaMulticore(corpus, workers=4)</code></td></tr>
+
+<tr><td>12</td><td><code>models.Word2Vec()</code></td><td>Treina modelo de vetores de palavras</td><td><code>w2v = models.Word2Vec(sentencas, min_count=1)</code></td></tr>
+<tr><td>13</td><td><code>wv.most_similar()</code></td><td>Encontra palavras mais semanticamente próximas</td><td><code>w2v.wv.most_similar("rei")</code></td></tr>
+<tr><td>14</td><td><code>wv.similarity()</code></td><td>Calcula o cosseno de similaridade entre duas palavras</td><td><code>w2v.wv.similarity("homem", "mulher")</code></td></tr>
+<tr><td>15</td><td><code>wv.doesnt_match()</code></td><td>Identifica qual palavra não pertence à lista</td><td><code>w2v.wv.doesnt_match(["café", "chá", "carro"])</code></td></tr>
+<tr><td>16</td><td><code>wv.save_word2vec_format()</code></td><td>Salva vetores no formato padrão do C</td><td><code>w2v.wv.save_word2vec_format('vetores.bin')</code></td></tr>
+
+<tr><td>17</td><td><code>models.Doc2Vec()</code></td><td>Treina vetores para parágrafos/documentos</td><td><code>d2v = models.Doc2Vec(docs, vector_size=100)</code></td></tr>
+<tr><td>18</td><td><code>infer_vector()</code></td><td>Infere o vetor de um texto não visto no treino</td><td><code>d2v.infer_vector(["novo", "texto"])</code></td></tr>
+<tr><td>19</td><td><code>models.TfidfModel()</code></td><td>Aplica pesos TF-IDF ao corpus Bag-of-Words</td><td><code>tfidf = models.TfidfModel(corpus)</code></td></tr>
+<tr><td>20</td><td><code>models.LsiModel()</code></td><td>Latent Semantic Indexing (SVD)</td><td><code>lsi = models.LsiModel(corpus, num_topics=20)</code></td></tr>
+<tr><td>21</td><td><code>models.FastText()</code></td><td>Treina FastText (lida com palavras fora do vocabulário)</td><td><code>ft = models.FastText(sentences=textos)</code></td></tr>
+
+<tr><td>22</td><td><code>similarities.MatrixSimilarity()</code></td><td>Calcula similaridade entre documentos em memória</td><td><code>index = MatrixSimilarity(tfidf_corpus)</code></td></tr>
+<tr><td>23</td><td><code>similarities.Similarity()</code></td><td>Cria índice de similaridade fragmentado em disco</td><td><code>index = Similarity('temp/', corpus, num_features)</code></td></tr>
+
+<tr><td>24</td><td><code>num_topics=</code></td><td>Número de tópicos a serem extraídos</td><td><code>num_topics=50</code></td></tr>
+<tr><td>25</td><td><code>id2word=</code></td><td>Dicionário para mapear IDs de volta para palavras</td><td><code>id2word=dictionary</code></td></tr>
+<tr><td>26</td><td><code>passes=</code></td><td>Número de vezes que o modelo percorre o corpus</td><td><code>passes=10</code></td></tr>
+<tr><td>27</td><td><code>vector_size=</code></td><td>Dimensionalidade dos vetores de palavras</td><td><code>vector_size=300</code></td></tr>
+<tr><td>28</td><td><code>window=</code></td><td>Distância máxima entre palavra atual e vizinhas</td><td><code>window=5</code></td></tr>
+<tr><td>29</td><td><code>min_count=</code></td><td>Ignora palavras com frequência total menor que esta</td><td><code>min_count=2</code></td></tr>
+<tr><td>30</td><td><code>workers=</code></td><td>Número de núcleos do processador para usar</td><td><code>workers=4</code></td></tr>
+<tr><td>31</td><td><code>sg=</code></td><td>Algoritmo de treino (0 para CBOW, 1 para Skip-gram)</td><td><code>sg=1</code></td></tr>
+<tr><td>32</td><td><code>alpha=</code></td><td>Hiperparâmetro de densidade de tópicos/documentos</td><td><code>alpha='auto'</code></td></tr>
+
+<tr><td>33</td><td><code>utils.get_tmpfile()</code></td><td>Gera caminho para arquivo temporário seguro</td><td><code>utils.get_tmpfile("meu_modelo")</code></td></tr>
+<tr><td>34</td><td><code>models.KeyedVectors.load()</code></td><td>Carrega apenas os vetores (sem o modelo completo)</td><td><code>wv = KeyedVectors.load("vetores.kv")</code></td></tr>
+<tr><td>35</td><td><code>downloader.load()</code></td><td>Baixa modelos pré-treinados (ex: GloVe)</td><td><code>api.load("glove-twitter-25")</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>JavaScript Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+.col-index { width: 40px; text-align: center; font-weight: bold; color: #7f8c8d; background: #f9f9f9; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>📜 JavaScript Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript" target="_blank">📄 Documentação Oficial MDN</a></p>
+<input type="text" id="search_field" placeholder="Buscar método, sintaxe ou funcionalidade do JS...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th style="width: 30px;">#</th> <th>Comando / Função</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>npm install</code></td><td>Instala pacotes JS via gerenciador Node</td><td><code>npm install lodash</code></td></tr>
+<tr><td class="col-index">2</td><td><code>console.log()</code></td><td>Imprime dados no console do navegador/terminal</td><td><code>console.log("Olá Mundo")</code></td></tr>
+<tr><td class="col-index">3</td><td><code>let</code></td><td>Declara variável com escopo de bloco</td><td><code>let x = 10;</code></td></tr>
+<tr><td class="col-index">4</td><td><code>const</code></td><td>Declara uma constante (não pode ser reatribuída)</td><td><code>const PI = 3.14;</code></td></tr>
+
+<tr><td class="col-index">5</td><td><code>typeof</code></td><td>Retorna o tipo do dado</td><td><code>typeof "texto" // "string"</code></td></tr>
+<tr><td class="col-index">6</td><td><code>Template Strings</code></td><td>Strings com interpolação de variáveis</td><td><code>`Olá ${nome}`</code></td></tr>
+<tr><td class="col-index">7</td><td><code>&&</code></td><td>Operador lógico "E" (AND)</td><td><code>if(a && b)</code></td></tr>
+<tr><td class="col-index">8</td><td><code>||</code></td><td>Operador lógico "OU" (OR)</td><td><code>if(a || b)</code></td></tr>
+<tr><td class="col-index">9</td><td><code>!</code></td><td>Operador de negação (NOT)</td><td><code>if(!ativo)</code></td></tr>
+<tr><td class="col-index">10</td><td><code>===</code></td><td>Igualdade estrita (valor e tipo)</td><td><code>5 === '5' // false</code></td></tr>
+
+<tr><td class="col-index">11</td><td><code>str.length</code></td><td>Retorna o tamanho da string</td><td><code>"oi".length</code></td></tr>
+<tr><td class="col-index">12</td><td><code>str.toUpperCase()</code></td><td>Converte para maiúsculas</td><td><code>"js".toUpperCase()</code></td></tr>
+<tr><td class="col-index">13</td><td><code>str.toLowerCase()</code></td><td>Converte para minúsculas</td><td><code>"JS".toLowerCase()</code></td></tr>
+<tr><td class="col-index">14</td><td><code>str.includes()</code></td><td>Verifica se contém uma substring</td><td><code>str.includes("abc")</code></td></tr>
+<tr><td class="col-index">15</td><td><code>str.split()</code></td><td>Divide string em um array</td><td><code>str.split(",")</code></td></tr>
+<tr><td class="col-index">16</td><td><code>str.replace()</code></td><td>Substitui parte da string</td><td><code>str.replace("a", "b")</code></td></tr>
+<tr><td class="col-index">17</td><td><code>str.trim()</code></td><td>Remove espaços em branco nas pontas</td><td><code>str.trim()</code></td></tr>
+
+<tr><td class="col-index">18</td><td><code>arr.push()</code></td><td>Adiciona item ao final</td><td><code>lista.push(4)</code></td></tr>
+<tr><td class="col-index">19</td><td><code>arr.pop()</code></td><td>Remove o último item</td><td><code>lista.pop()</code></td></tr>
+<tr><td class="col-index">20</td><td><code>arr.shift()</code></td><td>Remove o primeiro item</td><td><code>lista.shift()</code></td></tr>
+<tr><td class="col-index">21</td><td><code>arr.unshift()</code></td><td>Adiciona item no início</td><td><code>lista.unshift(0)</code></td></tr>
+<tr><td class="col-index">22</td><td><code>arr.map()</code></td><td>Cria novo array transformando os dados</td><td><code>arr.map(x => x * 2)</code></td></tr>
+<tr><td class="col-index">23</td><td><code>arr.filter()</code></td><td>Filtra elementos baseados em condição</td><td><code>arr.filter(x => x > 10)</code></td></tr>
+<tr><td class="col-index">24</td><td><code>arr.find()</code></td><td>Encontra o primeiro item que satisfaz a condição</td><td><code>arr.find(x => x.id === 1)</code></td></tr>
+<tr><td class="col-index">25</td><td><code>arr.forEach()</code></td><td>Executa função para cada item</td><td><code>arr.forEach(i => console.log(i))</code></td></tr>
+<tr><td class="col-index">26</td><td><code>arr.reduce()</code></td><td>Reduz array a um único valor</td><td><code>arr.reduce((acc, v) => acc + v)</code></td></tr>
+<tr><td class="col-index">27</td><td><code>arr.join()</code></td><td>Une elementos do array em string</td><td><code>arr.join("-")</code></td></tr>
+<tr><td class="col-index">28</td><td><code>arr.slice()</code></td><td>Copia uma parte do array</td><td><code>arr.slice(0, 2)</code></td></tr>
+<tr><td class="col-index">29</td><td><code>arr.splice()</code></td><td>Adiciona/Remove itens em posição específica</td><td><code>arr.splice(2, 1)</code></td></tr>
+<tr><td class="col-index">30</td><td><code>arr.indexOf()</code></td><td>Retorna o índice de um elemento</td><td><code>arr.indexOf("item")</code></td></tr>
+
+<tr><td class="col-index">31</td><td><code>Object.keys()</code></td><td>Retorna as chaves do objeto</td><td><code>Object.keys(pessoa)</code></td></tr>
+<tr><td class="col-index">32</td><td><code>Object.values()</code></td><td>Retorna os valores do objeto</td><td><code>Object.values(pessoa)</code></td></tr>
+<tr><td class="col-index">33</td><td><code>Object.assign()</code></td><td>Copia propriedades entre objetos</td><td><code>Object.assign(alvo, fonte)</code></td></tr>
+<tr><td class="col-index">34</td><td><code>JSON.stringify()</code></td><td>Converte objeto em string JSON</td><td><code>JSON.stringify({id: 1})</code></td></tr>
+<tr><td class="col-index">35</td><td><code>JSON.parse()</code></td><td>Converte string JSON em objeto</td><td><code>JSON.parse('{"id": 1}')</code></td></tr>
+
+<tr><td class="col-index">36</td><td><code>Arrow Function</code></td><td>Sintaxe curta para funções</td><td><code>const soma = (a, b) => a + b</code></td></tr>
+<tr><td class="col-index">37</td><td><code>return</code></td><td>Retorna um valor e encerra a função</td><td><code>return resultado;</code></td></tr>
+<tr><td class="col-index">38</td><td><code>setTimeout()</code></td><td>Executa código após atraso</td><td><code>setTimeout(fn, 1000)</code></td></tr>
+<tr><td class="col-index">39</td><td><code>setInterval()</code></td><td>Executa código repetidamente</td><td><code>setInterval(fn, 2000)</code></td></tr>
+
+<tr><td class="col-index">40</td><td><code>if / else</code></td><td>Condicional simples</td><td><code>if(x > 0) { } else { }</code></td></tr>
+<tr><td class="col-index">41</td><td><code>switch</code></td><td>Múltiplas condições</td><td><code>switch(cor) { case 'red': ... }</code></td></tr>
+<tr><td class="col-index">42</td><td><code>for</code></td><td>Loop clássico</td><td><code>for(let i=0; i<10; i++)</code></td></tr>
+<tr><td class="col-index">43</td><td><code>for...of</code></td><td>Itera sobre valores de um iterável</td><td><code>for(let x of array)</code></td></tr>
+<tr><td class="col-index">44</td><td><code>for...in</code></td><td>Itera sobre chaves de um objeto</td><td><code>for(let chave in obj)</code></td></tr>
+<tr><td class="col-index">45</td><td><code>while</code></td><td>Executa enquanto condição for verdadeira</td><td><code>while(ativo) { }</code></td></tr>
+<tr><td class="col-index">46</td><td><code>try / catch</code></td><td>Tratamento de erros</td><td><code>try { ... } catch(e) { }</code></td></tr>
+
+<tr><td class="col-index">47</td><td><code>document.getElementById()</code></td><td>Seleciona elemento pelo ID</td><td><code>document.getElementById("btn")</code></td></tr>
+<tr><td class="col-index">48</td><td><code>document.querySelector()</code></td><td>Seleciona via seletor CSS</td><td><code>document.querySelector(".classe")</code></td></tr>
+<tr><td class="col-index">49</td><td><code>element.innerHTML</code></td><td>Altera conteúdo HTML interno</td><td><code>el.innerHTML = "<b>Oi</b>"</code></td></tr>
+<tr><td class="col-index">50</td><td><code>element.textContent</code></td><td>Altera apenas o texto interno</td><td><code>el.textContent = "Texto"</code></td></tr>
+<tr><td class="col-index">51</td><td><code>element.addEventListener()</code></td><td>Escuta eventos (click, submit, etc)</td><td><code>el.onclick = () => { }</code></td></tr>
+<tr><td class="col-index">52</td><td><code>element.classList.add()</code></td><td>Adiciona classe CSS</td><td><code>el.classList.add("ativo")</code></td></tr>
+<tr><td class="col-index">53</td><td><code>element.style</code></td><td>Altera estilo CSS inline</td><td><code>el.style.color = "red"</code></td></tr>
+<tr><td class="col-index">54</td><td><code>element.setAttribute()</code></td><td>Define um atributo HTML</td><td><code>el.setAttribute("src", "img.jpg")</code></td></tr>
+
+<tr><td class="col-index">55</td><td><code>fetch()</code></td><td>Faz requisições HTTP (API)</td><td><code>fetch(url).then(...)</code></td></tr>
+<tr><td class="col-index">56</td><td><code>async / await</code></td><td>Sintaxe para lidar com Promises</td><td><code>async function f() { await ... }</code></td></tr>
+<tr><td class="col-index">57</td><td><code>Promise.all()</code></td><td>Aguarda múltiplas promises</td><td><code>Promise.all([p1, p2])</code></td></tr>
+
+<tr><td class="col-index">58</td><td><code>Math.random()</code></td><td>Gera número aleatório entre 0 e 1</td><td><code>Math.random()</code></td></tr>
+<tr><td class="col-index">59</td><td><code>Math.floor()</code></td><td>Arredonda para baixo</td><td><code>Math.floor(4.9) // 4</code></td></tr>
+<tr><td class="col-index">60</td><td><code>Math.ceil()</code></td><td>Arredonda para cima</td><td><code>Math.ceil(4.1) // 5</code></td></tr>
+<tr><td class="col-index">61</td><td><code>new Date()</code></td><td>Cria objeto de data e hora</td><td><code>new Date()</code></td></tr>
+
+<tr><td class="col-index">62</td><td><code>Destructuring (Array)</code></td><td>Extrai valores de arrays para variáveis</td><td><code>const [a, b] = [1, 2]</code></td></tr>
+<tr><td class="col-index">63</td><td><code>Destructuring (Obj)</code></td><td>Extrai valores de objetos</td><td><code>const {nome} = usuario</code></td></tr>
+<tr><td class="col-index">64</td><td><code>Spread Operator (...)</code></td><td>Expande elementos</td><td><code>const novo = [...antigo, 4]</code></td></tr>
+<tr><td class="col-index">65</td><td><code>Optional Chaining</code></td><td>Acessa propriedades sem erro se nulo</td><td><code>user?.endereco?.rua</code></td></tr>
+<tr><td class="col-index">66</td><td><code>Nullish Coalescing</code></td><td>Retorna padrão se for null/undefined</td><td><code>const x = val ?? "padrão"</code></td></tr>
+
+<tr><td class="col-index">67</td><td><code>Math.max()</code></td><td>Retorna o maior valor</td><td><code>Math.max(1, 5, 2)</code></td></tr>
+<tr><td class="col-index">68</td><td><code>Math.min()</code></td><td>Retorna o menor valor</td><td><code>Math.min(1, 5, 2)</code></td></tr>
+<tr><td class="col-index">69</td><td><code>Math.round()</code></td><td>Arredonda para o inteiro mais próximo</td><td><code>Math.round(4.5)</code></td></tr>
+<tr><td class="col-index">70</td><td><code>Number.parseInt()</code></td><td>Converte string para inteiro</td><td><code>parseInt("10")</code></td></tr>
+<tr><td class="col-index">71</td><td><code>Number.parseFloat()</code></td><td>Converte string para decimal</td><td><code>parseFloat("10.5")</code></td></tr>
+<tr><td class="col-index">72</td><td><code>isNaN()</code></td><td>Verifica se não é um número</td><td><code>isNaN("abc")</code></td></tr>
+<tr><td class="col-index">73</td><td><code>Array.isArray()</code></td><td>Verifica se é um array</td><td><code>Array.isArray([])</code></td></tr>
+<tr><td class="col-index">74</td><td><code>String()</code></td><td>Converte valor para String</td><td><code>String(123)</code></td></tr>
+<tr><td class="col-index">75</td><td><code>Number()</code></td><td>Converte valor para Número</td><td><code>Number("123")</code></td></tr>
+<tr><td class="col-index">76</td><td><code>Boolean()</code></td><td>Converte para Booleano</td><td><code>Boolean(1) // true</code></td></tr>
+<tr><td class="col-index">77</td><td><code>eval()</code></td><td>Executa código string (Cuidado!)</td><td><code>eval("2 + 2")</code></td></tr>
+<tr><td class="col-index">78</td><td><code>decodeURI()</code></td><td>Decodifica uma URL</td><td><code>decodeURI(url)</code></td></tr>
+<tr><td class="col-index">79</td><td><code>encodeURI()</code></td><td>Codifica uma URL</td><td><code>encodeURI(url)</code></td></tr>
+<tr><td class="col-index">80</td><td><code>localStorage.setItem()</code></td><td>Salva dado no navegador</td><td><code>localStorage.setItem('k', 'v')</code></td></tr>
+<tr><td class="col-index">81</td><td><code>localStorage.getItem()</code></td><td>Recupera dado do navegador</td><td><code>localStorage.getItem('k')</code></td></tr>
+<tr><td class="col-index">82</td><td><code>alert()</code></td><td>Exibe alerta simples</td><td><code>alert("Olá")</code></td></tr>
+<tr><td class="col-index">83</td><td><code>prompt()</code></td><td>Pede entrada do usuário</td><td><code>prompt("Qual seu nome?")</code></td></tr>
+<tr><td class="col-index">84</td><td><code>confirm()</code></td><td>Pede confirmação OK/Cancelar</td><td><code>confirm("Deseja excluir?")</code></td></tr>
+<tr><td class="col-index">85</td><td><code>window.location.reload()</code></td><td>Recarrega a página</td><td><code>location.reload()</code></td></tr>
+<tr><td class="col-index">86</td><td><code>window.scrollTo()</code></td><td>Rola para posição específica</td><td><code>window.scrollTo(0, 0)</code></td></tr>
+<tr><td class="col-index">87</td><td><code>arr.sort()</code></td><td>Ordena o array</td><td><code>arr.sort()</code></td></tr>
+<tr><td class="col-index">88</td><td><code>arr.reverse()</code></td><td>Inverte a ordem do array</td><td><code>arr.reverse()</code></td></tr>
+<tr><td class="col-index">89</td><td><code>arr.every()</code></td><td>Verifica se todos passam no teste</td><td><code>arr.every(x => x > 0)</code></td></tr>
+<tr><td class="col-index">90</td><td><code>arr.some()</code></td><td>Verifica se algum passa no teste</td><td><code>arr.some(x => x < 0)</code></td></tr>
+<tr><td class="col-index">91</td><td><code>arr.fill()</code></td><td>Preenche array com valor estático</td><td><code>arr.fill(0)</code></td></tr>
+<tr><td class="col-index">92</td><td><code>arr.flat()</code></td><td>Achata arrays aninhados</td><td><code>arr.flat()</code></td></tr>
+<tr><td class="col-index">93</td><td><code>Date.now()</code></td><td>Timestamp atual em ms</td><td><code>Date.now()</code></td></tr>
+<tr><td class="col-index">94</td><td><code>console.table()</code></td><td>Exibe dados em formato de tabela</td><td><code>console.table(lista)</code></td></tr>
+<tr><td class="col-index">95</td><td><code>console.error()</code></td><td>Exibe erro no console</td><td><code>console.error("Falhou")</code></td></tr>
+<tr><td class="col-index">96</td><td><code>Object.freeze()</code></td><td>Impede alteração no objeto</td><td><code>Object.freeze(obj)</code></td></tr>
+<tr><td class="col-index">97</td><td><code>Object.entries()</code></td><td>Retorna array de pares [chave, valor]</td><td><code>Object.entries(obj)</code></td></tr>
+<tr><td class="col-index">98</td><td><code>String.repeat()</code></td><td>Repete a string n vezes</td><td><code>"a".repeat(3) // "aaa"</code></td></tr>
+<tr><td class="col-index">99</td><td><code>String.startsWith()</code></td><td>Verifica se começa com algo</td><td><code>str.startsWith("A")</code></td></tr>
+<tr><td class="col-index">100</td><td><code>String.endsWith()</code></td><td>Verifica se termina com algo</td><td><code>str.endsWith(".")</code></td></tr>
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

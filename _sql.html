@@ -1,0 +1,103 @@
+
+<!-- ===================== BLOCO INCIAL ===================== -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Cheat Sheet</title>
+
+<style>
+body { font-family: Arial; padding: 20px; background: #f4f4f4; }
+input { width: 100%; padding: 10px; margin-bottom: 20px; }
+table { width: 100%; border-collapse: collapse; background: white; }
+th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+th { background: #222; color: white; }
+tr:hover { background: #eee; }
+</style>
+</head>
+
+<!-- ===================== FIM BLOCO INCIAL ===================== -->
+
+<!-- MENU PADRÃO PARA TODAS AS PÁGINAS -->
+<nav>
+  <div class="links">
+    <a href="index.html">Home</a>
+  </div>
+</nav>
+
+<!-- ===================== SQL ===================== -->
+<h1>🧠 SQL Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://www.postgresql.org/docs/" target="_blank">🌐 Documentação oficial de SQL (PostgreSQL)</a></p>
+<input type="text" id="search_field" placeholder="Buscar comando SQL...">
+
+<table id="LeanguageTable">
+<tr>
+<th>Comando / Função</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+
+<tr><td><code>SELECT</code></td><td>Seleciona dados.</td><td><code>SELECT * FROM clientes;</code></td></tr>
+<tr><td><code>DISTINCT</code></td><td>Remove duplicados.</td><td><code>SELECT DISTINCT cidade FROM clientes;</code></td></tr>
+<tr><td><code>WHERE</code></td><td>Filtra registros.</td><td><code>SELECT * FROM clientes WHERE idade &gt; 18;</code></td></tr>
+<tr><td><code>AND</code></td><td>Condição lógica E.</td><td><code>WHERE idade &gt; 18 AND cidade='SP'</code></td></tr>
+<tr><td><code>OR</code></td><td>Condição lógica OU.</td><td><code>WHERE cidade='SP' OR cidade='RJ'</code></td></tr>
+<tr><td><code>IN</code></td><td>Filtro por lista.</td><td><code>WHERE cidade IN ('SP','RJ')</code></td></tr>
+<tr><td><code>BETWEEN</code></td><td>Filtro por intervalo.</td><td><code>WHERE valor BETWEEN 100 AND 500</code></td></tr>
+<tr><td><code>LIKE</code></td><td>Busca por padrão.</td><td><code>WHERE nome LIKE 'A%'</code></td></tr>
+<tr><td><code>IS NULL</code></td><td>Verifica nulo.</td><td><code>WHERE email IS NULL</code></td></tr>
+<tr><td><code>ORDER BY</code></td><td>Ordena resultados.</td><td><code>ORDER BY idade DESC</code></td></tr>
+<tr><td><code>GROUP BY</code></td><td>Agrupa dados.</td><td><code>GROUP BY cidade</code></td></tr>
+<tr><td><code>HAVING</code></td><td>Filtra grupos.</td><td><code>HAVING COUNT(*) &gt; 5</code></td></tr>
+<tr><td><code>COUNT</code></td><td>Conta registros.</td><td><code>SELECT COUNT(*) FROM clientes</code></td></tr>
+<tr><td><code>SUM</code></td><td>Soma valores.</td><td><code>SELECT SUM(valor) FROM vendas</code></td></tr>
+<tr><td><code>AVG</code></td><td>Média.</td><td><code>SELECT AVG(valor) FROM vendas</code></td></tr>
+<tr><td><code>MIN</code></td><td>Menor valor.</td><td><code>SELECT MIN(valor) FROM vendas</code></td></tr>
+<tr><td><code>MAX</code></td><td>Maior valor.</td><td><code>SELECT MAX(valor) FROM vendas</code></td></tr>
+<tr><td><code>JOIN</code></td><td>Une tabelas.</td><td><code>FROM clientes c JOIN pedidos p ON c.id=p.id_cliente</code></td></tr>
+<tr><td><code>LEFT JOIN</code></td><td>Join à esquerda.</td><td><code>FROM clientes c LEFT JOIN pedidos p ON c.id=p.id_cliente</code></td></tr>
+<tr><td><code>RIGHT JOIN</code></td><td>Join à direita.</td><td><code>FROM clientes c RIGHT JOIN pedidos p ON c.id=p.id_cliente</code></td></tr>
+<tr><td><code>FULL JOIN</code></td><td>Join completo.</td><td><code>FROM a FULL JOIN b ON a.id=b.id</code></td></tr>
+<tr><td><code>UNION</code></td><td>Une resultados sem duplicar.</td><td><code>SELECT nome FROM a UNION SELECT nome FROM b</code></td></tr>
+<tr><td><code>UNION ALL</code></td><td>Une mantendo duplicados.</td><td><code>SELECT nome FROM a UNION ALL SELECT nome FROM b</code></td></tr>
+<tr><td><code>INSERT INTO</code></td><td>Insere dados.</td><td><code>INSERT INTO clientes VALUES (1,'Ana')</code></td></tr>
+<tr><td><code>UPDATE</code></td><td>Atualiza dados.</td><td><code>UPDATE clientes SET cidade='RJ' WHERE id=1</code></td></tr>
+<tr><td><code>DELETE</code></td><td>Remove dados.</td><td><code>DELETE FROM clientes WHERE id=1</code></td></tr>
+<tr><td><code>TRUNCATE</code></td><td>Remove todos os dados.</td><td><code>TRUNCATE TABLE clientes</code></td></tr>
+<tr><td><code>CREATE TABLE</code></td><td>Cria tabela.</td><td><code>CREATE TABLE produtos(id INT, nome TEXT)</code></td></tr>
+<tr><td><code>DROP TABLE</code></td><td>Remove tabela.</td><td><code>DROP TABLE produtos</code></td></tr>
+<tr><td><code>ALTER TABLE</code></td><td>Altera tabela.</td><td><code>ALTER TABLE clientes ADD email TEXT</code></td></tr>
+<tr><td><code>CASE</code></td><td>Condicional.</td><td><code>CASE WHEN idade&lt;18 THEN 'Menor' ELSE 'Adulto' END</code></td></tr>
+<tr><td><code>COALESCE</code></td><td>Primeiro não nulo.</td><td><code>COALESCE(email,'Sem email')</code></td></tr>
+<tr><td><code>WITH</code></td><td>CTE.</td><td><code>WITH t AS (SELECT * FROM vendas) SELECT * FROM t</code></td></tr>
+<tr><td><code>ROW_NUMBER</code></td><td>Numera linhas.</td><td><code>ROW_NUMBER() OVER(ORDER BY valor)</code></td></tr>
+<tr><td><code>RANK</code></td><td>Ranking.</td><td><code>RANK() OVER(ORDER BY valor DESC)</code></td></tr>
+<tr><td><code>LAG</code></td><td>Valor anterior.</td><td><code>LAG(valor) OVER(ORDER BY data)</code></td></tr>
+<tr><td><code>LEAD</code></td><td>Valor seguinte.</td><td><code>LEAD(valor) OVER(ORDER BY data)</code></td></tr>
+<tr><td><code>OVER</code></td><td>Janela analítica.</td><td><code>SUM(valor) OVER(PARTITION BY cliente)</code></td></tr>
+<tr><td><code>SUBSTRING</code></td><td>Extrai texto.</td><td><code>SUBSTRING(nome,1,3)</code></td></tr>
+<tr><td><code>UPPER</code></td><td>Maiúsculo.</td><td><code>UPPER(nome)</code></td></tr>
+<tr><td><code>LOWER</code></td><td>Minúsculo.</td><td><code>LOWER(nome)</code></td></tr>
+<tr><td><code>LENGTH</code></td><td>Tamanho texto.</td><td><code>LENGTH(nome)</code></td></tr>
+
+</table>
+
+<!-- ===================== FIM SQL ===================== -->
+
+<!-- ===================== BUSCADOR ===================== -->
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tr");
+  for (let i = 1; i < rows.length; i++) {
+    let text = rows[i].innerText.toLowerCase();
+    rows[i].style.display = text.includes(filter) ? "" : "none";
+  }
+});
+</script>
+
+<!-- ===================== FIM BUSCADOR ===================== -->
+
+</body>
+</html>

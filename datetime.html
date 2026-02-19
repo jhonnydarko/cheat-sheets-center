@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>DateTime Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+/* Estilo para a coluna de índice */
+.col-index { width: 40px; text-align: center; color: #7f8c8d; font-weight: bold; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>📅 DateTime Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://docs.python.org/3/library/datetime.html" target="_blank">📄 Documentação Oficial do DateTime</a></p>
+<input type="text" id="search_field" placeholder="Buscar comando, classe ou formato de data...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th> <th>Classe / Método</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>datetime.now()</code></td><td>Obtém a data e hora atual do sistema</td><td><code>datetime.now()</code></td></tr>
+<tr><td class="col-index">2</td><td><code>datetime.today()</code></td><td>Retorna a data local atual</td><td><code>datetime.today()</code></td></tr>
+<tr><td class="col-index">3</td><td><code>datetime(Y, M, D)</code></td><td>Cria um objeto de data e hora específico</td><td><code>datetime(2026, 2, 18, 11, 30)</code></td></tr>
+<tr><td class="col-index">4</td><td><code>.combine()</code></td><td>Combina um objeto date e um objeto time</td><td><code>datetime.combine(d, t)</code></td></tr>
+<tr><td class="col-index">5</td><td><code>.timestamp()</code></td><td>Converte objeto datetime para Unix timestamp</td><td><code>dt.timestamp()</code></td></tr>
+
+<tr><td class="col-index">6</td><td><code>date.today()</code></td><td>Retorna apenas a data atual</td><td><code>date.today()</code></td></tr>
+<tr><td class="col-index">7</td><td><code>date(Y, M, D)</code></td><td>Cria um objeto contendo apenas a data</td><td><code>date(2026, 12, 25)</code></td></tr>
+<tr><td class="col-index">8</td><td><code>.weekday()</code></td><td>Dia da semana como inteiro (0=Seg, 6=Dom)</td><td><code>hoje.weekday()</code></td></tr>
+<tr><td class="col-index">9</td><td><code>.isocalendar()</code></td><td>Retorna tupla (Ano, Semana, Dia da semana)</td><td><code>hoje.isocalendar()</code></td></tr>
+
+<tr><td class="col-index">10</td><td><code>time(H, M, S)</code></td><td>Cria um objeto contendo apenas a hora</td><td><code>time(14, 30, 0)</code></td></tr>
+<tr><td class="col-index">11</td><td><code>.hour / .minute / .second</code></td><td>Atributos para acessar partes da hora</td><td><code>t.hour # 14</code></td></tr>
+
+<tr><td class="col-index">12</td><td><code>timedelta(days=N)</code></td><td>Objeto para representar duração ou intervalo</td><td><code>timedelta(days=7)</code></td></tr>
+<tr><td class="col-index">13</td><td><code>Soma/Subtração</code></td><td>Calcula datas futuras ou passadas</td><td><code>amanha = hoje + timedelta(days=1)</code></td></tr>
+<tr><td class="col-index">14</td><td><code>Diferença</code></td><td>Calcula o intervalo entre duas datas</td><td><code>intervalo = data2 - data1</code></td></tr>
+<tr><td class="col-index">15</td><td><code>.total_seconds()</code></td><td>Retorna a duração total do intervalo em segundos</td><td><code>intervalo.total_seconds()</code></td></tr>
+
+<tr><td class="col-index">16</td><td><code>.strftime()</code></td><td>Formata objeto para String (format time)</td><td><code>dt.strftime("%d/%m/%Y")</code></td></tr>
+<tr><td class="col-index">17</td><td><code>.strptime()</code></td><td>Converte String para objeto (parse time)</td><td><code>datetime.strptime("18/02/26", "%d/%m/%y")</code></td></tr>
+<tr><td class="col-index">18</td><td><code>.isoformat()</code></td><td>Retorna a data no padrão ISO 8601</td><td><code>dt.isoformat() # 2026-02-18T...</code></td></tr>
+<tr><td class="col-index">19</td><td><code>.fromisoformat()</code></td><td>Cria objeto a partir de string ISO 8601</td><td><code>datetime.fromisoformat('2026-02-18')</code></td></tr>
+
+<tr><td class="col-index">20</td><td><code>.year / .month / .day</code></td><td>Acessa ano, mês ou dia</td><td><code>dt.year # 2026</code></td></tr>
+<tr><td class="col-index">21</td><td><code>.replace()</code></td><td>Cria nova data alterando campos específicos</td><td><code>dt.replace(year=2027)</code></td></tr>
+
+<tr><td class="col-index">22</td><td><code>timezone.utc</code></td><td>Objeto que representa o fuso UTC</td><td><code>datetime.now(timezone.utc)</code></td></tr>
+<tr><td class="col-index">23</td><td><code>.astimezone()</code></td><td>Converte para um novo fuso horário</td><td><code>dt.astimezone(outra_tz)</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

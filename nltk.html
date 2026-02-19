@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>NLTK Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+/* Estilo para a coluna de índice */
+.col-index { width: 40px; text-align: center; font-weight: bold; color: #7f8c8d; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🧠 NLTK Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://www.nltk.org/" target="_blank">📄 Documentação Oficial do NLTK</a></p>
+<input type="text" id="search_field" placeholder="Buscar função, corpus ou recurso NLTK...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th>
+<th>Comando / Função</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>nltk.download()</code></td><td>Baixa recursos (corpora, modelos, léxicos)</td><td><code>nltk.download('punkt')</code></td></tr>
+<tr><td class="col-index">2</td><td><code>nltk.data.path</code></td><td>Lista os diretórios onde o NLTK busca dados</td><td><code>nltk.data.path</code></td></tr>
+
+<tr><td class="col-index">3</td><td><code>word_tokenize()</code></td><td>Divide um texto em uma lista de palavras</td><td><code>word_tokenize("Olá mundo!")</code></td></tr>
+<tr><td class="col-index">4</td><td><code>sent_tokenize()</code></td><td>Divide um texto em uma lista de sentenças</td><td><code>sent_tokenize(texto_longo)</code></td></tr>
+<tr><td class="col-index">5</td><td><code>RegexpTokenizer()</code></td><td>Tokenizador baseado em expressões regulares</td><td><code>tokenizer = RegexpTokenizer('\w+')</code></td></tr>
+
+<tr><td class="col-index">6</td><td><code>stopwords.words()</code></td><td>Lista de palavras vazias (artigos, preposições)</td><td><code>stopwords.words('portuguese')</code></td></tr>
+<tr><td class="col-index">7</td><td><code>PorterStemmer()</code></td><td>Reduz palavras ao radical (algoritmo Porter)</td><td><code>stemmer.stem('running') # run</code></td></tr>
+<tr><td class="col-index">8</td><td><code>SnowballStemmer()</code></td><td>Stemmer que suporta vários idiomas (inc. PT)</td><td><code>SnowballStemmer('portuguese')</code></td></tr>
+<tr><td class="col-index">9</td><td><code>WordNetLemmatizer()</code></td><td>Reduz a palavra à sua forma canônica (lema)</td><td><code>lemmatizer.lemmatize('better', pos='a')</code></td></tr>
+
+<tr><td class="col-index">10</td><td><code>pos_tag()</code></td><td>Identifica classes gramaticais (Subst, Adj, etc)</td><td><code>nltk.pos_tag(tokens)</code></td></tr>
+<tr><td class="col-index">11</td><td><code>help.upenn_tagset()</code></td><td>Explica as siglas das etiquetas (tags)</td><td><code>nltk.help.upenn_tagset('NN')</code></td></tr>
+<tr><td class="col-index">12</td><td><code>ne_chunk()</code></td><td>Reconhecimento de Entidades Nomeadas (NER)</td><td><code>nltk.ne_chunk(tagged_tokens)</code></td></tr>
+
+<tr><td class="col-index">13</td><td><code>FreqDist()</code></td><td>Calcula a distribuição de frequência das palavras</td><td><code>fdist = FreqDist(palavras)</code></td></tr>
+<tr><td class="col-index">14</td><td><code>fdist.most_common()</code></td><td>Retorna os N termos mais frequentes</td><td><code>fdist.most_common(10)</code></td></tr>
+<tr><td class="col-index">15</td><td><code>Text()</code></td><td>Wrapper para realizar buscas no texto</td><td><code>text_obj = nltk.Text(tokens)</code></td></tr>
+<tr><td class="col-index">16</td><td><code>text_obj.concordance()</code></td><td>Mostra o contexto onde uma palavra aparece</td><td><code>text_obj.concordance('vida')</code></td></tr>
+<tr><td class="col-index">17</td><td><code>text_obj.similar()</code></td><td>Encontra palavras usadas em contextos similares</td><td><code>text_obj.similar('amor')</code></td></tr>
+<tr><td class="col-index">18</td><td><code>bigrams() / trigrams()</code></td><td>Gera sequências de 2 ou 3 palavras adjacentes</td><td><code>list(bigrams(tokens))</code></td></tr>
+<tr><td class="col-index">19</td><td><code>ngrams()</code></td><td>Gera sequências de N palavras adjacentes</td><td><code>list(ngrams(tokens, 4))</code></td></tr>
+
+<tr><td class="col-index">20</td><td><code>SentimentIntensityAnalyzer()</code></td><td>Analisa polaridade (positivo/negativo) - VADER</td><td><code>sia.polarity_scores(texto)</code></td></tr>
+<tr><td class="col-index">21</td><td><code>NaiveBayesClassifier</code></td><td>Classificador baseado no teorema de Bayes</td><td><code>NaiveBayesClassifier.train(train_set)</code></td></tr>
+<tr><td class="col-index">22</td><td><code>classify()</code></td><td>Classifica uma entrada após o treinamento</td><td><code>classifier.classify(features)</code></td></tr>
+
+<tr><td class="col-index">23</td><td><code>nltk.corpus.brown</code></td><td>Acessa o Brown Corpus (diversos gêneros)</td><td><code>brown.words()</code></td></tr>
+<tr><td class="col-index">24</td><td><code>nltk.corpus.wordnet</code></td><td>Dicionário léxico para sinônimos e antônimos</td><td><code>wordnet.synsets('dog')</code></td></tr>
+<tr><td class="col-index">25</td><td><code>synset.definition()</code></td><td>Retorna a definição de um termo no WordNet</td><td><code>syn.definition()</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

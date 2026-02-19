@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Seaborn Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+/* Estilo para a coluna de índice */
+.col-index { width: 40px; text-align: center; color: #7f8c8d; font-weight: bold; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>📊 Seaborn Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://seaborn.pydata.org/" target="_blank">📊 Site oficial do Seaborn (Documentação)</a></p>
+<input type="text" id="search_field" placeholder="Buscar comando, parâmetro ou funcionalidade do Seaborn...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th>
+<th>Comando / Função / Parâmetro</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>sns.scatterplot()</code></td><td>Gráfico de dispersão entre duas variáveis</td><td><code>sns.scatterplot(x='x', y='y', data=df)</code></td></tr>
+<tr><td class="col-index">2</td><td><code>sns.lineplot()</code></td><td>Gráfico de linha para tendências e séries temporais</td><td><code>sns.lineplot(x='time', y='val', data=df)</code></td></tr>
+<tr><td class="col-index">3</td><td><code>sns.histplot()</code></td><td>Histograma para visualização de distribuições</td><td><code>sns.histplot(data=df, x='idade')</code></td></tr>
+<tr><td class="col-index">4</td><td><code>sns.kdeplot()</code></td><td>Estimativa de densidade de kernel (curva suave)</td><td><code>sns.kdeplot(data=df, x='valor', fill=True)</code></td></tr>
+<tr><td class="col-index">5</td><td><code>sns.ecdfplot()</code></td><td>Distribuição cumulativa empírica</td><td><code>sns.ecdfplot(data=df, x='valor')</code></td></tr>
+<tr><td class="col-index">6</td><td><code>sns.rugplot()</code></td><td>Pequenos traços nos eixos para densidade marginal</td><td><code>sns.rugplot(data=df, x='valor')</code></td></tr>
+<tr><td class="col-index">7</td><td><code>sns.displot()</code></td><td>Interface de nível de figura para distribuições</td><td><code>sns.displot(data=df, x='x', kind='kde')</code></td></tr>
+<tr><td class="col-index">8</td><td><code>sns.relplot()</code></td><td>Interface de nível de figura para relações</td><td><code>sns.relplot(x='x', y='y', kind='line', data=df)</code></td></tr>
+
+<tr><td class="col-index">9</td><td><code>sns.barplot()</code></td><td>Gráfico de barras com média e intervalo de confiança</td><td><code>sns.barplot(x='cat', y='num', data=df)</code></td></tr>
+<tr><td class="col-index">10</td><td><code>sns.countplot()</code></td><td>Histograma para variáveis categóricas (contagem)</td><td><code>sns.countplot(x='categoria', data=df)</code></td></tr>
+<tr><td class="col-index">11</td><td><code>sns.boxplot()</code></td><td>Diagrama de caixa (quartis e outliers)</td><td><code>sns.boxplot(x='dia', y='total', data=df)</code></td></tr>
+<tr><td class="col-index">12</td><td><code>sns.violinplot()</code></td><td>Boxplot suavizado com densidade de kernel</td><td><code>sns.violinplot(x='dia', y='total', data=df)</code></td></tr>
+<tr><td class="col-index">13</td><td><code>sns.boxenplot()</code></td><td>Boxplot otimizado para datasets grandes</td><td><code>sns.boxenplot(x='cat', y='val', data=df)</code></td></tr>
+<tr><td class="col-index">14</td><td><code>sns.stripplot()</code></td><td>Dispersão onde um dos eixos é categórico</td><td><code>sns.stripplot(x='dia', y='total', data=df)</code></td></tr>
+<tr><td class="col-index">15</td><td><code>sns.swarmplot()</code></td><td>Stripplot com pontos que não se sobrepõem</td><td><code>sns.swarmplot(x='dia', y='total', data=df)</code></td></tr>
+<tr><td class="col-index">16</td><td><code>sns.pointplot()</code></td><td>Mostra estimativas de ponto e intervalos de confiança</td><td><code>sns.pointplot(x='time', y='total', data=df)</code></td></tr>
+<tr><td class="col-index">17</td><td><code>sns.catplot()</code></td><td>Interface de nível de figura para dados categóricos</td><td><code>sns.catplot(x='dia', kind='box', data=df)</code></td></tr>
+
+<tr><td class="col-index">18</td><td><code>sns.regplot()</code></td><td>Ajuste e plotagem de regressão linear</td><td><code>sns.regplot(x='x', y='y', data=df)</code></td></tr>
+<tr><td class="col-index">19</td><td><code>sns.lmplot()</code></td><td>Regressão linear com suporte a facetas (col/row)</td><td><code>sns.lmplot(x='x', y='y', hue='z', data=df)</code></td></tr>
+<tr><td class="col-index">20</td><td><code>sns.residplot()</code></td><td>Plota os resíduos de uma regressão linear</td><td><code>sns.residplot(x='x', y='y', data=df)</code></td></tr>
+<tr><td class="col-index">21</td><td><code>sns.heatmap()</code></td><td>Mapa de calor para matrizes retangulares</td><td><code>sns.heatmap(df.corr(), annot=True)</code></td></tr>
+<tr><td class="col-index">22</td><td><code>sns.clustermap()</code></td><td>Mapa de calor com agrupamento hierárquico</td><td><code>sns.clustermap(df.corr())</code></td></tr>
+
+<tr><td class="col-index">23</td><td><code>sns.pairplot()</code></td><td>Matriz de gráficos para todas variáveis numéricas</td><td><code>sns.pairplot(df, hue='classe')</code></td></tr>
+<tr><td class="col-index">24</td><td><code>sns.jointplot()</code></td><td>Gráfico bivariado com distribuições marginais</td><td><code>sns.jointplot(x='x', y='y', kind='hex')</code></td></tr>
+<tr><td class="col-index">25</td><td><code>sns.FacetGrid()</code></td><td>Cria grade de subplots baseada em variáveis</td><td><code>g = sns.FacetGrid(df, col='tempo')</code></td></tr>
+<tr><td class="col-index">26</td><td><code>sns.PairGrid()</code></td><td>Grade para customizar relações de pares</td><td><code>g = sns.PairGrid(df)</code></td></tr>
+<tr><td class="col-index">27</td><td><code>sns.JointGrid()</code></td><td>Grade para customizar gráficos conjuntos</td><td><code>g = sns.JointGrid(data=df, x='x', y='y')</code></td></tr>
+
+<tr><td class="col-index">28</td><td><code>sns.set_theme()</code></td><td>Define o tema, paleta e fontes globalmente</td><td><code>sns.set_theme(style='darkgrid')</code></td></tr>
+<tr><td class="col-index">29</td><td><code>sns.set_style()</code></td><td>Muda o estilo do fundo (white, dark, ticks, etc)</td><td><code>sns.set_style('whitegrid')</code></td></tr>
+<tr><td class="col-index">30</td><td><code>sns.set_context()</code></td><td>Ajusta escala (paper, notebook, talk, poster)</td><td><code>sns.set_context('poster')</code></td></tr>
+<tr><td class="col-index">31</td><td><code>sns.set_palette()</code></td><td>Define a paleta de cores padrão</td><td><code>sns.set_palette('husl')</code></td></tr>
+<tr><td class="col-index">32</td><td><code>sns.despine()</code></td><td>Remove bordas superior e direita do gráfico</td><td><code>sns.despine()</code></td></tr>
+<tr><td class="col-index">33</td><td><code>sns.color_palette()</code></td><td>Retorna uma lista de cores (paleta)</td><td><code>pal = sns.color_palette('rocket')</code></td></tr>
+<tr><td class="col-index">34</td><td><code>sns.axes_style()</code></td><td>Retorna ou define parâmetros de estilo</td><td><code>with sns.axes_style('dark'): ...</code></td></tr>
+<tr><td class="col-index">35</td><td><code>sns.plotting_context()</code></td><td>Retorna parâmetros de contexto de plotagem</td><td><code>ctx = sns.plotting_context()</code></td></tr>
+
+<tr><td class="col-index">36</td><td><code>hue=</code></td><td>Agrupa dados por cor baseada em uma variável</td><td><code>hue='categoria'</code></td></tr>
+<tr><td class="col-index">37</td><td><code>size=</code></td><td>Altera o tamanho dos pontos por variável</td><td><code>size='valor'</code></td></tr>
+<tr><td class="col-index">38</td><td><code>style=</code></td><td>Altera o formato do marcador/linha por variável</td><td><code>style='tipo'</code></td></tr>
+<tr><td class="col-index">39</td><td><code>col=</code></td><td>Cria subplots em colunas (em funções rel/cat/dis)</td><td><code>col='regiao'</code></td></tr>
+<tr><td class="col-index">40</td><td><code>row=</code></td><td>Cria subplots em linhas</td><td><code>row='ano'</code></td></tr>
+<tr><td class="col-index">41</td><td><code>units=</code></td><td>Identifica unidades de amostragem para linhas</td><td><code>units='id_sujeito'</code></td></tr>
+<tr><td class="col-index">42</td><td><code>weights=</code></td><td>Aplica pesos às observações (ex: histograma)</td><td><code>weights='peso'</code></td></tr>
+
+<tr><td class="col-index">43</td><td><code>palette=</code></td><td>Define cores específicas para o gráfico</td><td><code>palette='viridis'</code></td></tr>
+<tr><td class="col-index">44</td><td><code>alpha=</code></td><td>Transparência dos elementos (0 a 1)</td><td><code>alpha=0.6</code></td></tr>
+<tr><td class="col-index">45</td><td><code>linewidth=</code></td><td>Largura da linha dos elementos</td><td><code>linewidth=2</code></td></tr>
+<tr><td class="col-index">46</td><td><code>markers=</code></td><td>Define os tipos de marcadores</td><td><code>markers=['o', 's']</code></td></tr>
+<tr><td class="col-index">47</td><td><code>dashes=</code></td><td>Define estilos de tracejado para linhas</td><td><code>dashes=False</code></td></tr>
+<tr><td class="col-index">48</td><td><code>bins=</code></td><td>Número de intervalos no histograma</td><td><code>bins=25</code></td></tr>
+<tr><td class="col-index">49</td><td><code>kde=True</code></td><td>Adiciona curva KDE ao histograma</td><td><code>sns.histplot(x, kde=True)</code></td></tr>
+<tr><td class="col-index">50</td><td><code>multiple=</code></td><td>Como mostrar múltiplos grupos ('stack', 'dodge')</td><td><code>multiple='stack'</code></td></tr>
+<tr><td class="col-index">51</td><td><code>element=</code></td><td>Tipo de visual do hist ('step', 'poly')</td><td><code>element='step'</code></td></tr>
+<tr><td class="col-index">52</td><td><code>fill=</code></td><td>Se deve preencher a área sob a curva</td><td><code>fill=True</code></td></tr>
+<tr><td class="col-index">53</td><td><code>order=</code></td><td>Define a ordem das categorias no eixo</td><td><code>order=['A', 'B', 'C']</code></td></tr>
+<tr><td class="col-index">54</td><td><code>hue_order=</code></td><td>Define a ordem das cores na legenda</td><td><code>hue_order=['Sim', 'Não']</code></td></tr>
+<tr><td class="col-index">55</td><td><code>orient=</code></td><td>Orientação do gráfico ('v' ou 'h')</td><td><code>orient='h'</code></td></tr>
+<tr><td class="col-index">56</td><td><code>ci=</code></td><td>Tamanho do intervalo de confiança (ou None)</td><td><code>ci=None</code></td></tr>
+<tr><td class="col-index">57</td><td><code>estimator=</code></td><td>Função estatística para agregar dados</td><td><code>estimator=np.median</code></td></tr>
+<tr><td class="col-index">58</td><td><code>capsize=</code></td><td>Largura das extremidades das barras de erro</td><td><code>capsize=.2</code></td></tr>
+<tr><td class="col-index">59</td><td><code>errwidth=</code></td><td>Espessura das linhas de erro</td><td><code>errwidth=1.5</code></td></tr>
+<tr><td class="col-index">60</td><td><code>dodge=</code></td><td>Separa elementos de categorias no eixo</td><td><code>dodge=True</code></td></tr>
+<tr><td class="col-index">61</td><td><code>jitter=</code></td><td>Adiciona ruído para evitar sobreposição</td><td><code>jitter=0.1</code></td></tr>
+<tr><td class="col-index">62</td><td><code>inner=</code></td><td>Representação interna no violin ('quart', 'box')</td><td><code>inner='stick'</code></td></tr>
+<tr><td class="col-index">63</td><td><code>split=</code></td><td>Divide o violino por hue (binário)</td><td><code>split=True</code></td></tr>
+<tr><td class="col-index">64</td><td><code>cut=</code></td><td>Extensão da curva KDE além dos dados extremos</td><td><code>cut=0</code></td></tr>
+<tr><td class="col-index">65</td><td><code>bw_adjust=</code></td><td>Suavização do KDE (bandwith)</td><td><code>bw_adjust=.5</code></td></tr>
+<tr><td class="col-index">66</td><td><code>log_scale=</code></td><td>Aplica escala logarítmica aos eixos</td><td><code>log_scale=True</code></td></tr>
+<tr><td class="col-index">67</td><td><code>robust=</code></td><td>Ignora outliers na regressão linear</td><td><code>robust=True</code></td></tr>
+<tr><td class="col-index">68</td><td><code>lowess=</code></td><td>Ajusta uma regressão local suave</td><td><code>lowess=True</code></td></tr>
+<tr><td class="col-index">69</td><td><code>order=</code></td><td>Ordem do polinômio para regressão</td><td><code>order=2</code></td></tr>
+<tr><td class="col-index">70</td><td><code>x_jitter=</code></td><td>Ruído no eixo X para facilitar visualização</td><td><code>x_jitter=.05</code></td></tr>
+<tr><td class="col-index">71</td><td><code>annot=</code></td><td>Escreve os valores nas células do heatmap</td><td><code>annot=True</code></td></tr>
+<tr><td class="col-index">72</td><td><code>fmt=</code></td><td>Formatação de string para anotações</td><td><code>fmt='.1f'</code></td></tr>
+<tr><td class="col-index">73</td><td><code>cmap=</code></td><td>Mapa de cores (colormap)</td><td><code>cmap='YlGnBu'</code></td></tr>
+<tr><td class="col-index">74</td><td><code>center=</code></td><td>Valor central para divergência de cores</td><td><code>center=0</code></td></tr>
+<tr><td class="col-index">75</td><td><code>cbar=</code></td><td>Exibe ou oculta a barra de cores</td><td><code>cbar=False</code></td></tr>
+<tr><td class="col-index">76</td><td><code>square=</code></td><td>Força células do heatmap a serem quadradas</td><td><code>square=True</code></td></tr>
+<tr><td class="col-index">77</td><td><code>xticklabels=</code></td><td>Rótulos customizados para o eixo X</td><td><code>xticklabels=False</code></td></tr>
+<tr><td class="col-index">78</td><td><code>yticklabels=</code></td><td>Rótulos customizados para o eixo Y</td><td><code>yticklabels=['A', 'B']</code></td></tr>
+<tr><td class="col-index">79</td><td><code>linewidths=</code></td><td>Largura das linhas divisórias no heatmap</td><td><code>linewidths=.5</code></td></tr>
+<tr><td class="col-index">80</td><td><code>linecolor=</code></td><td>Cor das linhas divisórias no heatmap</td><td><code>linecolor='gray'</code></td></tr>
+<tr><td class="col-index">81</td><td><code>mask=</code></td><td>Oculta partes da matriz (ex: triângulo superior)</td><td><code>mask=np.triu(matriz)</code></td></tr>
+<tr><td class="col-index">82</td><td><code>kind=</code></td><td>Tipo de gráfico em funções de grade (ex: 'hex')</td><td><code>kind='reg'</code></td></tr>
+<tr><td class="col-index">83</td><td><code>diag_kind=</code></td><td>Tipo de gráfico na diagonal do pairplot</td><td><code>diag_kind='kde'</code></td></tr>
+<tr><td class="col-index">84</td><td><code>corner=</code></td><td>Mostra apenas o triângulo inferior no pairplot</td><td><code>corner=True</code></td></tr>
+<tr><td class="col-index">85</td><td><code>height=</code></td><td>Altura de cada faceta (polegadas)</td><td><code>height=4</code></td></tr>
+<tr><td class="col-index">86</td><td><code>aspect=</code></td><td>Relação largura/altura das facetas</td><td><code>aspect=1.5</code></td></tr>
+<tr><td class="col-index">87</td><td><code>legend=</code></td><td>Controla a exibição da legenda</td><td><code>legend='full'</code></td></tr>
+<tr><td class="col-index">88</td><td><code>sharex=</code></td><td>Compartilha eixo X entre facetas</td><td><code>sharex=False</code></td></tr>
+<tr><td class="col-index">89</td><td><code>sharey=</code></td><td>Compartilha eixo Y entre facetas</td><td><code>sharey=True</code></td></tr>
+<tr><td class="col-index">90</td><td><code>margin_titles=</code></td><td>Títulos das facetas nas margens da grade</td><td><code>margin_titles=True</code></td></tr>
+<tr><td class="col-index">91</td><td><code>legend_out=</code></td><td>Coloca a legenda fora da figura</td><td><code>legend_out=True</code></td></tr>
+
+<tr><td class="col-index">92</td><td><code>sns.load_dataset()</code></td><td>Carrega datasets online de exemplo</td><td><code>tips = sns.load_dataset('tips')</code></td></tr>
+<tr><td class="col-index">93</td><td><code>sns.get_dataset_names()</code></td><td>Lista nomes de datasets disponíveis</td><td><code>sns.get_dataset_names()</code></td></tr>
+<tr><td class="col-index">94</td><td><code>sns.mpl_palette()</code></td><td>Converte paletas do Matplotlib para Seaborn</td><td><code>sns.mpl_palette('coolwarm')</code></td></tr>
+<tr><td class="col-index">95</td><td><code>sns.choose_colorbrewer_palette()</code></td><td>Widget interativo para escolher paletas</td><td><code>sns.choose_colorbrewer_palette('s')</code></td></tr>
+<tr><td class="col-index">96</td><td><code>sns.move_legend()</code></td><td>Move a legenda para uma nova posição</td><td><code>sns.move_legend(obj, 'upper left')</code></td></tr>
+<tr><td class="col-index">97</td><td><code>g.set_axis_labels()</code></td><td>Define nomes dos eixos em grades (FacetGrid)</td><td><code>g.set_axis_labels('X', 'Y')</code></td></tr>
+<tr><td class="col-index">98</td><td><code>g.set_titles()</code></td><td>Define títulos para as facetas</td><td><code>g.set_titles('{col_name} Faceta')</code></td></tr>
+<tr><td class="col-index">99</td><td><code>g.add_legend()</code></td><td>Adiciona legenda manualmente a uma grade</td><td><code>g.add_legend()</code></td></tr>
+<tr><td class="col-index">100</td><td><code>g.map()</code></td><td>Aplica função de plotagem em toda grade</td><td><code>g.map(plt.hist, 'idade')</code></td></tr>
+<tr><td class="col-index">101</td><td><code>g.savefig()</code></td><td>Salva a figura em um arquivo</td><td><code>g.savefig('output.png')</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

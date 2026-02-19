@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>SQLAlchemy Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #2980b9; color: white; position: sticky; top: 0; }
+/* Estilo para a coluna de índice */
+.col-index { width: 40px; text-align: center; color: #7f8c8d; font-weight: bold; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>⚓ SQLAlchemy Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://www.sqlalchemy.org/" target="_blank">📖 Site oficial do SQLAlchemy (Documentação)</a></p>
+<input type="text" id="search_field" placeholder="Buscar por Engine, Session, Modelos, Queries...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th> <th>Comando / Função</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>create_engine()</code></td><td>Cria a conexão principal com o banco</td><td><code>engine = create_engine('sqlite:///db.sqlite')</code></td></tr>
+<tr><td class="col-index">2</td><td><code>declarative_base()</code></td><td>Classe base para modelos ORM</td><td><code>Base = declarative_base()</code></td></tr>
+<tr><td class="col-index">3</td><td><code>sessionmaker()</code></td><td>Fábrica de sessões para transações</td><td><code>Session = sessionmaker(bind=engine)</code></td></tr>
+<tr><td class="col-index">4</td><td><code>Base.metadata.create_all()</code></td><td>Cria todas as tabelas no banco de dados</td><td><code>Base.metadata.create_all(engine)</code></td></tr>
+<tr><td class="col-index">5</td><td><code>engine.connect()</code></td><td>Abre uma conexão de baixo nível (Core)</td><td><code>with engine.connect() as conn:</code></td></tr>
+
+<tr><td class="col-index">6</td><td><code>Column()</code></td><td>Define uma coluna na tabela</td><td><code>name = Column(String(50))</code></td></tr>
+<tr><td class="col-index">7</td><td><code>Integer</code></td><td>Tipo de dado: Inteiro</td><td><code>id = Column(Integer, primary_key=True)</code></td></tr>
+<tr><td class="col-index">8</td><td><code>String()</code></td><td>Tipo de dado: Texto com limite</td><td><code>email = Column(String(100), unique=True)</code></td></tr>
+<tr><td class="col-index">9</td><td><code>Float</code></td><td>Tipo de dado: Ponto flutuante</td><td><code>price = Column(Float)</code></td></tr>
+<tr><td class="col-index">10</td><td><code>Boolean</code></td><td>Tipo de dado: Booleano</td><td><code>is_active = Column(Boolean)</code></td></tr>
+<tr><td class="col-index">11</td><td><code>DateTime</code></td><td>Tipo de dado: Data e Hora</td><td><code>created_at = Column(DateTime)</code></td></tr>
+<tr><td class="col-index">12</td><td><code>ForeignKey()</code></td><td>Define chave estrangeira</td><td><code>user_id = Column(ForeignKey('users.id'))</code></td></tr>
+<tr><td class="col-index">13</td><td><code>relationship()</code></td><td>Cria relação entre objetos ORM</td><td><code>posts = relationship("Post", backref="author")</code></td></tr>
+<tr><td class="col-index">14</td><td><code>primary_key=True</code></td><td>Define coluna como chave primária</td><td><code>id = Column(Integer, primary_key=True)</code></td></tr>
+<tr><td class="col-index">15</td><td><code>nullable=False</code></td><td>Define que o campo é obrigatório</td><td><code>name = Column(String, nullable=False)</code></td></tr>
+<tr><td class="col-index">16</td><td><code>default=</code></td><td>Define valor padrão para a coluna</td><td><code>status = Column(String, default='pending')</code></td></tr>
+
+<tr><td class="col-index">17</td><td><code>session.add()</code></td><td>Adiciona um objeto à sessão</td><td><code>session.add(novo_usuario)</code></td></tr>
+<tr><td class="col-index">18</td><td><code>session.add_all()</code></td><td>Adiciona lista de objetos</td><td><code>session.add_all([u1, u2])</code></td></tr>
+<tr><td class="col-index">19</td><td><code>session.commit()</code></td><td>Confirma as alterações no banco</td><td><code>session.commit()</code></td></tr>
+<tr><td class="col-index">20</td><td><code>session.rollback()</code></td><td>Reverte alterações não confirmadas</td><td><code>session.rollback()</code></td></tr>
+<tr><td class="col-index">21</td><td><code>session.delete()</code></td><td>Marca um objeto para exclusão</td><td><code>session.delete(usuario)</code></td></tr>
+<tr><td class="col-index">22</td><td><code>session.query()</code></td><td>Inicia uma consulta ORM</td><td><code>session.query(User).all()</code></td></tr>
+<tr><td class="col-index">23</td><td><code>session.refresh()</code></td><td>Atualiza objeto com dados do banco</td><td><code>session.refresh(objeto)</code></td></tr>
+<tr><td class="col-index">24</td><td><code>session.close()</code></td><td>Fecha a sessão manual</td><td><code>session.close()</code></td></tr>
+
+<tr><td class="col-index">25</td><td><code>.all()</code></td><td>Retorna todos os resultados como lista</td><td><code>query.all()</code></td></tr>
+<tr><td class="col-index">26</td><td><code>.first()</code></td><td>Retorna apenas o primeiro resultado</td><td><code>query.first()</code></td></tr>
+<tr><td class="col-index">27</td><td><code>.one()</code></td><td>Retorna exatamente um ou erro</td><td><code>query.one()</code></td></tr>
+<tr><td class="col-index">28</td><td><code>.get()</code></td><td>Busca pela chave primária</td><td><code>session.query(User).get(1)</code></td></tr>
+<tr><td class="col-index">29</td><td><code>.filter()</code></td><td>Filtra resultados (expressões SQL)</td><td><code>query.filter(User.age > 18)</code></td></tr>
+<tr><td class="col-index">30</td><td><code>.filter_by()</code></td><td>Filtra por argumentos nomeados</td><td><code>query.filter_by(name='Joao')</code></td></tr>
+<tr><td class="col-index">31</td><td><code>.order_by()</code></td><td>Ordena os resultados</td><td><code>query.order_by(User.name.desc())</code></td></tr>
+<tr><td class="col-index">32</td><td><code>.limit()</code></td><td>Limita o número de resultados</td><td><code>query.limit(10)</code></td></tr>
+<tr><td class="col-index">33</td><td><code>.offset()</code></td><td>Pula N resultados (paginação)</td><td><code>query.offset(20)</code></td></tr>
+<tr><td class="col-index">34</td><td><code>.count()</code></td><td>Conta o número de registros</td><td><code>query.count()</code></td></tr>
+<tr><td class="col-index">35</td><td><code>.join()</code></td><td>Realiza um INNER JOIN</td><td><code>query.join(Post)</code></td></tr>
+<tr><td class="col-index">36</td><td><code>.outerjoin()</code></td><td>Realiza um LEFT OUTER JOIN</td><td><code>query.outerjoin(Post)</code></td></tr>
+
+<tr><td class="col-index">37</td><td><code>and_()</code></td><td>Operador lógico E</td><td><code>filter(and_(cond1, cond2))</code></td></tr>
+<tr><td class="col-index">38</td><td><code>or_()</code></td><td>Operador lógico OU</td><td><code>filter(or_(cond1, cond2))</code></td></tr>
+<tr><td class="col-index">39</td><td><code>not_()</code></td><td>Operador lógico NÃO</td><td><code>filter(not_(User.id == 1))</code></td></tr>
+<tr><td class="col-index">40</td><td><code>.like()</code></td><td>Busca padrão (case sensitive)</td><td><code>User.name.like('%Ana%')</code></td></tr>
+<tr><td class="col-index">41</td><td><code>.ilike()</code></td><td>Busca padrão (case insensitive)</td><td><code>User.name.ilike('%ana%')</code></td></tr>
+<tr><td class="col-index">42</td><td><code>.in_()</code></td><td>Verifica se valor está na lista</td><td><code>User.id.in_([1, 2, 3])</code></td></tr>
+<tr><td class="col-index">43</td><td><code>.is_()</code></td><td>Compara com NULL ou Booleanos</td><td><code>User.email.is_(None)</code></td></tr>
+<tr><td class="col-index">44</td><td><code>.between()</code></td><td>Intervalo de valores</td><td><code>User.age.between(20, 30)</code></td></tr>
+
+<tr><td class="col-index">45</td><td><code>func.count()</code></td><td>Função SQL COUNT</td><td><code>session.query(func.count(User.id))</code></td></tr>
+<tr><td class="col-index">46</td><td><code>func.sum()</code></td><td>Função SQL SUM</td><td><code>session.query(func.sum(Order.total))</code></td></tr>
+<tr><td class="col-index">47</td><td><code>func.avg()</code></td><td>Função SQL AVG (Média)</td><td><code>session.query(func.avg(User.age))</code></td></tr>
+<tr><td class="col-index">48</td><td><code>.group_by()</code></td><td>Agrupamento de registros</td><td><code>query.group_by(User.city)</code></td></tr>
+<tr><td class="col-index">49</td><td><code>.having()</code></td><td>Filtro pós-agrupamento</td><td><code>query.having(func.count() > 5)</code></td></tr>
+
+<tr><td class="col-index">50</td><td><code>Table()</code></td><td>Define tabela no estilo Core</td><td><code>Table('name', metadata, ...)</code></td></tr>
+<tr><td class="col-index">51</td><td><code>select()</code></td><td>Instrução SELECT (Core)</td><td><code>select([users_table])</code></td></tr>
+<tr><td class="col-index">52</td><td><code>insert()</code></td><td>Instrução INSERT (Core)</td><td><code>users_table.insert().values(name='X')</code></td></tr>
+<tr><td class="col-index">53</td><td><code>update()</code></td><td>Instrução UPDATE (Core)</td><td><code>update(User).where(id=1).values(name='Y')</code></td></tr>
+<tr><td class="col-index">54</td><td><code>text()</code></td><td>Executa SQL puro (string) safely</td><td><code>session.execute(text("SELECT * FROM u"))</code></td></tr>
+<tr><td class="col-index">55</td><td><code>alias()</code></td><td>Cria um apelido para tabela</td><td><code>u_alias = User.alias()</code></td></tr>
+
+<tr><td class="col-index">56</td><td><code>lazy='select'</code></td><td>Carregamento padrão (sob demanda)</td><td><code>relationship(..., lazy='select')</code></td></tr>
+<tr><td class="col-index">57</td><td><code>lazy='joined'</code></td><td>Eager loading (usa JOIN)</td><td><code>relationship(..., lazy='joined')</code></td></tr>
+<tr><td class="col-index">58</td><td><code>lazy='dynamic'</code></td><td>Retorna query em vez de lista</td><td><code>relationship(..., lazy='dynamic')</code></td></tr>
+<tr><td class="col-index">59</td><td><code>joinedload()</code></td><td>Carregamento otimizado de relações</td><td><code>query.options(joinedload(User.posts))</code></td></tr>
+<tr><td class="col-index">60</td><td><code>back_populates</code></td><td>Sincroniza relações bidirecionais</td><td><code>back_populates="owner"</code></td></tr>
+<tr><td class="col-index">61</td><td><code>cascade</code></td><td>Define comportamento de exclusão</td><td><code>cascade="all, delete-orphan"</code></td></tr>
+
+<tr><td class="col-index">62</td><td><code>Index()</code></td><td>Cria índice em colunas</td><td><code>Index('idx_name', User.name)</code></td></tr>
+<tr><td class="col-index">63</td><td><code>UniqueConstraint</code></td><td>Garante unicidade em múltiplas colunas</td><td><code>UniqueConstraint('a', 'b')</code></td></tr>
+<tr><td class="col-index">64</td><td><code>CheckConstraint</code></td><td>Validação a nível de banco</td><td><code>CheckConstraint('age > 0')</code></td></tr>
+<tr><td class="col-index">65</td><td><code>Enum</code></td><td>Tipo de coluna enumerada</td><td><code>Column(Enum('admin', 'user'))</code></td></tr>
+<tr><td class="col-index">66</td><td><code>BigInteger</code></td><td>Inteiro de 64 bits</td><td><code>Column(BigInteger)</code></td></tr>
+<tr><td class="col-index">67</td><td><code>Text</code></td><td>Campos de texto longo (CLOB)</td><td><code>Column(Text)</code></td></tr>
+<tr><td class="col-index">68</td><td><code>Numeric</code></td><td>Precisão decimal exata</td><td><code>Column(Numeric(10, 2))</code></td></tr>
+<tr><td class="col-index">69</td><td><code>inspect()</code></td><td>Inspeciona estados de objetos</td><td><code>inspect(usuario).persistent</code></td></tr>
+<tr><td class="col-index">70</td><td><code>distinct()</code></td><td>Remove duplicatas da query</td><td><code>session.query(User.city).distinct()</code></td></tr>
+<tr><td class="col-index">71</td><td><code>Label</code></td><td>Dá nome a uma coluna calculada</td><td><code>(User.age * 2).label('double_age')</code></td></tr>
+<tr><td class="col-index">72</td><td><code>union()</code></td><td>Une dois resultados de query</td><td><code>q1.union(q2)</code></td></tr>
+<tr><td class="col-index">73</td><td><code>scalar()</code></td><td>Retorna o primeiro valor da primeira linha</td><td><code>query.scalar()</code></td></tr>
+<tr><td class="col-index">74</td><td><code>execution_options()</code></td><td>Configurações de execução</td><td><code>stream_results=True</code></td></tr>
+<tr><td class="col-index">75</td><td><code>engine.dispose()</code></td><td>Fecha o pool de conexões</td><td><code>engine.dispose()</code></td></tr>
+<tr><td class="col-index">76</td><td><code>MetaData()</code></td><td>Coleção de definições de tabelas</td><td><code>metadata = MetaData()</code></td></tr>
+<tr><td class="col-index">77</td><td><code>Sequence()</code></td><td>Gera sequências numéricas</td><td><code>Column(Integer, Sequence('id_seq'))</code></td></tr>
+<tr><td class="col-index">78</td><td><code>JSON</code></td><td>Suporte a colunas JSON</td><td><code>Column(JSON)</code></td></tr>
+<tr><td class="col-index">79</td><td><code>ARRAY</code></td><td>Suporte a arrays (PostgreSQL)</td><td><code>Column(ARRAY(Integer))</code></td></tr>
+<tr><td class="col-index">80</td><td><code>synonym()</code></td><td>Cria um apelido para atributo</td><td><code>synonym('_name', descriptor=name)</code></td></tr>
+<tr><td class="col-index">81</td><td><code>hybrid_property</code></td><td>Atributos que funcionam em Python/SQL</td><td><code>@hybrid_property</code></td></tr>
+<tr><td class="col-index">82</td><td><code>scoped_session</code></td><td>Thread-local session container</td><td><code>session = scoped_session(...)</code></td></tr>
+<tr><td class="col-index">83</td><td><code>yield_per(n)</code></td><td>Carrega registros em lotes de N</td><td><code>query.yield_per(100)</code></td></tr>
+<tr><td class="col-index">84</td><td><code>subquery()</code></td><td>Transforma query em subconsulta</td><td><code>sub = query.subquery()</code></td></tr>
+<tr><td class="col-index">85</td><td><code>exists()</code></td><td>Cláusula EXISTS em filtros</td><td><code>query.filter(exists().where(...))</code></td></tr>
+<tr><td class="col-index">86</td><td><code>any_()</code></td><td>Coleção contém elemento (Postgres)</td><td><code>Column.any(value)</code></td></tr>
+<tr><td class="col-index">87</td><td><code>all_()</code></td><td>Todos elementos da coleção (Postgres)</td><td><code>Column.all(value)</code></td></tr>
+<tr><td class="col-index">88</td><td><code>desc()</code></td><td>Ordenação decrescente</td><td><code>User.id.desc()</code></td></tr>
+<tr><td class="col-index">89</td><td><code>asc()</code></td><td>Ordenação crescente</td><td><code>User.id.asc()</code></td></tr>
+<tr><td class="col-index">90</td><td><code>nullsfirst()</code></td><td>Coloca nulos no início</td><td><code>User.name.nullsfirst()</code></td></tr>
+<tr><td class="col-index">91</td><td><code>nullslast()</code></td><td>Coloca nulos no fim</td><td><code>User.name.nullslast()</code></td></tr>
+<tr><td class="col-index">92</td><td><code>values()</code></td><td>Extrai apenas valores específicos</td><td><code>query.values(User.name)</code></td></tr>
+<tr><td class="col-index">93</td><td><code>params()</code></td><td>Passa parâmetros para query text()</td><td><code>query.params(id=10)</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+// Mantive o script original, que funciona perfeitamente mesmo com a nova coluna.
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

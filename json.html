@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>NumPy Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+.col-index { width: 40px; text-align: center; font-weight: bold; color: #7f8c8d; background: #f9f9f9; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🔢 NumPy Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://numpy.org/doc/" target="_blank">📄 Documentação Oficial do NumPy</a></p>
+<input type="text" id="search_field" placeholder="Buscar método, atributo ou funcionalidade do NumPy...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th style="width: 30px;">#</th> <th>Comando / Função</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>pip install numpy</code></td><td>Instala a biblioteca via gerenciador de pacotes</td><td><code>pip install numpy</code></td></tr>
+<tr><td class="col-index">2</td><td><code>import numpy as np</code></td><td>Importa a biblioteca com o alias padrão</td><td><code>import numpy as np</code></td></tr>
+
+<tr><td class="col-index">3</td><td><code>np.array()</code></td><td>Cria um array a partir de uma lista</td><td><code>a = np.array([1, 2, 3])</code></td></tr>
+<tr><td class="col-index">4</td><td><code>np.zeros()</code></td><td>Cria array preenchido com zeros</td><td><code>np.zeros((3, 3))</code></td></tr>
+<tr><td class="col-index">5</td><td><code>np.ones()</code></td><td>Cria array preenchido com uns</td><td><code>np.ones((2, 4))</code></td></tr>
+<tr><td class="col-index">6</td><td><code>np.full()</code></td><td>Cria array preenchido com valor constante</td><td><code>np.full((2, 2), 7)</code></td></tr>
+<tr><td class="col-index">7</td><td><code>np.empty()</code></td><td>Cria array vazio (valores residuais da memória)</td><td><code>np.empty((2, 2))</code></td></tr>
+<tr><td class="col-index">8</td><td><code>np.arange()</code></td><td>Cria array com sequência numérica (range)</td><td><code>np.arange(0, 10, 2)</code></td></tr>
+<tr><td class="col-index">9</td><td><code>np.linspace()</code></td><td>Cria valores linearmente espaçados</td><td><code>np.linspace(0, 1, 5)</code></td></tr>
+<tr><td class="col-index">10</td><td><code>np.eye()</code></td><td>Cria uma matriz identidade</td><td><code>np.eye(3)</code></td></tr>
+<tr><td class="col-index">11</td><td><code>np.random.random()</code></td><td>Array com valores aleatórios [0.0, 1.0)</td><td><code>np.random.random((3, 3))</code></td></tr>
+<tr><td class="col-index">12</td><td><code>np.random.randint()</code></td><td>Array com inteiros aleatórios</td><td><code>np.random.randint(0, 10, (3, 3))</code></td></tr>
+<tr><td class="col-index">13</td><td><code>np.random.normal()</code></td><td>Valores com distribuição normal</td><td><code>np.random.normal(0, 1, 10)</code></td></tr>
+
+<tr><td class="col-index">14</td><td><code>a.shape</code></td><td>Retorna as dimensões do array</td><td><code>a.shape</code></td></tr>
+<tr><td class="col-index">15</td><td><code>len(a)</code></td><td>Comprimento da primeira dimensão</td><td><code>len(a)</code></td></tr>
+<tr><td class="col-index">16</td><td><code>a.ndim</code></td><td>Número de dimensões do array</td><td><code>a.ndim</code></td></tr>
+<tr><td class="col-index">17</td><td><code>a.size</code></td><td>Número total de elementos</td><td><code>a.size</code></td></tr>
+<tr><td class="col-index">18</td><td><code>a.dtype</code></td><td>Tipo de dado dos elementos</td><td><code>a.dtype</code></td></tr>
+<tr><td class="col-index">19</td><td><code>a.astype()</code></td><td>Converte o tipo de dado</td><td><code>a.astype(float)</code></td></tr>
+
+<tr><td class="col-index">20</td><td><code>np.add(a, b)</code></td><td>Soma elemento a elemento</td><td><code>np.add(a, b)</code></td></tr>
+<tr><td class="col-index">21</td><td><code>np.subtract(a, b)</code></td><td>Subtração elemento a elemento</td><td><code>np.subtract(a, b)</code></td></tr>
+<tr><td class="col-index">22</td><td><code>np.multiply(a, b)</code></td><td>Multiplicação elemento a elemento</td><td><code>np.multiply(a, b)</code></td></tr>
+<tr><td class="col-index">23</td><td><code>np.divide(a, b)</code></td><td>Divisão elemento a elemento</td><td><code>np.divide(a, b)</code></td></tr>
+<tr><td class="col-index">24</td><td><code>np.exp(a)</code></td><td>Exponencial de cada elemento</td><td><code>np.exp(a)</code></td></tr>
+<tr><td class="col-index">25</td><td><code>np.sqrt(a)</code></td><td>Raiz quadrada de cada elemento</td><td><code>np.sqrt(a)</code></td></tr>
+<tr><td class="col-index">26</td><td><code>np.sin(a)</code></td><td>Seno de cada elemento</td><td><code>np.sin(a)</code></td></tr>
+<tr><td class="col-index">27</td><td><code>np.cos(a)</code></td><td>Cosseno de cada elemento</td><td><code>np.cos(a)</code></td></tr>
+<tr><td class="col-index">28</td><td><code>np.log(a)</code></td><td>Logaritmo natural</td><td><code>np.log(a)</code></td></tr>
+<tr><td class="col-index">29</td><td><code>np.dot(a, b)</code></td><td>Produto escalar de duas matrizes</td><td><code>np.dot(a, b)</code></td></tr>
+
+<tr><td class="col-index">30</td><td><code>a.sum()</code></td><td>Soma de todos os elementos</td><td><code>a.sum()</code></td></tr>
+<tr><td class="col-index">31</td><td><code>a.min()</code></td><td>Valor mínimo do array</td><td><code>a.min()</code></td></tr>
+<tr><td class="col-index">32</td><td><code>a.max()</code></td><td>Valor máximo do array</td><td><code>a.max(axis=0)</code></td></tr>
+<tr><td class="col-index">33</td><td><code>a.mean()</code></td><td>Média aritmética</td><td><code>a.mean()</code></td></tr>
+<tr><td class="col-index">34</td><td><code>np.median(a)</code></td><td>Mediana</td><td><code>np.median(a)</code></td></tr>
+<tr><td class="col-index">35</td><td><code>a.std()</code></td><td>Desvio padrão</td><td><code>a.std()</code></td></tr>
+<tr><td class="col-index">36</td><td><code>a.var()</code></td><td>Variância</td><td><code>a.var()</code></td></tr>
+<tr><td class="col-index">37</td><td><code>a.cumsum()</code></td><td>Soma cumulativa</td><td><code>a.cumsum()</code></td></tr>
+
+<tr><td class="col-index">38</td><td><code>a.reshape()</code></td><td>Muda a forma sem alterar os dados</td><td><code>a.reshape(2, 5)</code></td></tr>
+<tr><td class="col-index">39</td><td><code>a.flatten()</code></td><td>Transforma em array de 1D</td><td><code>a.flatten()</code></td></tr>
+<tr><td class="col-index">40</td><td><code>a.T</code></td><td>Transpõe a matriz</td><td><code>a.T</code></td></tr>
+<tr><td class="col-index">41</td><td><code>np.concatenate()</code></td><td>Junta arrays por um eixo</td><td><code>np.concatenate((a, b))</code></td></tr>
+<tr><td class="col-index">42</td><td><code>np.vstack()</code></td><td>Empilha arrays verticalmente</td><td><code>np.vstack((a, b))</code></td></tr>
+<tr><td class="col-index">43</td><td><code>np.hstack()</code></td><td>Empilha arrays horizontalmente</td><td><code>np.hstack((a, b))</code></td></tr>
+<tr><td class="col-index">44</td><td><code>np.split()</code></td><td>Divide o array em vários</td><td><code>np.split(a, 3)</code></td></tr>
+
+<tr><td class="col-index">100</td><td><code>np.save()</code></td><td>Salva array em arquivo .npy</td><td><code>np.save('meu_array.npy', a)</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

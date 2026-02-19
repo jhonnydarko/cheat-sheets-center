@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>HTML5 Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #e34c26; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #f06529; color: white; position: sticky; top: 0; }
+/* Estilo para a coluna de índice */
+.col-index { width: 40px; text-align: center; font-weight: bold; color: #666; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #e34c26; font-family: 'Courier New', Courier, monospace; font-weight: bold; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🧩 HTML5 Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML" target="_blank">📄 Documentação MDN (HTML)</a></p>
+<input type="text" id="search_field" placeholder="Buscar tag, atributo ou funcionalidade HTML...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th>
+<th>Tag / Atributo</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>&lt;!DOCTYPE html&gt;</code></td><td>Declara que o documento é HTML5</td><td><code>&lt;!DOCTYPE html&gt;</code></td></tr>
+<tr><td class="col-index">2</td><td><code>&lt;html&gt;</code></td><td>Raiz do documento HTML</td><td><code>&lt;html lang="pt-br"&gt;</code></td></tr>
+<tr><td class="col-index">3</td><td><code>&lt;head&gt;</code></td><td>Metadados e informações técnicas</td><td><code>&lt;head&gt;...&lt;/head&gt;</code></td></tr>
+<tr><td class="col-index">4</td><td><code>&lt;body&gt;</code></td><td>Conteúdo visível do site</td><td><code>&lt;body&gt;...&lt;/body&gt;</code></td></tr>
+<tr><td class="col-index">5</td><td><code>&lt;title&gt;</code></td><td>Título da página na aba do navegador</td><td><code>&lt;title&gt;Meu Site&lt;/title&gt;</code></td></tr>
+<tr><td class="col-index">6</td><td><code>&lt;meta charset&gt;</code></td><td>Define a codificação de caracteres</td><td><code>&lt;meta charset="UTF-8"&gt;</code></td></tr>
+<tr><td class="col-index">7</td><td><code>&lt;link&gt;</code></td><td>Vincula arquivos externos (CSS, ícones)</td><td><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></td></tr>
+<tr><td class="col-index">8</td><td><code>&lt;style&gt;</code></td><td>Bloco de CSS interno</td><td><code>&lt;style&gt; body { color: red; } &lt;/style&gt;</code></td></tr>
+<tr><td class="col-index">9</td><td><code>&lt;script&gt;</code></td><td>Inclui ou escreve JavaScript</td><td><code>&lt;script src="script.js"&gt;&lt;/script&gt;</code></td></tr>
+<tr><td class="col-index">10</td><td><code>&lt;header&gt;</code></td><td>Cabeçalho da página ou seção</td><td><code>&lt;header&gt;...&lt;/header&gt;</code></td></tr>
+<tr><td class="col-index">11</td><td><code>&lt;nav&gt;</code></td><td>Seção de links de navegação</td><td><code>&lt;nav&gt;...&lt;/nav&gt;</code></td></tr>
+<tr><td class="col-index">12</td><td><code>&lt;main&gt;</code></td><td>Conteúdo principal e único da página</td><td><code>&lt;main&gt;...&lt;/main&gt;</code></td></tr>
+<tr><td class="col-index">13</td><td><code>&lt;section&gt;</code></td><td>Seção temática genérica</td><td><code>&lt;section&gt;...&lt;/section&gt;</code></td></tr>
+<tr><td class="col-index">14</td><td><code>&lt;article&gt;</code></td><td>Conteúdo independente (post, notícia)</td><td><code>&lt;article&gt;...&lt;/article&gt;</code></td></tr>
+<tr><td class="col-index">15</td><td><code>&lt;aside&gt;</code></td><td>Conteúdo lateral ou relacionado</td><td><code>&lt;aside&gt;...&lt;/aside&gt;</code></td></tr>
+<tr><td class="col-index">16</td><td><code>&lt;footer&gt;</code></td><td>Rodapé da página ou seção</td><td><code>&lt;footer&gt;...&lt;/footer&gt;</code></td></tr>
+<tr><td class="col-index">17</td><td><code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code></td><td>Títulos hierárquicos (H1 é o mais importante)</td><td><code>&lt;h1&gt;Título&lt;/h1&gt;</code></td></tr>
+<tr><td class="col-index">18</td><td><code>&lt;p&gt;</code></td><td>Parágrafo de texto</td><td><code>&lt;p&gt;Olá mundo!&lt;/p&gt;</code></td></tr>
+<tr><td class="col-index">19</td><td><code>&lt;br&gt;</code></td><td>Quebra de linha simples</td><td><code>Linha 1 &lt;br&gt; Linha 2</code></td></tr>
+<tr><td class="col-index">20</td><td><code>&lt;hr&gt;</code></td><td>Linha horizontal (divisão temática)</td><td><code>&lt;hr&gt;</code></td></tr>
+<tr><td class="col-index">21</td><td><code>&lt;strong&gt;</code></td><td>Texto com forte importância (Negrito)</td><td><code>&lt;strong&gt;Atenção&lt;/strong&gt;</code></td></tr>
+<tr><td class="col-index">22</td><td><code>&lt;em&gt;</code></td><td>Texto com ênfase (Itálico)</td><td><code>&lt;em&gt;Importante&lt;/em&gt;</code></td></tr>
+<tr><td class="col-index">23</td><td><code>&lt;blockquote&gt;</code></td><td>Citação em bloco de outra fonte</td><td><code>&lt;blockquote&gt;...&lt;/blockquote&gt;</code></td></tr>
+<tr><td class="col-index">24</td><td><code>&lt;cite&gt;</code></td><td>Referência a uma obra citada</td><td><code>&lt;cite&gt;Dom Casmurro&lt;/cite&gt;</code></td></tr>
+<tr><td class="col-index">25</td><td><code>&lt;ul&gt;</code></td><td>Lista não ordenada (bolinhas)</td><td><code>&lt;ul&gt;...&lt;/ul&gt;</code></td></tr>
+<tr><td class="col-index">26</td><td><code>&lt;ol&gt;</code></td><td>Lista ordenada (números)</td><td><code>&lt;ol&gt;...&lt;/ol&gt;</code></td></tr>
+<tr><td class="col-index">27</td><td><code>&lt;li&gt;</code></td><td>Item de uma lista</td><td><code>&lt;li&gt;Item 1&lt;/li&gt;</code></td></tr>
+<tr><td class="col-index">28</td><td><code>&lt;a&gt;</code></td><td>Hiperlink para outra página</td><td><code>&lt;a href="https://google.com"&gt;Link&lt;/a&gt;</code></td></tr>
+<tr><td class="col-index">29</td><td><code>target="_blank"</code></td><td>Abre link em nova aba</td><td><code>&lt;a target="_blank" ...&gt;</code></td></tr>
+<tr><td class="col-index">30</td><td><code>&lt;img&gt;</code></td><td>Insere uma imagem</td><td><code>&lt;img src="foto.jpg" alt="Descrição"&gt;</code></td></tr>
+<tr><td class="col-index">31</td><td><code>&lt;video&gt;</code></td><td>Reproduz vídeo</td><td><code>&lt;video controls src="v.mp4"&gt;</code></td></tr>
+<tr><td class="col-index">32</td><td><code>&lt;audio&gt;</code></td><td>Reproduz áudio</td><td><code>&lt;audio controls src="a.mp3"&gt;</code></td></tr>
+<tr><td class="col-index">33</td><td><code>&lt;iframe&gt;</code></td><td>Incorpora outra página (ex: Youtube)</td><td><code>&lt;iframe src="..."&gt;&lt;/iframe&gt;</code></td></tr>
+<tr><td class="col-index">34</td><td><code>&lt;table&gt;</code></td><td>Define uma tabela</td><td><code>&lt;table&gt;...&lt;/table&gt;</code></td></tr>
+<tr><td class="col-index">35</td><td><code>&lt;thead&gt;</code></td><td>Cabeçalho da tabela</td><td><code>&lt;thead&gt;...&lt;/thead&gt;</code></td></tr>
+<tr><td class="col-index">36</td><td><code>&lt;tr&gt;</code></td><td>Linha da tabela</td><td><code>&lt;tr&gt;...&lt;/tr&gt;</code></td></tr>
+<tr><td class="col-index">37</td><td><code>&lt;th&gt;</code></td><td>Célula de cabeçalho</td><td><code>&lt;th&gt;Coluna 1&lt;/th&gt;</code></td></tr>
+<tr><td class="col-index">38</td><td><code>&lt;td&gt;</code></td><td>Célula de dados comuns</td><td><code>&lt;td&gt;Dado&lt;/td&gt;</code></td></tr>
+<tr><td class="col-index">39</td><td><code>&lt;form&gt;</code></td><td>Define um formulário</td><td><code>&lt;form action="/save"&gt;</code></td></tr>
+<tr><td class="col-index">40</td><td><code>&lt;label&gt;</code></td><td>Rótulo para um campo de entrada</td><td><code>&lt;label for="id"&gt;Nome&lt;/label&gt;</code></td></tr>
+<tr><td class="col-index">41</td><td><code>&lt;input type="text"&gt;</code></td><td>Campo de texto simples</td><td><code>&lt;input type="text"&gt;</code></td></tr>
+<tr><td class="col-index">42</td><td><code>&lt;input type="password"&gt;</code></td><td>Campo de senha (oculto)</td><td><code>&lt;input type="password"&gt;</code></td></tr>
+<tr><td class="col-index">43</td><td><code>&lt;input type="email"&gt;</code></td><td>Campo que valida e-mail</td><td><code>&lt;input type="email"&gt;</code></td></tr>
+<tr><td class="col-index">44</td><td><code>&lt;input type="submit"&gt;</code></td><td>Botão de enviar formulário</td><td><code>&lt;input type="submit"&gt;</code></td></tr>
+<tr><td class="col-index">45</td><td><code>&lt;button&gt;</code></td><td>Botão clicável genérico</td><td><code>&lt;button&gt;Clique Aqui&lt;/button&gt;</code></td></tr>
+<tr><td class="col-index">46</td><td><code>&lt;textarea&gt;</code></td><td>Campo de texto de múltiplas linhas</td><td><code>&lt;textarea&gt;&lt;/textarea&gt;</code></td></tr>
+<tr><td class="col-index">47</td><td><code>&lt;select&gt;</code></td><td>Lista suspensa (dropdown)</td><td><code>&lt;select&gt;...&lt;/select&gt;</code></td></tr>
+<tr><td class="col-index">48</td><td><code>&lt;option&gt;</code></td><td>Opção dentro de um select</td><td><code>&lt;option value="1"&gt;A&lt;/option&gt;</code></td></tr>
+<tr><td class="col-index">49</td><td><code>id</code></td><td>Identificador único para o elemento</td><td><code>&lt;div id="meu-id"&gt;</code></td></tr>
+<tr><td class="col-index">50</td><td><code>class</code></td><td>Classe para estilização (múltiplos)</td><td><code>&lt;div class="card"&gt;</code></td></tr>
+<tr><td class="col-index">51</td><td><code>style</code></td><td>CSS direto no elemento (inline)</td><td><code>&lt;p style="color: blue;"&gt;</code></td></tr>
+<tr><td class="col-index">52</td><td><code>title</code></td><td>Dica de ferramenta ao passar o mouse</td><td><code>&lt;span title="Dica"&gt;Texto&lt;/span&gt;</code></td></tr>
+<tr><td class="col-index">53</td><td><code>data-*</code></td><td>Atributos de dados customizados</td><td><code>&lt;div data-user-id="123"&gt;</code></td></tr>
+<tr><td class="col-index">54</td><td><code>hidden</code></td><td>Esconde o elemento da tela</td><td><code>&lt;p hidden&gt;Invisível&lt;/p&gt;</code></td></tr>
+<tr><td class="col-index">55</td><td><code>&lt;details&gt;</code></td><td>Cria um widget de sanfona (retrátil)</td><td><code>&lt;details&gt;...&lt;/details&gt;</code></td></tr>
+<tr><td class="col-index">56</td><td><code>&lt;summary&gt;</code></td><td>Título visível do &lt;details&gt;</td><td><code>&lt;summary&gt;Leia mais&lt;/summary&gt;</code></td></tr>
+<tr><td class="col-index">57</td><td><code>&lt;dialog&gt;</code></td><td>Caixa de diálogo ou modal nativa</td><td><code>&lt;dialog open&gt;...&lt;/dialog&gt;</code></td></tr>
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    // Pegamos apenas as colunas de conteúdo para o filtro (ignorando o índice se desejar)
+    // Mas manter row.innerText funciona bem pois inclui o texto das tags.
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Bokeh Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+/* Estilo para a coluna de índice */
+.col-index { width: 40px; text-align: center; color: #888; font-weight: bold; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>✨ Bokeh Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://docs.bokeh.org/" target="_blank">🎡 Site oficial do Bokeh (Documentação)</a></p>
+<input type="text" id="search_field" placeholder="Buscar comando, glifo ou ferramenta do Bokeh...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th>
+<th>Comando / Função / Parâmetro</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>figure()</code></td><td>Cria um novo objeto de figura para plotagem</td><td><code>p = figure(title="Graf")</code></td></tr>
+<tr><td class="col-index">2</td><td><code>show()</code></td><td>Exibe o gráfico em um navegador</td><td><code>show(p)</code></td></tr>
+<tr><td class="col-index">3</td><td><code>output_file()</code></td><td>Configura o destino de saída para um arquivo HTML</td><td><code>output_file("plot.html")</code></td></tr>
+<tr><td class="col-index">4</td><td><code>output_notebook()</code></td><td>Configura o Bokeh para exibir no Jupyter Notebook</td><td><code>output_notebook()</code></td></tr>
+<tr><td class="col-index">5</td><td><code>save()</code></td><td>Salva a plotagem em um arquivo</td><td><code>save(p)</code></td></tr>
+
+<tr><td class="col-index">6</td><td><code>p.circle()</code></td><td>Adiciona marcadores circulares</td><td><code>p.circle(x, y, size=10)</code></td></tr>
+<tr><td class="col-index">7</td><td><code>p.line()</code></td><td>Desenha um gráfico de linha</td><td><code>p.line(x, y, line_width=2)</code></td></tr>
+<tr><td class="col-index">8</td><td><code>p.square()</code></td><td>Adiciona marcadores quadrados</td><td><code>p.square(x, y, color="red")</code></td></tr>
+<tr><td class="col-index">9</td><td><code>p.rect()</code></td><td>Desenha retângulos (eixo, largura, altura)</td><td><code>p.rect(x, y, width, height)</code></td></tr>
+<tr><td class="col-index">10</td><td><code>p.hbar()</code></td><td>Barras horizontais</td><td><code>p.hbar(y, right, height)</code></td></tr>
+<tr><td class="col-index">11</td><td><code>p.vbar()</code></td><td>Barras verticais</td><td><code>p.vbar(x, top, width)</code></td></tr>
+<tr><td class="col-index">12</td><td><code>p.patch()</code></td><td>Desenha um polígono simples</td><td><code>p.patch(x, y, color="blue")</code></td></tr>
+<tr><td class="col-index">13</td><td><code>p.patches()</code></td><td>Desenha múltiplos polígonos</td><td><code>p.patches([x1, x2], [y1, y2])</code></td></tr>
+<tr><td class="col-index">14</td><td><code>p.annulus()</code></td><td>Desenha anéis (círculos vazados)</td><td><code>p.annulus(x, y, inner, outer)</code></td></tr>
+<tr><td class="col-index">15</td><td><code>p.wedge()</code></td><td>Desenha fatias de pizza/arcos</td><td><code>p.wedge(x, y, radius, start, end)</code></td></tr>
+<tr><td class="col-index">16</td><td><code>p.step()</code></td><td>Gráfico de degraus</td><td><code>p.step(x, y, mode="center")</code></td></tr>
+<tr><td class="col-index">17</td><td><code>p.scatter()</code></td><td>Interface genérica para dispersão</td><td><code>p.scatter(x, y, marker="hex")</code></td></tr>
+<tr><td class="col-index">18</td><td><code>p.text()</code></td><td>Adiciona texto ao gráfico</td><td><code>p.text(x, y, text=["Rótulo"])</code></td></tr>
+<tr><td class="col-index">19</td><td><code>p.segment()</code></td><td>Desenha segmentos de reta (x0, y0 para x1, y1)</td><td><code>p.segment(x0, y0, x1, y1)</code></td></tr>
+<tr><td class="col-index">20</td><td><code>p.ray()</code></td><td>Desenha raios com comprimento e ângulo</td><td><code>p.ray(x, y, length, angle)</code></td></tr>
+<tr><td class="col-index">21</td><td><code>p.image()</code></td><td>Renderiza imagens brutas</td><td><code>p.image(image=[data], x, y)</code></td></tr>
+<tr><td class="col-index">22</td><td><code>p.image_rgba()</code></td><td>Renderiza imagens RGBA</td><td><code>p.image_rgba(image=[data], x, y)</code></td></tr>
+<tr><td class="col-index">23</td><td><code>p.hex_tile()</code></td><td>Cria grades hexagonais (binning)</td><td><code>p.hex_tile(q, r, size=1)</code></td></tr>
+<tr><td class="col-index">24</td><td><code>p.multi_line()</code></td><td>Desenha várias linhas independentes</td><td><code>p.multi_line([x1, x2], [y1, y2])</code></td></tr>
+
+<tr><td class="col-index">25</td><td><code>ColumnDataSource</code></td><td>Objeto principal de dados do Bokeh</td><td><code>source = ColumnDataSource(df)</code></td></tr>
+<tr><td class="col-index">26</td><td><code>source.data</code></td><td>Dicionário interno de dados</td><td><code>source.data['nova'] = [1, 2]</code></td></tr>
+<tr><td class="col-index">27</td><td><code>CDSView</code></td><td>Permite criar filtros sobre o ColumnDataSource</td><td><code>view = CDSView(filter=f)</code></td></tr>
+<tr><td class="col-index">28</td><td><code>BooleanFilter</code></td><td>Filtra dados usando booleanos</td><td><code>BooleanFilter([True, False])</code></td></tr>
+<tr><td class="col-index">29</td><td><code>IndexFilter</code></td><td>Filtra dados por índices específicos</td><td><code>IndexFilter([0, 2, 4])</code></td></tr>
+
+<tr><td class="col-index">30</td><td><code>HoverTool</code></td><td>Exibe informações ao passar o mouse</td><td><code>HoverTool(tooltips=[("V", "@val")])</code></td></tr>
+<tr><td class="col-index">31</td><td><code>BoxZoomTool</code></td><td>Ferramenta de zoom por caixa</td><td><code>p.add_tools(BoxZoomTool())</code></td></tr>
+<tr><td class="col-index">32</td><td><code>WheelZoomTool</code></td><td>Zoom via scroll do mouse</td><td><code>p.add_tools(WheelZoomTool())</code></td></tr>
+<tr><td class="col-index">33</td><td><code>ResetTool</code></td><td>Reseta a visualização do gráfico</td><td><code>p.add_tools(ResetTool())</code></td></tr>
+<tr><td class="col-index">34</td><td><code>SaveTool</code></td><td>Botão para salvar como imagem PNG</td><td><code>p.add_tools(SaveTool())</code></td></tr>
+<tr><td class="col-index">35</td><td><code>PanTool</code></td><td>Arrasta o gráfico</td><td><code>p.toolbar.active_drag = PanTool()</code></td></tr>
+<tr><td class="col-index">36</td><td><code>TapTool</code></td><td>Permite interações de clique nos glifos</td><td><code>p.add_tools(TapTool())</code></td></tr>
+<tr><td class="col-index">37</td><td><code>CrosshairTool</code></td><td>Mostra mira nos eixos</td><td><code>p.add_tools(CrosshairTool())</code></td></tr>
+<tr><td class="col-index">38</td><td><code>LassoSelectTool</code></td><td>Seleção manual de pontos com laço</td><td><code>p.add_tools(LassoSelectTool())</code></td></tr>
+<tr><td class="col-index">39</td><td><code>tooltips=</code></td><td>Define o conteúdo do balão de ajuda</td><td><code>tooltips="@nome: @valor"</code></td></tr>
+
+<tr><td class="col-index">40</td><td><code>column()</code></td><td>Organiza plots verticalmente</td><td><code>layout = column(p1, p2)</code></td></tr>
+<tr><td class="col-index">41</td><td><code>row()</code></td><td>Organiza plots horizontalmente</td><td><code>layout = row(p1, p2)</code></td></tr>
+<tr><td class="col-index">42</td><td><code>gridplot()</code></td><td>Cria uma grade de múltiplos gráficos</td><td><code>gridplot([[p1, p2], [p3, p4]])</code></td></tr>
+<tr><td class="col-index">43</td><td><code>p.title.text</code></td><td>Define o texto do título</td><td><code>p.title.text = "Novo"</code></td></tr>
+<tr><td class="col-index">44</td><td><code>p.xaxis.axis_label</code></td><td>Legenda do eixo X</td><td><code>p.xaxis.axis_label = "Tempo"</code></td></tr>
+<tr><td class="col-index">45</td><td><code>p.yaxis.axis_label</code></td><td>Legenda do eixo Y</td><td><code>p.yaxis.axis_label = "Valor"</code></td></tr>
+<tr><td class="col-index">46</td><td><code>p.background_fill_color</code></td><td>Cor de fundo da área do plot</td><td><code>p.background_fill_color = "beige"</code></td></tr>
+<tr><td class="col-index">47</td><td><code>p.grid.grid_line_color</code></td><td>Cor das linhas de grade</td><td><code>p.grid.grid_line_color = None</code></td></tr>
+<tr><td class="col-index">48</td><td><code>p.legend.location</code></td><td>Posição da legenda</td><td><code>p.legend.location = "top_left"</code></td></tr>
+<tr><td class="col-index">49</td><td><code>p.legend.click_policy</code></td><td>Ação ao clicar na legenda ('hide', 'mute')</td><td><code>p.legend.click_policy = "hide"</code></td></tr>
+<tr><td class="col-index">50</td><td><code>p.x_range</code></td><td>Range manual do eixo X</td><td><code>p.x_range = Range1d(0, 10)</code></td></tr>
+
+<tr><td class="col-index">51</td><td><code>fill_color=</code></td><td>Cor de preenchimento</td><td><code>fill_color="#ff0000"</code></td></tr>
+<tr><td class="col-index">52</td><td><code>fill_alpha=</code></td><td>Opacidade do preenchimento</td><td><code>fill_alpha=0.5</code></td></tr>
+<tr><td class="col-index">53</td><td><code>line_color=</code></td><td>Cor da borda/linha</td><td><code>line_color="black"</code></td></tr>
+<tr><td class="col-index">54</td><td><code>line_dash=</code></td><td>Estilo da linha ('solid', 'dashed')</td><td><code>line_dash="dotdash"</code></td></tr>
+<tr><td class="col-index">55</td><td><code>legend_label=</code></td><td>Texto para a legenda do glifo</td><td><code>legend_label="Set 1"</code></td></tr>
+<tr><td class="col-index">56</td><td><code>muted_alpha=</code></td><td>Opacidade quando silenciado via legenda</td><td><code>muted_alpha=0.1</code></td></tr>
+<tr><td class="col-index">57</td><td><code>nonselection_alpha=</code></td><td>Opacidade de itens não selecionados</td><td><code>nonselection_alpha=0.2</code></td></tr>
+
+<tr><td class="col-index">58</td><td><code>Viridis256</code></td><td>Paleta de cores Viridis</td><td><code>from bokeh.palettes import Viridis256</code></td></tr>
+<tr><td class="col-index">59</td><td><code>Spectral6</code></td><td>Paleta espectral com 6 cores</td><td><code>from bokeh.palettes import Spectral6</code></td></tr>
+<tr><td class="col-index">60</td><td><code>linear_cmap()</code></td><td>Mapeamento de cor linear para dados</td><td><code>linear_cmap('y', 'Viridis256', 0, 10)</code></td></tr>
+<tr><td class="col-index">61</td><td><code>log_cmap()</code></td><td>Mapeamento de cor logarítmico</td><td><code>log_cmap('y', 'Magma256', 1, 100)</code></td></tr>
+<tr><td class="col-index">62</td><td><code>CategoricalColorMapper</code></td><td>Mapeia cores para categorias</td><td><code>CategoricalColorMapper(factors=f, palette=p)</code></td></tr>
+
+<tr><td class="col-index">63</td><td><code>Slider()</code></td><td>Widget de controle deslizante</td><td><code>Slider(start=0, end=10, value=1)</code></td></tr>
+<tr><td class="col-index">64</td><td><code>Select()</code></td><td>Menu suspenso de seleção</td><td><code>Select(options=['A', 'B'], value='A')</code></td></tr>
+<tr><td class="col-index">65</td><td><code>Button()</code></td><td>Botão clicável</td><td><code>Button(label="Clique Aqui")</code></td></tr>
+<tr><td class="col-index">66</td><td><code>TextInput()</code></td><td>Campo para entrada de texto</td><td><code>TextInput(value="default")</code></td></tr>
+<tr><td class="col-index">67</td><td><code>CheckboxGroup()</code></td><td>Grupo de caixas de seleção</td><td><code>CheckboxGroup(labels=["Op1", "Op2"])</code></td></tr>
+<tr><td class="col-index">68</td><td><code>RadioGroup()</code></td><td>Grupo de botões de rádio</td><td><code>RadioGroup(labels=["A", "B"])</code></td></tr>
+<tr><td class="col-index">69</td><td><code>DataTable()</code></td><td>Tabela de dados interativa na UI</td><td><code>DataTable(source=src, columns=cols)</code></td></tr>
+<tr><td class="col-index">70</td><td><code>Tabs()</code></td><td>Organiza layouts em abas</td><td><code>Tabs(tabs=[tab1, tab2])</code></td></tr>
+<tr><td class="col-index">71</td><td><code>Panel()</code></td><td>Cria uma aba (componente do Tabs)</td><td><code>Panel(child=p, title="Aba 1")</code></td></tr>
+
+<tr><td class="col-index">72</td><td><code>curdoc()</code></td><td>Referência ao documento atual (Bokeh Server)</td><td><code>curdoc().add_root(layout)</code></td></tr>
+<tr><td class="col-index">73</td><td><code>CustomJS</code></td><td>Executa código JavaScript no lado do cliente</td><td><code>CustomJS(args=dict(s=src), code="...")</code></td></tr>
+<tr><td class="col-index">74</td><td><code>js_on_change()</code></td><td>Gatilha JS ao mudar uma propriedade</td><td><code>obj.js_on_change('value', callback)</code></td></tr>
+<tr><td class="col-index">75</td><td><code>on_change()</code></td><td>Gatilha Python ao mudar valor (Server)</td><td><code>obj.on_change('value', callback)</code></td></tr>
+
+<tr><td class="col-index">76</td><td><code>DatetimeTickFormatter</code></td><td>Formata datas nos eixos</td><td><code>p.xaxis.formatter = DatetimeTickFormatter()</code></td></tr>
+<tr><td class="col-index">77</td><td><code>NumeralTickFormatter</code></td><td>Formata números (ex: moeda)</td><td><code>p.yaxis.formatter = NumeralTickFormatter(format="$0,0")</code></td></tr>
+<tr><td class="col-index">78</td><td><code>LogColorMapper</code></td><td>Escala de cores logarítmica</td><td><code>LogColorMapper(palette="Viridis256")</code></td></tr>
+<tr><td class="col-index">79</td><td><code>p.x_axis_type</code></td><td>Tipo de escala do eixo ('log', 'datetime')</td><td><code>figure(x_axis_type="datetime")</code></td></tr>
+<tr><td class="col-index">80</td><td><code>p.xaxis.major_label_orientation</code></td><td>Rotaciona os labels do eixo</td><td><code>p.xaxis.major_label_orientation = 1.2</code></td></tr>
+<tr><td class="col-index">81</td><td><code>p.axis.visible</code></td><td>Mostra ou esconde eixos</td><td><code>p.axis.visible = False</code></td></tr>
+
+<tr><td class="col-index">82</td><td><code>Label()</code></td><td>Adiciona um rótulo de texto fixo</td><td><code>p.add_layout(Label(x=1, y=2, text="Hi"))</code></td></tr>
+<tr><td class="col-index">83</td><td><code>Span()</code></td><td>Desenha uma linha infinita (horizontal/vertical)</td><td><code>Span(location=10, dimension='width')</code></td></tr>
+<tr><td class="col-index">84</td><td><code>BoxAnnotation()</code></td><td>Destaque de área (sombreado)</td><td><code>BoxAnnotation(left=2, right=5, fill_alpha=0.1)</code></td></tr>
+<tr><td class="col-index">85</td><td><code>Arrow()</code></td><td>Adiciona setas indicativas</td><td><code>p.add_layout(Arrow(end=VeeHead(), x_start=0...))</code></td></tr>
+<tr><td class="col-index">86</td><td><code>ColorBar()</code></td><td>Adiciona uma barra de legenda de cores</td><td><code>p.add_layout(ColorBar(color_mapper=m))</code></td></tr>
+
+<tr><td class="col-index">87</td><td><code>p.toolbar_location</code></td><td>Define onde fica a barra de ferramentas</td><td><code>p.toolbar_location = "below"</code></td></tr>
+<tr><td class="col-index">88</td><td><code>p.sizing_mode</code></td><td>Comportamento de redimensionamento</td><td><code>p.sizing_mode = "stretch_width"</code></td></tr>
+<tr><td class="col-index">89</td><td><code>p.outline_line_color</code></td><td>Cor da linha de contorno externa</td><td><code>p.outline_line_color = "navy"</code></td></tr>
+<tr><td class="col-index">90</td><td><code>p.min_border</code></td><td>Margem mínima ao redor do plot</td><td><code>p.min_border = 40</code></td></tr>
+<tr><td class="col-index">91</td><td><code>export_png()</code></td><td>Exporta o plot para PNG (via selenium)</td><td><code>export_png(p, filename="p.png")</code></td></tr>
+<tr><td class="col-index">92</td><td><code>export_svgs()</code></td><td>Exporta o plot para SVG</td><td><code>export_svgs(p, filename="p.svg")</code></td></tr>
+<tr><td class="col-index">93</td><td><code>from_networkx()</code></td><td>Cria visualização de grafos do NetworkX</td><td><code>from_networkx(G, pos)</code></td></tr>
+<tr><td class="col-index">94</td><td><code>Step()</code></td><td>Glifo de degrau (baixo nível)</td><td><code>p.add_glyph(src, Step(x="x", y="y"))</code></td></tr>
+<tr><td class="col-index">95</td><td><code>VArea()</code></td><td>Área preenchida verticalmente</td><td><code>p.varea(x=x, y1=0, y2=y)</code></td></tr>
+<tr><td class="col-index">96</td><td><code>HArea()</code></td><td>Área preenchida horizontalmente</td><td><code>p.harea(x1=0, x2=x, y=y)</code></td></tr>
+<tr><td class="col-index">97</td><td><code>Whisker()</code></td><td>Adiciona barras de erro/bigodes</td><td><code>p.add_layout(Whisker(source=s, base="x", upper="u"))</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    // Busca em todo o conteúdo da linha
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>CatBoost Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+/* Estilo para a coluna de índice */
+.col-index { width: 40px; text-align: center; color: #888; font-weight: bold; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🚀 CatBoost Cheat Sheet</h1>
+<p><a href="https://catboost.ai/docs/" target="_blank">📄 Documentação Oficial</a></p>
+<input type="text" id="search_field" placeholder="Buscar comando, parâmetro ou funcionalidade do CatBoost...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th>
+<th>Comando / Função / Parâmetro</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>pip install catboost</code></td><td>Instala a biblioteca via terminal</td><td><code>!pip install catboost</code></td></tr>
+<tr><td class="col-index">2</td><td><code>CatBoostClassifier()</code></td><td>Modelo para problemas de classificação</td><td><code>model = CatBoostClassifier()</code></td></tr>
+<tr><td class="col-index">3</td><td><code>CatBoostRegressor()</code></td><td>Modelo para problemas de regressão</td><td><code>model = CatBoostRegressor()</code></td></tr>
+<tr><td class="col-index">4</td><td><code>Pool()</code></td><td>Estrutura de dados otimizada do CatBoost</td><td><code>train_pool = Pool(X, y, cat_features=ids)</code></td></tr>
+
+<tr><td class="col-index">5</td><td><code>iterations=</code></td><td>Número máximo de árvores (n_estimators)</td><td><code>iterations=1000</code></td></tr>
+<tr><td class="col-index">6</td><td><code>learning_rate=</code></td><td>Taxa de aprendizado (eta)</td><td><code>learning_rate=0.03</code></td></tr>
+<tr><td class="col-index">7</td><td><code>depth=</code></td><td>Profundidade das árvores (1 a 16)</td><td><code>depth=6</code></td></tr>
+<tr><td class="col-index">8</td><td><code>l2_leaf_reg=</code></td><td>Coeficiente de regularização L2</td><td><code>l2_leaf_reg=3.0</code></td></tr>
+<tr><td class="col-index">9</td><td><code>cat_features=</code></td><td>Lista de índices das colunas categóricas</td><td><code>cat_features=[0, 3, 5]</code></td></tr>
+<tr><td class="col-index">10</td><td><code>loss_function=</code></td><td>Métrica a ser minimizada no treino</td><td><code>loss_function='Logloss'</code></td></tr>
+<tr><td class="col-index">11</td><td><code>custom_loss=</code></td><td>Métricas extras para monitorar</td><td><code>custom_loss=['AUC', 'Accuracy']</code></td></tr>
+<tr><td class="col-index">12</td><td><code>eval_metric=</code></td><td>Métrica usada para overfitting detector</td><td><code>eval_metric='F1'</code></td></tr>
+<tr><td class="col-index">13</td><td><code>random_seed=</code></td><td>Semente para reprodutibilidade</td><td><code>random_seed=42</code></td></tr>
+
+<tr><td class="col-index">14</td><td><code>early_stopping_rounds=</code></td><td>Para o treino se a métrica não melhorar</td><td><code>early_stopping_rounds=50</code></td></tr>
+<tr><td class="col-index">15</td><td><code>use_best_model=</code></td><td>Usa a árvore com melhor score do eval_set</td><td><code>use_best_model=True</code></td></tr>
+<tr><td class="col-index">16</td><td><code>od_type=</code></td><td>Tipo de detector de overfitting ('IncToDec', 'Iter')</td><td><code>od_type='Iter'</code></td></tr>
+<tr><td class="col-index">17</td><td><code>od_wait=</code></td><td>Número de iterações para o detector esperar</td><td><code>od_wait=20</code></td></tr>
+
+<tr><td class="col-index">18</td><td><code>task_type='GPU'</code></td><td>Habilita treinamento via placa de vídeo</td><td><code>task_type='GPU'</code></td></tr>
+<tr><td class="col-index">19</td><td><code>devices=</code></td><td>IDs das GPUs a serem utilizadas</td><td><code>devices='0:1'</code></td></tr>
+<tr><td class="col-index">20</td><td><code>thread_count=</code></td><td>Número de threads paralelas (CPU)</td><td><code>thread_count=-1</code></td></tr>
+<tr><td class="col-index">21</td><td><code>bootstrap_type=</code></td><td>Método de amostragem (Bayesian, Bernoulli, MVS)</td><td><code>bootstrap_type='MVS'</code></td></tr>
+<tr><td class="col-index">22</td><td><code>subsample=</code></td><td>Porcentagem de dados para cada árvore</td><td><code>subsample=0.8</code></td></tr>
+
+<tr><td class="col-index">23</td><td><code>model.fit()</code></td><td>Treina o modelo nos dados</td><td><code>model.fit(X_train, y_train)</code></td></tr>
+<tr><td class="col-index">24</td><td><code>model.predict()</code></td><td>Faz predições (classes ou valores)</td><td><code>model.predict(X_test)</code></td></tr>
+<tr><td class="col-index">25</td><td><code>model.predict_proba()</code></td><td>Retorna probabilidades das classes</td><td><code>model.predict_proba(X_test)</code></td></tr>
+<tr><td class="col-index">26</td><td><code>model.save_model()</code></td><td>Exporta o modelo para um arquivo</td><td><code>model.save_model('cat.bin')</code></td></tr>
+<tr><td class="col-index">27</td><td><code>model.load_model()</code></td><td>Carrega um modelo salvo</td><td><code>model.load_model('cat.bin')</code></td></tr>
+<tr><td class="col-index">28</td><td><code>model.get_feature_importance()</code></td><td>Retorna a importância das colunas</td><td><code>model.get_feature_importance()</code></td></tr>
+<tr><td class="col-index">29</td><td><code>model.best_iteration_</code></td><td>Retorna o índice da melhor iteração</td><td><code>print(model.best_iteration_)</code></td></tr>
+<tr><td class="col-index">30</td><td><code>model.get_params()</code></td><td>Mostra os parâmetros atuais do modelo</td><td><code>model.get_params()</code></td></tr>
+
+<tr><td class="col-index">31</td><td><code>plot=True</code></td><td>Gera gráficos de treino em tempo real</td><td><code>model.fit(..., plot=True)</code></td></tr>
+<tr><td class="col-index">32</td><td><code>get_object_importance()</code></td><td>Calcula impacto de cada linha no modelo</td><td><code>model.get_object_importance(pool)</code></td></tr>
+<tr><td class="col-index">33</td><td><code>calc_feature_statistics()</code></td><td>Estatísticas detalhadas de uma feature</td><td><code>model.calc_feature_statistics(df, 'col')</code></td></tr>
+
+<tr><td class="col-index">34</td><td><code>one_hot_max_size=</code></td><td>Limite para usar One-Hot Encoding</td><td><code>one_hot_max_size=10</code></td></tr>
+<tr><td class="col-index">35</td><td><code>text_features=</code></td><td>Identifica colunas com texto livre</td><td><code>text_features=['comentario']</code></td></tr>
+<tr><td class="col-index">36</td><td><code>tokenizers=</code></td><td>Configuração de tokenização de texto</td><td><code>tokenizers=[{'tokenizer_id': 'Space'}]</code></td></tr>
+<tr><td class="col-index">37</td><td><code>dictionaries=</code></td><td>Configurações de dicionário para texto</td><td><code>dictionaries=[{'dict_id': 'Word'}]</code></td></tr>
+
+<tr><td class="col-index">38</td><td><code>cv()</code></td><td>Cross-validation integrada</td><td><code>catboost.cv(pool, params)</code></td></tr>
+<tr><td class="col-index">39</td><td><code>grid_search()</code></td><td>Busca exaustiva de hiperparâmetros</td><td><code>model.grid_search(params, X, y)</code></td></tr>
+<tr><td class="col-index">40</td><td><code>randomized_search()</code></td><td>Busca aleatória de hiperparâmetros</td><td><code>model.randomized_search(params, X, y)</code></td></tr>
+
+<tr><td class="col-index">41</td><td><code>nan_mode=</code></td><td>Como tratar valores nulos ('Min', 'Max', 'Forbidden')</td><td><code>nan_mode='Min'</code></td></tr>
+
+<tr><td class="col-index">42</td><td><code>'Logloss'</code></td><td>Classificação binária padrão</td><td><code>loss_function='Logloss'</code></td></tr>
+<tr><td class="col-index">43</td><td><code>'MultiClass'</code></td><td>Classificação multiclasse</td><td><code>loss_function='MultiClass'</code></td></tr>
+<tr><td class="col-index">44</td><td><code>'MAE'</code></td><td>Erro absoluto médio (Regressão)</td><td><code>loss_function='MAE'</code></td></tr>
+<tr><td class="col-index">45</td><td><code>'RMSE'</code></td><td>Raiz do erro quadrático médio (Regressão)</td><td><code>loss_function='RMSE'</code></td></tr>
+<tr><td class="col-index">46</td><td><code>'Poisson'</code></td><td>Para dados de contagem</td><td><code>loss_function='Poisson'</code></td></tr>
+<tr><td class="col-index">47</td><td><code>'Tweedie'</code></td><td>Para seguros ou dados com muitos zeros</td><td><code>loss_function='Tweedie'</code></td></tr>
+
+<tr><td class="col-index">48</td><td><code>leaf_estimation_method=</code></td><td>Método p/ calcular valores das folhas</td><td><code>leaf_estimation_method='Newton'</code></td></tr>
+<tr><td class="col-index">49</td><td><code>grow_policy=</code></td><td>Estratégia de crescimento (SymmetricTree, Depthwise, Lossguide)</td><td><code>grow_policy='Depthwise'</code></td></tr>
+<tr><td class="col-index">50</td><td><code>min_data_in_leaf=</code></td><td>Mínimo de amostras em cada folha</td><td><code>min_data_in_leaf=1</code></td></tr>
+<tr><td class="col-index">51</td><td><code>max_leaves=</code></td><td>Máximo de folhas (usado em Lossguide)</td><td><code>max_leaves=31</code></td></tr>
+
+<tr><td class="col-index">52</td><td><code>'YetiRank'</code></td><td>Função de perda para ranqueamento</td><td><code>loss_function='YetiRank'</code></td></tr>
+<tr><td class="col-index">53</td><td><code>group_id=</code></td><td>Identificador de grupos para Ranking</td><td><code>group_id=[1, 1, 2, 2]</code></td></tr>
+
+<tr><td class="col-index">54</td><td><code>type='ShapValues'</code></td><td>Extrai valores SHAP</td><td><code>model.get_feature_importance(data, type='ShapValues')</code></td></tr>
+<tr><td class="col-index">55</td><td><code>type='Interaction'</code></td><td>Calcula interação entre features</td><td><code>model.get_feature_importance(type='Interaction')</code></td></tr>
+
+<tr><td class="col-index">56</td><td><code>format='cpp'</code></td><td>Exporta modelo para código C++</td><td><code>model.save_model('m.cpp', format='cpp')</code></td></tr>
+<tr><td class="col-index">57</td><td><code>format='python'</code></td><td>Exporta modelo para código Python puro</td><td><code>model.save_model('m.py', format='python')</code></td></tr>
+<tr><td class="col-index">58</td><td><code>format='onnx'</code></td><td>Exporta para formato ONNX</td><td><code>model.save_model('m.onnx', format='onnx')</code></td></tr>
+
+<tr><td class="col-index">59</td><td><code>verbose=</code></td><td>Frequência de logs (True, False ou int)</td><td><code>verbose=100</code></td></tr>
+<tr><td class="col-index">60</td><td><code>logging_level=</code></td><td>Nível de log ('Silent', 'Verbose', 'Info', 'Debug')</td><td><code>logging_level='Silent'</code></td></tr>
+<tr><td class="col-index">61</td><td><code>metric_period=</code></td><td>Intervalo para calcular métricas de eval</td><td><code>metric_period=10</code></td></tr>
+<tr><td class="col-index">62</td><td><code>ignored_features=</code></td><td>Colunas que o modelo deve ignorar</td><td><code>ignored_features=[1, 10]</code></td></tr>
+<tr><td class="col-index">63</td><td><code>allow_writing_files=</code></td><td>Criação de arquivos de log no disco</td><td><code>allow_writing_files=False</code></td></tr>
+<tr><td class="col-index">64</td><td><code>train_dir=</code></td><td>Diretório para salvar logs de treino</td><td><code>train_dir='logs/'</code></td></tr>
+<tr><td class="col-index">65</td><td><code>border_count=</code></td><td>Número de divisões para variáveis numéricas</td><td><code>border_count=254</code></td></tr>
+<tr><td class="col-index">66</td><td><code>feature_weights=</code></td><td>Dá pesos diferentes para colunas específicas</td><td><code>feature_weights=[1, 1, 5]</code></td></tr>
+<tr><td class="col-index">67</td><td><code>class_weights=</code></td><td>Pesos para classes desbalanceadas</td><td><code>class_weights=[1, 10]</code></td></tr>
+<tr><td class="col-index">68</td><td><code>auto_class_weights=</code></td><td>Balanceamento automático ('Balanced', 'SqrtBalanced')</td><td><code>auto_class_weights='Balanced'</code></td></tr>
+<tr><td class="col-index">69</td><td><code>scale_pos_weight=</code></td><td>Peso para a classe positiva (Binário)</td><td><code>scale_pos_weight=2.5</code></td></tr>
+<tr><td class="col-index">70</td><td><code>bagging_temperature=</code></td><td>Intensidade do bootstrap Bayesiano</td><td><code>bagging_temperature=1</code></td></tr>
+<tr><td class="col-index">71</td><td><code>random_strength=</code></td><td>Força da aleatoriedade nos splits</td><td><code>random_strength=1</code></td></tr>
+<tr><td class="col-index">72</td><td><code>mvs_reg=</code></td><td>Regularização para MVS sampling</td><td><code>mvs_reg=0.1</code></td></tr>
+<tr><td class="col-index">73</td><td><code>posterior_sampling=</code></td><td>Uso de amostragem posterior (Incerteza)</td><td><code>posterior_sampling=True</code></td></tr>
+<tr><td class="col-index">74</td><td><code>model_size_reg=</code></td><td>Regularização do tamanho do modelo final</td><td><code>model_size_reg=0.5</code></td></tr>
+<tr><td class="col-index">75</td><td><code>has_time=</code></td><td>Respeita a ordem temporal dos dados</td><td><code>has_time=True</code></td></tr>
+<tr><td class="col-index">76</td><td><code>eval_set=</code></td><td>Dados de validação para monitoramento</td><td><code>eval_set=(X_val, y_val)</code></td></tr>
+<tr><td class="col-index">77</td><td><code>baseline=</code></td><td>Valor base inicial para as predições</td><td><code>baseline=[...]</code></td></tr>
+<tr><td class="col-index">78</td><td><code>name=</code></td><td>Nome amigável para o modelo</td><td><code>name='MeusDados'</code></td></tr>
+<tr><td class="col-index">79</td><td><code>feature_names=</code></td><td>Define nomes customizados para colunas</td><td><code>feature_names=['idade', 'renda']</code></td></tr>
+<tr><td class="col-index">80</td><td><code>per_float_feature_quantization=</code></td><td>Configura quantização por coluna</td><td><code>per_float_feature_quantization=['0:border_count=1024']</code></td></tr>
+<tr><td class="col-index">81</td><td><code>text_processing=</code></td><td>Pipeline completo de processamento de texto</td><td><code>text_processing=['NaiveBayes+Word']</code></td></tr>
+<tr><td class="col-index">82</td><td><code>embedding_features=</code></td><td>Indices de colunas com vetores/embeddings</td><td><code>embedding_features=[12]</code></td></tr>
+<tr><td class="col-index">83</td><td><code>get_all_params()</code></td><td>Dicionário com todos os hiperparâmetros</td><td><code>model.get_all_params()</code></td></tr>
+<tr><td class="col-index">84</td><td><code>get_metadata()</code></td><td>Recupera metadados do arquivo do modelo</td><td><code>model.get_metadata()</code></td></tr>
+<tr><td class="col-index">85</td><td><code>is_fitted()</code></td><td>Verifica se o modelo já foi treinado</td><td><code>model.is_fitted()</code></td></tr>
+<tr><td class="col-index">86</td><td><code>shrink()</code></td><td>Reduz o número de árvores do modelo</td><td><code>model.shrink(100)</code></td></tr>
+<tr><td class="col-index">87</td><td><code>get_scale_and_bias()</code></td><td>Escala e viés interno do modelo</td><td><code>model.get_scale_and_bias()</code></td></tr>
+<tr><td class="col-index">88</td><td><code>set_feature_names()</code></td><td>Atribui nomes às colunas após treino</td><td><code>model.set_feature_names(names)</code></td></tr>
+<tr><td class="col-index">89</td><td><code>eval_metrics()</code></td><td>Calcula métricas sobre um pool</td><td><code>model.eval_metrics(data, ['AUC'])</code></td></tr>
+<tr><td class="col-index">90</td><td><code>to_classifier()</code></td><td>Converte objeto base em classificador</td><td><code>model.to_classifier()</code></td></tr>
+<tr><td class="col-index">91</td><td><code>to_regressor()</code></td><td>Converte objeto base em regressor</td><td><code>model.to_regressor()</code></td></tr>
+<tr><td class="col-index">92</td><td><code>compare()</code></td><td>Utilitário para comparar dois modelos</td><td><code>model1.compare(model2)</code></td></tr>
+<tr><td class="col-index">93</td><td><code>virtual_ensembles_count=</code></td><td>Número de modelos virtuais para incerteza</td><td><code>virtual_ensembles_count=10</code></td></tr>
+<tr><td class="col-index">94</td><td><code>prediction_type=</code></td><td>Tipo de output ('Probability', 'Class', 'RawFormulaVal')</td><td><code>prediction_type='Class'</code></td></tr>
+<tr><td class="col-index">95</td><td><code>ntree_start=</code></td><td>Árvore inicial para predição</td><td><code>ntree_start=0</code></td></tr>
+<tr><td class="col-index">96</td><td><code>ntree_end=</code></td><td>Árvore final para predição</td><td><code>ntree_end=500</code></td></tr>
+<tr><td class="col-index">97</td><td><code>thread_count=</code></td><td>Threads para predição paralela</td><td><code>thread_count=4</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    // Busca apenas no texto das colunas 2, 3 e 4 (ignora o índice)
+    let searchableText = Array.from(row.cells).slice(1).map(c => c.innerText).join(" ").toLowerCase();
+    row.style.display = searchableText.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

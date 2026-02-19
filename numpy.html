@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>NumPy Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+/* Estilo opcional para a coluna de ID */
+.col-id { width: 40px; text-align: center; font-weight: bold; color: #7f8c8d; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🔢 NumPy Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://numpy.org/doc/" target="_blank">📄 Documentação Oficial do NumPy</a></p>
+<input type="text" id="search_field" placeholder="Buscar função, método ou atributo NumPy...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-id">#</th>
+<th>Comando / Função</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-id">1</td><td><code>np.array()</code></td><td>Cria um array a partir de uma lista ou tupla</td><td><code>np.array([1, 2, 3])</code></td></tr>
+<tr><td class="col-id">2</td><td><code>np.zeros()</code></td><td>Cria um array preenchido com zeros</td><td><code>np.zeros((3, 4))</code></td></tr>
+<tr><td class="col-id">3</td><td><code>np.ones()</code></td><td>Cria um array preenchido com uns</td><td><code>np.ones((2, 2))</code></td></tr>
+<tr><td class="col-id">4</td><td><code>np.full()</code></td><td>Cria um array preenchido com um valor constante</td><td><code>np.full((2, 2), 7)</code></td></tr>
+<tr><td class="col-id">5</td><td><code>np.eye()</code></td><td>Cria uma matriz identidade (2D)</td><td><code>np.eye(3)</code></td></tr>
+<tr><td class="col-id">6</td><td><code>np.arange()</code></td><td>Cria sequência de números com passo definido</td><td><code>np.arange(0, 10, 2)</code></td></tr>
+<tr><td class="col-id">7</td><td><code>np.linspace()</code></td><td>Cria números igualmente espaçados em um intervalo</td><td><code>np.linspace(0, 1, 5)</code></td></tr>
+<tr><td class="col-id">8</td><td><code>np.random.rand()</code></td><td>Cria array com valores aleatórios (0 a 1)</td><td><code>np.random.rand(3, 3)</code></td></tr>
+<tr><td class="col-id">9</td><td><code>np.random.randint()</code></td><td>Cria array com inteiros aleatórios</td><td><code>np.random.randint(0, 10, (2, 2))</code></td></tr>
+
+<tr><td class="col-id">10</td><td><code>arr.shape</code></td><td>Retorna as dimensões do array</td><td><code>arr.shape</code></td></tr>
+<tr><td class="col-id">11</td><td><code>arr.ndim</code></td><td>Retorna o número de dimensões (eixos)</td><td><code>arr.ndim</code></td></tr>
+<tr><td class="col-id">12</td><td><code>arr.size</code></td><td>Retorna o número total de elementos</td><td><code>arr.size</code></td></tr>
+<tr><td class="col-id">13</td><td><code>arr.dtype</code></td><td>Retorna o tipo de dado dos elementos</td><td><code>arr.dtype</code></td></tr>
+
+<tr><td class="col-id">14</td><td><code>arr.reshape()</code></td><td>Altera a forma do array sem mudar os dados</td><td><code>arr.reshape(2, 5)</code></td></tr>
+<tr><td class="col-id">15</td><td><code>arr.flatten()</code></td><td>Transforma um array multidimensional em 1D</td><td><code>arr.flatten()</code></td></tr>
+<tr><td class="col-id">16</td><td><code>arr.T</code></td><td>Transpõe a matriz (inverte eixos)</td><td><code>arr.T</code></td></tr>
+<tr><td class="col-id">17</td><td><code>np.concatenate()</code></td><td>Une dois ou mais arrays ao longo de um eixo</td><td><code>np.concatenate((a, b))</code></td></tr>
+<tr><td class="col-id">18</td><td><code>np.vstack() / np.hstack()</code></td><td>Empilhamento vertical ou horizontal</td><td><code>np.vstack((a, b))</code></td></tr>
+<tr><td class="col-id">19</td><td><code>np.split()</code></td><td>Divide um array em múltiplos sub-arrays</td><td><code>np.split(arr, 3)</code></td></tr>
+
+<tr><td class="col-id">20</td><td><code>np.add() / +</code></td><td>Soma elemento a elemento</td><td><code>np.add(a, b)</code></td></tr>
+<tr><td class="col-id">21</td><td><code>np.subtract() / -</code></td><td>Subtração elemento a elemento</td><td><code>a - b</code></td></tr>
+<tr><td class="col-id">22</td><td><code>np.multiply() / *</code></td><td>Multiplicação elemento a elemento</td><td><code>a * b</code></td></tr>
+<tr><td class="col-id">23</td><td><code>np.dot() / @</code></td><td>Produto escalar ou multiplicação de matrizes</td><td><code>a @ b</code></td></tr>
+<tr><td class="col-id">24</td><td><code>np.sqrt()</code></td><td>Raiz quadrada de cada elemento</td><td><code>np.sqrt(arr)</code></td></tr>
+<tr><td class="col-id">25</td><td><code>np.exp()</code></td><td>Exponencial de cada elemento</td><td><code>np.exp(arr)</code></td></tr>
+<tr><td class="col-id">26</td><td><code>np.log()</code></td><td>Logaritmo natural de cada elemento</td><td><code>np.log(arr)</code></td></tr>
+
+<tr><td class="col-id">27</td><td><code>arr.mean()</code></td><td>Calcula a média dos elementos</td><td><code>arr.mean()</code></td></tr>
+<tr><td class="col-id">28</td><td><code>arr.sum()</code></td><td>Soma todos os elementos</td><td><code>arr.sum(axis=0)</code></td></tr>
+<tr><td class="col-id">29</td><td><code>arr.min() / arr.max()</code></td><td>Retorna o valor mínimo ou máximo</td><td><code>arr.max()</code></td></tr>
+<tr><td class="col-id">30</td><td><code>np.median()</code></td><td>Calcula a mediana</td><td><code>np.median(arr)</code></td></tr>
+<tr><td class="col-id">31</td><td><code>arr.std()</code></td><td>Calcula o desvio padrão</td><td><code>arr.std()</code></td></tr>
+<tr><td class="col-id">32</td><td><code>arr.argmin() / arr.argmax()</code></td><td>Retorna o índice do menor/maior valor</td><td><code>arr.argmax()</code></td></tr>
+
+<tr><td class="col-id">33</td><td><code>arr[i]</code></td><td>Acessa o elemento no índice i</td><td><code>arr[5]</code></td></tr>
+<tr><td class="col-id">34</td><td><code>arr[r, c]</code></td><td>Acessa elemento em linha r e coluna c</td><td><code>arr[1, 2]</code></td></tr>
+<tr><td class="col-id">35</td><td><code>arr[0:5]</code></td><td>Seleciona elementos do índice 0 ao 4</td><td><code>arr[:5]</code></td></tr>
+<tr><td class="col-id">36</td><td><code>arr < 5</code></td><td>Cria máscara booleana para filtro</td><td><code>mask = arr > 0</code></td></tr>
+<tr><td class="col-id">37</td><td><code>arr[arr > 0]</code></td><td>Filtra o array usando uma condição</td><td><code>arr[arr < 0] = 0</code></td></tr>
+
+<tr><td class="col-id">38</td><td><code>np.linalg.inv()</code></td><td>Calcula a inversa de uma matriz</td><td><code>np.linalg.inv(m)</code></td></tr>
+<tr><td class="col-id">39</td><td><code>np.linalg.det()</code></td><td>Calcula o determinante de uma matriz</td><td><code>np.linalg.det(m)</code></td></tr>
+<tr><td class="col-id">40</td><td><code>np.sort()</code></td><td>Retorna uma cópia ordenada do array</td><td><code>np.sort(arr)</code></td></tr>
+<tr><td class="col-id">41</td><td><code>np.unique()</code></td><td>Retorna elementos únicos</td><td><code>np.unique(arr)</code></td></tr>
+
+<tr><td class="col-id">42</td><td><code>np.save()</code></td><td>Salva array em formato binário (.npy)</td><td><code>np.save('file.npy', arr)</code></td></tr>
+<tr><td class="col-id">43</td><td><code>np.load()</code></td><td>Carrega array de arquivo .npy</td><td><code>arr = np.load('file.npy')</code></td></tr>
+<tr><td class="col-id">44</td><td><code>np.savetxt()</code></td><td>Salva array como arquivo de texto</td><td><code>np.savetxt('f.csv', arr, delimiter=',')</code></td></tr>
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    // Busca em todo o conteúdo da linha (incluindo o novo índice)
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>DAX Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+.col-index { width: 40px; text-align: center; font-weight: bold; color: #7f8c8d; background: #f9f9f9; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>📊 DAX Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://learn.microsoft.com/pt-br/dax/" target="_blank">📄 Documentação Oficial do DAX</a></p>
+<input type="text" id="search_field" placeholder="Buscar função, categoria ou exemplo de DAX...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th style="width: 30px;">#</th> <th>Função / Comando</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>Ambiente</code></td><td>Linguagem nativa (Não requer instalação via pip)</td><td><code>Disponível no Power BI / Analysis Services</code></td></tr>
+<tr><td class="col-index">2</td><td><code>VAR / RETURN</code></td><td>Define variáveis para melhorar legibilidade e performance</td><td><code>VAR v = [Total] RETURN v * 2</code></td></tr>
+<tr><td class="col-index">3</td><td><code>CALCULATE()</code></td><td>Avalia uma expressão em um contexto de filtro modificado</td><td><code>CALCULATE([Soma], Vendas[Ano]=2023)</code></td></tr>
+
+<tr><td class="col-index">4</td><td><code>SUM()</code></td><td>Soma todos os valores de uma coluna</td><td><code>SUM(Vendas[Valor])</code></td></tr>
+<tr><td class="col-index">5</td><td><code>SUMX()</code></td><td>Soma o resultado de uma expressão linha a linha</td><td><code>SUMX(Vendas, [Qtd] * [Preço])</code></td></tr>
+<tr><td class="col-index">6</td><td><code>AVERAGE()</code></td><td>Média aritmética simples</td><td><code>AVERAGE(Produtos[Custo])</code></td></tr>
+<tr><td class="col-index">7</td><td><code>AVERAGEX()</code></td><td>Média de uma expressão calculada por linha</td><td><code>AVERAGEX(Vendas, [Margem])</code></td></tr>
+<tr><td class="col-index">8</td><td><code>MIN()</code></td><td>Valor mínimo de uma coluna</td><td><code>MIN(Vendas[Data])</code></td></tr>
+<tr><td class="col-index">9</td><td><code>MAX()</code></td><td>Valor máximo de uma coluna</td><td><code>MAX(Vendas[Data])</code></td></tr>
+<tr><td class="col-index">10</td><td><code>COUNT()</code></td><td>Conta números em uma coluna</td><td><code>COUNT(Vendas[ID])</code></td></tr>
+<tr><td class="col-index">11</td><td><code>COUNTA()</code></td><td>Conta qualquer valor (não vazio)</td><td><code>COUNTA(Clientes[Nome])</code></td></tr>
+<tr><td class="col-index">12</td><td><code>COUNTROWS()</code></td><td>Conta o número total de linhas de uma tabela</td><td><code>COUNTROWS('Calendário')</code></td></tr>
+<tr><td class="col-index">13</td><td><code>DISTINCTCOUNT()</code></td><td>Conta valores únicos (sem repetição)</td><td><code>DISTINCTCOUNT(Vendas[SKU])</code></td></tr>
+<tr><td class="col-index">14</td><td><code>PRODUCT()</code></td><td>Multiplica os números de uma coluna</td><td><code>PRODUCT(Taxas[Indice])</code></td></tr>
+<tr><td class="col-index">15</td><td><code>DIVIDE()</code></td><td>Divisão segura que trata erro de zero</td><td><code>DIVIDE([Lucro], [Vendas], 0)</code></td></tr>
+
+<tr><td class="col-index">16</td><td><code>FILTER()</code></td><td>Retorna uma tabela filtrada</td><td><code>FILTER(Tabela, [Vendas] > 100)</code></td></tr>
+<tr><td class="col-index">17</td><td><code>ALL()</code></td><td>Ignora todos os filtros de uma tabela/coluna</td><td><code>CALCULATE([Soma], ALL(Vendas))</code></td></tr>
+<tr><td class="col-index">18</td><td><code>ALLEXCEPT()</code></td><td>Remove filtros exceto das colunas especificadas</td><td><code>ALLEXCEPT(Vendas, Vendas[Região])</code></td></tr>
+<tr><td class="col-index">19</td><td><code>ALLSELECTED()</code></td><td>Mantém apenas os filtros aplicados externamente</td><td><code>CALCULATE([Soma], ALLSELECTED())</code></td></tr>
+<tr><td class="col-index">20</td><td><code>KEEPFILTERS()</code></td><td>Mantém o filtro original ao aplicar CALCULATE</td><td><code>CALCULATE([S], KEEPFILTERS(C[Cor]="Azul"))</code></td></tr>
+<tr><td class="col-index">21</td><td><code>REMOVEFILTERS()</code></td><td>Remove filtros (sinônimo de ALL no CALCULATE)</td><td><code>REMOVEFILTERS(Vendas[Vendedor])</code></td></tr>
+<tr><td class="col-index">22</td><td><code>SELECTEDVALUE()</code></td><td>Retorna o valor se houver apenas um selecionado</td><td><code>SELECTEDVALUE(Produtos[Nome], "Vários")</code></td></tr>
+<tr><td class="col-index">23</td><td><code>VALUES()</code></td><td>Retorna uma tabela de valores únicos no contexto</td><td><code>VALUES(Vendas[Categoria])</code></td></tr>
+<tr><td class="col-index">24</td><td><code>DISTINCT()</code></td><td>Similar ao VALUES, mas não inclui a linha em branco</td><td><code>DISTINCT(Produtos[Marca])</code></td></tr>
+
+<tr><td class="col-index">25</td><td><code>TOTALYTD()</code></td><td>Acumulado do ano até a data</td><td><code>TOTALYTD([Total], 'Data'[Data])</code></td></tr>
+<tr><td class="col-index">26</td><td><code>TOTALQTD()</code></td><td>Acumulado do trimestre até a data</td><td><code>TOTALQTD([Total], 'Data'[Data])</code></td></tr>
+<tr><td class="col-index">27</td><td><code>TOTALMTD()</code></td><td>Acumulado do mês até a data</td><td><code>TOTALMTD([Total], 'Data'[Data])</code></td></tr>
+<tr><td class="col-index">28</td><td><code>SAMEPERIODLASTYEAR()</code></td><td>Retorna o mesmo período no ano anterior</td><td><code>CALCULATE([T], SAMEPERIODLASTYEAR('D'[D]))</code></td></tr>
+<tr><td class="col-index">29</td><td><code>DATEADD()</code></td><td>Desloca datas por intervalos (dia, mês, ano)</td><td><code>DATEADD('Data'[Data], -1, YEAR)</code></td></tr>
+<tr><td class="col-index">30</td><td><code>DATESBETWEEN()</code></td><td>Datas entre um início e fim específico</td><td><code>DATESBETWEEN('Data'[D], [Ini], [Fim])</code></td></tr>
+<tr><td class="col-index">31</td><td><code>DATESINPERIOD()</code></td><td>Datas em um período a partir de um início</td><td><code>DATESINPERIOD('D'[D], [Hoje], -7, DAY)</code></td></tr>
+<tr><td class="col-index">32</td><td><code>DATESYTD()</code></td><td>Retorna as datas desde o início do ano</td><td><code>CALCULATE([S], DATESYTD('Data'[Data]))</code></td></tr>
+<tr><td class="col-index">33</td><td><code>PARALLELPERIOD()</code></td><td>Retorna um período paralelo completo</td><td><code>PARALLELPERIOD('Data'[Data], -1, MONTH)</code></td></tr>
+<tr><td class="col-index">34</td><td><code>PREVIOUSDAY()</code></td><td>Retorna a data do dia anterior</td><td><code>PREVIOUSDAY('Data'[Data])</code></td></tr>
+<tr><td class="col-index">35</td><td><code>PREVIOUSMONTH()</code></td><td>Retorna todas as datas do mês anterior</td><td><code>PREVIOUSMONTH('Data'[Data])</code></td></tr>
+<tr><td class="col-index">36</td><td><code>NEXTDAY()</code></td><td>Retorna o dia seguinte</td><td><code>NEXTDAY('Data'[Data])</code></td></tr>
+<tr><td class="col-index">37</td><td><code>CLOSINGBALANCEMONTH()</code></td><td>Valor no final do mês</td><td><code>CLOSINGBALANCEMONTH([Saldo], 'D'[D])</code></td></tr>
+<tr><td class="col-index">38</td><td><code>DATE()</code></td><td>Cria uma data a partir de Ano, Mês, Dia</td><td><code>DATE(2023, 12, 25)</code></td></tr>
+<tr><td class="col-index">39</td><td><code>DATEDIFF()</code></td><td>Diferença entre duas datas</td><td><code>DATEDIFF([D1], [D2], DAY)</code></td></tr>
+<tr><td class="col-index">40</td><td><code>YEAR()</code></td><td>Extrai o ano de uma data</td><td><code>YEAR(Vendas[Data])</code></td></tr>
+<tr><td class="col-index">41</td><td><code>MONTH()</code></td><td>Extrai o mês de uma data</td><td><code>MONTH(Vendas[Data])</code></td></tr>
+<tr><td class="col-index">42</td><td><code>DAY()</code></td><td>Extrai o dia de uma data</td><td><code>DAY(Vendas[Data])</code></td></tr>
+<tr><td class="col-index">43</td><td><code>WEEKDAY()</code></td><td>Retorna o número do dia da semana</td><td><code>WEEKDAY('Data'[Data], 2)</code></td></tr>
+<tr><td class="col-index">44</td><td><code>WEEKNUM()</code></td><td>Retorna o número da semana no ano</td><td><code>WEEKNUM('Data'[Data])</code></td></tr>
+<tr><td class="col-index">45</td><td><code>EDATE()</code></td><td>Data deslocada por X meses</td><td><code>EDATE([Data], -1)</code></td></tr>
+<tr><td class="col-index">46</td><td><code>EOMONTH()</code></td><td>Último dia do mês deslocado</td><td><code>EOMONTH(TODAY(), 0)</code></td></tr>
+<tr><td class="col-index">47</td><td><code>TODAY()</code></td><td>Data de hoje</td><td><code>TODAY()</code></td></tr>
+<tr><td class="col-index">48</td><td><code>NOW()</code></td><td>Data e hora atual</td><td><code>NOW()</code></td></tr>
+
+<tr><td class="col-index">49</td><td><code>IF()</code></td><td>Condicional SE</td><td><code>IF([V]>10, "Sim", "Não")</code></td></tr>
+<tr><td class="col-index">50</td><td><code>IFERROR()</code></td><td>Trata erros em fórmulas</td><td><code>IFERROR([Cálculo], 0)</code></td></tr>
+<tr><td class="col-index">51</td><td><code>SWITCH()</code></td><td>Avalia múltiplos casos (Case When)</td><td><code>SWITCH([Cor], "Red", 1, "Blue", 2, 0)</code></td></tr>
+<tr><td class="col-index">52</td><td><code>AND()</code></td><td>Operador lógico E (ou use &&)</td><td><code>AND([A]>0, [B]>0)</code></td></tr>
+<tr><td class="col-index">53</td><td><code>OR()</code></td><td>Operador lógico OU (ou use ||)</td><td><code>OR([A]>0, [B]>0)</code></td></tr>
+<tr><td class="col-index">54</td><td><code>NOT()</code></td><td>Inverte um valor lógico</td><td><code>NOT(ISBLANK([Venda]))</code></td></tr>
+<tr><td class="col-index">55</td><td><code>COALESCE()</code></td><td>Retorna o primeiro valor não nulo</td><td><code>COALESCE([Venda], 0)</code></td></tr>
+
+<tr><td class="col-index">56</td><td><code>RELATED()</code></td><td>Busca valor em tabela do lado "Um"</td><td><code>RELATED(Produtos[Preço])</code></td></tr>
+<tr><td class="col-index">57</td><td><code>RELATEDTABLE()</code></td><td>Retorna tabela do lado "Muitos"</td><td><code>COUNTROWS(RELATEDTABLE(Vendas))</code></td></tr>
+<tr><td class="col-index">58</td><td><code>LOOKUPVALUE()</code></td><td>Busca valor sem necessidade de relação ativa</td><td><code>LOOKUPVALUE(P[Nome], P[ID], V[ID])</code></td></tr>
+<tr><td class="col-index">59</td><td><code>USERELATIONSHIP()</code></td><td>Ativa relação inativa no cálculo</td><td><code>CALCULATE([S], USERELATIONSHIP(D[D], V[DE]))</code></td></tr>
+<tr><td class="col-index">60</td><td><code>CROSSFILTER()</code></td><td>Muda a direção do filtro entre tabelas</td><td><code>CROSSFILTER(T1[ID], T2[ID], Both)</code></td></tr>
+
+<tr><td class="col-index">61</td><td><code>CONCATENATE()</code></td><td>Une dois textos</td><td><code>CONCATENATE("R$ ", [Valor])</code></td></tr>
+<tr><td class="col-index">62</td><td><code>CONCATENATEX()</code></td><td>Une valores de uma tabela com separador</td><td><code>CONCATENATEX(Produtos, [Nome], ", ")</code></td></tr>
+<tr><td class="col-index">63</td><td><code>FORMAT()</code></td><td>Converte valor para texto formatado</td><td><code>FORMAT([Valor], "Currency")</code></td></tr>
+<tr><td class="col-index">64</td><td><code>LEFT()</code></td><td>Pega X caracteres à esquerda</td><td><code>LEFT([Código], 3)</code></td></tr>
+<tr><td class="col-index">65</td><td><code>RIGHT()</code></td><td>Pega X caracteres à direita</td><td><code>RIGHT([Código], 2)</code></td></tr>
+<tr><td class="col-index">66</td><td><code>MID()</code></td><td>Extrai texto do meio</td><td><code>MID([Nome], 2, 5)</code></td></tr>
+<tr><td class="col-index">67</td><td><code>UPPER()</code></td><td>Texto em MAIÚSCULO</td><td><code>UPPER([Cidade])</code></td></tr>
+<tr><td class="col-index">68</td><td><code>LOWER()</code></td><td>Texto em minúsculo</td><td><code>LOWER([Email])</code></td></tr>
+<tr><td class="col-index">69</td><td><code>TRIM()</code></td><td>Remove espaços extras</td><td><code>TRIM([Nome])</code></td></tr>
+<tr><td class="col-index">70</td><td><code>SUBSTITUTE()</code></td><td>Substitui parte do texto</td><td><code>SUBSTITUTE([Ref], "-", "/")</code></td></tr>
+<tr><td class="col-index">71</td><td><code>LEN()</code></td><td>Conta número de caracteres</td><td><code>LEN([Senha])</code></td></tr>
+<tr><td class="col-index">72</td><td><code>SEARCH()</code></td><td>Busca texto (não case-sensitive)</td><td><code>SEARCH("@", [Email])</code></td></tr>
+
+<tr><td class="col-index">73</td><td><code>ADDCOLUMNS()</code></td><td>Adiciona colunas a uma tabela virtual</td><td><code>ADDCOLUMNS(Filial, "Vendas", [Soma])</code></td></tr>
+<tr><td class="col-index">74</td><td><code>SUMMARIZE()</code></td><td>Agrupa dados por colunas</td><td><code>SUMMARIZE(Vendas, Vendas[Ano], "T", [S])</code></td></tr>
+<tr><td class="col-index">75</td><td><code>SUMMARIZECOLUMNS()</code></td><td>Agrupamento otimizado (moderno)</td><td><code>SUMMARIZECOLUMNS(C[Nome], "V", [S])</code></td></tr>
+<tr><td class="col-index">76</td><td><code>SELECTCOLUMNS()</code></td><td>Seleciona e renomeia colunas</td><td><code>SELECTCOLUMNS(Vendas, "Cli", [Cliente])</code></td></tr>
+<tr><td class="col-index">77</td><td><code>TOPN()</code></td><td>Retorna as N primeiras linhas</td><td><code>TOPN(5, Clientes, [Total Vendas])</code></td></tr>
+<tr><td class="col-index">78</td><td><code>RANKX()</code></td><td>Calcula ranking</td><td><code>RANKX(ALL(Vendedor), [Total])</code></td></tr>
+<tr><td class="col-index">79</td><td><code>UNION()</code></td><td>Une tabelas verticalmente</td><td><code>UNION(Tabela1, Tabela2)</code></td></tr>
+<tr><td class="col-index">80</td><td><code>INTERSECT()</code></td><td>Retorna linhas comuns entre tabelas</td><td><code>INTERSECT(Tabela1, Tabela2)</code></td></tr>
+<tr><td class="col-index">81</td><td><code>EXCEPT()</code></td><td>Linhas de T1 que não estão em T2</td><td><code>EXCEPT(T1, T2)</code></td></tr>
+<tr><td class="col-index">82</td><td><code>CROSSJOIN()</code></td><td>Produto cartesiano entre tabelas</td><td><code>CROSSJOIN(Cores, Tamanhos)</code></td></tr>
+<tr><td class="col-index">83</td><td><code>GENERATE()</code></td><td>Aplica expressão de tabela para cada linha</td><td><code>GENERATE(T1, [Expressão])</code></td></tr>
+<tr><td class="col-index">84</td><td><code>NATURALINNERJOIN()</code></td><td>Join interno automático</td><td><code>NATURALINNERJOIN(T1, T2)</code></td></tr>
+<tr><td class="col-index">85</td><td><code>TREATAS()</code></td><td>Aplica filtros de uma tabela em outra</td><td><code>TREATAS({2023}, 'Data'[Ano])</code></td></tr>
+
+<tr><td class="col-index">86</td><td><code>ISBLANK()</code></td><td>Verifica se é vazio</td><td><code>ISBLANK([Venda])</code></td></tr>
+<tr><td class="col-index">87</td><td><code>HASONEVALUE()</code></td><td>Verifica se há um único valor no contexto</td><td><code>HASONEVALUE(Produtos[Categoria])</code></td></tr>
+<tr><td class="col-index">88</td><td><code>ISFILTERED()</code></td><td>Verifica se a coluna tem filtro direto</td><td><code>ISFILTERED(Calendário[Ano])</code></td></tr>
+<tr><td class="col-index">89</td><td><code>ISCROSSFILTERED()</code></td><td>Verifica se há filtro direto ou indireto</td><td><code>ISCROSSFILTERED(Tabela)</code></td></tr>
+<tr><td class="col-index">90</td><td><code>ISINSCOPE()</code></td><td>Útil para hierarquias em tabelas/matrizes</td><td><code>ISINSCOPE(Produtos[Subcategoria])</code></td></tr>
+<tr><td class="col-index">91</td><td><code>ISERROR()</code></td><td>Verifica se há erro na expressão</td><td><code>ISERROR([Calculo])</code></td></tr>
+<tr><td class="col-index">92</td><td><code>ISNUMBER()</code></td><td>Verifica se o valor é numérico</td><td><code>ISNUMBER([Coluna])</code></td></tr>
+<tr><td class="col-index">93</td><td><code>ISTEXT()</code></td><td>Verifica se o valor é texto</td><td><code>ISTEXT([Coluna])</code></td></tr>
+
+<tr><td class="col-index">94</td><td><code>ABS()</code></td><td>Valor absoluto (sempre positivo)</td><td><code>ABS(-50)</code></td></tr>
+<tr><td class="col-index">95</td><td><code>ROUND()</code></td><td>Arredonda para X casas decimais</td><td><code>ROUND([Valor], 2)</code></td></tr>
+<tr><td class="col-index">96</td><td><code>INT()</code></td><td>Arredonda para baixo para o inteiro</td><td><code>INT(5.8)</code></td></tr>
+<tr><td class="col-index">97</td><td><code>SQRT()</code></td><td>Raiz quadrada</td><td><code>SQRT(100)</code></td></tr>
+<tr><td class="col-index">98</td><td><code>EXP()</code></td><td>Exponencial</td><td><code>EXP(1)</code></td></tr>
+<tr><td class="col-index">99</td><td><code>LN()</code></td><td>Logaritmo natural</td><td><code>LN(10)</code></td></tr>
+<tr><td class="col-index">100</td><td><code>RAND()</code></td><td>Gera um número aleatório entre 0 e 1</td><td><code>RAND()</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

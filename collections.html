@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Collections Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+/* Estilo para a coluna de índice */
+.col-index { width: 40px; text-align: center; font-weight: bold; color: #7f8c8d; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>📦 Collections Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://docs.python.org/3/library/collections.html" target="_blank">📄 Documentação Oficial do Collections</a></p>
+<input type="text" id="search_field" placeholder="Buscar tipo de dado (namedtuple, deque, Counter)...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th>
+<th>Tipo / Método</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>Counter()</code></td><td>Conta a frequência de elementos num iterável</td><td><code>cnt = Counter(['a', 'b', 'a'])</code></td></tr>
+<tr><td class="col-index">2</td><td><code>.most_common(n)</code></td><td>Retorna os n elementos mais frequentes</td><td><code>cnt.most_common(1) # [('a', 2)]</code></td></tr>
+<tr><td class="col-index">3</td><td><code>.elements()</code></td><td>Retorna um iterador sobre os elementos repetidos</td><td><code>list(cnt.elements())</code></td></tr>
+
+<tr><td class="col-index">4</td><td><code>namedtuple()</code></td><td>Cria uma subclasse de tupla com campos nomeados</td><td><code>Ponto = namedtuple('Ponto', ['x', 'y'])</code></td></tr>
+<tr><td class="col-index">5</td><td>Acesso por nome</td><td>Permite aceder a valores como atributos de objeto</td><td><code>p = Ponto(1, 2); print(p.x)</code></td></tr>
+
+<tr><td class="col-index">6</td><td><code>defaultdict()</code></td><td>Dicionário que fornece um valor padrão para chaves inexistentes</td><td><code>d = defaultdict(int)</code></td></tr>
+<tr><td class="col-index">7</td><td>Evitar KeyError</td><td>Útil para acumular valores sem verificar se a chave existe</td><td><code>d['nova_chave'] += 1</code></td></tr>
+
+<tr><td class="col-index">8</td><td><code>deque()</code></td><td>Lista "double-ended" (fila rápida para ambos os lados)</td><td><code>d = deque([1, 2, 3])</code></td></tr>
+<tr><td class="col-index">9</td><td><code>.appendleft()</code></td><td>Adiciona elemento no início da fila</td><td><code>d.appendleft(0)</code></td></tr>
+<tr><td class="col-index">10</td><td><code>.popleft()</code></td><td>Remove e retorna o primeiro elemento da fila</td><td><code>d.popleft()</code></td></tr>
+<tr><td class="col-index">11</td><td><code>maxlen=</code></td><td>Cria uma fila com tamanho fixo (apaga os antigos)</td><td><code>deque(maxlen=10)</code></td></tr>
+
+<tr><td class="col-index">12</td><td><code>OrderedDict()</code></td><td>Dicionário que mantém estritamente a ordem de inserção</td><td><code>od = OrderedDict()</code></td></tr>
+<tr><td class="col-index">13</td><td><code>.move_to_end()</code></td><td>Move uma chave para o início ou fim do dict</td><td><code>od.move_to_end('chave', last=True)</code></td></tr>
+
+<tr><td class="col-index">14</td><td><code>ChainMap()</code></td><td>Agrupa vários dicionários numa única visualização</td><td><code>combined = ChainMap(dict1, dict2)</code></td></tr>
+<tr><td class="col-index">15</td><td>Busca em cadeia</td><td>Procura a chave no primeiro dict, depois no segundo, etc.</td><td><code>combined['id']</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

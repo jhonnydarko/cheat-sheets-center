@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>R Language Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+.col-index { width: 40px; text-align: center; font-weight: bold; color: #7f8c8d; background: #f9f9f9; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>📊 R Language Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://www.r-project.org/about.html" target="_blank">📄 Documentação Oficial do R</a></p>
+<input type="text" id="search_field" placeholder="Buscar função, operador ou conceito de R...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th style="width: 30px;">#</th> <th>Comando / Função</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>install.packages()</code></td><td>Instala pacotes do CRAN</td><td><code>install.packages("tidyverse")</code></td></tr>
+<tr><td class="col-index">2</td><td><code>library()</code></td><td>Carrega um pacote instalado</td><td><code>library(ggplot2)</code></td></tr>
+
+<tr><td class="col-index">3</td><td><code>help()</code> ou <code>?</code></td><td>Acessa a documentação de uma função</td><td><code>?mean</code></td></tr>
+<tr><td class="col-index">4</td><td><code>getwd()</code></td><td>Mostra o diretório de trabalho atual</td><td><code>getwd()</code></td></tr>
+<tr><td class="col-index">5</td><td><code>setwd()</code></td><td>Define o diretório de trabalho</td><td><code>setwd("C:/Projetos")</code></td></tr>
+<tr><td class="col-index">6</td><td><code>ls()</code></td><td>Lista objetos no ambiente global</td><td><code>ls()</code></td></tr>
+<tr><td class="col-index">7</td><td><code>rm()</code></td><td>Remove objetos do ambiente</td><td><code>rm(x)</code></td></tr>
+
+<tr><td class="col-index">8</td><td><code>c()</code></td><td>Combina valores em um vetor</td><td><code>v <- c(1, 2, 3)</code></td></tr>
+<tr><td class="col-index">9</td><td><code>seq()</code></td><td>Gera uma sequência de números</td><td><code>seq(1, 10, by=2)</code></td></tr>
+<tr><td class="col-index">10</td><td><code>rep()</code></td><td>Repete elementos</td><td><code>rep(1:3, times=2)</code></td></tr>
+<tr><td class="col-index">11</td><td><code>matrix()</code></td><td>Cria uma matriz</td><td><code>matrix(1:9, nrow=3)</code></td></tr>
+<tr><td class="col-index">12</td><td><code>data.frame()</code></td><td>Cria um data frame (tabela)</td><td><code>df <- data.frame(id=1:3, nome=c("A","B","C"))</code></td></tr>
+<tr><td class="col-index">13</td><td><code>list()</code></td><td>Cria uma lista heterogênea</td><td><code>L <- list(a=1, b="texto")</code></td></tr>
+<tr><td class="col-index">14</td><td><code>factor()</code></td><td>Cria variáveis categóricas</td><td><code>f <- factor(c("Baixo", "Alto"))</code></td></tr>
+
+<tr><td class="col-index">15</td><td><code>read.csv()</code></td><td>Lê arquivo CSV</td><td><code>df <- read.csv("dados.csv")</code></td></tr>
+<tr><td class="col-index">16</td><td><code>write.csv()</code></td><td>Exporta para CSV</td><td><code>write.csv(df, "saida.csv")</code></td></tr>
+<tr><td class="col-index">17</td><td><code>readRDS()</code></td><td>Lê objeto R binário</td><td><code>obj <- readRDS("modelo.rds")</code></td></tr>
+<tr><td class="col-index">18</td><td><code>saveRDS()</code></td><td>Salva objeto R binário</td><td><code>saveRDS(df, "dados.rds")</code></td></tr>
+
+<tr><td class="col-index">19</td><td><code>head()</code></td><td>Primeiras 6 linhas</td><td><code>head(df)</code></td></tr>
+<tr><td class="col-index">20</td><td><code>tail()</code></td><td>Últimas 6 linhas</td><td><code>tail(df)</code></td></tr>
+<tr><td class="col-index">21</td><td><code>str()</code></td><td>Exibe a estrutura do objeto</td><td><code>str(df)</code></td></tr>
+<tr><td class="col-index">22</td><td><code>summary()</code></td><td>Resumo estatístico</td><td><code>summary(df)</code></td></tr>
+<tr><td class="col-index">23</td><td><code>dim()</code></td><td>Dimensões (linhas x colunas)</td><td><code>dim(df)</code></td></tr>
+<tr><td class="col-index">24</td><td><code>names()</code></td><td>Nomes das colunas</td><td><code>names(df)</code></td></tr>
+<tr><td class="col-index">25</td><td><code>class()</code></td><td>Tipo do objeto</td><td><code>class(v)</code></td></tr>
+
+<tr><td class="col-index">26</td><td><code>df$coluna</code></td><td>Acessa uma coluna específica</td><td><code>df$idade</code></td></tr>
+<tr><td class="col-index">27</td><td><code>subset()</code></td><td>Filtra dados</td><td><code>subset(df, idade > 20)</code></td></tr>
+<tr><td class="col-index">28</td><td><code>merge()</code></td><td>Une dois data frames (Join)</td><td><code>merge(df1, df2, by="id")</code></td></tr>
+<tr><td class="col-index">29</td><td><code>cbind()</code></td><td>Une colunas</td><td><code>cbind(df, nova_col)</code></td></tr>
+<tr><td class="col-index">30</td><td><code>rbind()</code></td><td>Une linhas</td><td><code>rbind(df1, df2)</code></td></tr>
+<tr><td class="col-index">31</td><td><code>order()</code></td><td>Retorna índices para ordenação</td><td><code>df[order(df$preco), ]</code></td></tr>
+<tr><td class="col-index">32</td><td><code>sort()</code></td><td>Ordena um vetor</td><td><code>sort(v)</code></td></tr>
+<tr><td class="col-index">33</td><td><code>unique()</code></td><td>Valores únicos</td><td><code>unique(df$cidade)</code></td></tr>
+<tr><td class="col-index">34</td><td><code>duplicated()</code></td><td>Identifica duplicatas</td><td><code>df[duplicated(df), ]</code></td></tr>
+
+<tr><td class="col-index">35</td><td><code>mean()</code></td><td>Média aritmética</td><td><code>mean(v, na.rm=T)</code></td></tr>
+<tr><td class="col-index">36</td><td><code>median()</code></td><td>Mediana</td><td><code>median(v)</code></td></tr>
+<tr><td class="col-index">37</td><td><code>sd()</code></td><td>Desvio padrão</td><td><code>sd(v)</code></td></tr>
+<tr><td class="col-index">38</td><td><code>var()</code></td><td>Variância</td><td><code>var(v)</code></td></tr>
+<tr><td class="col-index">39</td><td><code>quantile()</code></td><td>Percentis/Quartis</td><td><code>quantile(v)</code></td></tr>
+<tr><td class="col-index">40</td><td><code>cor()</code></td><td>Correlação</td><td><code>cor(x, y)</code></td></tr>
+<tr><td class="col-index">41</td><td><code>t.test()</code></td><td>Teste T de Student</td><td><code>t.test(v1, v2)</code></td></tr>
+<tr><td class="col-index">42</td><td><code>lm()</code></td><td>Modelo Linear (Regressão)</td><td><code>lm(y ~ x, data=df)</code></td></tr>
+<tr><td class="col-index">43</td><td><code>predict()</code></td><td>Previsões de modelos</td><td><code>predict(modelo, novos_dados)</code></td></tr>
+
+<tr><td class="col-index">44</td><td><code>filter()</code></td><td>Filtra linhas (dplyr)</td><td><code>df %>% filter(x > 1)</code></td></tr>
+<tr><td class="col-index">45</td><td><code>select()</code></td><td>Seleciona colunas (dplyr)</td><td><code>df %>% select(id, nome)</code></td></tr>
+<tr><td class="col-index">46</td><td><code>mutate()</code></td><td>Cria/modifica colunas (dplyr)</td><td><code>df %>% mutate(dobro = x*2)</code></td></tr>
+<tr><td class="col-index">47</td><td><code>arrange()</code></td><td>Ordena linhas (dplyr)</td><td><code>df %>% arrange(desc(data))</code></td></tr>
+<tr><td class="col-index">48</td><td><code>summarise()</code></td><td>Agrega dados (dplyr)</td><td><code>df %>% summarise(media=mean(x))</code></td></tr>
+<tr><td class="col-index">49</td><td><code>group_by()</code></td><td>Agrupa dados (dplyr)</td><td><code>df %>% group_by(cat)</code></td></tr>
+<tr><td class="col-index">50</td><td><code>rename()</code></td><td>Renomeia colunas (dplyr)</td><td><code>df %>% rename(novo = antigo)</code></td></tr>
+<tr><td class="col-index">51</td><td><code>inner_join()</code></td><td>Join interno (dplyr)</td><td><code>inner_join(df1, df2)</code></td></tr>
+<tr><td class="col-index">52</td><td><code>left_join()</code></td><td>Join à esquerda (dplyr)</td><td><code>left_join(df1, df2)</code></td></tr>
+
+<tr><td class="col-index">53</td><td><code>paste()</code></td><td>Concatena strings com separador</td><td><code>paste("A", "B", sep="-")</code></td></tr>
+<tr><td class="col-index">54</td><td><code>paste0()</code></td><td>Concatena strings sem espaço</td><td><code>paste0("R", "Studio")</code></td></tr>
+<tr><td class="col-index">55</td><td><code>toupper()</code></td><td>Converte para maiúsculas</td><td><code>toupper("texto")</code></td></tr>
+<tr><td class="col-index">56</td><td><code>tolower()</code></td><td>Converte para minúsculas</td><td><code>tolower("TEXTO")</code></td></tr>
+<tr><td class="col-index">57</td><td><code>substr()</code></td><td>Extrai parte de uma string</td><td><code>substr("Exemplo", 1, 2)</code></td></tr>
+<tr><td class="col-index">58</td><td><code>gsub()</code></td><td>Substitui padrões (Regex)</td><td><code>gsub("a", "b", "casa")</code></td></tr>
+<tr><td class="col-index">59</td><td><code>grep()</code></td><td>Busca padrão em vetor</td><td><code>grep("padrão", vetor)</code></td></tr>
+
+<tr><td class="col-index">60</td><td><code>plot()</code></td><td>Gráfico genérico (Base)</td><td><code>plot(x, y)</code></td></tr>
+<tr><td class="col-index">61</td><td><code>hist()</code></td><td>Histograma (Base)</td><td><code>hist(v)</code></td></tr>
+<tr><td class="col-index">62</td><td><code>boxplot()</code></td><td>Diagrama de caixa (Base)</td><td><code>boxplot(v)</code></td></tr>
+<tr><td class="col-index">63</td><td><code>ggplot()</code></td><td>Inicia gráfico ggplot2</td><td><code>ggplot(df, aes(x, y))</code></td></tr>
+<tr><td class="col-index">64</td><td><code>geom_point()</code></td><td>Gráfico de dispersão (ggplot)</td><td><code>+ geom_point()</code></td></tr>
+<tr><td class="col-index">65</td><td><code>geom_line()</code></td><td>Gráfico de linhas (ggplot)</td><td><code>+ geom_line()</code></td></tr>
+<tr><td class="col-index">66</td><td><code>geom_bar()</code></td><td>Gráfico de barras (ggplot)</td><td><code>+ geom_bar()</code></td></tr>
+<tr><td class="col-index">67</td><td><code>facet_wrap()</code></td><td>Cria múltiplos painéis (ggplot)</td><td><code>+ facet_wrap(~categoria)</code></td></tr>
+<tr><td class="col-index">68</td><td><code>labs()</code></td><td>Títulos e legendas (ggplot)</td><td><code>+ labs(title="Gráfico")</code></td></tr>
+<tr><td class="col-index">69</td><td><code>theme_minimal()</code></td><td>Tema limpo (ggplot)</td><td><code>+ theme_minimal()</code></td></tr>
+
+<tr><td class="col-index">70</td><td><code>if(){} else{}</code></td><td>Estrutura condicional</td><td><code>if(x>0){"Pos"} else{"Neg"}</code></td></tr>
+<tr><td class="col-index">71</td><td><code>ifelse()</code></td><td>Versão vetorizada de IF</td><td><code>ifelse(v > 0, 1, 0)</code></td></tr>
+<tr><td class="col-index">72</td><td><code>for(){}</code></td><td>Laço de repetição For</td><td><code>for(i in 1:10){print(i)}</code></td></tr>
+<tr><td class="col-index">73</td><td><code>while(){}</code></td><td>Laço de repetição While</td><td><code>while(x < 5){x <- x + 1}</code></td></tr>
+<tr><td class="col-index">74</td><td><code>function(){}</code></td><td>Cria uma função personalizada</td><td><code>minha_func <- function(x){x^2}</code></td></tr>
+<tr><td class="col-index">75</td><td><code>apply()</code></td><td>Aplica função em matriz/df</td><td><code>apply(mat, 1, sum)</code></td></tr>
+<tr><td class="col-index">76</td><td><code>lapply()</code></td><td>Aplica função em lista (retorna lista)</td><td><code>lapply(lista, mean)</code></td></tr>
+<tr><td class="col-index">77</td><td><code>sapply()</code></td><td>Aplica função (retorna vetor/matriz)</td><td><code>sapply(lista, mean)</code></td></tr>
+
+<tr><td class="col-index">78</td><td><code>Sys.Date()</code></td><td>Data atual do sistema</td><td><code>Sys.Date()</code></td></tr>
+<tr><td class="col-index">79</td><td><code>as.Date()</code></td><td>Converte para formato data</td><td><code>as.Date("2023-01-01")</code></td></tr>
+<tr><td class="col-index">80</td><td><code>format()</code></td><td>Formata datas para string</td><td><code>format(Sys.Date(), "%d/%m/%Y")</code></td></tr>
+<tr><td class="col-index">81</td><td><code>difftime()</code></td><td>Diferença entre datas</td><td><code>difftime(d1, d2)</code></td></tr>
+
+<tr><td class="col-index">82</td><td><code>is.na()</code></td><td>Verifica valores NA</td><td><code>sum(is.na(df))</code></td></tr>
+<tr><td class="col-index">83</td><td><code>na.omit()</code></td><td>Remove linhas com NA</td><td><code>df_limpo <- na.omit(df)</code></td></tr>
+<tr><td class="col-index">84</td><td><code>complete.cases()</code></td><td>Retorna linhas sem NA</td><td><code>df[complete.cases(df), ]</code></td></tr>
+
+<tr><td class="col-index">85</td><td><code>map()</code></td><td>Aplica função (purrr)</td><td><code>map(v, sqrt)</code></td></tr>
+<tr><td class="col-index">86</td><td><code>map_dbl()</code></td><td>Retorna vetor numérico (purrr)</td><td><code>map_dbl(v, mean)</code></td></tr>
+
+<tr><td class="col-index">87</td><td><code>all()</code></td><td>Verifica se todos são TRUE</td><td><code>all(v > 0)</code></td></tr>
+<tr><td class="col-index">88</td><td><code>any()</code></td><td>Verifica se algum é TRUE</td><td><code>any(v < 0)</code></td></tr>
+<tr><td class="col-index">89</td><td><code>which()</code></td><td>Retorna índices TRUE</td><td><code>which(v == 10)</code></td></tr>
+<tr><td class="col-index">90</td><td><code>table()</code></td><td>Tabela de frequências</td><td><code>table(df$cor)</code></td></tr>
+<tr><td class="col-index">91</td><td><code>prop.table()</code></td><td>Proporções de uma tabela</td><td><code>prop.table(table(x))</code></td></tr>
+<tr><td class="col-index">92</td><td><code>nrow()</code></td><td>Número de linhas</td><td><code>nrow(df)</code></td></tr>
+<tr><td class="col-index">93</td><td><code>ncol()</code></td><td>Número de colunas</td><td><code>ncol(df)</code></td></tr>
+<tr><td class="col-index">94</td><td><code>head(df, n)</code></td><td>Ver n linhas iniciais</td><td><code>head(df, 10)</code></td></tr>
+<tr><td class="col-index">95</td><td><code>View()</code></td><td>Abre visualizador de dados</td><td><code>View(df)</code></td></tr>
+<tr><td class="col-index">96</td><td><code>sample()</code></td><td>Gera amostra aleatória</td><td><code>sample(1:100, 5)</code></td></tr>
+<tr><td class="col-index">97</td><td><code>set.seed()</code></td><td>Fixa aleatoriedade (reprodutibilidade)</td><td><code>set.seed(123)</code></td></tr>
+<tr><td class="col-index">98</td><td><code>round()</code></td><td>Arredonda valores</td><td><code>round(3.1415, 2)</code></td></tr>
+<tr><td class="col-index">99</td><td><code>length()</code></td><td>Comprimento de um vetor</td><td><code>length(v)</code></td></tr>
+<tr><td class="col-index">100</td><td><code>q()</code></td><td>Sair do console R</td><td><code>q()</code></td></tr>
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

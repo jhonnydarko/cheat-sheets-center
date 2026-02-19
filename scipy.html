@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>SciPy Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #0054a6; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #003366; color: white; position: sticky; top: 0; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #0054a6; font-family: 'Courier New', Courier, monospace; font-weight: bold; }
+/* Estilo para a coluna de índice */
+.col-id { width: 40px; text-align: center; font-weight: bold; color: #7f8c8d; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🚀 SciPy Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://scipy.org/" target="_blank">🔬 Site oficial do SciPy (Documentação)</a></p>
+<input type="text" id="search_field" placeholder="Buscar submódulo, função matemática ou constante...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-id">#</th>
+<th>Comando / Função</th>
+<th>O que faz (Submódulo)</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-id">1</td><td><code>constants.pi</code></td><td>Constante Pi (scipy.constants)</td><td><code>from scipy import constants; print(constants.pi)</code></td></tr>
+<tr><td class="col-id">2</td><td><code>constants.c</code></td><td>Velocidade da luz no vácuo</td><td><code>constants.speed_of_light</code></td></tr>
+<tr><td class="col-id">3</td><td><code>constants.G</code></td><td>Constante gravitacional de Newton</td><td><code>constants.gravitational_constant</code></td></tr>
+
+<tr><td class="col-id">4</td><td><code>integrate.quad()</code></td><td>Integração simples de uma função</td><td><code>integrate.quad(lambda x: x**2, 0, 1)</code></td></tr>
+<tr><td class="col-id">5</td><td><code>integrate.dblquad()</code></td><td>Integração dupla</td><td><code>integrate.dblquad(func, a, b, gfun, hfun)</code></td></tr>
+<tr><td class="col-id">6</td><td><code>integrate.solve_ivp()</code></td><td>Resolve problemas de valor inicial (EDOs)</td><td><code>integrate.solve_ivp(f, [t0, tf], y0)</code></td></tr>
+
+<tr><td class="col-id">7</td><td><code>optimize.minimize()</code></td><td>Minimização de funções escalares/multivariadas</td><td><code>optimize.minimize(f, x0, method='BFGS')</code></td></tr>
+<tr><td class="col-id">8</td><td><code>optimize.root()</code></td><td>Encontra raízes de sistemas de equações</td><td><code>optimize.root(f, x0)</code></td></tr>
+<tr><td class="col-id">9</td><td><code>optimize.curve_fit()</code></td><td>Ajuste de curva por mínimos quadrados não lineares</td><td><code>optimize.curve_fit(f, xdata, ydata)</code></td></tr>
+<tr><td class="col-id">10</td><td><code>optimize.linprog()</code></td><td>Minimização de programação linear</td><td><code>optimize.linprog(c, A_ub, b_ub)</code></td></tr>
+
+<tr><td class="col-id">11</td><td><code>linalg.inv()</code></td><td>Calcula a inversa de uma matriz quadrada</td><td><code>linalg.inv(A)</code></td></tr>
+<tr><td class="col-id">12</td><td><code>linalg.det()</code></td><td>Calcula o determinante de uma matriz</td><td><code>linalg.det(A)</code></td></tr>
+<tr><td class="col-id">13</td><td><code>linalg.eig()</code></td><td>Calcula autovalores e autovetores</td><td><code>vals, vecs = linalg.eig(A)</code></td></tr>
+<tr><td class="col-id">14</td><td><code>linalg.solve()</code></td><td>Resolve sistemas lineares Ax = b</td><td><code>linalg.solve(A, b)</code></td></tr>
+<tr><td class="col-id">15</td><td><code>linalg.svd()</code></td><td>Decomposição em Valores Singulares (SVD)</td><td><code>U, s, Vh = linalg.svd(A)</code></td></tr>
+
+<tr><td class="col-id">16</td><td><code>interpolate.interp1d()</code></td><td>Interpolação linear ou por splines (1D)</td><td><code>f = interpolate.interp1d(x, y, kind='cubic')</code></td></tr>
+<tr><td class="col-id">17</td><td><code>interpolate.griddata()</code></td><td>Interpolação de dados não estruturados (N-D)</td><td><code>interpolate.griddata(points, values, xi)</code></td></tr>
+
+<tr><td class="col-id">18</td><td><code>signal.convolve()</code></td><td>Convolução de dois arrays N-dimensionais</td><td><code>signal.convolve(img, filtro)</code></td></tr>
+<tr><td class="col-id">19</td><td><code>signal.fftconvolve()</code></td><td>Convolução rápida usando FFT</td><td><code>signal.fftconvolve(x, y)</code></td></tr>
+<tr><td class="col-id">20</td><td><code>signal.butter()</code></td><td>Cria filtro digital/analógico de Butterworth</td><td><code>b, a = signal.butter(4, 100, 'low', fs=1000)</code></td></tr>
+<tr><td class="col-id">21</td><td><code>signal.find_peaks()</code></td><td>Encontra picos dentro de um sinal</td><td><code>peaks, _ = signal.find_peaks(x, height=0)</code></td></tr>
+<tr><td class="col-id">22</td><td><code>signal.spectrogram()</code></td><td>Calcula o espectrograma de um sinal</td><td><code>f, t, Sxx = signal.spectrogram(x, fs)</code></td></tr>
+
+<tr><td class="col-id">23</td><td><code>stats.norm.pdf()</code></td><td>Densidade de probabilidade (Distribuição Normal)</td><td><code>stats.norm.pdf(x, loc=0, scale=1)</code></td></tr>
+<tr><td class="col-id">24</td><td><code>stats.norm.cdf()</code></td><td>Probabilidade acumulada (Distribuição Normal)</td><td><code>stats.norm.cdf(1.96)</code></td></tr>
+<tr><td class="col-id">25</td><td><code>stats.ttest_ind()</code></td><td>Teste T para duas amostras independentes</td><td><code>stats.ttest_ind(cat1, cat2)</code></td></tr>
+<tr><td class="col-id">26</td><td><code>stats.pearsonr()</code></td><td>Coeficiente de correlação de Pearson</td><td><code>corr, p_val = stats.pearsonr(x, y)</code></td></tr>
+
+<tr><td class="col-id">27</td><td><code>sparse.csr_matrix()</code></td><td>Cria matriz em formato Compressed Sparse Row</td><td><code>sparse.csr_matrix(A)</code></td></tr>
+<tr><td class="col-id">28</td><td><code>sparse.linalg.eigs()</code></td><td>Autovalores para matrizes esparsas</td><td><code>sparse.linalg.eigs(A, k=2)</code></td></tr>
+
+<tr><td class="col-id">29</td><td><code>fft.fft()</code></td><td>Transformada Rápida de Fourier (1D)</td><td><code>fft.fft(x)</code></td></tr>
+<tr><td class="col-id">30</td><td><code>fft.fftfreq()</code></td><td>Retorna as frequências da amostragem DFT</td><td><code>fft.fftfreq(n, d)</code></td></tr>
+<tr><td class="col-id">31</td><td><code>fft.ifft()</code></td><td>Transformada Inversa de Fourier (1D)</td><td><code>fft.ifft(X)</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

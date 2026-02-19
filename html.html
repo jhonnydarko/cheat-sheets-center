@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>HTML5 Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #e34c26; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #f06529; color: white; position: sticky; top: 0; }
+
+/* Nova classe para a coluna de índice */
+.col-index { width: 30px; text-align: center; color: #666; font-weight: bold; background: #f9f9f9; }
+
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #e34c26; font-family: 'Courier New', Courier, monospace; font-weight: bold; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🧩 HTML5 Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML" target="_blank">📄 Documentação MDN (HTML)</a></p>
+<input type="text" id="search_field" placeholder="Buscar tag, atributo ou funcionalidade HTML...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th> <th>Tag / Atributo</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>&lt;!DOCTYPE html&gt;</code></td><td>Declara que o documento é HTML5</td><td><code>&lt;!DOCTYPE html&gt;</code></td></tr>
+<tr><td class="col-index">2</td><td><code>&lt;html&gt;</code></td><td>Raiz do documento HTML</td><td><code>&lt;html lang="pt-br"&gt;</code></td></tr>
+<tr><td class="col-index">3</td><td><code>&lt;head&gt;</code></td><td>Metadados e informações técnicas</td><td><code>&lt;head&gt;...&lt;/head&gt;</code></td></tr>
+<tr><td class="col-index">4</td><td><code>&lt;body&gt;</code></td><td>Conteúdo visível do site</td><td><code>&lt;body&gt;...&lt;/body&gt;</code></td></tr>
+<tr><td class="col-index">5</td><td><code>&lt;title&gt;</code></td><td>Título da página na aba do navegador</td><td><code>&lt;title&gt;Meu Site&lt;/title&gt;</code></td></tr>
+<tr><td class="col-index">6</td><td><code>&lt;meta charset&gt;</code></td><td>Define a codificação de caracteres</td><td><code>&lt;meta charset="UTF-8"&gt;</code></td></tr>
+<tr><td class="col-index">7</td><td><code>&lt;link&gt;</code></td><td>Vincula arquivos externos (CSS, ícones)</td><td><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></td></tr>
+<tr><td class="col-index">8</td><td><code>&lt;style&gt;</code></td><td>Bloco de CSS interno</td><td><code>&lt;style&gt; body { color: red; } &lt;/style&gt;</code></td></tr>
+<tr><td class="col-index">9</td><td><code>&lt;script&gt;</code></td><td>Inclui ou escreve JavaScript</td><td><code>&lt;script src="script.js"&gt;&lt;/script&gt;</code></td></tr>
+<tr><td class="col-index">10</td><td><code>&lt;header&gt;</code></td><td>Cabeçalho da página ou seção</td><td><code>&lt;header&gt;...&lt;/header&gt;</code></td></tr>
+<tr><td class="col-index">11</td><td><code>&lt;nav&gt;</code></td><td>Seção de links de navegação</td><td><code>&lt;nav&gt;...&lt;/nav&gt;</code></td></tr>
+<tr><td class="col-index">12</td><td><code>&lt;main&gt;</code></td><td>Conteúdo principal e único da página</td><td><code>&lt;main&gt;...&lt;/main&gt;</code></td></tr>
+<tr><td class="col-index">13</td><td><code>&lt;section&gt;</code></td><td>Seção temática genérica</td><td><code>&lt;section&gt;...&lt;/section&gt;</code></td></tr>
+<tr><td class="col-index">14</td><td><code>&lt;article&gt;</code></td><td>Conteúdo independente (post, notícia)</td><td><code>&lt;article&gt;...&lt;/article&gt;</code></td></tr>
+<tr><td class="col-index">15</td><td><code>&lt;aside&gt;</code></td><td>Conteúdo lateral ou relacionado</td><td><code>&lt;aside&gt;...&lt;/aside&gt;</code></td></tr>
+<tr><td class="col-index">16</td><td><code>&lt;footer&gt;</code></td><td>Rodapé da página ou seção</td><td><code>&lt;footer&gt;...&lt;/footer&gt;</code></td></tr>
+<tr><td class="col-index">17</td><td><code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code></td><td>Títulos hierárquicos</td><td><code>&lt;h1&gt;Título&lt;/h1&gt;</code></td></tr>
+<tr><td class="col-index">18</td><td><code>&lt;p&gt;</code></td><td>Parágrafo de texto</td><td><code>&lt;p&gt;Olá mundo!&lt;/p&gt;</code></td></tr>
+<tr><td class="col-index">19</td><td><code>&lt;br&gt;</code></td><td>Quebra de linha simples</td><td><code>Linha 1 &lt;br&gt; Linha 2</code></td></tr>
+<tr><td class="col-index">20</td><td><code>&lt;hr&gt;</code></td><td>Linha horizontal</td><td><code>&lt;hr&gt;</code></td></tr>
+<tr><td class="col-index">21</td><td><code>&lt;strong&gt;</code></td><td>Negrito (importância)</td><td><code>&lt;strong&gt;Atenção&lt;/strong&gt;</code></td></tr>
+<tr><td class="col-index">22</td><td><code>&lt;em&gt;</code></td><td>Itálico (ênfase)</td><td><code>&lt;em&gt;Importante&lt;/em&gt;</code></td></tr>
+<tr><td class="col-index">23</td><td><code>&lt;blockquote&gt;</code></td><td>Citação em bloco</td><td><code>&lt;blockquote&gt;...&lt;/blockquote&gt;</code></td></tr>
+<tr><td class="col-index">24</td><td><code>&lt;cite&gt;</code></td><td>Referência de obra</td><td><code>&lt;cite&gt;Dom Casmurro&lt;/cite&gt;</code></td></tr>
+<tr><td class="col-index">25</td><td><code>&lt;ul&gt;</code></td><td>Lista não ordenada</td><td><code>&lt;ul&gt;...&lt;/ul&gt;</code></td></tr>
+<tr><td class="col-index">26</td><td><code>&lt;ol&gt;</code></td><td>Lista ordenada</td><td><code>&lt;ol&gt;...&lt;/ol&gt;</code></td></tr>
+<tr><td class="col-index">27</td><td><code>&lt;li&gt;</code></td><td>Item de lista</td><td><code>&lt;li&gt;Item 1&lt;/li&gt;</code></td></tr>
+<tr><td class="col-index">28</td><td><code>&lt;a&gt;</code></td><td>Hiperlink</td><td><code>&lt;a href="#"&gt;Link&lt;/a&gt;</code></td></tr>
+<tr><td class="col-index">29</td><td><code>target="_blank"</code></td><td>Abre em nova aba</td><td><code>&lt;a target="_blank"&gt;</code></td></tr>
+<tr><td class="col-index">30</td><td><code>&lt;img&gt;</code></td><td>Insere imagem</td><td><code>&lt;img src="f.jpg" alt="X"&gt;</code></td></tr>
+<tr><td class="col-index">31</td><td><code>&lt;video&gt;</code></td><td>Reproduz vídeo</td><td><code>&lt;video controls&gt;</code></td></tr>
+<tr><td class="col-index">32</td><td><code>&lt;audio&gt;</code></td><td>Reproduz áudio</td><td><code>&lt;audio controls&gt;</code></td></tr>
+<tr><td class="col-index">33</td><td><code>&lt;iframe&gt;</code></td><td>Incorpora conteúdo</td><td><code>&lt;iframe src="..."&gt;</code></td></tr>
+<tr><td class="col-index">34</td><td><code>&lt;table&gt;</code></td><td>Define tabela</td><td><code>&lt;table&gt;...&lt;/table&gt;</code></td></tr>
+<tr><td class="col-index">35</td><td><code>&lt;thead&gt;</code></td><td>Cabeçalho da tabela</td><td><code>&lt;thead&gt;...&lt;/thead&gt;</code></td></tr>
+<tr><td class="col-index">36</td><td><code>&lt;tr&gt;</code></td><td>Linha da tabela</td><td><code>&lt;tr&gt;...&lt;/tr&gt;</code></td></tr>
+<tr><td class="col-index">37</td><td><code>&lt;th&gt;</code></td><td>Célula de cabeçalho</td><td><code>&lt;th&gt;Título&lt;/th&gt;</code></td></tr>
+<tr><td class="col-index">38</td><td><code>&lt;td&gt;</code></td><td>Célula de dados</td><td><code>&lt;td&gt;Dado&lt;/td&gt;</code></td></tr>
+<tr><td class="col-index">39</td><td><code>&lt;form&gt;</code></td><td>Define formulário</td><td><code>&lt;form action="/"&gt;</code></td></tr>
+<tr><td class="col-index">40</td><td><code>&lt;label&gt;</code></td><td>Rótulo de campo</td><td><code>&lt;label for="i"&gt;Nome&lt;/label&gt;</code></td></tr>
+<tr><td class="col-index">41</td><td><code>&lt;input type="text"&gt;</code></td><td>Campo de texto</td><td><code>&lt;input type="text"&gt;</code></td></tr>
+<tr><td class="col-index">42</td><td><code>&lt;input type="password"&gt;</code></td><td>Campo de senha</td><td><code>&lt;input type="password"&gt;</code></td></tr>
+<tr><td class="col-index">43</td><td><code>&lt;input type="email"&gt;</code></td><td>Valida e-mail</td><td><code>&lt;input type="email"&gt;</code></td></tr>
+<tr><td class="col-index">44</td><td><code>&lt;input type="submit"&gt;</code></td><td>Botão de enviar</td><td><code>&lt;input type="submit"&gt;</code></td></tr>
+<tr><td class="col-index">45</td><td><code>&lt;button&gt;</code></td><td>Botão genérico</td><td><code>&lt;button&gt;Click&lt;/button&gt;</code></td></tr>
+<tr><td class="col-index">46</td><td><code>&lt;textarea&gt;</code></td><td>Texto multi-linha</td><td><code>&lt;textarea&gt;&lt;/textarea&gt;</code></td></tr>
+<tr><td class="col-index">47</td><td><code>&lt;select&gt;</code></td><td>Lista suspensa</td><td><code>&lt;select&gt;...&lt;/select&gt;</code></td></tr>
+<tr><td class="col-index">48</td><td><code>&lt;option&gt;</code></td><td>Opção do select</td><td><code>&lt;option&gt;A&lt;/option&gt;</code></td></tr>
+<tr><td class="col-index">49</td><td><code>id</code></td><td>ID único</td><td><code>id="meu-id"</code></td></tr>
+<tr><td class="col-index">50</td><td><code>class</code></td><td>Classes CSS</td><td><code>class="card"</code></td></tr>
+<tr><td class="col-index">51</td><td><code>style</code></td><td>Estilo inline</td><td><code>style="color:red"</code></td></tr>
+<tr><td class="col-index">52</td><td><code>title</code></td><td>Dica de mouse</td><td><code>title="Dica"</code></td></tr>
+<tr><td class="col-index">53</td><td><code>data-*</code></td><td>Dados customizados</td><td><code>data-id="1"</code></td></tr>
+<tr><td class="col-index">54</td><td><code>hidden</code></td><td>Esconde elemento</td><td><code>&lt;p hidden&gt;</code></td></tr>
+<tr><td class="col-index">55</td><td><code>&lt;details&gt;</code></td><td>Widget retrátil</td><td><code>&lt;details&gt;</code></td></tr>
+<tr><td class="col-index">56</td><td><code>&lt;summary&gt;</code></td><td>Título do details</td><td><code>&lt;summary&gt;Abrir&lt;/summary&gt;</code></td></tr>
+<tr><td class="col-index">57</td><td><code>&lt;dialog&gt;</code></td><td>Modal nativo</td><td><code>&lt;dialog open&gt;</code></td></tr>
+
+<tr><td class="col-index">58</td><td><code>&lt;abbr&gt;</code></td><td>Define uma abreviação ou acrônimo</td><td><code>&lt;abbr title="World Wide Web"&gt;WWW&lt;/abbr&gt;</code></td></tr>
+<tr><td class="col-index">59</td><td><code>&lt;address&gt;</code></td><td>Informações de contato do autor/dono</td><td><code>&lt;address&gt;Rua A, 123&lt;/address&gt;</code></td></tr>
+<tr><td class="col-index">60</td><td><code>&lt;bdi&gt;</code></td><td>Isola texto para formatação bidirecional</td><td><code>&lt;bdi&gt;User123&lt;/bdi&gt;</code></td></tr>
+<tr><td class="col-index">61</td><td><code>&lt;bdo&gt;</code></td><td>Sobrescreve a direção do texto atual</td><td><code>&lt;bdo dir="rtl"&gt;Texto&lt;/bdo&gt;</code></td></tr>
+<tr><td class="col-index">62</td><td><code>&lt;caption&gt;</code></td><td>Título ou legenda para uma tabela</td><td><code>&lt;caption&gt;Vendas 2023&lt;/caption&gt;</code></td></tr>
+<tr><td class="col-index">63</td><td><code>&lt;code&gt;</code></td><td>Define um fragmento de código de computador</td><td><code>&lt;code&gt;console.log()&lt;/code&gt;</code></td></tr>
+<tr><td class="col-index">64</td><td><code>&lt;col&gt;</code></td><td>Especifica propriedades de coluna na tabela</td><td><code>&lt;col span="2" style="background:red"&gt;</code></td></tr>
+<tr><td class="col-index">65</td><td><code>&lt;colgroup&gt;</code></td><td>Grupo de uma ou mais colunas em uma tabela</td><td><code>&lt;colgroup&gt;...&lt;/colgroup&gt;</code></td></tr>
+<tr><td class="col-index">66</td><td><code>&lt;data&gt;</code></td><td>Associa conteúdo a tradução legível por máquina</td><td><code>&lt;data value="2105"&gt;Tomate&lt;/data&gt;</code></td></tr>
+<tr><td class="col-index">67</td><td><code>&lt;datalist&gt;</code></td><td>Lista de opções pré-definidas para inputs</td><td><code>&lt;datalist id="browsers"&gt;...&lt;/datalist&gt;</code></td></tr>
+<tr><td class="col-index">68</td><td><code>&lt;del&gt;</code></td><td>Texto que foi deletado do documento</td><td><code>&lt;del&gt;Preço: R$ 50&lt;/del&gt;</code></td></tr>
+<tr><td class="col-index">69</td><td><code>&lt;dfn&gt;</code></td><td>Indica o termo que está sendo definido</td><td><code>&lt;dfn&gt;HTML&lt;/dfn&gt; é uma linguagem...</code></td></tr>
+<tr><td class="col-index">70</td><td><code>&lt;fieldset&gt;</code></td><td>Agrupa elementos relacionados em um form</td><td><code>&lt;fieldset&gt;...&lt;/fieldset&gt;</code></td></tr>
+<tr><td class="col-index">71</td><td><code>&lt;legend&gt;</code></td><td>Legenda para o elemento fieldset</td><td><code>&lt;legend&gt;Dados Pessoais&lt;/legend&gt;</code></td></tr>
+<tr><td class="col-index">72</td><td><code>&lt;figure&gt;</code></td><td>Conteúdo auto-contido (imagem, gráfico)</td><td><code>&lt;figure&gt;...&lt;/figure&gt;</code></td></tr>
+<tr><td class="col-index">73</td><td><code>&lt;figcaption&gt;</code></td><td>Legenda para o elemento figure</td><td><code>&lt;figcaption&gt;Foto da Lua&lt;/figcaption&gt;</code></td></tr>
+<tr><td class="col-index">74</td><td><code>&lt;input type="checkbox"&gt;</code></td><td>Caixa de seleção (múltipla escolha)</td><td><code>&lt;input type="checkbox"&gt;</code></td></tr>
+<tr><td class="col-index">75</td><td><code>&lt;input type="radio"&gt;</code></td><td>Botão de rádio (escolha única)</td><td><code>&lt;input type="radio" name="g1"&gt;</code></td></tr>
+<tr><td class="col-index">76</td><td><code>&lt;input type="date"&gt;</code></td><td>Seletor de data</td><td><code>&lt;input type="date"&gt;</code></td></tr>
+<tr><td class="col-index">77</td><td><code>&lt;input type="color"&gt;</code></td><td>Seletor de cor</td><td><code>&lt;input type="color"&gt;</code></td></tr>
+<tr><td class="col-index">78</td><td><code>&lt;input type="range"&gt;</code></td><td>Controle deslizante (slider)</td><td><code>&lt;input type="range" min="0" max="10"&gt;</code></td></tr>
+<tr><td class="col-index">79</td><td><code>&lt;input type="file"&gt;</code></td><td>Upload de arquivos</td><td><code>&lt;input type="file"&gt;</code></td></tr>
+<tr><td class="col-index">80</td><td><code>&lt;input type="number"&gt;</code></td><td>Campo numérico</td><td><code>&lt;input type="number" step="1"&gt;</code></td></tr>
+<tr><td class="col-index">81</td><td><code>&lt;input type="tel"&gt;</code></td><td>Campo para número de telefone</td><td><code>&lt;input type="tel"&gt;</code></td></tr>
+<tr><td class="col-index">82</td><td><code>&lt;input type="url"&gt;</code></td><td>Campo para endereço de URL</td><td><code>&lt;input type="url"&gt;</code></td></tr>
+<tr><td class="col-index">83</td><td><code>&lt;ins&gt;</code></td><td>Texto que foi inserido no documento</td><td><code>&lt;ins&gt;Preço: R$ 40&lt;/ins&gt;</code></td></tr>
+<tr><td class="col-index">84</td><td><code>&lt;kbd&gt;</code></td><td>Representa entrada de teclado</td><td><code>Pressione &lt;kbd&gt;Ctrl&lt;/kbd&gt;</code></td></tr>
+<tr><td class="col-index">85</td><td><code>&lt;mark&gt;</code></td><td>Texto realçado ou marcado</td><td><code>&lt;mark&gt;Importante&lt;/mark&gt;</code></td></tr>
+<tr><td class="col-index">86</td><td><code>&lt;meter&gt;</code></td><td>Medição escalar em um intervalo conhecido</td><td><code>&lt;meter value="2" min="0" max="10"&gt;</code></td></tr>
+<tr><td class="col-index">87</td><td><code>&lt;progress&gt;</code></td><td>Barra de progresso de uma tarefa</td><td><code>&lt;progress value="70" max="100"&gt;</code></td></tr>
+<tr><td class="col-index">88</td><td><code>&lt;output&gt;</code></td><td>Resultado de um cálculo ou ação</td><td><code>&lt;output name="x"&gt;0&lt;/output&gt;</code></td></tr>
+<tr><td class="col-index">89</td><td><code>&lt;picture&gt;</code></td><td>Container para múltiplas fontes de imagem</td><td><code>&lt;picture&gt;...&lt;/picture&gt;</code></td></tr>
+<tr><td class="col-index">90</td><td><code>&lt;source&gt;</code></td><td>Recursos de mídia para picture, video ou audio</td><td><code>&lt;source srcset="img.webp"&gt;</code></td></tr>
+<tr><td class="col-index">91</td><td><code>&lt;pre&gt;</code></td><td>Texto pré-formatado (preserva espaços)</td><td><code>&lt;pre&gt;Linha 1    Linha 2&lt;/pre&gt;</code></td></tr>
+<tr><td class="col-index">92</td><td><code>&lt;q&gt;</code></td><td>Citação curta inline</td><td><code>&lt;q&gt;Ser ou não ser&lt;/q&gt;</code></td></tr>
+<tr><td class="col-index">93</td><td><code>&lt;s&gt;</code></td><td>Texto que não é mais correto ou relevante</td><td><code>&lt;s&gt;De R$ 100&lt;/s&gt; por R$ 80</code></td></tr>
+<tr><td class="col-index">94</td><td><code>&lt;samp&gt;</code></td><td>Saída de exemplo de um programa</td><td><code>&lt;samp&gt;Erro 404&lt;/samp&gt;</code></td></tr>
+<tr><td class="col-index">95</td><td><code>&lt;small&gt;</code></td><td>Comentários laterais ou "letras miúdas"</td><td><code>&lt;small&gt;Direitos reservados&lt;/small&gt;</code></td></tr>
+<tr><td class="col-index">96</td><td><code>&lt;span&gt;</code></td><td>Container genérico inline para estilo</td><td><code>&lt;span class="txt"&gt;...&lt;/span&gt;</code></td></tr>
+<tr><td class="col-index">97</td><td><code>&lt;div&gt;</code></td><td>Container genérico em bloco</td><td><code>&lt;div class="box"&gt;...&lt;/div&gt;</code></td></tr>
+<tr><td class="col-index">98</td><td><code>&lt;sub&gt;</code></td><td>Texto subscrito</td><td><code>H&lt;sub&gt;2&lt;/sub&gt;O</code></td></tr>
+<tr><td class="col-index">99</td><td><code>&lt;sup&gt;</code></td><td>Texto sobrescrito</td><td><code>E = mc&lt;sup&gt;2&lt;/sup&gt;</code></td></tr>
+<tr><td class="col-index">100</td><td><code>&lt;time&gt;</code></td><td>Define data ou hora específica</td><td><code>&lt;time datetime="2023-12-25"&gt;Natal&lt;/time&gt;</code></td></tr>
+<tr><td class="col-index">101</td><td><code>&lt;u&gt;</code></td><td>Texto com anotação não articulada (sublinhado)</td><td><code>&lt;u&gt;Erro ortográfico&lt;/u&gt;</code></td></tr>
+<tr><td class="col-index">102</td><td><code>&lt;var&gt;</code></td><td>Define uma variável em contexto matemático</td><td><code>&lt;var&gt;x&lt;/var&gt; + 1</code></td></tr>
+<tr><td class="col-index">103</td><td><code>&lt;wbr&gt;</code></td><td>Oportunidade de quebra de linha</td><td><code>muito&lt;wbr&gt;longo</code></td></tr>
+<tr><td class="col-index">104</td><td><code>&lt;tfoot&gt;</code></td><td>Rodapé da tabela</td><td><code>&lt;tfoot&gt;...&lt;/tfoot&gt;</code></td></tr>
+<tr><td class="col-index">105</td><td><code>&lt;tbody&gt;</code></td><td>Corpo principal da tabela</td><td><code>&lt;tbody&gt;...&lt;/tbody&gt;</code></td></tr>
+<tr><td class="col-index">106</td><td><code>placeholder</code></td><td>Texto de ajuda dentro do input</td><td><code>placeholder="Seu nome"</code></td></tr>
+<tr><td class="col-index">107</td><td><code>required</code></td><td>Torna o preenchimento obrigatório</td><td><code>&lt;input required&gt;</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

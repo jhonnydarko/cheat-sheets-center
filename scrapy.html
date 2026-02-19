@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Scrapy Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+.install-box { background: #27ae60; color: white; padding: 15px; border-radius: 5px; margin-bottom: 20px; font-family: monospace; }
+
+/* Estilo para a numeração automática (Índice) */
+tbody { counter-reset: rowNumber; }
+tbody tr { counter-increment: rowNumber; }
+tbody tr td:first-child::before { content: counter(rowNumber); font-weight: bold; color: #7f8c8d; }
+.col-index { width: 40px; text-align: center; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🕷️ Scrapy Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://docs.scrapy.org/" target="_blank">📖 Site oficial do Scrapy (Documentação)</a></p>
+<input type="text" id="search_field" placeholder="Buscar comando, seletor ou configuração do Scrapy...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th>
+<th>Comando / Função / Parâmetro</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td></td><td><code>scrapy startproject [nome]</code></td><td>Cria um novo projeto Scrapy</td><td><code>scrapy startproject meu_projeto</code></td></tr>
+<tr><td></td><td><code>scrapy genspider [nome] [url]</code></td><td>Gera um novo spider a partir de um template</td><td><code>scrapy genspider buscador google.com</code></td></tr>
+<tr><td></td><td><code>scrapy crawl [spider]</code></td><td>Executa um spider específico</td><td><code>scrapy crawl noticias</code></td></tr>
+<tr><td></td><td><code>scrapy shell [url]</code></td><td>Abre console interativo para testar seletores</td><td><code>scrapy shell 'http://site.com'</code></td></tr>
+<tr><td></td><td><code>scrapy list</code></td><td>Lista todos os spiders no projeto</td><td><code>scrapy list</code></td></tr>
+<tr><td></td><td><code>scrapy fetch [url]</code></td><td>Faz download da página e exibe o código fonte</td><td><code>scrapy fetch --nolog http://site.com</code></td></tr>
+<tr><td></td><td><code>scrapy view [url]</code></td><td>Abre a URL no navegador como o Scrapy a vê</td><td><code>scrapy view http://site.com</code></td></tr>
+<tr><td></td><td><code>scrapy runspider [file.py]</code></td><td>Executa um arquivo de spider sem criar projeto</td><td><code>scrapy runspider spider.py</code></td></tr>
+<tr><td></td><td><code>-o [file.json/csv]</code></td><td>Exporta o resultado para um arquivo</td><td><code>scrapy crawl spider -o dados.json</code></td></tr>
+
+<tr><td></td><td><code>response.css()</code></td><td>Seleciona elementos usando seletores CSS</td><td><code>response.css('div.classe')</code></td></tr>
+<tr><td></td><td><code>response.xpath()</code></td><td>Seleciona elementos usando queries XPath</td><td><code>response.xpath('//h1/text()')</code></td></tr>
+<tr><td></td><td><code>get()</code></td><td>Extrai o primeiro resultado encontrado</td><td><code>res.css('h1::text').get()</code></td></tr>
+<tr><td></td><td><code>getall()</code></td><td>Extrai uma lista com todos os resultados</td><td><code>res.css('p').getall()</code></td></tr>
+<tr><td></td><td><code>attrib[]</code></td><td>Acessa atributos de um elemento (CSS)</td><td><code>res.css('a').attrib['href']</code></td></tr>
+<tr><td></td><td><code>::text</code></td><td>Pseudo-elemento CSS para pegar apenas texto</td><td><code>response.css('title::text').get()</code></td></tr>
+<tr><td></td><td><code>::attr(name)</code></td><td>Pseudo-elemento CSS para pegar um atributo</td><td><code>response.css('img::attr(src)').get()</code></td></tr>
+<tr><td></td><td><code>xpath('//text()')</code></td><td>Pega todo o texto dentro de um nó XPath</td><td><code>response.xpath('//p/text()').get()</code></td></tr>
+<tr><td></td><td><code>xpath('@href')</code></td><td>Pega o atributo href via XPath</td><td><code>response.xpath('//a/@href').get()</code></td></tr>
+<tr><td></td><td><code>re()</code></td><td>Extrai dados usando Expressões Regulares</td><td><code>response.css('span').re(r'\d+')</code></td></tr>
+<tr><td></td><td><code>re_first()</code></td><td>Primeira ocorrência de Regex</td><td><code>response.xpath('//body').re_first(r'id: (\d+)')</code></td></tr>
+
+<tr><td></td><td><code>start_requests()</code></td><td>Define as requisições iniciais customizadas</td><td><code>def start_requests(self): yield scrapy.Request(...)</code></td></tr>
+<tr><td></td><td><code>parse(self, response)</code></td><td>Callback padrão para processar a resposta</td><td><code>def parse(self, response): pass</code></td></tr>
+<tr><td></td><td><code>yield</code></td><td>Retorna itens ou novas requisições</td><td><code>yield {'titulo': texto}</code></td></tr>
+<tr><td></td><td><code>scrapy.Request()</code></td><td>Cria uma nova requisição para uma URL</td><td><code>scrapy.Request(url, callback=self.parse)</code></td></tr>
+<tr><td></td><td><code>cb_kwargs</code></td><td>Passa argumentos para o callback</td><td><code>scrapy.Request(url, cb_kwargs={'id': 1})</code></td></tr>
+<tr><td></td><td><code>meta</code></td><td>Dicionário para passar dados entre requests</td><td><code>request.meta['item'] = item</code></td></tr>
+<tr><td></td><td><code>priority</code></td><td>Define a prioridade da requisição</td><td><code>scrapy.Request(url, priority=10)</code></td></tr>
+<tr><td></td><td><code>dont_filter=True</code></td><td>Evita que o Scrapy filtre URLs duplicadas</td><td><code>scrapy.Request(url, dont_filter=True)</code></td></tr>
+<tr><td></td><td><code>errback</code></td><td>Função chamada se a requisição falhar</td><td><code>scrapy.Request(url, errback=self.erro)</code></td></tr>
+
+<tr><td></td><td><code>ROBOTSTXT_OBEY</code></td><td>Se deve respeitar o arquivo robots.txt</td><td><code>ROBOTSTXT_OBEY = True</code></td></tr>
+<tr><td></td><td><code>CONCURRENT_REQUESTS</code></td><td>Máximo de requisições simultâneas</td><td><code>CONCURRENT_REQUESTS = 32</code></td></tr>
+<tr><td></td><td><code>DOWNLOAD_DELAY</code></td><td>Tempo de espera entre requisições (segundos)</td><td><code>DOWNLOAD_DELAY = 2</code></td></tr>
+<tr><td></td><td><code>COOKIES_ENABLED</code></td><td>Habilita ou desabilita cookies</td><td><code>COOKIES_ENABLED = False</code></td></tr>
+<tr><td></td><td><code>USER_AGENT</code></td><td>Define o User-Agent da requisição</td><td><code>USER_AGENT = 'MeuBot/1.0'</code></td></tr>
+<tr><td></td><td><code>DEFAULT_REQUEST_HEADERS</code></td><td>Headers padrão para todas as requisições</td><td><code>DEFAULT_REQUEST_HEADERS = {'Accept': 'json'}</code></td></tr>
+<tr><td></td><td><code>ITEM_PIPELINES</code></td><td>Ativa pipelines de processamento de dados</td><td><code>ITEM_PIPELINES = {'Proj.pipe': 300}</code></td></tr>
+<tr><td></td><td><code>DOWNLOADER_MIDDLEWARES</code></td><td>Ativa middlewares de download</td><td><code>DOWNLOADER_MIDDLEWARES = {...}</code></td></tr>
+<tr><td></td><td><code>AUTOTHROTTLE_ENABLED</code></td><td>Ajusta a velocidade baseada na carga do site</td><td><code>AUTOTHROTTLE_ENABLED = True</code></td></tr>
+<tr><td></td><td><code>HTTPCACHE_ENABLED</code></td><td>Habilita cache local de requisições</td><td><code>HTTPCACHE_ENABLED = True</code></td></tr>
+<tr><td></td><td><code>FEEDS</code></td><td>Configura exportação automática de arquivos</td><td><code>FEEDS = {'data.json': {'format': 'json'}}</code></td></tr>
+<tr><td></td><td><code>LOG_LEVEL</code></td><td>Nível de log (DEBUG, INFO, WARNING, ERROR)</td><td><code>LOG_LEVEL = 'INFO'</code></td></tr>
+<tr><td></td><td><code>CLOSESPIDER_PAGECOUNT</code></td><td>Fecha o spider após X páginas</td><td><code>CLOSESPIDER_PAGECOUNT = 100</code></td></tr>
+
+<tr><td></td><td><code>scrapy.Item</code></td><td>Classe para definir estrutura dos dados</td><td><code>class Produto(scrapy.Item): ...</code></td></tr>
+<tr><td></td><td><code>scrapy.Field()</code></td><td>Define um campo no Item</td><td><code>nome = scrapy.Field()</code></td></tr>
+<tr><td></td><td><code>ItemLoader()</code></td><td>Facilitador para preencher itens</td><td><code>loader = ItemLoader(item=Produto())</code></td></tr>
+<tr><td></td><td><code>add_css()</code></td><td>Adiciona valor ao loader via CSS</td><td><code>loader.add_css('nome', 'h1::text')</code></td></tr>
+<tr><td></td><td><code>add_xpath()</code></td><td>Adiciona valor ao loader via XPath</td><td><code>loader.add_xpath('preco', '//*[@id="p"]')</code></td></tr>
+<tr><td></td><td><code>add_value()</code></td><td>Adiciona valor manual ao loader</td><td><code>loader.add_value('url', response.url)</code></td></tr>
+<tr><td></td><td><code>load_item()</code></td><td>Finaliza e retorna o item do loader</td><td><code>yield loader.load_item()</code></td></tr>
+
+<tr><td></td><td><code>CrawlSpider</code></td><td>Classe para spiders que seguem links</td><td><code>class MySpider(CrawlSpider): ...</code></td></tr>
+<tr><td></td><td><code>Rule()</code></td><td>Regra de rastreamento de links</td><td><code>Rule(LinkExtractor(), callback='p')</code></td></tr>
+<tr><td></td><td><code>LinkExtractor()</code></td><td>Define quais links devem ser seguidos</td><td><code>LinkExtractor(allow='category/')</code></td></tr>
+<tr><td></td><td><code>deny</code></td><td>Links que não devem ser seguidos</td><td><code>LinkExtractor(deny='login')</code></td></tr>
+<tr><td></td><td><code>follow=True</code></td><td>Se deve continuar seguindo links da página</td><td><code>Rule(..., follow=True)</code></td></tr>
+
+<tr><td></td><td><code>response.url</code></td><td>Retorna a URL da página atual</td><td><code>print(response.url)</code></td></tr>
+<tr><td></td><td><code>response.status</code></td><td>Retorna o código HTTP da resposta</td><td><code>if response.status == 200: ...</code></td></tr>
+<tr><td></td><td><code>response.headers</code></td><td>Acessa os headers da resposta</td><td><code>response.headers.get('Content-Type')</code></td></tr>
+<tr><td></td><td><code>response.body</code></td><td>Conteúdo bruto (bytes) da página</td><td><code>response.body</code></td></tr>
+<tr><td></td><td><code>response.follow()</code></td><td>Atalho para seguir um link relativo</td><td><code>yield response.follow(url, self.parse)</code></td></tr>
+<tr><td></td><td><code>response.encoding</code></td><td>Codificação da página</td><td><code>response.encoding = 'utf-8'</code></td></tr>
+<tr><td></td><td><code>Spider.from_crawler()</code></td><td>Acessa configurações dentro do spider</td><td><code>spider = cls.from_crawler(crawler)</code></td></tr>
+<tr><td></td><td><code>Signals</code></td><td>Sistema de eventos (spider_opened, etc)</td><td><code>dispatcher.connect(fn, signal=signals...)</code></td></tr>
+<tr><td></td><td><code>ImagesPipeline</code></td><td>Pipeline nativo para download de imagens</td><td><code>IMAGES_STORE = 'caminho/'</code></td></tr>
+<tr><td></td><td><code>FilesPipeline</code></td><td>Pipeline nativo para download de arquivos</td><td><code>FILES_STORE = 'caminho/'</code></td></tr>
+<tr><td></td><td><code>depth_limit</code></td><td>Profundidade máxima de rastreamento</td><td><code>DEPTH_LIMIT = 5</code></td></tr>
+<tr><td></td><td><code>DUPEFILTER_CLASS</code></td><td>Classe que filtra duplicados</td><td><code>DUPEFILTER_CLASS = '...'</code></td></tr>
+<tr><td></td><td><code>REDIRECT_ENABLED</code></td><td>Habilita/desabilita redirecionamentos</td><td><code>REDIRECT_ENABLED = False</code></td></tr>
+<tr><td></td><td><code>METAREFRESH_ENABLED</code></td><td>Lida com tags meta-refresh</td><td><code>METAREFRESH_ENABLED = True</code></td></tr>
+<tr><td></td><td><code>RETRY_TIMES</code></td><td>Número de tentativas em caso de erro</td><td><code>RETRY_TIMES = 3</code></td></tr>
+<tr><td></td><td><code>DOWNLOAD_TIMEOUT</code></td><td>Tempo máximo de espera por resposta</td><td><code>DOWNLOAD_TIMEOUT = 180</code></td></tr>
+<tr><td></td><td><code>BOT_NAME</code></td><td>Nome do bot do projeto</td><td><code>BOT_NAME = 'meubot'</code></td></tr>
+<tr><td></td><td><code>SPIDER_MODULES</code></td><td>Onde o Scrapy procura spiders</td><td><code>SPIDER_MODULES = ['proj.spiders']</code></td></tr>
+<tr><td></td><td><code>NEWSPIDER_MODULE</code></td><td>Onde novos spiders são criados</td><td><code>NEWSPIDER_MODULE = 'proj.spiders'</code></td></tr>
+<tr><td></td><td><code>CONCURRENT_ITEMS</code></td><td>Itens processados em paralelo no pipe</td><td><code>CONCURRENT_ITEMS = 100</code></td></tr>
+<tr><td></td><td><code>DNSCACHE_ENABLED</code></td><td>Habilita cache de DNS</td><td><code>DNSCACHE_ENABLED = True</code></td></tr>
+<tr><td></td><td><code>MEMUSAGE_ENABLED</code></td><td>Monitora uso de memória</td><td><code>MEMUSAGE_ENABLED = True</code></td></tr>
+<tr><td></td><td><code>TELNETCONSOLE_ENABLED</code></td><td>Habilita acesso via telnet</td><td><code>TELNETCONSOLE_ENABLED = False</code></td></tr>
+<tr><td></td><td><code>cookies</code></td><td>Envia cookies específicos na request</td><td><code>Request(url, cookies={'id': '1'})</code></td></tr>
+<tr><td></td><td><code>headers</code></td><td>Envia headers específicos na request</td><td><code>Request(url, headers={'User-Agent': 'X'})</code></td></tr>
+<tr><td></td><td><code>body</code></td><td>Envia corpo (POST) na request</td><td><code>Request(url, method='POST', body='...')</code></td></tr>
+<tr><td></td><td><code>FormRequest()</code></td><td>Requisição específica para formulários</td><td><code>FormRequest.from_response(res, formdata=...)</code></td></tr>
+<tr><td></td><td><code>from_response()</code></td><td>Preenche formulário baseado na página</td><td><code>FormRequest.from_response(response, ...)</code></td></tr>
+<tr><td></td><td><code>JsonRequest()</code></td><td>Requisição enviando JSON automaticamente</td><td><code>JsonRequest(url, data={'key': 'val'})</code></td></tr>
+<tr><td></td><td><code>CloseSpider()</code></td><td>Exceção para fechar o spider manualmente</td><td><code>raise CloseSpider('Motivo')</code></td></tr>
+<tr><td></td><td><code>DropItem()</code></td><td>Exceção para descartar item no pipeline</td><td><code>raise DropItem('Duplicado')</code></td></tr>
+<tr><td></td><td><code>spider_opened</code></td><td>Sinal: quando o spider inicia</td><td><code>@classmethod spider_opened(cls, spider)</code></td></tr>
+<tr><td></td><td><code>spider_closed</code></td><td>Sinal: quando o spider termina</td><td><code>@classmethod spider_closed(cls, spider)</code></td></tr>
+<tr><td></td><td><code>CrawlerProcess</code></td><td>Executa spiders de um script Python</td><td><code>process = CrawlerProcess(settings)</code></td></tr>
+<tr><td></td><td><code>CrawlerRunner</code></td><td>Executa spiders em uma aplicação Twisted</td><td><code>runner = CrawlerRunner(settings)</code></td></tr>
+<tr><td></td><td><code>FEED_EXPORT_ENCODING</code></td><td>Encoding do arquivo de saída</td><td><code>FEED_EXPORT_ENCODING = 'utf-8'</code></td></tr>
+<tr><td></td><td><code>FEED_FORMAT</code></td><td>Formato da saída (json, csv, xml)</td><td><code>FEED_FORMAT = 'csv'</code></td></tr>
+<tr><td></td><td><code>FEED_URI</code></td><td>Local onde salvar o arquivo de saída</td><td><code>FEED_URI = 'saida.json'</code></td></tr>
+<tr><td></td><td><code>SCRAPY_SETTINGS_MODULE</code></td><td>Variável de ambiente de configuração</td><td><code>os.environ['SCRAPY_SETTINGS_MODULE']</code></td></tr>
+<tr><td></td><td><code>ImagesPipeline.get_media_requests</code></td><td>Customiza download de imagens</td><td><code>def get_media_requests(self, item, info):</code></td></tr>
+<tr><td></td><td><code>ImagesPipeline.item_completed</code></td><td>Ação após download de imagem</td><td><code>def item_completed(self, results, item, info):</code></td></tr>
+<tr><td></td><td><code>Selector(text=html)</code></td><td>Cria seletor a partir de uma string HTML</td><td><code>Selector(text='&lt;html&gt;...&lt;/html&gt;')</code></td></tr>
+<tr><td></td><td><code>response.follow_all()</code></td><td>Segue múltiplos links de uma vez</td><td><code>yield from response.follow_all(urls, self.p)</code></td></tr>
+<tr><td></td><td><code>DOWNLOADER_CLIENTCONTEXTFACTORY</code></td><td>Configuração de SSL/TLS</td><td><code>DOWNLOADER_CLIENTCONTEXTFACTORY = '...'</code></td></tr>
+<tr><td></td><td><code>depth_priority</code></td><td>Prioridade baseada na profundidade</td><td><code>DEPTH_PRIORITY = 1</code></td></tr>
+<tr><td></td><td><code>SCHEDULER_DISK_QUEUE</code></td><td>Fila persistente no disco</td><td><code>SCHEDULER_DISK_QUEUE = 'scrapy.squeue...'</code></td></tr>
+<tr><td></td><td><code>SCHEDULER_MEMORY_QUEUE</code></td><td>Fila em memória ram</td><td><code>SCHEDULER_MEMORY_QUEUE = 'scrapy.squeue...'</code></td></tr>
+<tr><td></td><td><code>CONCURRENT_REQUESTS_PER_DOMAIN</code></td><td>Limite por domínio único</td><td><code>CONCURRENT_REQUESTS_PER_DOMAIN = 8</code></td></tr>
+<tr><td></td><td><code>CONCURRENT_REQUESTS_PER_IP</code></td><td>Limite por endereço de IP único</td><td><code>CONCURRENT_REQUESTS_PER_IP = 0</code></td></tr>
+<tr><td></td><td><code>REFERER_ENABLED</code></td><td>Habilita/desabilita Referer middleware</td><td><code>REFERER_ENABLED = True</code></td></tr>
+<tr><td></td><td><code>URLLENGTH_LIMIT</code></td><td>Tamanho máximo da URL permitida</td><td><code>URLLENGTH_LIMIT = 2083</code></td></tr>
+<tr><td></td><td><code>EXTENSIONS</code></td><td>Ativa extensões do Scrapy</td><td><code>EXTENSIONS = {'scrapy.ext...': 500}</code></td></tr>
+<tr><td></td><td><code>STATS_DUMP</code></td><td>Exibe estatísticas ao final no log</td><td><code>STATS_DUMP = True</code></td></tr>
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

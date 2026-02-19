@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Django Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #103e2e; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #092e20; color: white; position: sticky; top: 0; }
+/* Estilo para a coluna de índice */
+.col-index { width: 40px; text-align: center; color: #666; font-size: 0.9em; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #103e2e; font-family: 'Courier New', Courier, monospace; font-weight: bold; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🏇 Django Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://www.djangoproject.com/" target="_blank">🎯 Site oficial do Django (Documentação)</a></p>
+<input type="text" id="search_field" placeholder="Buscar comando, QuerySet ou configuração do Django...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th>
+<th>Comando / Função / Parâmetro</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>django-admin startproject</code></td><td>Cria um novo projeto Django</td><td><code>django-admin startproject meu_projeto</code></td></tr>
+<tr><td class="col-index">2</td><td><code>python manage.py startapp</code></td><td>Cria um novo app dentro do projeto</td><td><code>python manage.py startapp core</code></td></tr>
+<tr><td class="col-index">3</td><td><code>python manage.py runserver</code></td><td>Inicia o servidor de desenvolvimento</td><td><code>python manage.py runserver 8080</code></td></tr>
+<tr><td class="col-index">4</td><td><code>python manage.py makemigrations</code></td><td>Cria arquivos de migração baseados nos models</td><td><code>python manage.py makemigrations</code></td></tr>
+<tr><td class="col-index">5</td><td><code>python manage.py migrate</code></td><td>Aplica as migrações ao banco de dados</td><td><code>python manage.py migrate</code></td></tr>
+<tr><td class="col-index">6</td><td><code>python manage.py createsuperuser</code></td><td>Cria um usuário administrador</td><td><code>python manage.py createsuperuser</code></td></tr>
+<tr><td class="col-index">7</td><td><code>python manage.py shell</code></td><td>Abre o shell interativo do Django</td><td><code>python manage.py shell</code></td></tr>
+<tr><td class="col-index">8</td><td><code>python manage.py collectstatic</code></td><td>Reúne arquivos estáticos para produção</td><td><code>python manage.py collectstatic</code></td></tr>
+<tr><td class="col-index">9</td><td><code>models.CharField()</code></td><td>Campo de texto curto</td><td><code>nome = models.CharField(max_length=100)</code></td></tr>
+<tr><td class="col-index">10</td><td><code>models.TextField()</code></td><td>Campo de texto longo</td><td><code>descricao = models.TextField()</code></td></tr>
+<tr><td class="col-index">11</td><td><code>models.IntegerField()</code></td><td>Campo de número inteiro</td><td><code>idade = models.IntegerField()</code></td></tr>
+<tr><td class="col-index">12</td><td><code>models.DateTimeField()</code></td><td>Campo de data e hora</td><td><code>criado_em = models.DateTimeField(auto_now_add=True)</code></td></tr>
+<tr><td class="col-index">13</td><td><code>models.BooleanField()</code></td><td>Campo booleano (True/False)</td><td><code>ativo = models.BooleanField(default=True)</code></td></tr>
+<tr><td class="col-index">14</td><td><code>models.EmailField()</code></td><td>Valida se o texto é um e-mail</td><td><code>email = models.EmailField()</code></td></tr>
+<tr><td class="col-index">15</td><td><code>models.ForeignKey()</code></td><td>Relacionamento Many-to-One</td><td><code>cat = models.ForeignKey(Categoria, on_delete=models.CASCADE)</code></td></tr>
+<tr><td class="col-index">16</td><td><code>models.ManyToManyField()</code></td><td>Relacionamento Many-to-Many</td><td><code>tags = models.ManyToManyField(Tag)</code></td></tr>
+<tr><td class="col-index">17</td><td><code>models.OneToOneField()</code></td><td>Relacionamento One-to-One</td><td><code>perfil = models.OneToOneField(User, on_delete=models.CASCADE)</code></td></tr>
+<tr><td class="col-index">18</td><td><code>models.ImageField()</code></td><td>Campo para upload de imagens</td><td><code>foto = models.ImageField(upload_to='fotos/')</code></td></tr>
+<tr><td class="col-index">19</td><td><code>models.FileField()</code></td><td>Campo para upload de arquivos gerais</td><td><code>doc = models.FileField(upload_to='docs/')</code></td></tr>
+<tr><td class="col-index">20</td><td><code>models.DecimalField()</code></td><td>Número decimal de precisão fixa</td><td><code>preco = models.DecimalField(max_digits=5, decimal_places=2)</code></td></tr>
+<tr><td class="col-index">21</td><td><code>models.SlugField()</code></td><td>Texto para URLs (letras, hífens, números)</td><td><code>slug = models.SlugField(unique=True)</code></td></tr>
+<tr><td class="col-index">22</td><td><code>null=True</code></td><td>Permite valor nulo no banco de dados</td><td><code>bio = models.TextField(null=True)</code></td></tr>
+<tr><td class="col-index">23</td><td><code>blank=True</code></td><td>Permite que o campo fique vazio em formulários</td><td><code>site = models.URLField(blank=True)</code></td></tr>
+<tr><td class="col-index">24</td><td><code>Model.objects.all()</code></td><td>Retorna todos os registros</td><td><code>Produtos.objects.all()</code></td></tr>
+<tr><td class="col-index">25</td><td><code>Model.objects.filter()</code></td><td>Filtra registros por critérios</td><td><code>User.objects.filter(is_staff=True)</code></td></tr>
+<tr><td class="col-index">26</td><td><code>Model.objects.exclude()</code></td><td>Exclui registros que casam com o critério</td><td><code>User.objects.exclude(email='')</code></td></tr>
+<tr><td class="col-index">27</td><td><code>Model.objects.get()</code></td><td>Retorna um único objeto (erro se 0 ou +1)</td><td><code>User.objects.get(id=1)</code></td></tr>
+<tr><td class="col-index">28</td><td><code>Model.objects.create()</code></td><td>Cria e salva um objeto em um passo</td><td><code>User.objects.create(username='leo')</code></td></tr>
+<tr><td class="col-index">29</td><td><code>Model.objects.get_or_create()</code></td><td>Retorna objeto ou cria se não existir</td><td><code>obj, created = Tag.objects.get_or_create(nome='Django')</code></td></tr>
+<tr><td class="col-index">30</td><td><code>Model.objects.order_by()</code></td><td>Ordena os resultados</td><td><code>User.objects.order_by('-date_joined')</code></td></tr>
+<tr><td class="col-index">31</td><td><code>Model.objects.count()</code></td><td>Conta o número de registros</td><td><code>Post.objects.count()</code></td></tr>
+<tr><td class="col-index">32</td><td><code>Model.objects.exists()</code></td><td>Verifica se existe algum registro</td><td><code>Post.objects.filter(slug='oi').exists()</code></td></tr>
+<tr><td class="col-index">33</td><td><code>Model.objects.first()</code></td><td>Retorna o primeiro registro do QuerySet</td><td><code>User.objects.all().first()</code></td></tr>
+<tr><td class="col-index">34</td><td><code>Model.objects.values()</code></td><td>Retorna dicionários em vez de instâncias</td><td><code>User.objects.values('username')</code></td></tr>
+<tr><td class="col-index">35</td><td><code>Model.objects.select_related()</code></td><td>Otimiza busca de FK (JOIN SQL)</td><td><code>Livro.objects.select_related('autor')</code></td></tr>
+<tr><td class="col-index">36</td><td><code>Model.objects.prefetch_related()</code></td><td>Otimiza busca ManyToMany ou reversa</td><td><code>Autor.objects.prefetch_related('livros')</code></td></tr>
+<tr><td class="col-index">37</td><td><code>__icontains</code></td><td>Busca por texto (case-insensitive)</td><td><code>User.objects.filter(nome__icontains='ana')</code></td></tr>
+<tr><td class="col-index">38</td><td><code>__gte / __lte</code></td><td>Maior ou igual / Menor ou igual</td><td><code>User.objects.filter(idade__gte=18)</code></td></tr>
+<tr><td class="col-index">39</td><td><code>__in</code></td><td>Filtra por uma lista de valores</td><td><code>User.objects.filter(id__in=[1, 2, 3])</code></td></tr>
+<tr><td class="col-index">40</td><td><code>render()</code></td><td>Retorna um template renderizado</td><td><code>return render(request, 'index.html', context)</code></td></tr>
+<tr><td class="col-index">41</td><td><code>redirect()</code></td><td>Redireciona para outra URL ou view</td><td><code>return redirect('home')</code></td></tr>
+<tr><td class="col-index">42</td><td><code>get_object_or_404()</code></td><td>Busca objeto ou retorna erro 404</td><td><code>post = get_object_or_404(Post, id=id)</code></td></tr>
+<tr><td class="col-index">43</td><td><code>HttpResponse()</code></td><td>Retorna resposta HTTP bruta</td><td><code>return HttpResponse("Olá Mundo")</code></td></tr>
+<tr><td class="col-index">44</td><td><code>JsonResponse()</code></td><td>Retorna resposta em formato JSON</td><td><code>return JsonResponse({'status': 'ok'})</code></td></tr>
+<tr><td class="col-index">45</td><td><code>{% if %}</code></td><td>Bloco condicional no HTML</td><td><code>{% if user.is_authenticated %}</code></td></tr>
+<tr><td class="col-index">46</td><td><code>{% for %}</code></td><td>Loop para iterar listas</td><td><code>{% for item in lista %}</code></td></tr>
+<tr><td class="col-index">47</td><td><code>{% url %}</code></td><td>Gera URL a partir do nome da rota</td><td><code>{% url 'detalhe' post.id %}</code></td></tr>
+<tr><td class="col-index">48</td><td><code>{% extends %}</code></td><td>Herança de template pai</td><td><code>{% extends 'base.html' %}</code></td></tr>
+<tr><td class="col-index">49</td><td><code>{% block %}</code></td><td>Define área sobrescrevível</td><td><code>{% block content %}{% endblock %}</code></td></tr>
+<tr><td class="col-index">50</td><td><code>{% static %}</code></td><td>Caminho para arquivos estáticos</td><td><code>{% static 'css/style.css' %}</code></td></tr>
+<tr><td class="col-index">51</td><td><code>{% csrf_token %}</code></td><td>Proteção contra ataques CSRF (Forms)</td><td><code>&lt;form&gt;{% csrf_token %}...</code></td></tr>
+<tr><td class="col-index">52</td><td><code>{{ value|lower }}</code></td><td>Filtro: Converte para minúsculo</td><td><code>{{ nome|lower }}</code></td></tr>
+<tr><td class="col-index">53</td><td><code>{{ value|date }}</code></td><td>Filtro: Formata datas</td><td><code>{{ data|date:"d/m/Y" }}</code></td></tr>
+<tr><td class="col-index">54</td><td><code>admin.site.register()</code></td><td>Registra model no painel admin</td><td><code>admin.site.register(Post)</code></td></tr>
+<tr><td class="col-index">55</td><td><code>list_display</code></td><td>Colunas exibidas na lista do admin</td><td><code>list_display = ('id', 'titulo')</code></td></tr>
+<tr><td class="col-index">56</td><td><code>search_fields</code></td><td>Barra de busca no admin</td><td><code>search_fields = ('nome', 'email')</code></td></tr>
+<tr><td class="col-index">57</td><td><code>list_filter</code></td><td>Filtros laterais no admin</td><td><code>list_filter = ('status',)</code></td></tr>
+<tr><td class="col-index">58</td><td><code>forms.Form</code></td><td>Classe base para formulários manuais</td><td><code>class ContatoForm(forms.Form):</code></td></tr>
+<tr><td class="col-index">59</td><td><code>forms.ModelForm</code></td><td>Formulário baseado em um Model</td><td><code>class PostForm(forms.ModelForm):</code></td></tr>
+<tr><td class="col-index">60</td><td><code>form.is_valid()</code></td><td>Valida dados do formulário</td><td><code>if form.is_valid():</code></td></tr>
+<tr><td class="col-index">61</td><td><code>form.cleaned_data</code></td><td>Dicionário de dados validados</td><td><code>email = form.cleaned_data['email']</code></td></tr>
+<tr><td class="col-index">62</td><td><code>INSTALLED_APPS</code></td><td>Lista de apps ativos no projeto</td><td><code>INSTALLED_APPS = ['core', ...]</code></td></tr>
+<tr><td class="col-index">63</td><td><code>DATABASES</code></td><td>Configuração de conexão com banco</td><td><code>'ENGINE': 'django.db.backends.postgresql'</code></td></tr>
+<tr><td class="col-index">64</td><td><code>MIDDLEWARE</code></td><td>Processadores de requisição/resposta</td><td><code>'django.middleware.security.SecurityMiddleware'</code></td></tr>
+<tr><td class="col-index">65</td><td><code>TEMPLATES</code></td><td>Configuração de motores de template</td><td><code>'DIRS': [BASE_DIR / 'templates']</code></td></tr>
+<tr><td class="col-index">66</td><td><code>ALLOWED_HOSTS</code></td><td>Domínios permitidos para o app</td><td><code>ALLOWED_HOSTS = ['meusite.com']</code></td></tr>
+<tr><td class="col-index">67</td><td><code>path()</code></td><td>Define uma rota URL</td><td><code>path('post/<int:id>/', views.detalhe)</code></td></tr>
+<tr><td class="col-index">68</td><td><code>re_path()</code></td><td>Define rota usando Regex</td><td><code>re_path(r'^artigo/(?P&lt;slug&gt;[\w-]+)/$', views.artigo)</code></td></tr>
+<tr><td class="col-index">69</td><td><code>include()</code></td><td>Inclui URLs de outro app</td><td><code>path('blog/', include('blog.urls'))</code></td></tr>
+<tr><td class="col-index">70</td><td><code>authenticate()</code></td><td>Verifica credenciais de usuário</td><td><code>user = authenticate(username=u, password=p)</code></td></tr>
+<tr><td class="col-index">71</td><td><code>login()</code></td><td>Inicia sessão do usuário</td><td><code>login(request, user)</code></td></tr>
+<tr><td class="col-index">72</td><td><code>logout()</code></td><td>Encerra sessão do usuário</td><td><code>logout(request)</code></td></tr>
+<tr><td class="col-index">73</td><td><code>@login_required</code></td><td>Decorator para exigir login na view</td><td><code>@login_required def perfil(request):</code></td></tr>
+<tr><td class="col-index">74</td><td><code>LoginRequiredMixin</code></td><td>Exige login em Class Based Views</td><td><code>class MyView(LoginRequiredMixin, View):</code></td></tr>
+<tr><td class="col-index">75</td><td><code>request.user</code></td><td>Usuário logado na requisição atual</td><td><code>if request.user.is_authenticated:</code></td></tr>
+<tr><td class="col-index">76</td><td><code>request.method</code></td><td>Tipo de método HTTP (GET, POST...)</td><td><code>if request.method == 'POST':</code></td></tr>
+<tr><td class="col-index">77</td><td><code>request.FILES</code></td><td>Dicionário com arquivos enviados</td><td><code>form = PostForm(request.POST, request.FILES)</code></td></tr>
+<tr><td class="col-index">78</td><td><code>messages.success()</code></td><td>Envia mensagem de sucesso ao usuário</td><td><code>messages.success(request, 'Salvo!')</code></td></tr>
+<tr><td class="col-index">79</td><td><code>reverse()</code></td><td>Retorna a URL pelo nome no Python</td><td><code>url = reverse('home')</code></td></tr>
+<tr><td class="col-index">80</td><td><code>Model.get_absolute_url()</code></td><td>Método padrão para URL do objeto</td><td><code>def get_absolute_url(self): ...</code></td></tr>
+<tr><td class="col-index">81</td><td><code>Meta: unique_together</code></td><td>Garante unicidade de dois campos juntos</td><td><code>unique_together = ['sessao', 'ordem']</code></td></tr>
+<tr><td class="col-index">82</td><td><code>Meta: verbose_name</code></td><td>Nome legível no singular (Admin)</td><td><code>verbose_name = 'Categoria'</code></td></tr>
+<tr><td class="col-index">83</td><td><code>Meta: ordering</code></td><td>Ordenação padrão do Model</td><td><code>ordering = ['-criado_em']</code></td></tr>
+<tr><td class="col-index">84</td><td><code>python manage.py test</code></td><td>Executa testes automatizados</td><td><code>python manage.py test core</code></td></tr>
+<tr><td class="col-index">85</td><td><code>TestCase</code></td><td>Classe base para criar testes</td><td><code>class MyTest(TestCase):</code></td></tr>
+<tr><td class="col-index">86</td><td><code>F() expressions</code></td><td>Operações no banco sem carregar em Python</td><td><code>F('estoque') - 1</code></td></tr>
+<tr><td class="col-index">87</td><td><code>Q() objects</code></td><td>Filtros complexos com OR/AND</td><td><code>Q(nome='A') | Q(nome='B')</code></td></tr>
+<tr><td class="col-index">88</td><td><code>django-admin help</code></td><td>Mostra ajuda de comandos</td><td><code>django-admin help migrate</code></td></tr>
+<tr><td class="col-index">89</td><td><code>STATIC_URL</code></td><td>Prefixo URL para arquivos estáticos</td><td><code>STATIC_URL = 'static/'</code></td></tr>
+<tr><td class="col-index">90</td><td><code>MEDIA_URL</code></td><td>Prefixo URL para arquivos de usuários</td><td><code>MEDIA_URL = '/media/'</code></td></tr>
+<tr><td class="col-index">91</td><td><code>LANGUAGE_CODE</code></td><td>Define o idioma do sistema</td><td><code>LANGUAGE_CODE = 'pt-br'</code></td></tr>
+<tr><td class="col-index">92</td><td><code>TIME_ZONE</code></td><td>Define o fuso horário</td><td><code>TIME_ZONE = 'America/Sao_Paulo'</code></td></tr>
+<tr><td class="col-index">93</td><td><code>@receiver(post_save)</code></td><td>Executa função após salvar Model (Signals)</td><td><code>@receiver(post_save, sender=User)</code></td></tr>
+<tr><td class="col-index">94</td><td><code>Model.objects.aggregate()</code></td><td>Cálculos sobre o QuerySet (Sum, Avg)</td><td><code>Model.objects.aggregate(Avg('preco'))</code></td></tr>
+<tr><td class="col-index">95</td><td><code>Model.objects.annotate()</code></td><td>Adiciona campos calculados por linha</td><td><code>User.objects.annotate(total_posts=Count('post'))</code></td></tr>
+<tr><td class="col-index">96</td><td><code>TemplateView</code></td><td>CBV simples para renderizar HTML</td><td><code>class HomeView(TemplateView):</code></td></tr>
+<tr><td class="col-index">97</td><td><code>ListView</code></td><td>CBV para listar objetos</td><td><code>class PostList(ListView):</code></td></tr>
+<tr><td class="col-index">98</td><td><code>DetailView</code></td><td>CBV para exibir um objeto detalhado</td><td><code>class PostDetail(DetailView):</code></td></tr>
+<tr><td class="col-index">99</td><td><code>CreateView</code></td><td>CBV para criar novo objeto</td><td><code>class PostCreate(CreateView):</code></td></tr>
+<tr><td class="col-index">100</td><td><code>UpdateView</code></td><td>CBV para editar objeto</td><td><code>class PostUpdate(UpdateView):</code></td></tr>
+<tr><td class="col-index">101</td><td><code>DeleteView</code></td><td>CBV para deletar objeto</td><td><code>class PostDelete(DeleteView):</code></td></tr>
+<tr><td class="col-index">102</td><td><code>FormView</code></td><td>CBV para processar formulários</td><td><code>class MyFormView(FormView):</code></td></tr>
+<tr><td class="col-index">103</td><td><code>request.POST.get()</code></td><td>Pega valor do POST de forma segura</td><td><code>request.POST.get('nome', 'Anonimo')</code></td></tr>
+<tr><td class="col-index">104</td><td><code>slugify()</code></td><td>Transforma string em slug</td><td><code>slugify("Olá Mundo") # ola-mundo</code></td></tr>
+<tr><td class="col-index">105</td><td><code>python manage.py dumpdata</code></td><td>Exporta dados do banco para JSON</td><td><code>python manage.py dumpdata > backup.json</code></td></tr>
+<tr><td class="col-index">106</td><td><code>python manage.py loaddata</code></td><td>Importa dados de um JSON</td><td><code>python manage.py loaddata backup.json</code></td></tr>
+<tr><td class="col-index">107</td><td><code>DEBUG = True</code></td><td>Ativa modo de erro detalhado</td><td><code>DEBUG = False # Produção</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

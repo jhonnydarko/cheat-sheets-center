@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>spaCy Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+/* Estilo para a coluna de índice */
+.col-index { width: 40px; text-align: center; font-weight: bold; color: #7f8c8d; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🧠 spaCy Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://spacy.io/" target="_blank">📖 Site oficial do spaCy (Documentação)</a></p>
+<input type="text" id="search_field" placeholder="Buscar comando, atributo ou funcionalidade do spaCy...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th>
+<th>Comando / Atributo / Método</th>
+<th>O que faz</th>
+<th>Exemplo / Instalação</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>pip install spacy</code></td><td>Instala a biblioteca spaCy</td><td><code>pip install spacy</code></td></tr>
+<tr><td class="col-index">2</td><td><code>python -m spacy download pt_core_news_sm</code></td><td>Baixa modelo treinado para Português</td><td><code>!python -m spacy download pt_core_news_sm</code></td></tr>
+<tr><td class="col-index">3</td><td><code>spacy.load()</code></td><td>Carrega um modelo de linguagem</td><td><code>nlp = spacy.load("pt_core_news_sm")</code></td></tr>
+<tr><td class="col-index">4</td><td><code>nlp("texto")</code></td><td>Cria um objeto Doc (processamento completo)</td><td><code>doc = nlp("O rato roeu a roupa.")</code></td></tr>
+
+<tr><td class="col-index">5</td><td><code>token.text</code></td><td>Retorna o texto original do token</td><td><code>[t.text for t in doc]</code></td></tr>
+<tr><td class="col-index">6</td><td><code>token.lemma_</code></td><td>Lematização (forma base da palavra)</td><td><code>token.lemma_</code> (ex: "correndo" -> "correr")</td></tr>
+<tr><td class="col-index">7</td><td><code>token.pos_</code></td><td>Classe gramatical simples (Part-of-speech)</td><td><code>token.pos_</code> (ex: NOUN, VERB)</td></tr>
+<tr><td class="col-index">8</td><td><code>token.tag_</code></td><td>Classe gramatical detalhada</td><td><code>token.tag_</code> (ex: VBD para passado)</td></tr>
+<tr><td class="col-index">9</td><td><code>token.dep_</code></td><td>Relação de dependência sintática</td><td><code>token.dep_</code> (ex: nsubj, obj)</td></tr>
+<tr><td class="col-index">10</td><td><code>token.is_stop</code></td><td>Verifica se é uma Stop Word</td><td><code>token.is_stop</code></td></tr>
+<tr><td class="col-index">11</td><td><code>token.is_alpha</code></td><td>Verifica se contém apenas letras</td><td><code>token.is_alpha</code></td></tr>
+<tr><td class="col-index">12</td><td><code>token.is_punct</code></td><td>Verifica se é pontuação</td><td><code>token.is_punct</code></td></tr>
+<tr><td class="col-index">13</td><td><code>token.is_digit</code></td><td>Verifica se é um dígits</td><td><code>token.is_digit</code></td></tr>
+<tr><td class="col-index">14</td><td><code>token.like_num</code></td><td>Verifica se o texto representa um número</td><td><code>token.like_num</code> (ex: "dez", "10")</td></tr>
+<tr><td class="col-index">15</td><td><code>token.morph</code></td><td>Atributos morfológicos (gênero, número)</td><td><code>token.morph.get("Gender")</code></td></tr>
+<tr><td class="col-index">16</td><td><code>token.head</code></td><td>Retorna o token "pai" na árvore sintática</td><td><code>token.head.text</code></td></tr>
+
+<tr><td class="col-index">17</td><td><code>doc.ents</code></td><td>Acessa as Entidades Nomeadas (NER)</td><td><code>for ent in doc.ents: print(ent.text, ent.label_)</code></td></tr>
+<tr><td class="col-index">18</td><td><code>doc.sents</code></td><td>Itera sobre as sentenças do documento</td><td><code>list(doc.sents)</code></td></tr>
+<tr><td class="col-index">19</td><td><code>doc.noun_chunks</code></td><td>Extrai sintagmas nominais</td><td><code>list(doc.noun_chunks)</code></td></tr>
+<tr><td class="col-index">20</td><td><code>ent.label_</code></td><td>Tipo da entidade (PER, ORG, LOC)</td><td><code>ent.label_</code></td></tr>
+<tr><td class="col-index">21</td><td><code>Span(doc, start, end)</code></td><td>Cria um subconjunto do documento</td><td><code>span = doc[2:5]</code></td></tr>
+
+<tr><td class="col-index">22</td><td><code>displacy.render(..., style='dep')</code></td><td>Visualiza árvore de dependências</td><td><code>displacy.render(doc, style='dep')</code></td></tr>
+<tr><td class="col-index">23</td><td><code>displacy.render(..., style='ent')</code></td><td>Visualiza entidades coloridas no texto</td><td><code>displacy.render(doc, style='ent')</code></td></tr>
+<tr><td class="col-index">24</td><td><code>displacy.serve()</code></td><td>Inicia servidor web para visualização</td><td><code>displacy.serve(doc, style='dep')</code></td></tr>
+
+<tr><td class="col-index">25</td><td><code>nlp.vocab</code></td><td>Acessa o vocabulário e strings únicas</td><td><code>nlp.vocab.strings["café"]</code></td></tr>
+<tr><td class="col-index">26</td><td><code>doc.similarity()</code></td><td>Calcula similaridade entre documentos</td><td><code>doc1.similarity(doc2)</code></td></tr>
+<tr><td class="col-index">27</td><td><code>token.vector</code></td><td>Retorna o vetor (Word Embedding) do token</td><td><code>token.vector</code></td></tr>
+<tr><td class="col-index">28</td><td><code>token.has_vector</code></td><td>Verifica se o token possui um vetor</td><td><code>token.has_vector</code></td></tr>
+
+<tr><td class="col-index">29</td><td><code>nlp.pipe_names</code></td><td>Lista componentes ativos do pipeline</td><td><code>print(nlp.pipe_names)</code></td></tr>
+<tr><td class="col-index">30</td><td><code>nlp.add_pipe()</code></td><td>Adiciona novo componente ao pipeline</td><td><code>nlp.add_pipe("entity_linker")</code></td></tr>
+<tr><td class="col-index">31</td><td><code>nlp.remove_pipe()</code></td><td>Remove um componente do pipeline</td><td><code>nlp.remove_pipe("ner")</code></td></tr>
+<tr><td class="col-index">32</td><td><code>nlp.disable_pipes()</code></td><td>Desabilita componentes para performance</td><td><code>with nlp.disable_pipes("tagger"):</code></td></tr>
+<tr><td class="col-index">33</td><td><code>nlp.pipe()</code></td><td>Processa vários textos de forma eficiente</td><td><code>docs = list(nlp.pipe(lista_textos))</code></td></tr>
+
+<tr><td class="col-index">34</td><td><code>Matcher(nlp.vocab)</code></td><td>Inicializa buscador de padrões de tokens</td><td><code>matcher = Matcher(nlp.vocab)</code></td></tr>
+<tr><td class="col-index">35</td><td><code>matcher.add()</code></td><td>Adiciona um padrão de busca</td><td><code>matcher.add("ID", [[{"LOWER": "apple"}]])</code></td></tr>
+<tr><td class="col-index">36</td><td><code>PhraseMatcher(nlp.vocab)</code></td><td>Busca por frases exatas (mais rápido)</td><td><code>p_matcher = PhraseMatcher(nlp.vocab)</code></td></tr>
+
+<tr><td class="col-index">37</td><td><code>Doc.set_extension()</code></td><td>Cria metadados customizados para Doc</td><td><code>Doc.set_extension("is_spam", default=False)</code></td></tr>
+<tr><td class="col-index">38</td><td><code>Token.set_extension()</code></td><td>Cria metadados customizados para Token</td><td><code>Token.set_extension("id_interna", default=0)</code></td></tr>
+
+<tr><td class="col-index">39</td><td><code>doc.to_disk()</code></td><td>Salva objeto Doc em arquivo binário</td><td><code>doc.to_disk("./doc.spacy")</code></td></tr>
+<tr><td class="col-index">40</td><td><code>nlp.to_disk()</code></td><td>Salva o modelo completo em pasta</td><td><code>nlp.to_disk("./meu_modelo")</code></td></tr>
+<tr><td class="col-index">41</td><td><code>Example.from_dict()</code></td><td>Cria exemplo para treinamento</td><td><code>Example.from_dict(doc, labels)</code></td></tr>
+
+<tr><td class="col-index">42</td><td><code>PER / PERSON</code></td><td>Pessoas, incluindo fictícias</td><td>Rótulo de Entidade</td></tr>
+<tr><td class="col-index">43</td><td><code>ORG</code></td><td>Empresas, agências, instituições</td><td>Rótulo de Entidade</td></tr>
+<tr><td class="col-index">44</td><td><code>GPE</code></td><td>Países, cidades, estados</td><td>Rótulo de Entidade</td></tr>
+<tr><td class="col-index">45</td><td><code>LOC</code></td><td>Localizações geográficas (rios, montanhas)</td><td>Rótulo de Entidade</td></tr>
+<tr><td class="col-index">46</td><td><code>DATE</code></td><td>Datas ou períodos absolutos/relativos</td><td>Rótulo de Entidade</td></tr>
+<tr><td class="col-index">47</td><td><code>MONEY</code></td><td>Valores monetários, incluindo unidade</td><td>Rótulo de Entidade</td></tr>
+
+<tr><td class="col-index">48</td><td><code>token.ent_type_</code></td><td>Tipo de entidade do token</td><td><code>token.ent_type_</code></td></tr>
+<tr><td class="col-index">49</td><td><code>token.ent_iob_</code></td><td>Tag IOB (Inside, Outside, Begin)</td><td><code>token.ent_iob_</code></td></tr>
+<tr><td class="col-index">50</td><td><code>token.norm_</code></td><td>Normalização do texto</td><td><code>token.norm_</code></td></tr>
+<tr><td class="col-index">51</td><td><code>doc.count_by()</code></td><td>Conta atributos (ex: IDs de POS)</td><td><code>doc.count_by(spacy.attrs.POS)</code></td></tr>
+<tr><td class="col-index">52</td><td><code>spacy.explain()</code></td><td>Explica uma sigla do spaCy</td><td><code>spacy.explain("nsubj")</code></td></tr>
+<tr><td class="col-index">53</td><td><code>token.idx</code></td><td>Posição do caractere inicial no doc</td><td><code>token.idx</code></td></tr>
+<tr><td class="col-index">54</td><td><code>len(doc)</code></td><td>Número de tokens no documento</td><td><code>len(doc)</code></td></tr>
+
+<tr><td class="col-index">55</td><td><code>attribute_ruler</code></td><td>Mapeia atributos de tokens</td><td>Componente do Pipeline</td></tr>
+<tr><td class="col-index">56</td><td><code>lemmatizer</code></td><td>Determina a forma base das palavras</td><td>Componente do Pipeline</td></tr>
+<tr><td class="col-index">57</td><td><code>tok2vec</code></td><td>Gera representações vetoriais</td><td>Componente do Pipeline</td></tr>
+<tr><td class="col-index">58</td><td><code>parser</code></td><td>Determina a estrutura sintática</td><td>Componente do Pipeline</td></tr>
+<tr><td class="col-index">59</td><td><code>entity_ruler</code></td><td>NER baseada em regras</td><td>Componente do Pipeline</td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

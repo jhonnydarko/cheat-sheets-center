@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Naive Bayes Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2980b9; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #2c3e50; color: white; position: sticky; top: 0; }
+/* Estilo para a coluna de índice */
+th:first-child, td:first-child { width: 50px; text-align: center; font-weight: bold; color: #7f8c8d; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #e67e22; font-family: 'Courier New', Courier, monospace; font-weight: bold; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>⚖️ Naive Bayes Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://scikit-learn.org/stable/modules/naive_bayes.html" target="_blank">📉 Documentação Oficial (Scikit-Learn)</a></p>
+<input type="text" id="search_field" placeholder="Buscar algoritmos, métodos de treino ou métricas...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th>ID</th>
+<th>Comando / Classe / Parâmetro</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td>1</td><td><code>GaussianNB()</code></td><td>NB para dados com distribuição normal (contínuos)</td><td><code>model = GaussianNB()</code></td></tr>
+<tr><td>2</td><td><code>MultinomialNB()</code></td><td>NB para dados de contagem (ex: frequências de texto)</td><td><code>model = MultinomialNB()</code></td></tr>
+<tr><td>3</td><td><code>BernoulliNB()</code></td><td>NB para dados binários/booleanos</td><td><code>model = BernoulliNB()</code></td></tr>
+<tr><td>4</td><td><code>ComplementNB()</code></td><td>Otimizado para datasets desbalanceados</td><td><code>model = ComplementNB()</code></td></tr>
+<tr><td>5</td><td><code>CategoricalNB()</code></td><td>Para variáveis categóricas com categorias discretas</td><td><code>model = CategoricalNB()</code></td></tr>
+
+<tr><td>6</td><td><code>alpha=</code></td><td>Suavização de Laplace (evita probabilidade zero)</td><td><code>MultinomialNB(alpha=1.0)</code></td></tr>
+<tr><td>7</td><td><code>fit_prior=</code></td><td>Se deve aprender probabilidades a priori das classes</td><td><code>GaussianNB(fit_prior=True)</code></td></tr>
+<tr><td>8</td><td><code>class_prior=</code></td><td>Probabilidades prévias das classes (lista)</td><td><code>class_prior=[0.3, 0.7]</code></td></tr>
+<tr><td>9</td><td><code>var_smoothing=</code></td><td>Estabilidade de cálculo para GaussianNB</td><td><code>GaussianNB(var_smoothing=1e-9)</code></td></tr>
+
+<tr><td>10</td><td><code>model.fit(X, y)</code></td><td>Treina o modelo com dados e labels</td><td><code>model.fit(X_train, y_train)</code></td></tr>
+<tr><td>11</td><td><code>model.predict(X)</code></td><td>Realiza a classificação de novos dados</td><td><code>y_pred = model.predict(X_test)</code></td></tr>
+<tr><td>12</td><td><code>model.predict_proba(X)</code></td><td>Retorna a probabilidade de cada classe</td><td><code>probs = model.predict_proba(X_test)</code></td></tr>
+<tr><td>13</td><td><code>model.predict_log_proba(X)</code></td><td>Logaritmo das probabilidades (estabilidade numérica)</td><td><code>model.predict_log_proba(X)</code></td></tr>
+<tr><td>14</td><td><code>model.partial_fit()</code></td><td>Treino incremental (online learning)</td><td><code>model.partial_fit(X, y, classes)</code></td></tr>
+<tr><td>15</td><td><code>model.score(X, y)</code></td><td>Retorna a acurácia média do modelo</td><td><code>model.score(X_test, y_test)</code></td></tr>
+
+<tr><td>16</td><td><code>model.class_count_</code></td><td>Número de amostras encontradas em cada classe</td><td><code>print(model.class_count_)</code></td></tr>
+<tr><td>17</td><td><code>model.class_prior_</code></td><td>Probabilidade a priori de cada classe</td><td><code>print(model.class_prior_)</code></td></tr>
+<tr><td>18</td><td><code>model.classes_</code></td><td>Lista de labels de classes conhecidas</td><td><code>print(model.classes_)</code></td></tr>
+<tr><td>19</td><td><code>model.feature_count_</code></td><td>Número de amostras para cada feature (Multinomial)</td><td><code>model.feature_count_</code></td></tr>
+<tr><td>20</td><td><code>model.theta_</code></td><td>Média de cada feature por classe (Gaussian)</td><td><code>model.theta_</code></td></tr>
+<tr><td>21</td><td><code>model.var_</code></td><td>Variância de cada feature por classe (Gaussian)</td><td><code>model.var_</code></td></tr>
+
+<tr><td>22</td><td><code>CountVectorizer()</code></td><td>Converte texto em matriz de contagem de tokens</td><td><code>vect = CountVectorizer()</code></td></tr>
+<tr><td>23</td><td><code>TfidfVectorizer()</code></td><td>Converte texto em pesos TF-IDF</td><td><code>tfidf = TfidfVectorizer()</code></td></tr>
+<tr><td>24</td><td><code>LabelEncoder()</code></td><td>Codifica targets categóricos em números</td><td><code>le.fit_transform(y)</code></td></tr>
+<tr><td>25</td><td><code>StandardScaler()</code></td><td>Padronização (Cuidado: NB assume distribuições)</td><td><code>scaler.fit_transform(X)</code></td></tr>
+<tr><td>26</td><td><code>train_test_split()</code></td><td>Divide dados em treino e teste</td><td><code>X_train, X_test, y_train, y_test = ...</code></td></tr>
+
+<tr><td>27</td><td><code>accuracy_score()</code></td><td>Calcula acurácia total</td><td><code>accuracy_score(y_true, y_pred)</code></td></tr>
+<tr><td>28</td><td><code>confusion_matrix()</code></td><td>Gera matriz de confusão</td><td><code>confusion_matrix(y_true, y_pred)</code></td></tr>
+<tr><td>29</td><td><code>classification_report()</code></td><td>Exibe Precision, Recall e F1-Score</td><td><code>print(classification_report(y_t, y_p))</code></td></tr>
+<tr><td>30</td><td><code>precision_score()</code></td><td>Proporção de positivos corretos</td><td><code>precision_score(y_t, y_p)</code></td></tr>
+<tr><td>31</td><td><code>recall_score()</code></td><td>Capacidade de encontrar todos os positivos</td><td><code>recall_score(y_t, y_p)</code></td></tr>
+<tr><td>32</td><td><code>f1_score()</code></td><td>Média harmônica entre precision e recall</td><td><code>f1_score(y_t, y_p)</code></td></tr>
+<tr><td>33</td><td><code>roc_auc_score()</code></td><td>Área sob a curva ROC</td><td><code>roc_auc_score(y_t, probs)</code></td></tr>
+
+<tr><td>34</td><td><code>P(A|B)</code></td><td>Probabilidade Posteriori</td><td>Cálculo final do modelo</td></tr>
+<tr><td>35</td><td><code>P(B|A)</code></td><td>Likelihood (Verossimilhança)</td><td>Probabilidade da evidência dada a classe</td></tr>
+<tr><td>36</td><td><code>P(A)</code></td><td>Prior (A priori)</td><td>Conhecimento prévio da classe</td></tr>
+<tr><td>37</td><td><code>P(B)</code></td><td>Evidence (Evidência)</td><td>Normalizador da probabilidade</td></tr>
+<tr><td>38</td><td><code>Independence</code></td><td>Suposição "Ingênua"</td><td>Features são independentes entre si</td></tr>
+
+<tr><td>39</td><td><code>make_pipeline()</code></td><td>Encadeia vetorização e modelo</td><td><code>pipe = make_pipeline(Tfidf(), MultinomialNB())</code></td></tr>
+<tr><td>40</td><td><code>GridSearchCV()</code></td><td>Busca exaustiva de hiperparâmetros (alpha)</td><td><code>GridSearchCV(nb, params)</code></td></tr>
+<tr><td>41</td><td><code>cross_val_score()</code></td><td>Validação cruzada do modelo</td><td><code>cross_val_score(nb, X, y, cv=5)</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    // Busca em todo o texto da linha
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

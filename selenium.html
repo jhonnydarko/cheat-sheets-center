@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Selenium Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+
+/* Estilo para a numeração automática */
+tbody { counter-reset: rowNumber; }
+tbody tr { counter-increment: rowNumber; }
+tbody tr td:first-child::before { content: counter(rowNumber); font-weight: bold; color: #7f8c8d; }
+.col-index { width: 40px; text-align: center; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🤖 Selenium Cheat Sheet (Python)</h1>
+<p style="text-align:left;"><a href="https://www.selenium.dev/documentation/" target="_blank">📄 Documentação Oficial do Selenium</a></p>
+<input type="text" id="search_field" placeholder="Buscar comando, seletor ou ação do Selenium...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th>
+<th>Comando / Método</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td></td><td><code>webdriver.Chrome()</code></td><td>Inicializa o driver do navegador (Chrome/Firefox/Edge)</td><td><code>driver = webdriver.Chrome()</code></td></tr>
+<tr><td></td><td><code>driver.get()</code></td><td>Abre uma URL específica</td><td><code>driver.get('https://google.com')</code></td></tr>
+<tr><td></td><td><code>driver.maximize_window()</code></td><td>Maximiza a janela do navegador</td><td><code>driver.maximize_window()</code></td></tr>
+<tr><td></td><td><code>driver.quit()</code></td><td>Fecha todas as janelas e encerra a sessão do driver</td><td><code>driver.quit()</code></td></tr>
+<tr><td></td><td><code>driver.close()</code></td><td>Fecha a aba/janela atual</td><td><code>driver.close()</code></td></tr>
+
+<tr><td></td><td><code>By.ID</code></td><td>Localiza elemento pelo atributo ID</td><td><code>driver.find_element(By.ID, 'login')</code></td></tr>
+<tr><td></td><td><code>By.NAME</code></td><td>Localiza elemento pelo atributo name</td><td><code>driver.find_element(By.NAME, 'q')</code></td></tr>
+<tr><td></td><td><code>By.CSS_SELECTOR</code></td><td>Localiza usando seletores CSS</td><td><code>driver.find_element(By.CSS_SELECTOR, '.btn-primary')</code></td></tr>
+<tr><td></td><td><code>By.XPATH</code></td><td>Localiza usando caminho XML (XPath)</td><td><code>driver.find_element(By.XPATH, '//button[@id="ok"]')</code></td></tr>
+<tr><td></td><td><code>find_elements()</code></td><td>Retorna uma LISTA com todos os elementos encontrados</td><td><code>driver.find_elements(By.TAG_NAME, 'a')</code></td></tr>
+
+<tr><td></td><td><code>element.click()</code></td><td>Clica no elemento encontrado</td><td><code>botao.click()</code></td></tr>
+<tr><td></td><td><code>element.send_keys()</code></td><td>Digita texto em um campo de entrada</td><td><code>campo.send_keys('Python', Keys.ENTER)</code></td></tr>
+<tr><td></td><td><code>element.clear()</code></td><td>Limpa o texto de um campo de entrada</td><td><code>campo.clear()</code></td></tr>
+<tr><td></td><td><code>element.text</code></td><td>Obtém o texto visível do elemento</td><td><code>print(titulo.text)</code></td></tr>
+<tr><td></td><td><code>element.get_attribute()</code></td><td>Obtém valor de um atributo (href, src, value)</td><td><code>link = el.get_attribute('href')</code></td></tr>
+
+<tr><td></td><td><code>implicitly_wait()</code></td><td>Espera genérica para todos os elementos (segundos)</td><td><code>driver.implicitly_wait(10)</code></td></tr>
+<tr><td></td><td><code>WebDriverWait()</code></td><td>Espera explícita até uma condição ser atendida</td><td><code>WebDriverWait(driver, 10).until(...)</code></td></tr>
+<tr><td></td><td><code>EC.presence_of_element_located</code></td><td>Condição: elemento presente no DOM</td><td><code>EC.presence_of_element_located((By.ID, 'X'))</code></td></tr>
+
+<tr><td></td><td><code>driver.switch_to.frame()</code></td><td>Muda o foco para um iframe</td><td><code>driver.switch_to.frame('frame_id')</code></td></tr>
+<tr><td></td><td><code>driver.switch_to.alert</code></td><td>Muda o foco para um alerta pop-up</td><td><code>alerta = driver.switch_to.alert</code></td></tr>
+<tr><td></td><td><code>driver.window_handles</code></td><td>Lista de IDs de todas as janelas abertas</td><td><code>driver.switch_to.window(handles[1])</code></td></tr>
+
+<tr><td></td><td><code>Options()</code></td><td>Configurações do navegador (ex: modo sem janela)</td><td><code>opts.add_argument('--headless')</code></td></tr>
+<tr><td></td><td><code>driver.execute_script()</code></td><td>Executa código JavaScript no navegador</td><td><code>driver.execute_script("window.scrollTo(0, 500)")</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

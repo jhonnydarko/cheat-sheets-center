@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Requests Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #004b7a; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #005fa3; color: white; position: sticky; top: 0; }
+/* Estilo para a coluna de índice */
+.col-index { width: 40px; text-align: center; color: #666; font-size: 0.9em; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #005fa3; font-family: 'Courier New', Courier, monospace; font-weight: bold; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>✉️ Requests Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://requests.readthedocs.io/" target="_blank">📡 Site oficial do Requests (Documentação)</a></p>
+<input type="text" id="search_field" placeholder="Buscar método, atributo ou configuração de requisição...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th>
+<th>Comando / Função / Parâmetro</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>requests.get()</code></td><td>Envia uma requisição GET</td><td><code>requests.get(url)</code></td></tr>
+<tr><td class="col-index">2</td><td><code>requests.post()</code></td><td>Envia uma requisição POST</td><td><code>requests.post(url, data=payload)</code></td></tr>
+<tr><td class="col-index">3</td><td><code>requests.put()</code></td><td>Envia uma requisição PUT</td><td><code>requests.put(url, data={'k':'v'})</code></td></tr>
+<tr><td class="col-index">4</td><td><code>requests.delete()</code></td><td>Envia uma requisição DELETE</td><td><code>requests.delete(url)</code></td></tr>
+<tr><td class="col-index">5</td><td><code>requests.head()</code></td><td>Envia uma requisição HEAD (apenas cabeçalhos)</td><td><code>requests.head(url)</code></td></tr>
+<tr><td class="col-index">6</td><td><code>requests.patch()</code></td><td>Envia uma requisição PATCH</td><td><code>requests.patch(url, data={'k':'v'})</code></td></tr>
+<tr><td class="col-index">7</td><td><code>requests.options()</code></td><td>Envia uma requisição OPTIONS</td><td><code>requests.options(url)</code></td></tr>
+<tr><td class="col-index">8</td><td><code>requests.request()</code></td><td>Método genérico para qualquer verbo HTTP</td><td><code>requests.request('GET', url)</code></td></tr>
+
+<tr><td class="col-index">9</td><td><code>response.status_code</code></td><td>Retorna o código de status HTTP</td><td><code>if r.status_code == 200:</code></td></tr>
+<tr><td class="col-index">10</td><td><code>response.text</code></td><td>Conteúdo da resposta em string (decodificado)</td><td><code>print(r.text)</code></td></tr>
+<tr><td class="col-index">11</td><td><code>response.content</code></td><td>Conteúdo da resposta em bytes</td><td><code>with open('img.png', 'wb') as f: f.write(r.content)</code></td></tr>
+<tr><td class="col-index">12</td><td><code>response.json()</code></td><td>Decodifica conteúdo JSON para dicionário Python</td><td><code>data = r.json()</code></td></tr>
+<tr><td class="col-index">13</td><td><code>response.headers</code></td><td>Dicionário com os cabeçalhos da resposta</td><td><code>r.headers['Content-Type']</code></td></tr>
+<tr><td class="col-index">14</td><td><code>response.url</code></td><td>A URL final da requisição (após redirecionamentos)</td><td><code>print(r.url)</code></td></tr>
+<tr><td class="col-index">15</td><td><code>response.encoding</code></td><td>Codificação usada para decodificar .text</td><td><code>r.encoding = 'utf-8'</code></td></tr>
+<tr><td class="col-index">16</td><td><code>response.ok</code></td><td>True se status_code for entre 200 e 299</td><td><code>if r.ok: print("Sucesso")</code></td></tr>
+<tr><td class="col-index">17</td><td><code>response.history</code></td><td>Lista de respostas de redirecionamento anteriores</td><td><code>print(r.history)</code></td></tr>
+<tr><td class="col-index">18</td><td><code>response.cookies</code></td><td>Cookies enviados pelo servidor</td><td><code>val = r.cookies['sessao_id']</code></td></tr>
+<tr><td class="col-index">19</td><td><code>response.elapsed</code></td><td>Tempo decorrido entre o envio e a resposta</td><td><code>print(r.elapsed.total_seconds())</code></td></tr>
+<tr><td class="col-index">20</td><td><code>response.raise_for_status()</code></td><td>Levanta exceção se houver erro HTTP (4xx ou 5xx)</td><td><code>r.raise_for_status()</code></td></tr>
+
+<tr><td class="col-index">21</td><td><code>params=</code></td><td>Dicionário de parâmetros para a query string (?k=v)</td><td><code>requests.get(url, params={'id': 1})</code></td></tr>
+<tr><td class="col-index">22</td><td><code>data=</code></td><td>Dicionário/corpo para formulários (form-encoded)</td><td><code>requests.post(url, data={'user': 'a'})</code></td></tr>
+<tr><td class="col-index">23</td><td><code>json=</code></td><td>Serializa automaticamente um dict para JSON no corpo</td><td><code>requests.post(url, json={'id': 123})</code></td></tr>
+<tr><td class="col-index">24</td><td><code>headers=</code></td><td>Dicionário de cabeçalhos customizados</td><td><code>requests.get(url, headers={'User-Agent': 'my-app'})</code></td></tr>
+<tr><td class="col-index">25</td><td><code>files=</code></td><td>Dicionário para upload de arquivos</td><td><code>requests.post(url, files={'file': open('a.txt', 'rb')})</code></td></tr>
+<tr><td class="col-index">26</td><td><code>auth=</code></td><td>Tupla para Autenticação Básica (user, pass)</td><td><code>requests.get(url, auth=('user', 'pass'))</code></td></tr>
+<tr><td class="col-index">27</td><td><code>timeout=</code></td><td>Tempo limite em segundos para a requisição</td><td><code>requests.get(url, timeout=5)</code></td></tr>
+<tr><td class="col-index">28</td><td><code>allow_redirects=</code></td><td>Habilita ou desabilita redirecionamentos automáticos</td><td><code>requests.get(url, allow_redirects=False)</code></td></tr>
+<tr><td class="col-index">29</td><td><code>proxies=</code></td><td>Dicionário de configurações de proxy (HTTP/HTTPS)</td><td><code>requests.get(url, proxies={'http': '...'})</code></td></tr>
+<tr><td class="col-index">30</td><td><code>stream=True</code></td><td>Mantém a conexão aberta para baixar grandes arquivos</td><td><code>requests.get(url, stream=True)</code></td></tr>
+<tr><td class="col-index">31</td><td><code>verify=</code></td><td>Verifica ou ignora certificados SSL (True/False)</td><td><code>requests.get(url, verify=False)</code></td></tr>
+
+<tr><td class="col-index">32</td><td><code>requests.Session()</code></td><td>Cria um objeto de sessão (persiste cookies)</td><td><code>s = requests.Session()</code></td></tr>
+<tr><td class="col-index">33</td><td><code>session.get()</code></td><td>Realiza GET usando os cookies da sessão</td><td><code>s.get(url)</code></td></tr>
+<tr><td class="col-index">34</td><td><code>session.headers.update()</code></td><td>Define cabeçalhos padrão para toda a sessão</td><td><code>s.headers.update({'token': 'xyz'})</code></td></tr>
+<tr><td class="col-index">35</td><td><code>session.auth</code></td><td>Define autenticação padrão para a sessão</td><td><code>s.auth = ('user', 'pass')</code></td></tr>
+<tr><td class="col-index">36</td><td><code>session.close()</code></td><td>Fecha a sessão e libera conexões</td><td><code>s.close()</code></td></tr>
+
+<tr><td class="col-index">37</td><td><code>requests.utils.dict_from_cookiejar()</code></td><td>Converte jar de cookies para dicionário</td><td><code>dict_cookies = requests.utils.dict_from_cookiejar(r.cookies)</code></td></tr>
+<tr><td class="col-index">38</td><td><code>requests.cookies.RequestsCookieJar()</code></td><td>Cria um novo container de cookies manual</td><td><code>jar = requests.cookies.RequestsCookieJar()</code></td></tr>
+
+<tr><td class="col-index">39</td><td><code>requests.exceptions.RequestException</code></td><td>Classe base para todas as exceções do Requests</td><td><code>except requests.exceptions.RequestException:</code></td></tr>
+<tr><td class="col-index">40</td><td><code>requests.exceptions.HTTPError</code></td><td>Erro lançado por raise_for_status()</td><td><code>except requests.exceptions.HTTPError:</code></td></tr>
+<tr><td class="col-index">41</td><td><code>requests.exceptions.ConnectionError</code></td><td>Erro de DNS ou falha na conexão</td><td><code>except requests.exceptions.ConnectionError:</code></td></tr>
+<tr><td class="col-index">42</td><td><code>requests.exceptions.Timeout</code></td><td>Erro quando a requisição excede o tempo limite</td><td><code>except requests.exceptions.Timeout:</code></td></tr>
+
+<tr><td class="col-index">43</td><td><code>HTTPBasicAuth</code></td><td>Objeto para autenticação básica explícita</td><td><code>from requests.auth import HTTPBasicAuth</code></td></tr>
+<tr><td class="col-index">44</td><td><code>HTTPDigestAuth</code></td><td>Objeto para autenticação Digest</td><td><code>from requests.auth import HTTPDigestAuth</code></td></tr>
+
+<tr><td class="col-index">45</td><td><code>requests.utils.quote()</code></td><td>Codifica caracteres especiais para URL</td><td><code>requests.utils.quote('foo bar')</code></td></tr>
+<tr><td class="col-index">46</td><td><code>requests.codes.ok</code></td><td>Referência simbólica para status 200</td><td><code>if r.status_code == requests.codes.ok:</code></td></tr>
+<tr><td class="col-index">47</td><td><code>requests.codes.not_found</code></td><td>Referência simbólica para status 404</td><td><code>if r.status_code == requests.codes.not_found:</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

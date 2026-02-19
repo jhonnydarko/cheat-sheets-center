@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Pandas Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+/* Estilo opcional para a coluna de índice */
+.col-index { width: 40px; text-align: center; font-weight: bold; color: #7f8c8d; background: #f9f9f9; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🐼 Pandas Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://pandas.pydata.org/docs/" target="_blank">📄 Documentação Oficial do Pandas</a></p>
+<input type="text" id="search_field" placeholder="Buscar método, atributo ou funcionalidade do Pandas...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th style="width: 30px;">#</th> <th>Comando / Função</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>pd.read_csv()</code></td><td>Carrega um arquivo CSV para um DataFrame</td><td><code>df = pd.read_csv('dados.csv')</code></td></tr>
+<tr><td class="col-index">2</td><td><code>pd.read_excel()</code></td><td>Carrega uma folha de cálculo Excel</td><td><code>df = pd.read_excel('vendas.xlsx')</code></td></tr>
+<tr><td class="col-index">3</td><td><code>pd.DataFrame()</code></td><td>Cria um DataFrame a partir de um dicionário/lista</td><td><code>df = pd.DataFrame({'A': [1, 2]})</code></td></tr>
+<tr><td class="col-index">4</td><td><code>df.to_csv()</code></td><td>Salva o DataFrame num arquivo CSV</td><td><code>df.to_csv('saida.csv', index=False)</code></td></tr>
+
+<tr><td class="col-index">5</td><td><code>df.head()</code></td><td>Exibe as primeiras 5 linhas</td><td><code>df.head(10)</code></td></tr>
+<tr><td class="col-index">6</td><td><code>df.tail()</code></td><td>Exibe as últimas 5 linhas</td><td><code>df.tail()</code></td></tr>
+<tr><td class="col-index">7</td><td><code>df.info()</code></td><td>Resumo do índice, colunas e tipos de dados</td><td><code>df.info()</code></td></tr>
+<tr><td class="col-index">8</td><td><code>df.describe()</code></td><td>Estatísticas descritivas (média, desvio padrão, etc)</td><td><code>df.describe()</code></td></tr>
+<tr><td class="col-index">9</td><td><code>df.shape</code></td><td>Retorna o número de linhas e colunas</td><td><code>df.shape</code></td></tr>
+<tr><td class="col-index">10</td><td><code>df.columns</code></td><td>Lista os nomes de todas as colunas</td><td><code>df.columns</code></td></tr>
+<tr><td class="col-index">11</td><td><code>df.dtypes</code></td><td>Mostra o tipo de cada coluna</td><td><code>df.dtypes</code></td></tr>
+
+<tr><td class="col-index">12</td><td><code>df['coluna']</code></td><td>Seleciona uma coluna específica</td><td><code>df['nome']</code></td></tr>
+<tr><td class="col-index">13</td><td><code>df[['c1', 'c2']]</code></td><td>Seleciona múltiplas colunas</td><td><code>df[['idade', 'sexo']]</code></td></tr>
+<tr><td class="col-index">14</td><td><code>df.iloc[]</code></td><td>Seleção baseada em posição inteira</td><td><code>df.iloc[0:5, 0:2]</code></td></tr>
+<tr><td class="col-index">15</td><td><code>df.loc[]</code></td><td>Seleção baseada em rótulos/nomes</td><td><code>df.loc[df['idade'] > 18]</code></td></tr>
+<tr><td class="col-index">16</td><td><code>df.query()</code></td><td>Filtra linhas usando uma expressão string</td><td><code>df.query('vendas > 1000')</code></td></tr>
+<tr><td class="col-index">17</td><td><code>df.sample()</code></td><td>Retorna uma amostra aleatória de linhas</td><td><code>df.sample(n=10)</code></td></tr>
+
+<tr><td class="col-index">18</td><td><code>df.isnull()</code></td><td>Verifica valores nulos (NaN)</td><td><code>df.isnull().sum()</code></td></tr>
+<tr><td class="col-index">19</td><td><code>df.dropna()</code></td><td>Remove linhas que contêm valores nulos</td><td><code>df.dropna(axis=0)</code></td></tr>
+<tr><td class="col-index">20</td><td><code>df.fillna()</code></td><td>Substitui valores nulos por um valor específico</td><td><code>df.fillna(0)</code></td></tr>
+<tr><td class="col-index">21</td><td><code>df.drop()</code></td><td>Remove colunas ou linhas específicas</td><td><code>df.drop(columns=['id'])</code></td></tr>
+<tr><td class="col-index">22</td><td><code>df.rename()</code></td><td>Altera nomes de colunas ou índices</td><td><code>df.rename(columns={'old': 'new'})</code></td></tr>
+<tr><td class="col-index">23</td><td><code>df.drop_duplicates()</code></td><td>Remove linhas duplicadas</td><td><code>df.drop_duplicates()</code></td></tr>
+<tr><td class="col-index">24</td><td><code>df.astype()</code></td><td>Converte o tipo de dado de uma coluna</td><td><code>df['id'].astype(str)</code></td></tr>
+
+<tr><td class="col-index">25</td><td><code>df.sort_values()</code></td><td>Ordena o DataFrame por uma ou mais colunas</td><td><code>df.sort_values('data', ascending=False)</code></td></tr>
+<tr><td class="col-index">26</td><td><code>df.apply()</code></td><td>Aplica uma função a cada linha/coluna</td><td><code>df['preco'].apply(np.log)</code></td></tr>
+<tr><td class="col-index">27</td><td><code>df.map()</code></td><td>Substitui valores usando um dicionário</td><td><code>df['sexo'].map({'M': 0, 'F': 1})</code></td></tr>
+<tr><td class="col-index">28</td><td><code>df.assign()</code></td><td>Cria novas colunas baseadas em existentes</td><td><code>df.assign(total = df.q * df.p)</code></td></tr>
+<tr><td class="col-index">29</td><td><code>pd.to_datetime()</code></td><td>Converte strings para objetos de data</td><td><code>pd.to_datetime(df['data'])</code></td></tr>
+
+<tr><td class="col-index">30</td><td><code>df.groupby()</code></td><td>Agrupa dados para aplicar funções agregadas</td><td><code>df.groupby('categoria').sum()</code></td></tr>
+<tr><td class="col-index">31</td><td><code>df.agg()</code></td><td>Aplica múltiplas funções de agregação</td><td><code>df.agg(['mean', 'std'])</code></td></tr>
+<tr><td class="col-index">32</td><td><code>df.value_counts()</code></td><td>Conta ocorrências de valores únicos</td><td><code>df['cor'].value_counts()</code></td></tr>
+<tr><td class="col-index">33</td><td><code>df.unique()</code></td><td>Retorna valores únicos de uma coluna</td><td><code>df['cidade'].unique()</code></td></tr>
+<tr><td class="col-index">34</td><td><code>df.nunique()</code></td><td>Conta quantos valores únicos existem</td><td><code>df.nunique()</code></td></tr>
+<tr><td class="col-index">35</td><td><code>pd.pivot_table()</code></td><td>Cria uma tabela dinâmica (estilo Excel)</td><td><code>df.pivot_table(index='A', values='B')</code></td></tr>
+
+<tr><td class="col-index">36</td><td><code>pd.concat()</code></td><td>Concatena DataFrames (empilha ou lado a lado)</td><td><code>pd.concat([df1, df2])</code></td></tr>
+<tr><td class="col-index">37</td><td><code>df.merge()</code></td><td>Faz o "JOIN" entre dois DataFrames</td><td><code>df1.merge(df2, on='id', how='left')</code></td></tr>
+<tr><td class="col-index">38</td><td><code>df.join()</code></td><td>Une DataFrames baseando-se no índice</td><td><code>df1.join(df2)</code></td></tr>
+
+<tr><td class="col-index">39</td><td><code>df.resample()</code></td><td>Reamostra dados temporais (ex: mensal, anual)</td><td><code>df.resample('M').mean()</code></td></tr>
+<tr><td class="col-index">40</td><td><code>df.shift()</code></td><td>Desloca os dados no tempo (útil para lags)</td><td><code>df['anterior'] = df['vendas'].shift(1)</code></td></tr>
+<tr><td class="col-index">41</td><td><code>df.rolling()</code></td><td>Cria janelas móveis (média móvel)</td><td><code>df['media_movel'] = df.val.rolling(7).mean()</code></td></tr>
+
+<tr><td class="col-index">42</td><td><code>df.plot()</code></td><td>Gera gráficos básicos usando Matplotlib</td><td><code>df.plot(kind='line')</code></td></tr>
+<tr><td class="col-index">43</td><td><code>df.hist()</code></td><td>Gera histogramas das colunas numéricas</td><td><code>df.hist(bins=20)</code></td></tr>
+
+<tr><td class="col-index">44</td><td><code>df['col'].str.contains()</code></td><td>Verifica se uma string contém um padrão/substring</td><td><code>df[df['nome'].str.contains('Silva')]</code></td></tr>
+<tr><td class="col-index">45</td><td><code>df['col'].str.lower()</code></td><td>Converte todo o texto para minúsculas</td><td><code>df['email'] = df['email'].str.lower()</code></td></tr>
+<tr><td class="col-index">46</td><td><code>df['col'].str.upper()</code></td><td>Converte todo o texto para maiúsculas</td><td><code>df['sigla'] = df['sigla'].str.upper()</code></td></tr>
+<tr><td class="col-index">47</td><td><code>df['col'].str.split()</code></td><td>Divide uma string em uma lista baseada em um separador</td><td><code>df['nome'].str.split(' ', expand=True)</code></td></tr>
+<tr><td class="col-index">48</td><td><code>df['col'].str.replace()</code></td><td>Substitui um padrão por outro (suporta Regex)</td><td><code>df['tel'].str.replace('-', '')</code></td></tr>
+<tr><td class="col-index">49</td><td><code>df['col'].str.strip()</code></td><td>Remove espaços em branco no início e fim</td><td><code>df['nome'].str.strip()</code></td></tr>
+<tr><td class="col-index">50</td><td><code>df['col'].str.len()</code></td><td>Retorna o comprimento de cada string na coluna</td><td><code>df['tamanho'] = df['comentario'].str.len()</code></td></tr>
+<tr><td class="col-index">51</td><td><code>df['col'].str.startswith()</code></td><td>Filtra strings que começam com um prefixo</td><td><code>df[df['cod'].str.startswith('A')]</code></td></tr>
+
+<tr><td class="col-index">52</td><td><code>df.isin()</code></td><td>Filtra valores que estejam em uma lista</td><td><code>df[df['id'].isin([1, 5, 10])]</code></td></tr>
+<tr><td class="col-index">53</td><td><code>df.where()</code></td><td>Substitui valores onde a condição é falsa</td><td><code>df.where(df > 0, 0)</code></td></tr>
+<tr><td class="col-index">54</td><td><code>df.mask()</code></td><td>Substitui valores onde a condição é verdadeira</td><td><code>df.mask(df < 0, 0)</code></td></tr>
+<tr><td class="col-index">55</td><td><code>df.filter()</code></td><td>Filtra colunas ou linhas por nome/regex</td><td><code>df.filter(regex='venda_')</code></td></tr>
+<tr><td class="col-index">56</td><td><code>df.select_dtypes()</code></td><td>Seleciona colunas por tipo de dado</td><td><code>df.select_dtypes(include=['number'])</code></td></tr>
+<tr><td class="col-index">57</td><td><code>df.at[]</code></td><td>Acessa um valor único (mais rápido que .loc)</td><td><code>df.at[0, 'nome']</code></td></tr>
+<tr><td class="col-index">58</td><td><code>df.iat[]</code></td><td>Acessa valor único por posição inteira</td><td><code>df.iat[0, 0]</code></td></tr>
+
+<tr><td class="col-index">59</td><td><code>df.pct_change()</code></td><td>Calcula a variação percentual entre linhas</td><td><code>df['variacao'] = df['preco'].pct_change()</code></td></tr>
+<tr><td class="col-index">60</td><td><code>df.rank()</code></td><td>Atribui ranks (posições) aos valores</td><td><code>df['rank'] = df['vendas'].rank(ascending=False)</code></td></tr>
+<tr><td class="col-index">61</td><td><code>df.cumprod()</code></td><td>Calcula o produto acumulado</td><td><code>df['retorno_acum'] = df['retorno'].cumprod()</code></td></tr>
+<tr><td class="col-index">62</td><td><code>df.cumsum()</code></td><td>Calcula a soma acumulada</td><td><code>df['vendas_total'] = df['vendas'].cumsum()</code></td></tr>
+<tr><td class="col-index">63</td><td><code>df.memory_usage()</code></td><td>Mostra o consumo de memória de cada coluna</td><td><code>df.memory_usage(deep=True)</code></td></tr>
+<tr><td class="col-index">64</td><td><code>df.corr()</code></td><td>Calcula a matriz de correlação entre colunas</td><td><code>df.corr()</code></td></tr>
+<tr><td class="col-index">65</td><td><code>df.cov()</code></td><td>Calcula a covariância entre as colunas</td><td><code>df.cov()</code></td></tr>
+
+<tr><td class="col-index">66</td><td><code>df.melt()</code></td><td>Transforma colunas em linhas (unpivot)</td><td><code>pd.melt(df, id_vars=['id'])</code></td></tr>
+<tr><td class="col-index">67</td><td><code>df.pivot()</code></td><td>Remodela os dados (longo para largo)</td><td><code>df.pivot(index='data', columns='item')</code></td></tr>
+<tr><td class="col-index">68</td><td><code>df.stack()</code></td><td>"Empilha" as colunas no índice (hierárquico)</td><td><code>df.stack()</code></td></tr>
+<tr><td class="col-index">69</td><td><code>df.unstack()</code></td><td>Move o último nível do índice para colunas</td><td><code>df.unstack()</code></td></tr>
+<tr><td class="col-index">70</td><td><code>df.explode()</code></td><td>Transforma cada elemento de uma lista em uma linha</td><td><code>df.explode('tags')</code></td></tr>
+<tr><td class="col-index">71</td><td><code>df.transpose()</code></td><td>Inverte linhas e colunas (T)</td><td><code>df.T</code></td></tr>
+
+<tr><td class="col-index">72</td><td><code>df['data'].dt.year</code></td><td>Extrai o ano de uma coluna de data</td><td><code>df['ano'] = df['data'].dt.year</code></td></tr>
+<tr><td class="col-index">73</td><td><code>df['data'].dt.month</code></td><td>Extrai o mês de uma coluna de data</td><td><code>df['mes'] = df['data'].dt.month</code></td></tr>
+<tr><td class="col-index">74</td><td><code>df['data'].dt.day_name()</code></td><td>Retorna o nome do dia da semana</td><td><code>df['dia_semana'] = df['data'].dt.day_name()</code></td></tr>
+<tr><td class="col-index">75</td><td><code>df['data'].dt.days_in_month</code></td><td>Retorna quantos dias tem o mês daquela data</td><td><code>df['dias_mes'] = df['data'].dt.days_in_month</code></td></tr>
+<tr><td class="col-index">76</td><td><code>df.tz_localize()</code></td><td>Define o fuso horário (Timezone)</td><td><code>df['data'].dt.tz_localize('UTC')</code></td></tr>
+
+<tr><td class="col-index">77</td><td><code>df.set_index()</code></td><td>Define uma coluna como índice do DataFrame</td><td><code>df.set_index('id')</code></td></tr>
+<tr><td class="col-index">78</td><td><code>df.reset_index()</code></td><td>Transforma o índice em uma coluna comum</td><td><code>df.reset_index(drop=True)</code></td></tr>
+<tr><td class="col-index">79</td><td><code>df.reindex()</code></td><td>Reorganiza o DataFrame para um novo índice</td><td><code>df.reindex(novo_indice)</code></td></tr>
+<tr><td class="col-index">80</td><td><code>df.sort_index()</code></td><td>Ordena o DataFrame pelo índice</td><td><code>df.sort_index()</code></td></tr>
+
+<tr><td class="col-index">81</td><td><code>pd.read_sql()</code></td><td>Lê dados de um banco de dados SQL</td><td><code>pd.read_sql('SELECT * FROM tab', conn)</code></td></tr>
+<tr><td class="col-index">82</td><td><code>pd.read_json()</code></td><td>Carrega um arquivo JSON</td><td><code>df = pd.read_json('dados.json')</code></td></tr>
+<tr><td class="col-index">83</td><td><code>df.to_excel()</code></td><td>Exporta o DataFrame para Excel</td><td><code>df.to_excel('relatorio.xlsx')</code></td></tr>
+<tr><td class="col-index">84</td><td><code>df.to_json()</code></td><td>Exporta o DataFrame para JSON</td><td><code>df.to_json('saida.json')</code></td></tr>
+<tr><td class="col-index">85</td><td><code>pd.read_clipboard()</code></td><td>Lê dados copiados na área de transferência</td><td><code>df = pd.read_clipboard()</code></td></tr>
+<tr><td class="col-index">86</td><td><code>pd.read_html()</code></td><td>Extrai tabelas de uma página web/HTML</td><td><code>tabelas = pd.read_html('http://site.com')</code></td></tr>
+
+<tr><td class="col-index">87</td><td><code>df.copy()</code></td><td>Cria uma cópia profunda do DataFrame</td><td><code>df_new = df.copy()</code></td></tr>
+<tr><td class="col-index">88</td><td><code>df.nlargest()</code></td><td>Retorna as N linhas com maiores valores</td><td><code>df.nlargest(5, 'valor')</code></td></tr>
+<tr><td class="col-index">89</td><td><code>df.nsmallest()</code></td><td>Retorna as N linhas com menores valores</td><td><code>df.nsmallest(3, 'preco')</code></td></tr>
+<tr><td class="col-index">90</td><td><code>df.duplicated()</code></td><td>Identifica linhas duplicadas (retorna booleano)</td><td><code>df[df.duplicated()]</code></td></tr>
+<tr><td class="col-index">91</td><td><code>pd.get_dummies()</code></td><td>Converte variáveis categóricas em Dummy/One-Hot</td><td><code>pd.get_dummies(df['categoria'])</code></td></tr>
+<tr><td class="col-index">92</td><td><code>df.pipe()</code></td><td>Aplica uma sequência de funções ao DF</td><td><code>df.pipe(func1).pipe(func2)</code></td></tr>
+<tr><td class="col-index">93</td><td><code>pd.options.display</code></td><td>Configura como o Pandas exibe os dados</td><td><code>pd.options.display.max_columns = 50</code></td></tr>
+
+<tr><td class="col-index">94</td><td><code>df.combine_first()</code></td><td>Preenche valores nulos com dados de outro DataFrame</td><td><code>df1.combine_first(df2)</code></td></tr>
+<tr><td class="col-index">95</td><td><code>df.update()</code></td><td>Modifica o DF original com valores de outro (pelo índice)</td><td><code>df1.update(df2)</code></td></tr>
+<tr><td class="col-index">96</td><td><code>df.squeeze()</code></td><td>Converte um DataFrame de uma coluna em uma Series</td><td><code>df.squeeze()</code></td></tr>
+<tr><td class="col-index">97</td><td><code>df.truncate()</code></td><td>Corta o DataFrame antes e depois de algum índice</td><td><code>df.truncate(before=2, after=10)</code></td></tr>
+<tr><td class="col-index">98</td><td><code>df.first()</code></td><td>Seleciona períodos iniciais baseados em tempo</td><td><code>df.first('3D') # Primeiros 3 dias</code></td></tr>
+<tr><td class="col-index">99</td><td><code>df.last()</code></td><td>Seleciona períodos finais baseados em tempo</td><td><code>df.last('1M') # Último mês</code></td></tr>
+
+<tr><td class="col-index">100</td><td><code>df.groupby().transform()</code></td><td>Aplica função e retorna Series com o mesmo tamanho original</td><td><code>df.groupby('A')['B'].transform('mean')</code></td></tr>
+<tr><td class="col-index">101</td><td><code>df.groupby().filter()</code></td><td>Filtra grupos baseados em uma condição booleana</td><td><code>df.groupby('A').filter(lambda x: x['B'].sum() > 100)</code></td></tr>
+<tr><td class="col-index">102</td><td><code>df.groupby().nth()</code></td><td>Pega a n-ésima linha de cada grupo</td><td><code>df.groupby('cat').nth(0)</code></td></tr>
+<tr><td class="col-index">103</td><td><code>df.mad()</code></td><td>Retorna o desvio absoluto médio</td><td><code>df['val'].mad()</code></td></tr>
+<tr><td class="col-index">104</td><td><code>df.skew()</code></td><td>Retorna a assimetria (skewness) dos dados</td><td><code>df.skew()</code></td></tr>
+<tr><td class="col-index">105</td><td><code>df.kurtosis()</code></td><td>Retorna a curtose (pico) da distribuição</td><td><code>df.kurtosis()</code></td></tr>
+<tr><td class="col-index">106</td><td><code>df.sem()</code></td><td>Erro padrão da média</td><td><code>df.sem()</code></td></tr>
+<tr><td class="col-index">107</td><td><code>df.diff()</code></td><td>Diferença discreta entre elementos (atual menos anterior)</td><td><code>df['vendas'].diff()</code></td></tr>
+
+<tr><td class="col-index">108</td><td><code>df['col'].str.extract()</code></td><td>Extrai grupos de Regex para novas colunas</td><td><code>df['txt'].str.extract(r'(\d+)')</code></td></tr>
+<tr><td class="col-index">109</td><td><code>df['col'].str.count()</code></td><td>Conta ocorrências de um padrão em cada string</td><td><code>df['msg'].str.count('urgente')</code></td></tr>
+<tr><td class="col-index">110</td><td><code>df['col'].str.pad()</code></td><td>Adiciona preenchimento (espaços/caracteres) à string</td><td><code>df['id'].str.pad(width=5, fillchar='0')</code></td></tr>
+<tr><td class="col-index">111</td><td><code>df['col'].str.zfill()</code></td><td>Preenche strings com zeros à esquerda</td><td><code>df['cod'].str.zfill(10)</code></td></tr>
+<tr><td class="col-index">112</td><td><code>df['col'].str.find()</code></td><td>Retorna a posição inicial de uma substring (-1 se não achar)</td><td><code>df['email'].str.find('@')</code></td></tr>
+<tr><td class="col-index">113</td><td><code>df['col'].str.repeat()</code></td><td>Repete a string n vezes</td><td><code>df['separador'].str.repeat(3)</code></td></tr>
+
+<tr><td class="col-index">114</td><td><code>df['data'].dt.quarter</code></td><td>Retorna o trimestre (1 a 4) da data</td><td><code>df['trimestre'] = df['data'].dt.quarter</code></td></tr>
+<tr><td class="col-index">115</td><td><code>df['data'].dt.is_leap_year</code></td><td>Verifica se o ano é bissexto</td><td><code>df['bissexto'] = df['data'].dt.is_leap_year</code></td></tr>
+<tr><td class="col-index">116</td><td><code>df['data'].dt.weekofyear</code></td><td>Retorna a semana do ano</td><td><code>df['semana'] = df['data'].dt.isocalendar().week</code></td></tr>
+<tr><td class="col-index">117</td><td><code>pd.DateOffset()</code></td><td>Adiciona/subtrai intervalos de tempo específicos</td><td><code>df['data'] + pd.DateOffset(days=5)</code></td></tr>
+<tr><td class="col-index">118</td><td><code>pd.date_range()</code></td><td>Cria uma sequência de datas fixed frequency</td><td><code>pd.date_range(start='2023-01-01', periods=10)</code></td></tr>
+<tr><td class="col-index">119</td><td><code>df['data'].dt.normalize()</code></td><td>Zera as horas, mantendo apenas a data</td><td><code>df['so_data'] = df['data'].dt.normalize()</code></td></tr>
+
+<tr><td class="col-index">120</td><td><code>df.isna()</code></td><td>Alias para isnull() (mais comum em outras linguagens)</td><td><code>df.isna().any()</code></td></tr>
+<tr><td class="col-index">121</td><td><code>df.notna()</code></td><td>Oposto de isna(); True para valores preenchidos</td><td><code>df[df['email'].notna()]</code></td></tr>
+<tr><td class="col-index">122</td><td><code>df.replace()</code></td><td>Substitui valores específicos globalmente</td><td><code>df.replace('?', np.nan)</code></td></tr>
+<tr><td class="col-index">123</td><td><code>df.convert_dtypes()</code></td><td>Converte colunas para os melhores tipos possíveis (inferência)</td><td><code>df.convert_dtypes()</code></td></tr>
+<tr><td class="col-index">124</td><td><code>df.infer_objects()</code></td><td>Tenta inferir melhores tipos para colunas de 'object'</td><td><code>df.infer_objects()</code></td></tr>
+
+<tr><td class="col-index">125</td><td><code>df.to_dict()</code></td><td>Converte o DataFrame em um dicionário Python</td><td><code>dados = df.to_dict(orient='records')</code></td></tr>
+<tr><td class="col-index">126</td><td><code>df.to_html()</code></td><td>Gera o código de uma tabela HTML a partir do DF</td><td><code>html_str = df.to_html()</code></td></tr>
+<tr><td class="col-index">127</td><td><code>df.to_markdown()</code></td><td>Exporta a tabela no formato Markdown</td><td><code>print(df.to_markdown())</code></td></tr>
+<tr><td class="col-index">128</td><td><code>df.to_parquet()</code></td><td>Salva em formato Parquet (eficiente para Big Data)</td><td><code>df.to_parquet('dados.parquet')</code></td></tr>
+<tr><td class="col-index">129</td><td><code>pd.read_parquet()</code></td><td>Lê um arquivo do tipo Parquet</td><td><code>df = pd.read_parquet('dados.parquet')</code></td></tr>
+<tr><td class="col-index">130</td><td><code>df.to_pickle()</code></td><td>Serializa o objeto para um arquivo binário (Pickle)</td><td><code>df.to_pickle('backup.pkl')</code></td></tr>
+
+<tr><td class="col-index">131</td><td><code>df.index.get_loc()</code></td><td>Obtém a posição inteira de um rótulo do índice</td><td><code>pos = df.index.get_loc('2023-05-01')</code></td></tr>
+<tr><td class="col-index">132</td><td><code>df.reorder_levels()</code></td><td>Muda a ordem dos níveis em um MultiIndex</td><td><code>df.reorder_levels([1, 0])</code></td></tr>
+<tr><td class="col-index">133</td><td><code>df.swaplevel()</code></td><td>Troca dois níveis do índice</td><td><code>df.swaplevel(0, 1)</code></td></tr>
+<tr><td class="col-index">134</td><td><code>df.index.name</code></td><td>Atribui um nome ao índice</td><td><code>df.index.name = 'usuario_id'</code></td></tr>
+
+<tr><td class="col-index">135</td><td><code>df.style.background_gradient()</code></td><td>Cria um mapa de calor nas células (estilo Excel)</td><td><code>df.style.background_gradient(cmap='viridis')</code></td></tr>
+<tr><td class="col-index">136</td><td><code>df.style.highlight_max()</code></td><td>Destaca o valor máximo de cada coluna</td><td><code>df.style.highlight_max(color='lightgreen')</code></td></tr>
+<tr><td class="col-index">137</td><td><code>df.style.format()</code></td><td>Formata a exibição (casas decimais, %, etc)</td><td><code>df.style.format('{:.2%}')</code></td></tr>
+<tr><td class="col-index">138</td><td><code>df.boxplot()</code></td><td>Cria um gráfico de caixa para detectar outliers</td><td><code>df.boxplot(column=['salario'])</code></td></tr>
+
+<tr><td class="col-index">139</td><td><code>pd.show_versions()</code></td><td>Mostra versões do Pandas e dependências (debug)</td><td><code>pd.show_versions()</code></td></tr>
+<tr><td class="col-index">140</td><td><code>df.eval()</code></td><td>Executa operações matemáticas usando strings (rápido)</td><td><code>df.eval('C = A + B')</code></td></tr>
+<tr><td class="col-index">141</td><td><code>pd.cut()</code></td><td>Transforma valores contínuos em categorias (bins)</td><td><code>pd.cut(df['idade'], bins=[0, 18, 65, 100])</code></td></tr>
+<tr><td class="col-index">142</td><td><code>pd.qcut()</code></td><td>Divide dados em bins baseados em quantis (mesmo tamanho)</td><td><code>pd.qcut(df['renda'], q=4)</code></td></tr>
+<tr><td class="col-index">143</td><td><code>pd.testing.assert_frame_equal()</code></td><td>Verifica se dois DFs são idênticos (útil para testes unitários)</td><td><code>pd.testing.assert_frame_equal(df1, df2)</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

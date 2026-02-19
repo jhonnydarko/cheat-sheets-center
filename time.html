@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Time Module Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+/* Estilo para a coluna de índice */
+.col-index { width: 40px; text-align: center; color: #7f8c8d; font-weight: bold; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>⌚ Time Module Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://docs.python.org/3/library/time.html" target="_blank">📄 Documentação Oficial do Módulo Time</a></p>
+<input type="text" id="search_field" placeholder="Buscar função ou formato de tempo...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th> <th>Função / Método</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>time.time()</code></td><td>Retorna o timestamp atual (segundos desde 1970)</td><td><code>time.time()</code></td></tr>
+<tr><td class="col-index">2</td><td><code>time.ctime()</code></td><td>Converte um timestamp para uma string legível</td><td><code>time.ctime(1700000000)</code></td></tr>
+<tr><td class="col-index">3</td><td><code>time.localtime()</code></td><td>Converte timestamp para struct_time (fuso local)</td><td><code>time.localtime()</code></td></tr>
+<tr><td class="col-index">4</td><td><code>time.gmtime()</code></td><td>Converte timestamp para struct_time (UTC)</td><td><code>time.gmtime()</code></td></tr>
+
+<tr><td class="col-index">5</td><td><code>time.sleep()</code></td><td>Pausa a execução do programa por N segundos</td><td><code>time.sleep(2.5)</code></td></tr>
+<tr><td class="col-index">6</td><td><code>time.perf_counter()</code></td><td>Contador de alta precisão para medir intervalos</td><td><code>start = time.perf_counter()</code></td></tr>
+<tr><td class="col-index">7</td><td><code>time.process_time()</code></td><td>Tempo de CPU usado pelo processo atual</td><td><code>time.process_time()</code></td></tr>
+
+<tr><td class="col-index">8</td><td><code>time.strftime()</code></td><td>Converte struct_time para String formatada</td><td><code>time.strftime("%d/%m/%Y %H:%M")</code></td></tr>
+<tr><td class="col-index">9</td><td><code>time.strptime()</code></td><td>Converte String para objeto struct_time</td><td><code>time.strptime("2024-01-01", "%Y-%m-%d")</code></td></tr>
+<tr><td class="col-index">10</td><td><code>time.mktime()</code></td><td>Converte struct_time local para timestamp</td><td><code>time.mktime(struct_obj)</code></td></tr>
+<tr><td class="col-index">11</td><td><code>time.asctime()</code></td><td>Converte tupla/struct_time para string padrão</td><td><code>time.asctime()</code></td></tr>
+
+<tr><td class="col-index">12</td><td><code>.tm_year</code></td><td>Ano com 4 dígitos</td><td><code>t.tm_year # 2026</code></td></tr>
+<tr><td class="col-index">13</td><td><code>.tm_mon</code></td><td>Mês (1 a 12)</td><td><code>t.tm_mon # 2</code></td></tr>
+<tr><td class="col-index">14</td><td><code>.tm_mday</code></td><td>Dia do mês (1 a 31)</td><td><code>t.tm_mday # 18</code></td></tr>
+<tr><td class="col-index">15</td><td><code>.tm_hour</code></td><td>Hora (0 a 23)</td><td><code>t.tm_hour</code></td></tr>
+<tr><td class="col-index">16</td><td><code>.tm_wday</code></td><td>Dia da semana (0=Segunda, 6=Domingo)</td><td><code>t.tm_wday</code></td></tr>
+<tr><td class="col-index">17</td><td><code>.tm_yday</code></td><td>Dia do ano (1 a 366)</td><td><code>t.tm_yday</code></td></tr>
+
+<tr><td class="col-index">18</td><td><code>%Y</code></td><td>Ano completo (ex: 2026)</td><td><code>"%Y"</code></td></tr>
+<tr><td class="col-index">19</td><td><code>%m</code></td><td>Mês como número (01 a 12)</td><td><code>"%m"</code></td></tr>
+<tr><td class="col-index">20</td><td><code>%d</code></td><td>Dia do mês (01 a 31)</td><td><code>"%d"</code></td></tr>
+<tr><td class="col-index">21</td><td><code>%H</code></td><td>Hora em formato 24h (00 a 23)</td><td><code>"%H"</code></td></tr>
+<tr><td class="col-index">22</td><td><code>%M</code></td><td>Minutos (00 a 59)</td><td><code>"%M"</code></td></tr>
+<tr><td class="col-index">23</td><td><code>%S</code></td><td>Segundos (00 a 59)</td><td><code>"%S"</code></td></tr>
+<tr><td class="col-index">24</td><td><code>%A</code></td><td>Nome do dia da semana completo</td><td><code>"%A" # Wednesday</code></td></tr>
+<tr><td class="col-index">25</td><td><code>%B</code></td><td>Nome do mês completo</td><td><code>"%B" # February</code></td></tr>
+
+<tr><td class="col-index">26</td><td><code>time.timezone</code></td><td>Offset do fuso local (segundos a oeste do UTC)</td><td><code>time.timezone</code></td></tr>
+<tr><td class="col-index">27</td><td><code>time.tzname</code></td><td>Tupla com nome do fuso horário (padrão e verão)</td><td><code>time.tzname</code></td></tr>
+<tr><td class="col-index">28</td><td><code>time.daylight</code></td><td>Indica se o fuso possui horário de verão</td><td><code>time.daylight</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

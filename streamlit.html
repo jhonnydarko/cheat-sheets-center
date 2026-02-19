@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Streamlit Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+
+/* Estilo para a numeração automática (Índice) */
+tbody { counter-reset: rowNumber; }
+tbody tr { counter-increment: rowNumber; }
+tbody tr td:first-child::before { content: counter(rowNumber); font-weight: bold; color: #7f8c8d; }
+.col-index { width: 40px; text-align: center; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>👑 Streamlit Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://docs.streamlit.io/" target="_blank">📖 Documentação Oficial do Streamlit</a></p>
+<input type="text" id="search_field" placeholder="Buscar widget, comando ou layout do Streamlit...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th>
+<th>Comando / Widget</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td></td><td><code>st.title()</code></td><td>Exibe texto em formato de título principal</td><td><code>st.title('Meu App de Dados')</code></td></tr>
+<tr><td></td><td><code>st.header()</code></td><td>Exibe um cabeçalho de seção</td><td><code>st.header('Resultados')</code></td></tr>
+<tr><td></td><td><code>st.subheader()</code></td><td>Exibe um sub-cabeçalho</td><td><code>st.subheader('Análise Mensal')</code></td></tr>
+<tr><td></td><td><code>st.text()</code></td><td>Exibe texto simples (monoespaçado)</td><td><code>st.text('Lote de texto fixo')</code></td></tr>
+<tr><td></td><td><code>st.markdown()</code></td><td>Exibe texto formatado em Markdown (negrito, links)</td><td><code>st.markdown('**Destaque**')</code></td></tr>
+<tr><td></td><td><code>st.write()</code></td><td>Comando "coringa" para exibir objetos diversos</td><td><code>st.write(df)</code></td></tr>
+<tr><td></td><td><code>st.code()</code></td><td>Exibe blocos de código com destaque de sintaxe</td><td><code>st.code('print("Oi")')</code></td></tr>
+<tr><td></td><td><code>st.latex()</code></td><td>Exibe expressões matemáticas (LaTeX)</td><td><code>st.latex(r'''e^{i\pi} + 1 = 0''')</code></td></tr>
+
+<tr><td></td><td><code>st.dataframe()</code></td><td>Exibe DataFrame interativo (rolagem/busca)</td><td><code>st.dataframe(df)</code></td></tr>
+<tr><td></td><td><code>st.table()</code></td><td>Exibe uma tabela estática completa</td><td><code>st.table(df.head())</code></td></tr>
+<tr><td></td><td><code>st.metric()</code></td><td>Exibe métricas com indicadores de variação</td><td><code>st.metric('Preço', 'R$ 10', '2%')</code></td></tr>
+<tr><td></td><td><code>st.json()</code></td><td>Exibe objetos JSON formatados</td><td><code>st.json({'id': 1})</code></td></tr>
+
+<tr><td></td><td><code>st.button()</code></td><td>Cria um botão simples</td><td><code>if st.button('Click'):</code></td></tr>
+<tr><td></td><td><code>st.checkbox()</code></td><td>Cria uma caixa de seleção booleana</td><td><code>st.checkbox('Aceito')</code></td></tr>
+<tr><td></td><td><code>st.radio()</code></td><td>Cria botões de opção (escolha única)</td><td><code>st.radio('Opção', ['A', 'B'])</code></td></tr>
+<tr><td></td><td><code>st.selectbox()</code></td><td>Cria uma caixa de seleção (dropdown)</td><td><code>st.selectbox('Selecione', [1, 2])</code></td></tr>
+<tr><td></td><td><code>st.multiselect()</code></td><td>Permite selecionar múltiplos itens de uma lista</td><td><code>st.multiselect('Cidades', ['SP', 'RJ'])</code></td></tr>
+<tr><td></td><td><code>st.slider()</code></td><td>Cria um seletor deslizante de valores</td><td><code>st.slider('Idade', 0, 100, 25)</code></td></tr>
+<tr><td></td><td><code>st.text_input()</code></td><td>Cria campo para entrada de texto curto</td><td><code>st.text_input('Nome')</code></td></tr>
+<tr><td></td><td><code>st.number_input()</code></td><td>Cria campo para entrada de números</td><td><code>st.number_input('Qtd', min_value=1)</code></td></tr>
+<tr><td></td><td><code>st.date_input()</code></td><td>Widget de seleção de data (calendário)</td><td><code>st.date_input('Início')</code></td></tr>
+<tr><td></td><td><code>st.file_uploader()</code></td><td>Permite upload de arquivos (CSV, Imagens, etc)</td><td><code>st.file_uploader('Suba o CSV')</code></td></tr>
+
+<tr><td></td><td><code>st.line_chart()</code></td><td>Cria gráfico de linha nativo rápido</td><td><code>st.line_chart(df)</code></td></tr>
+<tr><td></td><td><code>st.bar_chart()</code></td><td>Cria gráfico de barras nativo rápido</td><td><code>st.bar_chart(df)</code></td></tr>
+<tr><td></td><td><code>st.area_chart()</code></td><td>Cria gráfico de área nativo rápido</td><td><code>st.area_chart(df)</code></td></tr>
+<tr><td></td><td><code>st.map()</code></td><td>Exibe mapa com pontos baseados em lat/lon</td><td><code>st.map(df_coords)</code></td></tr>
+<tr><td></td><td><code>st.plotly_chart()</code></td><td>Exibe gráficos criados com a biblioteca Plotly</td><td><code>st.plotly_chart(fig_plotly)</code></td></tr>
+<tr><td></td><td><code>st.pyplot()</code></td><td>Exibe figuras criadas com Matplotlib/Seaborn</td><td><code>st.pyplot(fig_plt)</code></td></tr>
+
+<tr><td></td><td><code>st.sidebar</code></td><td>Adiciona elementos à barra lateral</td><td><code>st.sidebar.button('Sair')</code></td></tr>
+<tr><td></td><td><code>st.columns()</code></td><td>Divide o layout em colunas horizontais</td><td><code>col1, col2 = st.columns(2)</code></td></tr>
+<tr><td></td><td><code>st.tabs()</code></td><td>Cria abas de conteúdo no mesmo espaço</td><td><code>tab1, tab2 = st.tabs(['A', 'B'])</code></td></tr>
+<tr><td></td><td><code>st.expander()</code></td><td>Cria uma seção colapsável (expansível)</td><td><code>with st.expander('Ver mais'):</code></td></tr>
+<tr><td></td><td><code>st.container()</code></td><td>Cria um container invisível para agrupar itens</td><td><code>with st.container():</code></td></tr>
+
+<tr><td></td><td><code>st.success()</code></td><td>Exibe mensagem de sucesso (verde)</td><td><code>st.success('Finalizado!')</code></td></tr>
+<tr><td></td><td><code>st.error()</code></td><td>Exibe mensagem de erro (vermelho)</td><td><code>st.error('Ocorreu uma falha')</code></td></tr>
+<tr><td></td><td><code>st.warning()</code></td><td>Exibe mensagem de alerta (amarelo)</td><td><code>st.warning('Atenção!')</code></td></tr>
+<tr><td></td><td><code>st.info()</code></td><td>Exibe mensagem informativa (azul)</td><td><code>st.info('Carregando...')</code></td></tr>
+<tr><td></td><td><code>st.spinner()</code></td><td>Exibe um ícone de carregamento temporário</td><td><code>with st.spinner('Aguarde...'):</code></td></tr>
+<tr><td></td><td><code>st.balloons()</code></td><td>Exibe uma animação de balões na tela</td><td><code>st.balloons()</code></td></tr>
+<tr><td></td><td><code>st.toast()</code></td><td>Exibe uma pequena notificação pop-up</td><td><code>st.toast('Salvo!')</code></td></tr>
+
+<tr><td></td><td><code>@st.cache_data</code></td><td>Faz cache de retorno de funções de dados</td><td><code>@st.cache_data</code></td></tr>
+<tr><td></td><td><code>@st.cache_resource</code></td><td>Faz cache de recursos globais (conexão DB)</td><td><code>@st.cache_resource</code></td></tr>
+
+<tr><td></td><td><code>st.set_page_config()</code></td><td>Configura título e ícone da aba do navegador</td><td><code>st.set_page_config(page_title='My App')</code></td></tr>
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

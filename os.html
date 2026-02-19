@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>OS Module Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>📂 OS Module Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://docs.python.org/3/library/os.html" target="_blank">📄 Documentação Oficial do Módulo OS</a></p>
+<input type="text" id="search_field" placeholder="Buscar comando (mkdir, listdir, path, environ)...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th>Função / Método</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td><code>os.getcwd()</code></td><td>Retorna o diretório de trabalho atual</td><td><code>os.getcwd()</code></td></tr>
+<tr><td><code>os.chdir()</code></td><td>Muda o diretório de trabalho atual</td><td><code>os.chdir('/caminho/pasta')</code></td></tr>
+<tr><td><code>os.listdir()</code></td><td>Lista arquivos e pastas no diretório informado</td><td><code>os.listdir('.')</code></td></tr>
+<tr><td><code>os.mkdir()</code></td><td>Cria um novo diretório</td><td><code>os.mkdir('nova_pasta')</code></td></tr>
+<tr><td><code>os.makedirs()</code></td><td>Cria diretórios recursivamente (pastas dentro de pastas)</td><td><code>os.makedirs('a/b/c')</code></td></tr>
+<tr><td><code>os.remove()</code></td><td>Remove (deleta) um arquivo</td><td><code>os.remove('arquivo.txt')</code></td></tr>
+<tr><td><code>os.rmdir()</code></td><td>Remove um diretório vazio</td><td><code>os.rmdir('pasta_vazia')</code></td></tr>
+<tr><td><code>os.rename()</code></td><td>Renomeia um arquivo ou diretório</td><td><code>os.rename('velho.txt', 'novo.txt')</code></td></tr>
+
+<tr><td><code>os.path.join()</code></td><td>Une partes de um caminho de forma inteligente</td><td><code>os.path.join('pasta', 'img.png')</code></td></tr>
+<tr><td><code>os.path.exists()</code></td><td>Verifica se um arquivo ou pasta existe</td><td><code>os.path.exists('data.csv')</code></td></tr>
+<tr><td><code>os.path.isfile()</code></td><td>Retorna True se o caminho for um arquivo</td><td><code>os.path.isfile(path)</code></td></tr>
+<tr><td><code>os.path.isdir()</code></td><td>Retorna True se o caminho for uma pasta</td><td><code>os.path.isdir(path)</code></td></tr>
+<tr><td><code>os.path.split()</code></td><td>Divide o caminho em (diretório, arquivo)</td><td><code>os.path.split(caminho)</code></td></tr>
+<tr><td><code>os.path.abspath()</code></td><td>Retorna o caminho absoluto de um arquivo</td><td><code>os.path.abspath('f.txt')</code></td></tr>
+
+<tr><td><code>os.name</code></td><td>Identifica o sistema operacional ('posix' ou 'nt')</td><td><code>os.name</code></td></tr>
+<tr><td><code>os.environ</code></td><td>Dicionário com as variáveis de ambiente</td><td><code>os.environ.get('USER')</code></td></tr>
+<tr><td><code>os.system()</code></td><td>Executa um comando no terminal do sistema</td><td><code>os.system('clear')</code></td></tr>
+<tr><td><code>os.cpu_count()</code></td><td>Retorna o número de CPUs disponíveis</td><td><code>os.cpu_count()</code></td></tr>
+
+<tr><td><code>os.walk()</code></td><td>Gera nomes de arquivos em uma árvore de diretórios</td><td><code>for root, dirs, files in os.walk('.'):</code></td></tr>
+<tr><td><code>os.getpid()</code></td><td>Retorna o ID do processo atual</td><td><code>os.getpid()</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

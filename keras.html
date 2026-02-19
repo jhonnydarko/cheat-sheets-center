@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Keras Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+/* Estilo para a coluna de índice */
+.col-index { width: 40px; text-align: center; font-weight: bold; color: #7f8c8d; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🧠 Keras Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://keras.io/" target="_blank">🚀 Documentação Oficial do Keras / TensorFlow</a></p>
+<input type="text" id="search_field" placeholder="Buscar camada, otimizador, função de perda...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th>
+<th>Comando / Função</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>pip install tensorflow</code></td><td>Instala o Keras (embutido no TensorFlow)</td><td><code>pip install tensorflow</code></td></tr>
+
+<tr><td class="col-index">2</td><td><code>from tensorflow import keras</code></td><td>Importa a biblioteca principal</td><td><code>from tensorflow import keras</code></td></tr>
+<tr><td class="col-index">3</td><td><code>from keras import layers</code></td><td>Importa os blocos de construção de camadas</td><td><code>from tensorflow.keras import layers</code></td></tr>
+
+<tr><td class="col-index">4</td><td><code>keras.Sequential()</code></td><td>Cria um modelo de pilha linear de camadas</td><td><code>model = keras.Sequential()</code></td></tr>
+<tr><td class="col-index">5</td><td><code>keras.Model()</code></td><td>API Funcional para modelos complexos</td><td><code>model = keras.Model(inputs, outputs)</code></td></tr>
+<tr><td class="col-index">6</td><td><code>model.summary()</code></td><td>Exibe a arquitetura e total de parâmetros</td><td><code>model.summary()</code></td></tr>
+
+<tr><td class="col-index">7</td><td><code>layers.Dense()</code></td><td>Camada totalmente conectada</td><td><code>layers.Dense(64, activation='relu')</code></td></tr>
+<tr><td class="col-index">8</td><td><code>layers.Input()</code></td><td>Define o formato dos dados de entrada</td><td><code>layers.Input(shape=(32,))</code></td></tr>
+<tr><td class="col-index">9</td><td><code>layers.Flatten()</code></td><td>Transforma matriz em um vetor plano</td><td><code>layers.Flatten()</code></td></tr>
+<tr><td class="col-index">10</td><td><code>layers.Dropout()</code></td><td>Desativa neurônios aleatórios (evita overfitting)</td><td><code>layers.Dropout(0.5)</code></td></tr>
+
+<tr><td class="col-index">11</td><td><code>layers.Conv2D()</code></td><td>Filtros espaciais para imagens</td><td><code>layers.Conv2D(32, (3,3))</code></td></tr>
+<tr><td class="col-index">12</td><td><code>layers.MaxPooling2D()</code></td><td>Reduz a dimensão espacial (downsampling)</td><td><code>layers.MaxPooling2D(pool_size=(2,2))</code></td></tr>
+
+<tr><td class="col-index">13</td><td><code>layers.LSTM()</code></td><td>Memória de longo prazo (texto/séries)</td><td><code>layers.LSTM(128)</code></td></tr>
+<tr><td class="col-index">14</td><td><code>layers.GRU()</code></td><td>Variante simplificada da LSTM</td><td><code>layers.GRU(64)</code></td></tr>
+<tr><td class="col-index">15</td><td><code>layers.Embedding()</code></td><td>Representação vetorial de palavras</td><td><code>layers.Embedding(input_dim=1000, output_dim=64)</code></td></tr>
+
+<tr><td class="col-index">16</td><td><code>activation='relu'</code></td><td>Função linear retificada (padrão)</td><td><code>layers.Dense(10, activation='relu')</code></td></tr>
+<tr><td class="col-index">17</td><td><code>activation='softmax'</code></td><td>Probabilidades para múltiplas classes</td><td><code>layers.Dense(3, activation='softmax')</code></td></tr>
+<tr><td class="col-index">18</td><td><code>activation='sigmoid'</code></td><td>Probabilidade para classificação binária</td><td><code>layers.Dense(1, activation='sigmoid')</code></td></tr>
+
+<tr><td class="col-index">19</td><td><code>model.compile()</code></td><td>Configura o processo de aprendizado</td><td><code>model.compile(optimizer='adam', loss='mse')</code></td></tr>
+<tr><td class="col-index">20</td><td><code>optimizer='adam'</code></td><td>Otimizador adaptativo eficiente</td><td><code>optimizer='adam'</code></td></tr>
+<tr><td class="col-index">21</td><td><code>loss='categorical_crossentropy'</code></td><td>Função de erro para múltiplas classes</td><td><code>loss='categorical_crossentropy'</code></td></tr>
+<tr><td class="col-index">22</td><td><code>metrics=['accuracy']</code></td><td>Métrica de desempenho para monitorar</td><td><code>metrics=['accuracy']</code></td></tr>
+
+<tr><td class="col-index">23</td><td><code>model.fit()</code></td><td>Treina o modelo nos dados</td><td><code>model.fit(X, y, epochs=10)</code></td></tr>
+<tr><td class="col-index">24</td><td><code>batch_size=</code></td><td>Número de amostras por atualização de peso</td><td><code>model.fit(X, y, batch_size=32)</code></td></tr>
+<tr><td class="col-index">25</td><td><code>epochs=</code></td><td>Número de vezes que percorre todo o dataset</td><td><code>epochs=50</code></td></tr>
+<tr><td class="col-index">26</td><td><code>validation_split=</code></td><td>Reserva parte dos dados para validação</td><td><code>validation_split=0.2</code></td></tr>
+
+<tr><td class="col-index">27</td><td><code>model.evaluate()</code></td><td>Calcula a perda e métricas no teste</td><td><code>model.evaluate(X_test, y_test)</code></td></tr>
+<tr><td class="col-index">28</td><td><code>model.predict()</code></td><td>Gera previsões para novos dados</td><td><code>y_pred = model.predict(X_new)</code></td></tr>
+
+<tr><td class="col-index">29</td><td><code>callbacks.EarlyStopping()</code></td><td>Para o treino se o modelo parar de melhorar</td><td><code>EarlyStopping(monitor='val_loss', patience=3)</code></td></tr>
+<tr><td class="col-index">30</td><td><code>callbacks.ModelCheckpoint()</code></td><td>Salva o melhor modelo durante o treino</td><td><code>ModelCheckpoint('best_model.h5')</code></td></tr>
+
+<tr><td class="col-index">31</td><td><code>model.save()</code></td><td>Salva o modelo completo (H5 ou SavedModel)</td><td><code>model.save('model.keras')</code></td></tr>
+<tr><td class="col-index">32</td><td><code>keras.models.load_model()</code></td><td>Carrega um modelo salvo anteriormente</td><td><code>new_model = load_model('model.keras')</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

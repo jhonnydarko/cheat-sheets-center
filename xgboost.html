@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>XGBoost Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+/* Estilo para a coluna de índice */
+.col-index { width: 40px; text-align: center; color: #7f8c8d; font-weight: bold; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🚀 XGBoost Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://xgboost.readthedocs.io/" target="_blank">📄 Documentação Oficial</a></p>
+<input type="text" id="search_field" placeholder="Buscar comando, parâmetro ou hiperparâmetro do XGBoost...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th>
+<th>Comando / Parâmetro</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>pip install xgboost</code></td><td>Instala a biblioteca via gerenciador de pacotes</td><td><code>!pip install xgboost</code></td></tr>
+<tr><td class="col-index">2</td><td><code>import xgboost as xgb</code></td><td>Importação padrão da biblioteca</td><td><code>import xgboost as xgb</code></td></tr>
+<tr><td class="col-index">3</td><td><code>xgb.XGBClassifier()</code></td><td>Estimador para problemas de classificação (API Scikit-Learn)</td><td><code>model = xgb.XGBClassifier()</code></td></tr>
+<tr><td class="col-index">4</td><td><code>xgb.XGBRegressor()</code></td><td>Estimador para problemas de regressão (API Scikit-Learn)</td><td><code>model = xgb.XGBRegressor()</code></td></tr>
+<tr><td class="col-index">5</td><td><code>xgb.DMatrix()</code></td><td>Estrutura de dados interna otimizada do XGBoost</td><td><code>dtrain = xgb.DMatrix(X, label=y)</code></td></tr>
+
+<tr><td class="col-index">6</td><td><code>.fit(X, y)</code></td><td>Treina o modelo com os dados fornecidos</td><td><code>model.fit(X_train, y_train)</code></td></tr>
+<tr><td class="col-index">7</td><td><code>.predict(X)</code></td><td>Realiza predições de classe ou valor</td><td><code>preds = model.predict(X_test)</code></td></tr>
+<tr><td class="col-index">8</td><td><code>.predict_proba(X)</code></td><td>Retorna probabilidades das classes (apenas classificação)</td><td><code>probs = model.predict_proba(X_test)</code></td></tr>
+<tr><td class="col-index">9</td><td><code>.set_params()</code></td><td>Define parâmetros do estimador</td><td><code>model.set_params(max_depth=5)</code></td></tr>
+<tr><td class="col-index">10</td><td><code>.get_booster()</code></td><td>Acessa o objeto Booster subjacente</td><td><code>booster = model.get_booster()</code></td></tr>
+
+<tr><td class="col-index">11</td><td><code>n_estimators</code></td><td>Número de árvores (iterações de boosting)</td><td><code>n_estimators=100</code></td></tr>
+<tr><td class="col-index">12</td><td><code>learning_rate</code> (eta)</td><td>Taxa de aprendizado/encolhimento dos pesos</td><td><code>learning_rate=0.1</code></td></tr>
+<tr><td class="col-index">13</td><td><code>max_depth</code></td><td>Profundidade máxima de cada árvore</td><td><code>max_depth=6</code></td></tr>
+<tr><td class="col-index">14</td><td><code>min_child_weight</code></td><td>Soma mínima de pesos de instância necessária em um nó</td><td><code>min_child_weight=1</code></td></tr>
+<tr><td class="col-index">15</td><td><code>gamma</code></td><td>Redução mínima de perda para criar uma nova partição</td><td><code>gamma=0.2</code></td></tr>
+<tr><td class="col-index">16</td><td><code>subsample</code></td><td>Fração de amostras usadas para treinar cada árvore</td><td><code>subsample=0.8</code></td></tr>
+<tr><td class="col-index">17</td><td><code>colsample_bytree</code></td><td>Fração de colunas usadas por árvore</td><td><code>colsample_bytree=0.8</code></td></tr>
+<tr><td class="col-index">18</td><td><code>colsample_bylevel</code></td><td>Fração de colunas usadas por nível da árvore</td><td><code>colsample_bylevel=0.7</code></td></tr>
+<tr><td class="col-index">19</td><td><code>colsample_bynode</code></td><td>Fração de colunas usadas por cada split de nó</td><td><code>colsample_bynode=0.7</code></td></tr>
+<tr><td class="col-index">20</td><td><code>lambda</code> (reg_lambda)</td><td>Termo de regularização L2 nos pesos</td><td><code>reg_lambda=1.0</code></td></tr>
+<tr><td class="col-index">21</td><td><code>alpha</code> (reg_alpha)</td><td>Termo de regularização L1 nos pesos</td><td><code>reg_alpha=0</code></td></tr>
+<tr><td class="col-index">22</td><td><code>tree_method</code></td><td>Algoritmo de construção de árvore ('auto', 'exact', 'approx', 'hist')</td><td><code>tree_method='hist'</code></td></tr>
+<tr><td class="col-index">23</td><td><code>scale_pos_weight</code></td><td>Balanceamento de classes positivas e negativas</td><td><code>scale_pos_weight=99</code></td></tr>
+<tr><td class="col-index">24</td><td><code>max_delta_step</code></td><td>Ajuda na convergência em classes muito desbalanceadas</td><td><code>max_delta_step=1</code></td></tr>
+
+<tr><td class="col-index">25</td><td><code>objective</code></td><td>Função de perda a ser minimizada</td><td><code>objective='binary:logistic'</code></td></tr>
+<tr><td class="col-index">26</td><td><code>eval_metric</code></td><td>Métrica para validação dos dados</td><td><code>eval_metric='auc'</code></td></tr>
+<tr><td class="col-index">27</td><td><code>early_stopping_rounds</code></td><td>Para o treino se não houver melhora após N rounds</td><td><code>early_stopping_rounds=10</code></td></tr>
+<tr><td class="col-index">28</td><td><code>random_state</code></td><td>Semente para reprodutibilidade</td><td><code>random_state=42</code></td></tr>
+<tr><td class="col-index">29</td><td><code>n_jobs</code></td><td>Número de threads paralelas para rodar</td><td><code>n_jobs=-1</code></td></tr>
+<tr><td class="col-index">30</td><td><code>verbosity</code></td><td>Nível de mensagens verbosas (0 silêncio, 1 aviso, 2 info)</td><td><code>verbosity=1</code></td></tr>
+
+<tr><td class="col-index">31</td><td><code>multi:softmax</code></td><td>Objetivo para classificação multiclasse</td><td><code>objective='multi:softmax'</code></td></tr>
+<tr><td class="col-index">32</td><td><code>multi:softprob</code></td><td>Multiclasse retornando probabilidades</td><td><code>objective='multi:softprob'</code></td></tr>
+<tr><td class="col-index">33</td><td><code>reg:squarederror</code></td><td>Regressão com erro quadrático</td><td><code>objective='reg:squarederror'</code></td></tr>
+<tr><td class="col-index">34</td><td><code>reg:logistic</code></td><td>Regressão logística</td><td><code>objective='reg:logistic'</code></td></tr>
+<tr><td class="col-index">35</td><td><code>binary:hinge</code></td><td>Perda hinge para classificação binária</td><td><code>objective='binary:hinge'</code></td></tr>
+
+<tr><td class="col-index">36</td><td><code>xgb.plot_importance()</code></td><td>Plota a importância das features</td><td><code>xgb.plot_importance(model)</code></td></tr>
+<tr><td class="col-index">37</td><td><code>xgb.plot_tree()</code></td><td>Plota uma árvore individual do modelo</td><td><code>xgb.plot_tree(model, num_trees=0)</code></td></tr>
+<tr><td class="col-index">38</td><td><code>xgb.to_graphviz()</code></td><td>Converte árvore para formato Graphviz</td><td><code>xgb.to_graphviz(model)</code></td></tr>
+<tr><td class="col-index">39</td><td><code>feature_importances_</code></td><td>Atributo que contém o peso de cada feature</td><td><code>model.feature_importances_</code></td></tr>
+<tr><td class="col-index">40</td><td><code>xgb.cv()</code></td><td>Validação cruzada nativa do XGBoost</td><td><code>xgb.cv(params, dtrain, nfold=5)</code></td></tr>
+
+<tr><td class="col-index">41</td><td><code>xgb.train()</code></td><td>Interface de treinamento de baixo nível</td><td><code>xgb.train(params, dtrain)</code></td></tr>
+<tr><td class="col-index">42</td><td><code>evals</code></td><td>Lista de monitoramento para o <code>xgb.train</code></td><td><code>evals=[(dtest, 'eval')]</code></td></tr>
+<tr><td class="col-index">43</td><td><code>num_boost_round</code></td><td>Equivalente a n_estimators no <code>xgb.train</code></td><td><code>num_boost_round=50</code></td></tr>
+
+<tr><td class="col-index">44</td><td><code>.save_model()</code></td><td>Salva o modelo em arquivo (.json ou .bin)</td><td><code>model.save_model('xgb.json')</code></td></tr>
+<tr><td class="col-index">45</td><td><code>.load_model()</code></td><td>Carrega um modelo salvo</td><td><code>model.load_model('xgb.json')</code></td></tr>
+
+<tr><td class="col-index">46</td><td><code>missing</code></td><td>Valor que deve ser interpretado como dado faltante</td><td><code>missing=np.nan</code></td></tr>
+<tr><td class="col-index">47</td><td><code>use_label_encoder</code></td><td>(Legado) Encoder de labels no Classifier</td><td><code>use_label_encoder=False</code></td></tr>
+<tr><td class="col-index">48</td><td><code>enable_categorical</code></td><td>Habilita suporte nativo para tipos categóricos</td><td><code>enable_categorical=True</code></td></tr>
+<tr><td class="col-index">49</td><td><code>max_cat_to_onehot</code></td><td>Threshold para conversão one-hot de categorias</td><td><code>max_cat_to_onehot=4</code></td></tr>
+<tr><td class="col-index">50</td><td><code>grow_policy</code></td><td>Controla como novos nós são adicionados ('depthwise', 'lossguide')</td><td><code>grow_policy='lossguide'</code></td></tr>
+<tr><td class="col-index">51</td><td><code>max_leaves</code></td><td>Número máximo de nós (relevante para 'lossguide')</td><td><code>max_leaves=31</code></td></tr>
+<tr><td class="col-index">52</td><td><code>max_bin</code></td><td>Número máximo de buckets para o método hist</td><td><code>max_bin=256</code></td></tr>
+<tr><td class="col-index">53</td><td><code>predictor</code></td><td>Tipo de algoritmo preditor ('auto', 'cpu_predictor', 'gpu_predictor')</td><td><code>predictor='gpu_predictor'</code></td></tr>
+<tr><td class="col-index">54</td><td><code>sampling_method</code></td><td>Método de amostragem ('uniform', 'gradient_based')</td><td><code>sampling_method='uniform'</code></td></tr>
+<tr><td class="col-index">55</td><td><code>monotone_constraints</code></td><td>Força relação crescente/decrescente de features</td><td><code>monotone_constraints="(1, -1)"</code></td></tr>
+<tr><td class="col-index">56</td><td><code>interaction_constraints</code></td><td>Restringe quais colunas podem interagir</td><td><code>interaction_constraints="[[0, 1]]"</code></td></tr>
+<tr><td class="col-index">57</td><td><code>importance_type</code></td><td>Tipo de importância ('weight', 'gain', 'cover')</td><td><code>importance_type='gain'</code></td></tr>
+<tr><td class="col-index">58</td><td><code>base_score</code></td><td>Valor inicial de predição (viés global)</td><td><code>base_score=0.5</code></td></tr>
+<tr><td class="col-index">59</td><td><code>validate_parameters</code></td><td>Se deve validar parâmetros desconhecidos</td><td><code>validate_parameters=True</code></td></tr>
+<tr><td class="col-index">60</td><td><code>disable_default_eval_metric</code></td><td>Desabilita métrica padrão do objetivo</td><td><code>disable_default_eval_metric=True</code></td></tr>
+
+<tr><td class="col-index">61</td><td><code>eval_set</code></td><td>Dados para monitorar durante o fit</td><td><code>eval_set=[(X_val, y_val)]</code></td></tr>
+<tr><td class="col-index">62</td><td><code>num_parallel_tree</code></td><td>Usado para Random Forest dentro do XGBoost</td><td><code>num_parallel_tree=1</code></td></tr>
+<tr><td class="col-index">63</td><td><code>booster</code></td><td>Tipo de booster ('gbtree', 'gblinear' ou 'dart')</td><td><code>booster='dart'</code></td></tr>
+<tr><td class="col-index">64</td><td><code>sample_type</code> (DART)</td><td>Tipo de amostragem para dropouts</td><td><code>sample_type='uniform'</code></td></tr>
+<tr><td class="col-index">65</td><td><code>normalize_type</code> (DART)</td><td>Tipo de normalização de dropout</td><td><code>normalize_type='tree'</code></td></tr>
+<tr><td class="col-index">66</td><td><code>rate_drop</code> (DART)</td><td>Taxa de dropout das árvores</td><td><code>rate_drop=0.1</code></td></tr>
+<tr><td class="col-index">67</td><td><code>one_drop</code> (DART)</td><td>Sempre dropar pelo menos uma árvore</td><td><code>one_drop=True</code></td></tr>
+<tr><td class="col-index">68</td><td><code>skip_drop</code> (DART)</td><td>Probabilidade de pular o dropout no round</td><td><code>skip_drop=0.5</code></td></tr>
+<tr><td class="col-index">69</td><td><code>updater</code></td><td>Sequência de updaters de árvore a executar</td><td><code>updater='grow_colmaker'</code></td></tr>
+<tr><td class="col-index">70</td><td><code>refresh_leaf</code></td><td>Se as folhas devem ser atualizadas</td><td><code>refresh_leaf=True</code></td></tr>
+<tr><td class="col-index">71</td><td><code>process_type</code></td><td>Tipo de processo ('default', 'update')</td><td><code>process_type='default'</code></td></tr>
+<tr><td class="col-index">72</td><td><code>gpu_id</code></td><td>ID da GPU a ser utilizada</td><td><code>gpu_id=0</code></td></tr>
+<tr><td class="col-index">73</td><td><code>single_precision_histogram</code></td><td>Usa histogramas de precisão simples na GPU</td><td><code>single_precision_histogram=True</code></td></tr>
+<tr><td class="col-index">74</td><td><code>deterministic_histogram</code></td><td>Garante histogramas determinísticos na GPU</td><td><code>deterministic_histogram=True</code></td></tr>
+<tr><td class="col-index">75</td><td><code>feature_types</code></td><td>Especifica tipos de features manualmente</td><td><code>feature_types=['q', 'q', 'c']</code></td></tr>
+<tr><td class="col-index">76</td><td><code>max_cached_hist_node</code></td><td>Limite de cache de histogramas</td><td><code>max_cached_hist_node=65536</code></td></tr>
+<tr><td class="col-index">77</td><td><code>on_ext_mem</code></td><td>Se o DMatrix deve carregar de memória externa</td><td><code>on_ext_mem=True</code></td></tr>
+<tr><td class="col-index">78</td><td><code>ext_mem_cache_prefix</code></td><td>Prefixo para arquivos de cache externos</td><td><code>ext_mem_cache_prefix='cache'</code></td></tr>
+<tr><td class="col-index">79</td><td><code>feature_names</code></td><td>Nomes customizados para as features</td><td><code>feature_names=['idade', 'renda']</code></td></tr>
+<tr><td class="col-index">80</td><td><code>label_lower_bound</code></td><td>Limite inferior para labels (survival)</td><td><code>label_lower_bound=0</code></td></tr>
+<tr><td class="col-index">81</td><td><code>label_upper_bound</code></td><td>Limite superior para labels (survival)</td><td><code>label_upper_bound=10</code></td></tr>
+<tr><td class="col-index">82</td><td><code>multi_strategy</code></td><td>Estratégia para multiclasse ('one_output_per_tree')</td><td><code>multi_strategy='multi_output_tree'</code></td></tr>
+<tr><td class="col-index">83</td><td><code>max_cat_threshold</code></td><td>Número máximo de categorias por split</td><td><code>max_cat_threshold=64</code></td></tr>
+<tr><td class="col-index">84</td><td><code>categorical_feature</code></td><td>Indica quais índices são categóricos</td><td><code>categorical_feature=[0, 4]</code></td></tr>
+<tr><td class="col-index">85</td><td><code>callbacks</code></td><td>Lista de funções executadas após cada round</td><td><code>callbacks=[my_callback]</code></td></tr>
+<tr><td class="col-index">86</td><td><code>iteration_range</code></td><td>Range de árvores para o predict</td><td><code>iteration_range=(0, 10)</code></td></tr>
+<tr><td class="col-index">87</td><td><code>output_margin</code></td><td>Prediz a margem bruta (antes da função ativadora)</td><td><code>output_margin=True</code></td></tr>
+<tr><td class="col-index">88</td><td><code>validate_features</code></td><td>Valida se as features no predict batem com o fit</td><td><code>validate_features=True</code></td></tr>
+<tr><td class="col-index">89</td><td><code>base_margin</code></td><td>Ajuste base inicial para cada amostra</td><td><code>dtrain.set_base_margin(margin)</code></td></tr>
+<tr><td class="col-index">90</td><td><code>weight</code></td><td>Pesos individuais para cada amostra</td><td><code>dtrain.set_weight(weights)</code></td></tr>
+<tr><td class="col-index">91</td><td><code>group</code></td><td>Informação de grupos para modelos de Ranking</td><td><code>dtrain.set_group(group_sizes)</code></td></tr>
+<tr><td class="col-index">92</td><td><code>rank:pairwise</code></td><td>Objetivo de ranking (LTR)</td><td><code>objective='rank:pairwise'</code></td></tr>
+<tr><td class="col-index">93</td><td><code>rank:ndcg</code></td><td>Otimização direta de NDCG</td><td><code>objective='rank:ndcg'</code></td></tr>
+<tr><td class="col-index">94</td><td><code>survival:cox</code></td><td>Análise de sobrevivência (Cox Proportional Hazards)</td><td><code>objective='survival:cox'</code></td></tr>
+<tr><td class="col-index">95</td><td><code>count:poisson</code></td><td>Regressão de Poisson para contagens</td><td><code>objective='count:poisson'</code></td></tr>
+<tr><td class="col-index">96</td><td><code>tweedie_variance_power</code></td><td>Controla a variância na distribuição Tweedie</td><td><code>tweedie_variance_power=1.5</code></td></tr>
+<tr><td class="col-index">97</td><td><code>base_estimator</code></td><td>Estimador base (geralmente None para gbtree)</td><td><code>base_estimator=None</code></td></tr>
+<tr><td class="col-index">98</td><td><code>n_iter_no_change</code></td><td>Sinônimo para early stopping no sklearn</td><td><code>n_iter_no_change=5</code></td></tr>
+<tr><td class="col-index">99</td><td><code>best_iteration</code></td><td>Recupera o melhor round do treino</td><td><code>model.best_iteration</code></td></tr>
+<tr><td class="col-index">100</td><td><code>best_score</code></td><td>Melhor pontuação atingida na validação</td><td><code>model.best_score</code></td></tr>
+<tr><td class="col-index">101</td><td><code>feature_names_in_</code></td><td>Nomes das colunas vistos durante o fit</td><td><code>model.feature_names_in_</code></td></tr>
+<tr><td class="col-index">102</td><td><code>evals_result()</code></td><td>Retorna o histórico de erros do treinamento</td><td><code>model.evals_result()</code></td></tr>
+<tr><td class="col-index">103</td><td><code>intercept_</code></td><td>Intercepção para boosters lineares</td><td><code>model.intercept_</code></td></tr>
+<tr><td class="col-index">104</td><td><code>coef_</code></td><td>Coeficientes para boosters lineares</td><td><code>model.coef_</code></td></tr>
+<tr><td class="col-index">105</td><td><code>tree_limit</code></td><td>(Legado) Limita número de árvores no predict</td><td><code>tree_limit=50</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    // Busca ignorando a primeira coluna (índice)
+    let cells = Array.from(row.querySelectorAll("td")).slice(1);
+    let text = cells.map(td => td.innerText).join(" ").toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

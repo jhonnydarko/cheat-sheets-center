@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Git Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+
+/* Estilo para a coluna de índice */
+td:first-child { font-weight: bold; color: #7f8c8d; width: 30px; text-align: center; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🌿 Git Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://git-scm.com/doc" target="_blank">📖 Documentação Oficial do Git</a></p>
+<input type="text" id="search_field" placeholder="Buscar comando Git (Ex: commit, branch, push)...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th>#</th>
+<th>Comando</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td>1</td><td><code>git init</code></td><td>Inicializa um novo repositório Git local</td><td><code>git init</code></td></tr>
+<tr><td>2</td><td><code>git config --global user.name</code></td><td>Configura o nome do autor para os commits</td><td><code>git config --global user.name "Seu Nome"</code></td></tr>
+<tr><td>3</td><td><code>git config --global user.email</code></td><td>Configura o e-mail do autor</td><td><code>git config --global user.email "email@ex.com"</code></td></tr>
+<tr><td>4</td><td><code>git config --list</code></td><td>Lista todas as configurações atuais</td><td><code>git config --list</code></td></tr>
+
+<tr><td>5</td><td><code>git status</code></td><td>Mostra o estado dos arquivos (untracked, modified)</td><td><code>git status</code></td></tr>
+<tr><td>6</td><td><code>git add .</code></td><td>Adiciona todos os arquivos modificados ao Stage</td><td><code>git add .</code></td></tr>
+<tr><td>7</td><td><code>git add [arquivo]</code></td><td>Adiciona um arquivo específico ao Stage</td><td><code>git add index.html</code></td></tr>
+<tr><td>8</td><td><code>git commit -m "[msg]"</code></td><td>Grava as alterações do Stage no repositório</td><td><code>git commit -m "feat: novo login"</code></td></tr>
+<tr><td>9</td><td><code>git commit --amend</code></td><td>Altera a mensagem do último commit realizado</td><td><code>git commit --amend -m "correção"</code></td></tr>
+
+<tr><td>10</td><td><code>git log</code></td><td>Exibe o histórico de commits</td><td><code>git log --oneline</code></td></tr>
+<tr><td>11</td><td><code>git log -p</code></td><td>Mostra o histórico com as mudanças no código</td><td><code>git log -p</code></td></tr>
+<tr><td>12</td><td><code>git diff</code></td><td>Mostra diferenças entre o diretório e o Stage</td><td><code>git diff</code></td></tr>
+<tr><td>13</td><td><code>git diff --staged</code></td><td>Mostra diferenças entre o Stage e o repositório</td><td><code>git diff --staged</code></td></tr>
+<tr><td>14</td><td><code>git show [commit]</code></td><td>Exibe detalhes de um commit específico</td><td><code>git show a1b2c3d</code></td></tr>
+
+<tr><td>15</td><td><code>git branch</code></td><td>Lista as branches locais</td><td><code>git branch</code></td></tr>
+<tr><td>16</td><td><code>git branch [nome]</code></td><td>Cria uma nova branch</td><td><code>git branch feature-x</code></td></tr>
+<tr><td>17</td><td><code>git checkout [branch]</code></td><td>Muda para uma branch específica</td><td><code>git checkout develop</code></td></tr>
+<tr><td>18</td><td><code>git checkout -b [nome]</code></td><td>Cria uma nova branch e já muda para ela</td><td><code>git checkout -b hotfix-1</code></td></tr>
+<tr><td>19</td><td><code>git merge [branch]</code></td><td>Mescla a branch especificada na branch atual</td><td><code>git merge feature-x</code></td></tr>
+<tr><td>20</td><td><code>git branch -d [nome]</code></td><td>Exclui uma branch local</td><td><code>git branch -d feature-x</code></td></tr>
+<tr><td>21</td><td><code>git switch [nome]</code></td><td>Comando moderno para trocar de branch</td><td><code>git switch main</code></td></tr>
+
+<tr><td>22</td><td><code>git clone [url]</code></td><td>Clona um repositório existente para sua máquina</td><td><code>git clone https://url.git</code></td></tr>
+<tr><td>23</td><td><code>git remote add origin</code></td><td>Conecta seu repositório local a um servidor remoto</td><td><code>git remote add origin https://...</code></td></tr>
+<tr><td>24</td><td><code>git remote -v</code></td><td>Lista os repositórios remotos conectados</td><td><code>git remote -v</code></td></tr>
+<tr><td>25</td><td><code>git fetch</code></td><td>Baixa o histórico do remoto sem mesclar nada</td><td><code>git fetch origin</code></td></tr>
+<tr><td>26</td><td><code>git pull</code></td><td>Baixa e mescla as mudanças do remoto no local</td><td><code>git pull origin main</code></td></tr>
+<tr><td>27</td><td><code>git push</code></td><td>Envia seus commits locais para o servidor remoto</td><td><code>git push origin main</code></td></tr>
+<tr><td>28</td><td><code>git push -u origin [b]</code></td><td>Envia e define a branch como upstream padrão</td><td><code>git push -u origin feature</code></td></tr>
+
+<tr><td>29</td><td><code>git reset [arquivo]</code></td><td>Remove um arquivo do Stage, mas mantém o código</td><td><code>git reset README.md</code></td></tr>
+<tr><td>30</td><td><code>git reset --hard [commit]</code></td><td>Reseta tudo para um commit anterior (apaga código)</td><td><code>git reset --hard HEAD~1</code></td></tr>
+<tr><td>31</td><td><code>git revert [commit]</code></td><td>Cria um novo commit que desfaz as mudanças de outro</td><td><code>git revert a1b2c3d</code></td></tr>
+<tr><td>32</td><td><code>git checkout -- [arquivo]</code></td><td>Descarta mudanças locais em um arquivo</td><td><code>git checkout -- style.css</code></td></tr>
+<tr><td>33</td><td><code>git clean -f</code></td><td>Remove arquivos não rastreados do diretório</td><td><code>git clean -f</code></td></tr>
+
+<tr><td>34</td><td><code>git stash</code></td><td>Guarda mudanças não commitadas temporariamente</td><td><code>git stash</code></td></tr>
+<tr><td>35</td><td><code>git stash pop</code></td><td>Recupera e aplica as mudanças guardadas no stash</td><td><code>git stash pop</code></td></tr>
+<tr><td>36</td><td><code>git stash list</code></td><td>Lista todos os stashes armazenados</td><td><code>git stash list</code></td></tr>
+<tr><td>37</td><td><code>git stash drop</code></td><td>Descarta o stash mais recente</td><td><code>git stash drop</code></td></tr>
+
+<tr><td>38</td><td><code>git rebase [branch]</code></td><td>Reaplica commits em cima de outra branch</td><td><code>git rebase main</code></td></tr>
+<tr><td>39</td><td><code>git cherry-pick [commit]</code></td><td>Copia um commit específico para a branch atual</td><td><code>git cherry-pick e4f5g6</code></td></tr>
+<tr><td>40</td><td><code>git tag [nome]</code></td><td>Cria uma tag (versão) para o commit atual</td><td><code>git tag v1.0.0</code></td></tr>
+<tr><td>41</td><td><code>git blame [arquivo]</code></td><td>Mostra quem alterou cada linha de um arquivo</td><td><code>git blame app.py</code></td></tr>
+<tr><td>42</td><td><code>git archive</code></td><td>Cria um arquivo zip/tar do repositório</td><td><code>git archive --format=zip HEAD</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    // Busca apenas no conteúdo das colunas de comando, função e exemplo
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

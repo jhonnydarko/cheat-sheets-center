@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Flask Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #333; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #1c1c1c; color: white; position: sticky; top: 0; }
+/* Estilo para a coluna de índice */
+.col-index { width: 40px; text-align: center; color: #666; font-size: 0.9em; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #2c3e50; font-family: 'Courier New', Courier, monospace; font-weight: bold; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>⚗️ Flask Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://flask.palletsprojects.com/" target="_blank">🧪 Site oficial do Flask (Documentação)</a></p>
+<input type="text" id="search_field" placeholder="Buscar comando, rota, contexto ou extensão do Flask...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th>
+<th>Comando / Função / Parâmetro</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>pip install flask</code></td><td>Instala a biblioteca Flask</td><td><code>pip install flask</code></td></tr>
+<tr><td class="col-index">2</td><td><code>Flask(__name__)</code></td><td>Cria a instância da aplicação</td><td><code>app = Flask(__name__)</code></td></tr>
+<tr><td class="col-index">3</td><td><code>app.run()</code></td><td>Inicia o servidor de desenvolvimento</td><td><code>app.run(debug=True)</code></td></tr>
+<tr><td class="col-index">4</td><td><code>flask run</code></td><td>Comando CLI para rodar o app</td><td><code>flask run --host=0.0.0.0</code></td></tr>
+<tr><td class="col-index">5</td><td><code>FLASK_APP</code></td><td>Variável de ambiente para o arquivo principal</td><td><code>export FLASK_APP=app.py</code></td></tr>
+<tr><td class="col-index">6</td><td><code>FLASK_ENV</code></td><td>Define o ambiente (development/production)</td><td><code>export FLASK_ENV=development</code></td></tr>
+<tr><td class="col-index">7</td><td><code>@app.route('/')</code></td><td>Define uma rota básica</td><td><code>@app.route('/')</code></td></tr>
+<tr><td class="col-index">8</td><td><code>methods=['POST']</code></td><td>Especifica métodos aceitos na rota</td><td><code>@app.route('/login', methods=['GET', 'POST'])</code></td></tr>
+<tr><td class="col-index">9</td><td><code>&lt;variable&gt;</code></td><td>Variável dinâmica na URL</td><td><code>@app.route('/user/&lt;name&gt;')</code></td></tr>
+<tr><td class="col-index">10</td><td><code>&lt;int:id&gt;</code></td><td>Conversor de tipo para inteiro na URL</td><td><code>@app.route('/post/&lt;int:id&gt;')</code></td></tr>
+<tr><td class="col-index">11</td><td><code>&lt;float:val&gt;</code></td><td>Conversor de tipo para ponto flutuante</td><td><code>@app.route('/tax/&lt;float:val&gt;')</code></td></tr>
+<tr><td class="col-index">12</td><td><code>&lt;path:subpath&gt;</code></td><td>Aceita barras na variável da URL</td><td><code>@app.route('/file/&lt;path:p&gt;')</code></td></tr>
+<tr><td class="col-index">13</td><td><code>url_for()</code></td><td>Gera a URL para uma função específica</td><td><code>url_for('login')</code></td></tr>
+<tr><td class="col-index">14</td><td><code>redirect()</code></td><td>Redireciona o usuário para outra URL</td><td><code>return redirect(url_for('home'))</code></td></tr>
+<tr><td class="col-index">15</td><td><code>request.args</code></td><td>Dicionário com parâmetros da URL (?id=1)</td><td><code>request.args.get('search')</code></td></tr>
+<tr><td class="col-index">16</td><td><code>request.form</code></td><td>Dados enviados via formulário POST</td><td><code>request.form['username']</code></td></tr>
+<tr><td class="col-index">17</td><td><code>request.json</code></td><td>Dados enviados em formato JSON</td><td><code>request.json['email']</code></td></tr>
+<tr><td class="col-index">18</td><td><code>request.files</code></td><td>Arquivos enviados no upload</td><td><code>file = request.files['foto']</code></td></tr>
+<tr><td class="col-index">19</td><td><code>request.method</code></td><td>Verifica o método da requisição atual</td><td><code>if request.method == 'POST':</code></td></tr>
+<tr><td class="col-index">20</td><td><code>request.cookies</code></td><td>Acessa os cookies enviados pelo cliente</td><td><code>request.cookies.get('user_id')</code></td></tr>
+<tr><td class="col-index">21</td><td><code>make_response()</code></td><td>Cria um objeto de resposta manualmente</td><td><code>resp = make_response(render_template('ok.html'))</code></td></tr>
+<tr><td class="col-index">22</td><td><code>render_template()</code></td><td>Renderiza um arquivo HTML do Jinja2</td><td><code>return render_template('index.html')</code></td></tr>
+<tr><td class="col-index">23</td><td><code>jsonify()</code></td><td>Retorna resposta JSON para APIs</td><td><code>return jsonify({"status": 200})</code></td></tr>
+<tr><td class="col-index">24</td><td><code>abort()</code></td><td>Interrompe a requisição com código de erro</td><td><code>abort(404)</code></td></tr>
+<tr><td class="col-index">25</td><td><code>{{ value }}</code></td><td>Exibe o valor de uma variável</td><td><code>{{ user.name }}</code></td></tr>
+<tr><td class="col-index">26</td><td><code>{% if %}</code></td><td>Bloco condicional no template</td><td><code>{% if user %}...{% endif %}</code></td></tr>
+<tr><td class="col-index">27</td><td><code>{% for %}</code></td><td>Loop para iterar listas no HTML</td><td><code>{% for p in posts %}</code></td></tr>
+<tr><td class="col-index">28</td><td><code>{% extends %}</code></td><td>Herança de template pai</td><td><code>{% extends "base.html" %}</code></td></tr>
+<tr><td class="col-index">29</td><td><code>{% block %}</code></td><td>Define área de conteúdo substituível</td><td><code>{% block content %}{% endblock %}</code></td></tr>
+<tr><td class="col-index">30</td><td><code>{% include %}</code></td><td>Inclui um fragmento de template</td><td><code>{% include "navbar.html" %}</code></td></tr>
+<tr><td class="col-index">31</td><td><code>|safe</code></td><td>Renderiza HTML sem escapar tags</td><td><code>{{ html_content|safe }}</code></td></tr>
+<tr><td class="col-index">32</td><td><code>session</code></td><td>Armazena dados entre requisições (cookies)</td><td><code>session['user'] = 'admin'</code></td></tr>
+<tr><td class="col-index">33</td><td><code>app_context()</code></td><td>Contexto da aplicação (uso fora de views)</td><td><code>with app.app_context():</code></td></tr>
+<tr><td class="col-index">34</td><td><code>g</code></td><td>Objeto global temporário por requisição</td><td><code>g.db = connect_db()</code></td></tr>
+<tr><td class="col-index">35</td><td><code>current_app</code></td><td>Referência à aplicação ativa</td><td><code>current_app.config['DB']</code></td></tr>
+<tr><td class="col-index">36</td><td><code>flash()</code></td><td>Envia mensagens rápidas ao usuário</td><td><code>flash('Login realizado!')</code></td></tr>
+<tr><td class="col-index">37</td><td><code>get_flashed_messages()</code></td><td>Recupera mensagens flash no template</td><td><code>{% for m in get_flashed_messages() %}</code></td></tr>
+<tr><td class="col-index">38</td><td><code>app.config</code></td><td>Dicionário de configurações do app</td><td><code>app.config['SECRET_KEY'] = '123'</code></td></tr>
+<tr><td class="col-index">39</td><td><code>app.config.from_pyfile()</code></td><td>Carrega configs de um arquivo .py</td><td><code>app.config.from_pyfile('config.py')</code></td></tr>
+<tr><td class="col-index">40</td><td><code>app.config.from_envvar()</code></td><td>Carrega configs de var. de ambiente</td><td><code>app.config.from_envvar('APP_SETTINGS')</code></td></tr>
+<tr><td class="col-index">41</td><td><code>@app.before_request</code></td><td>Executa antes de cada requisição</td><td><code>@app.before_request def check_user():</code></td></tr>
+<tr><td class="col-index">42</td><td><code>@app.after_request</code></td><td>Executa após cada requisição</td><td><code>@app.after_request def add_header(r):</code></td></tr>
+<tr><td class="col-index">43</td><td><code>@app.teardown_request</code></td><td>Executa ao fim, mesmo se houver erro</td><td><code>@app.teardown_request def close_db(e):</code></td></tr>
+<tr><td class="col-index">44</td><td><code>@app.errorhandler()</code></td><td>Captura erros específicos (ex: 404)</td><td><code>@app.errorhandler(404) def page_not_found(e):</code></td></tr>
+<tr><td class="col-index">45</td><td><code>Blueprint()</code></td><td>Cria um módulo/blueprint de rotas</td><td><code>auth = Blueprint('auth', __name__)</code></td></tr>
+<tr><td class="col-index">46</td><td><code>app.register_blueprint()</code></td><td>Registra o blueprint no app principal</td><td><code>app.register_blueprint(auth_bp)</code></td></tr>
+<tr><td class="col-index">47</td><td><code>url_prefix</code></td><td>Define prefixo para todas as rotas do BP</td><td><code>app.register_blueprint(api, url_prefix='/api')</code></td></tr>
+<tr><td class="col-index">48</td><td><code>Flask-SQLAlchemy</code></td><td>ORM para banco de dados</td><td><code>db = SQLAlchemy(app)</code></td></tr>
+<tr><td class="col-index">49</td><td><code>Flask-Migrate</code></td><td>Migrações de banco de dados</td><td><code>migrate = Migrate(app, db)</code></td></tr>
+<tr><td class="col-index">50</td><td><code>Flask-Login</code></td><td>Gerenciamento de autenticação</td><td><code>login_manager.init_app(app)</code></td></tr>
+<tr><td class="col-index">51</td><td><code>Flask-WTF</code></td><td>Integração com formulários WTForms</td><td><code>class MyForm(FlaskForm):</code></td></tr>
+<tr><td class="col-index">52</td><td><code>Flask-Mail</code></td><td>Envio de e-mails</td><td><code>mail.send(msg)</code></td></tr>
+<tr><td class="col-index">53</td><td><code>Flask-CORS</code></td><td>Habilita Cross-Origin Resource Sharing</td><td><code>CORS(app)</code></td></tr>
+<tr><td class="col-index">54</td><td><code>Flask-RESTful</code></td><td>Framework para construção de APIs</td><td><code>api.add_resource(User, '/user')</code></td></tr>
+<tr><td class="col-index">55</td><td><code>db.Model</code></td><td>Classe base para modelos</td><td><code>class User(db.Model):</code></td></tr>
+<tr><td class="col-index">56</td><td><code>db.Column()</code></td><td>Define uma coluna na tabela</td><td><code>id = db.Column(db.Integer, primary_key=True)</code></td></tr>
+<tr><td class="col-index">57</td><td><code>db.session.add()</code></td><td>Adiciona objeto à sessão do banco</td><td><code>db.session.add(new_user)</code></td></tr>
+<tr><td class="col-index">58</td><td><code>db.session.commit()</code></td><td>Salva alterações permanentemente</td><td><code>db.session.commit()</code></td></tr>
+<tr><td class="col-index">59</td><td><code>db.session.rollback()</code></td><td>Cancela alterações da sessão atual</td><td><code>db.session.rollback()</code></td></tr>
+<tr><td class="col-index">60</td><td><code>Model.query.all()</code></td><td>Busca todos os registros</td><td><code>User.query.all()</code></td></tr>
+<tr><td class="col-index">61</td><td><code>Model.query.get()</code></td><td>Busca por ID</td><td><code>User.query.get(5)</code></td></tr>
+<tr><td class="col-index">62</td><td><code>Model.query.filter_by()</code></td><td>Filtra registros por chave/valor</td><td><code>User.query.filter_by(name='Leo')</code></td></tr>
+<tr><td class="col-index">63</td><td><code>@app.cli.command()</code></td><td>Cria um comando customizado de terminal</td><td><code>@app.cli.command('create-db')</code></td></tr>
+<tr><td class="col-index">64</td><td><code>secure_filename()</code></td><td>Limpa nome de arquivo para upload</td><td><code>name = secure_filename(f.filename)</code></td></tr>
+<tr><td class="col-index">65</td><td><code>send_from_directory()</code></td><td>Serve arquivos de uma pasta</td><td><code>send_from_directory('static', filename)</code></td></tr>
+<tr><td class="col-index">66</td><td><code>app.test_client()</code></td><td>Cria cliente para testes unitários</td><td><code>client = app.test_client()</code></td></tr>
+<tr><td class="col-index">67</td><td><code>GET</code></td><td>Recuperação de dados</td><td><code>methods=['GET']</code></td></tr>
+<tr><td class="col-index">68</td><td><code>POST</code></td><td>Envio de novos dados</td><td><code>methods=['POST']</code></td></tr>
+<tr><td class="col-index">69</td><td><code>PUT</code></td><td>Atualização completa</td><td><code>methods=['PUT']</code></td></tr>
+<tr><td class="col-index">70</td><td><code>PATCH</code></td><td>Atualização parcial</td><td><code>methods=['PATCH']</code></td></tr>
+<tr><td class="col-index">71</td><td><code>DELETE</code></td><td>Remoção de dados</td><td><code>methods=['DELETE']</code></td></tr>
+<tr><td class="col-index">72</td><td><code>200 OK</code></td><td>Sucesso padrão</td><td><code>return "OK", 200</code></td></tr>
+<tr><td class="col-index">73</td><td><code>201 Created</code></td><td>Sucesso na criação</td><td><code>return "Novo", 201</code></td></tr>
+<tr><td class="col-index">74</td><td><code>401 Unauthorized</code></td><td>Erro de autenticação</td><td><code>abort(401)</code></td></tr>
+<tr><td class="col-index">75</td><td><code>403 Forbidden</code></td><td>Acesso negado</td><td><code>abort(403)</code></td></tr>
+<tr><td class="col-index">76</td><td><code>500 Server Error</code></td><td>Erro interno no servidor</td><td><code>abort(500)</code></td></tr>
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

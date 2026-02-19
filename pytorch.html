@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>PyTorch Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+/* Estilo para a nova coluna de índice */
+.col-index { width: 50px; text-align: center; font-weight: bold; color: #7f8c8d; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🔥 PyTorch Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://pytorch.org/" target="_blank">📚 Site oficial do PyTorch (Documentação)</a></p>
+<input type="text" id="search_field" placeholder="Buscar comando, tensor, camada ou otimizador do PyTorch...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th>
+<th>Comando / Função / Classe</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>torch.tensor()</code></td><td>Cria um tensor a partir de dados (lista/array)</td><td><code>torch.tensor([1, 2, 3])</code></td></tr>
+<tr><td class="col-index">2</td><td><code>torch.zeros()</code></td><td>Cria tensor preenchido com zeros</td><td><code>torch.zeros((3, 3))</code></td></tr>
+<tr><td class="col-index">3</td><td><code>torch.ones()</code></td><td>Cria tensor preenchido com uns</td><td><code>torch.ones((2, 2))</code></td></tr>
+<tr><td class="col-index">4</td><td><code>torch.rand()</code></td><td>Cria tensor com valores aleatórios (0 a 1)</td><td><code>torch.rand(3, 3)</code></td></tr>
+<tr><td class="col-index">5</td><td><code>torch.randn()</code></td><td>Distribuição normal (média 0, var 1)</td><td><code>torch.randn(5)</code></td></tr>
+<tr><td class="col-index">6</td><td><code>torch.eye()</code></td><td>Cria uma matriz identidade</td><td><code>torch.eye(3)</code></td></tr>
+<tr><td class="col-index">7</td><td><code>torch.arange()</code></td><td>Cria sequência de valores (start, end, step)</td><td><code>torch.arange(0, 10, 2)</code></td></tr>
+<tr><td class="col-index">8</td><td><code>torch.linspace()</code></td><td>Valores igualmente espaçados em um intervalo</td><td><code>torch.linspace(0, 1, 5)</code></td></tr>
+<tr><td class="col-index">9</td><td><code>tensor.shape</code></td><td>Retorna as dimensões do tensor</td><td><code>x.shape</code></td></tr>
+<tr><td class="col-index">10</td><td><code>tensor.dtype</code></td><td>Retorna o tipo de dado (float32, int64, etc)</td><td><code>x.dtype</code></td></tr>
+<tr><td class="col-index">11</td><td><code>tensor.device</code></td><td>Retorna o dispositivo (cpu ou cuda)</td><td><code>x.device</code></td></tr>
+
+<tr><td class="col-index">12</td><td><code>tensor.view()</code></td><td>Redimensiona o tensor (compartilha memória)</td><td><code>x.view(1, -1)</code></td></tr>
+<tr><td class="col-index">13</td><td><code>torch.reshape()</code></td><td>Muda a forma do tensor</td><td><code>torch.reshape(x, (2, 5))</code></td></tr>
+<tr><td class="col-index">14</td><td><code>tensor.squeeze()</code></td><td>Remove dimensões unitárias (tamanho 1)</td><td><code>x.squeeze()</code></td></tr>
+<tr><td class="col-index">15</td><td><code>tensor.unsqueeze()</code></td><td>Adiciona uma dimensão unitária</td><td><code>x.unsqueeze(0)</code></td></tr>
+<tr><td class="col-index">16</td><td><code>torch.cat()</code></td><td>Concatena tensores em uma dimensão</td><td><code>torch.cat([x, y], dim=0)</code></td></tr>
+<tr><td class="col-index">17</td><td><code>torch.stack()</code></td><td>Empilha tensores em uma nova dimensão</td><td><code>torch.stack([x, y])</code></td></tr>
+<tr><td class="col-index">18</td><td><code>tensor.T</code></td><td>Transpõe o tensor (2D)</td><td><code>x.T</code></td></tr>
+<tr><td class="col-index">19</td><td><code>tensor.permute()</code></td><td>Reordena as dimensões do tensor</td><td><code>x.permute(2, 0, 1)</code></td></tr>
+<tr><td class="col-index">20</td><td><code>tensor.flatten()</code></td><td>Transforma o tensor em um vetor de 1D</td><td><code>x.flatten()</code></td></tr>
+
+<tr><td class="col-index">21</td><td><code>torch.add()</code></td><td>Soma dois tensores</td><td><code>torch.add(x, y)</code></td></tr>
+<tr><td class="col-index">22</td><td><code>torch.mul()</code></td><td>Multiplicação elemento a elemento</td><td><code>torch.mul(x, y)</code></td></tr>
+<tr><td class="col-index">23</td><td><code>torch.matmul()</code></td><td>Multiplicação de matrizes</td><td><code>torch.matmul(x, y)</code></td></tr>
+<tr><td class="col-index">24</td><td><code>torch.sum()</code></td><td>Soma de todos os elementos</td><td><code>x.sum()</code></td></tr>
+<tr><td class="col-index">25</td><td><code>torch.mean()</code></td><td>Média dos elementos</td><td><code>x.mean()</code></td></tr>
+<tr><td class="col-index">26</td><td><code>torch.max()</code></td><td>Valor máximo (e índice opcional)</td><td><code>x.max(dim=0)</code></td></tr>
+<tr><td class="col-index">27</td><td><code>torch.abs()</code></td><td>Valor absoluto</td><td><code>torch.abs(x)</code></td></tr>
+<tr><td class="col-index">28</td><td><code>torch.exp()</code></td><td>Exponencial</td><td><code>torch.exp(x)</code></td></tr>
+<tr><td class="col-index">29</td><td><code>torch.log()</code></td><td>Logaritmo natural</td><td><code>torch.log(x)</code></td></tr>
+
+<tr><td class="col-index">30</td><td><code>requires_grad=True</code></td><td>Habilita o rastreio de gradientes</td><td><code>torch.tensor(x, requires_grad=True)</code></td></tr>
+<tr><td class="col-index">31</td><td><code>tensor.backward()</code></td><td>Calcula gradientes (Backpropagation)</td><td><code>loss.backward()</code></td></tr>
+<tr><td class="col-index">32</td><td><code>tensor.grad</code></td><td>Acessa os gradientes calculados</td><td><code>w.grad</code></td></tr>
+<tr><td class="col-index">33</td><td><code>torch.no_grad()</code></td><td>Desabilita cálculo de gradiente (Inference)</td><td><code>with torch.no_grad():</code></td></tr>
+<tr><td class="col-index">34</td><td><code>tensor.detach()</code></td><td>Separa o tensor do grafo de computação</td><td><code>y = x.detach()</code></td></tr>
+
+<tr><td class="col-index">35</td><td><code>nn.Module</code></td><td>Classe base para todos os modelos</td><td><code>class Net(nn.Module):</code></td></tr>
+<tr><td class="col-index">36</td><td><code>nn.Linear()</code></td><td>Camada densa (Fully Connected)</td><td><code>nn.Linear(in_features, out)</code></td></tr>
+<tr><td class="col-index">37</td><td><code>nn.Conv2d()</code></td><td>Camada de convolução 2D (Imagens)</td><td><code>nn.Conv2d(3, 16, 3)</code></td></tr>
+<tr><td class="col-index">38</td><td><code>nn.MaxPool2d()</code></td><td>Max pooling para redução espacial</td><td><code>nn.MaxPool2d(2)</code></td></tr>
+<tr><td class="col-index">39</td><td><code>nn.ReLU()</code></td><td>Função de ativação ReLU</td><td><code>nn.ReLU()</code></td></tr>
+<tr><td class="col-index">40</td><td><code>nn.Sigmoid()</code></td><td>Função de ativação Sigmóide</td><td><code>nn.Sigmoid()</code></td></tr>
+<tr><td class="col-index">41</td><td><code>nn.Softmax()</code></td><td>Normalização para probabilidades</td><td><code>nn.Softmax(dim=1)</code></td></tr>
+<tr><td class="col-index">42</td><td><code>nn.Dropout()</code></td><td>Zera neurônios aleatórios para regularização</td><td><code>nn.Dropout(0.5)</code></td></tr>
+<tr><td class="col-index">43</td><td><code>nn.BatchNorm2d()</code></td><td>Normalização de lote para imagens</td><td><code>nn.BatchNorm2d(32)</code></td></tr>
+<tr><td class="col-index">44</td><td><code>nn.Sequential()</code></td><td>Container sequencial para módulos</td><td><code>nn.Sequential(capa1, capa2)</code></td></tr>
+<tr><td class="col-index">45</td><td><code>nn.Flatten()</code></td><td>Achata a entrada para camadas lineares</td><td><code>nn.Flatten()</code></td></tr>
+<tr><td class="col-index">46</td><td><code>nn.Embedding()</code></td><td>Tabela de lookup para vetores densos</td><td><code>nn.Embedding(1000, 50)</code></td></tr>
+<tr><td class="col-index">47</td><td><code>nn.LSTM()</code></td><td>Rede neural recorrente LSTM</td><td><code>nn.LSTM(input, hidden)</code></td></tr>
+
+<tr><td class="col-index">48</td><td><code>nn.MSELoss()</code></td><td>Erro Quadrático Médio (Regressão)</td><td><code>criterion = nn.MSELoss()</code></td></tr>
+<tr><td class="col-index">49</td><td><code>nn.CrossEntropyLoss()</code></td><td>Entropia Cruzada (Classificação)</td><td><code>criterion = nn.CrossEntropyLoss()</code></td></tr>
+<tr><td class="col-index">50</td><td><code>nn.BCELoss()</code></td><td>Binary Cross Entropy</td><td><code>nn.BCELoss()</code></td></tr>
+<tr><td class="col-index">51</td><td><code>nn.L1Loss()</code></td><td>Erro absoluto médio</td><td><code>nn.L1Loss()</code></td></tr>
+
+<tr><td class="col-index">52</td><td><code>optim.SGD()</code></td><td>Stochastic Gradient Descent</td><td><code>optim.SGD(model.parameters(), lr=0.01)</code></td></tr>
+<tr><td class="col-index">53</td><td><code>optim.Adam()</code></td><td>Otimizador Adam (Adaptativo)</td><td><code>optim.Adam(model.parameters(), lr=0.001)</code></td></tr>
+<tr><td class="col-index">54</td><td><code>optimizer.step()</code></td><td>Atualiza os pesos do modelo</td><td><code>optimizer.step()</code></td></tr>
+<tr><td class="col-index">55</td><td><code>optimizer.zero_grad()</code></td><td>Zera os gradientes acumulados</td><td><code>optimizer.zero_grad()</code></td></tr>
+
+<tr><td class="col-index">56</td><td><code>Dataset</code></td><td>Classe abstrata para representar dados</td><td><code>class MyData(Dataset):</code></td></tr>
+<tr><td class="col-index">57</td><td><code>DataLoader</code></td><td>Iterador para carregar dados em lotes</td><td><code>DataLoader(ds, batch_size=32)</code></td></tr>
+<tr><td class="col-index">58</td><td><code>torchvision.datasets</code></td><td>Datasets prontos (MNIST, CIFAR)</td><td><code>datasets.MNIST(root='./')</code></td></tr>
+<tr><td class="col-index">59</td><td><code>torchvision.transforms</code></td><td>Transformações em imagens</td><td><code>transforms.ToTensor()</code></td></tr>
+
+<tr><td class="col-index">60</td><td><code>torch.cuda.is_available()</code></td><td>Verifica se há GPU disponível</td><td><code>torch.cuda.is_available()</code></td></tr>
+<tr><td class="col-index">61</td><td><code>tensor.to('cuda')</code></td><td>Move o tensor para a GPU</td><td><code>x.to('cuda')</code></td></tr>
+<tr><td class="col-index">62</td><td><code>tensor.cpu()</code></td><td>Move o tensor de volta para a CPU</td><td><code>x.cpu()</code></td></tr>
+<tr><td class="col-index">63</td><td><code>torch.device()</code></td><td>Define o dispositivo padrão</td><td><code>device = torch.device('cuda')</code></td></tr>
+
+<tr><td class="col-index">64</td><td><code>torch.save()</code></td><td>Salva objeto (modelo/tensor) em disco</td><td><code>torch.save(model.state_dict(), 'm.pt')</code></td></tr>
+<tr><td class="col-index">65</td><td><code>torch.load()</code></td><td>Carrega objeto do disco</td><td><code>torch.load('m.pt')</code></td></tr>
+<tr><td class="col-index">66</td><td><code>model.state_dict()</code></td><td>Retorna dicionário com parâmetros do modelo</td><td><code>model.state_dict()</code></td></tr>
+<tr><td class="col-index">67</td><td><code>model.load_state_dict()</code></td><td>Carrega pesos no modelo</td><td><code>model.load_state_dict(state)</code></td></tr>
+<tr><td class="col-index">68</td><td><code>model.eval()</code></td><td>Define modo de avaliação (inference)</td><td><code>model.eval()</code></td></tr>
+<tr><td class="col-index">69</td><td><code>model.train()</code></td><td>Define modo de treinamento</td><td><code>model.train()</code></td></tr>
+
+<tr><td class="col-index">70</td><td><code>torch.manual_seed()</code></td><td>Fixa semente aleatória para reprodutibilidade</td><td><code>torch.manual_seed(42)</code></td></tr>
+<tr><td class="col-index">71</td><td><code>torch.clamp()</code></td><td>Limita valores em um intervalo [min, max]</td><td><code>torch.clamp(x, 0, 1)</code></td></tr>
+<tr><td class="col-index">72</td><td><code>torch.where()</code></td><td>Retorna valores baseados em condição</td><td><code>torch.where(x > 0, x, y)</code></td></tr>
+<tr><td class="col-index">73</td><td><code>torch.argmax()</code></td><td>Índice do maior valor</td><td><code>torch.argmax(x, dim=1)</code></td></tr>
+<tr><td class="col-index">74</td><td><code>torch.full()</code></td><td>Cria tensor preenchido com valor específico</td><td><code>torch.full((2,2), 7)</code></td></tr>
+<tr><td class="col-index">75</td><td><code>torch.norm()</code></td><td>Calcula a norma do tensor</td><td><code>torch.norm(x)</code></td></tr>
+<tr><td class="col-index">76</td><td><code>torch.split()</code></td><td>Divide o tensor em pedaços</td><td><code>torch.split(x, 2)</code></td></tr>
+<tr><td class="col-index">77</td><td><code>torch.chunk()</code></td><td>Divide o tensor em N partes</td><td><code>torch.chunk(x, 3)</code></td></tr>
+<tr><td class="col-index">78</td><td><code>torch.topk()</code></td><td>Retorna os K maiores valores</td><td><code>torch.topk(x, 5)</code></td></tr>
+<tr><td class="col-index">79</td><td><code>tensor.item()</code></td><td>Converte tensor escalar em número Python</td><td><code>x.item()</code></td></tr>
+<tr><td class="col-index">80</td><td><code>tensor.numpy()</code></td><td>Converte tensor para array NumPy</td><td><code>x.numpy()</code></td></tr>
+<tr><td class="col-index">81</td><td><code>torch.from_numpy()</code></td><td>Converte array NumPy para Tensor</td><td><code>torch.from_numpy(arr)</code></td></tr>
+<tr><td class="col-index">82</td><td><code>torch.clone()</code></td><td>Cria cópia profunda do tensor</td><td><code>y = x.clone()</code></td></tr>
+<tr><td class="col-index">83</td><td><code>torch.equal()</code></td><td>Verifica se dois tensores são iguais</td><td><code>torch.equal(x, y)</code></td></tr>
+<tr><td class="col-index">84</td><td><code>torch.gather()</code></td><td>Coleta valores ao longo de um eixo</td><td><code>torch.gather(x, 1, idx)</code></td></tr>
+<tr><td class="col-index">85</td><td><code>torch.nn.init</code></td><td>Funções para inicialização de pesos</td><td><code>nn.init.xavier_uniform_(m.weight)</code></td></tr>
+<tr><td class="col-index">86</td><td><code>nn.LeakyReLU()</code></td><td>Ativação ReLU com inclinação para negativos</td><td><code>nn.LeakyReLU(0.01)</code></td></tr>
+<tr><td class="col-index">87</td><td><code>nn.Tanh()</code></td><td>Função de ativação Tangente Hiperbólica</td><td><code>nn.Tanh()</code></td></tr>
+<tr><td class="col-index">88</td><td><code>nn.Parameter()</code></td><td>Define um tensor como parâmetro treinável</td><td><code>self.w = nn.Parameter(data)</code></td></tr>
+<tr><td class="col-index">89</td><td><code>torch.utils.data.random_split()</code></td><td>Divide dataset em treino/teste</td><td><code>random_split(ds, [80, 20])</code></td></tr>
+<tr><td class="col-index">90</td><td><code>torch.optim.lr_scheduler</code></td><td>Ajusta taxa de aprendizado no treino</td><td><code>scheduler.step()</code></td></tr>
+<tr><td class="col-index">91</td><td><code>torch.cuda.empty_cache()</code></td><td>Limpa cache da memória da GPU</td><td><code>torch.cuda.empty_cache()</code></td></tr>
+<tr><td class="col-index">92</td><td><code>torch.set_printoptions()</code></td><td>Configura como tensores são exibidos</td><td><code>torch.set_printoptions(precision=2)</code></td></tr>
+<tr><td class="col-index">93</td><td><code>torch.bmm()</code></td><td>Multiplicação de matrizes em lote</td><td><code>torch.bmm(batch1, batch2)</code></td></tr>
+<tr><td class="col-index">94</td><td><code>torch.diag()</code></td><td>Extrai a diagonal ou cria matriz diagonal</td><td><code>torch.diag(x)</code></td></tr>
+<tr><td class="col-index">95</td><td><code>torch.mean(dim)</code></td><td>Média ao longo de uma dimensão</td><td><code>x.mean(dim=0)</code></td></tr>
+<tr><td class="col-index">96</td><td><code>torch.var()</code></td><td>Variância dos elementos</td><td><code>torch.var(x)</code></td></tr>
+<tr><td class="col-index">97</td><td><code>torch.std()</code></td><td>Desvio padrão</td><td><code>torch.std(x)</code></td></tr>
+<tr><td class="col-index">98</td><td><code>torch.prod()</code></td><td>Produto de todos os elementos</td><td><code>torch.prod(x)</code></td></tr>
+<tr><td class="col-index">99</td><td><code>torch.any()</code></td><td>Verifica se existe algum elemento True</td><td><code>torch.any(x > 0)</code></td></tr>
+<tr><td class="col-index">100</td><td><code>torch.all()</code></td><td>Verifica se todos os elementos são True</td><td><code>torch.all(x == 1)</code></td></tr>
+<tr><td class="col-index">101</td><td><code>torch.transpose()</code></td><td>Troca duas dimensões específicas</td><td><code>torch.transpose(x, 0, 1)</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

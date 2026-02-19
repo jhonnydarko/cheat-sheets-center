@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>BeautifulSoup Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+
+/* Estilo para a numeração automática */
+tbody { counter-reset: rowNumber; }
+tbody tr { counter-increment: rowNumber; }
+tbody tr td:first-child::before { content: counter(rowNumber); font-weight: bold; color: #7f8c8d; }
+.col-index { width: 40px; text-align: center; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🍲 BeautifulSoup (bs4) Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/" target="_blank">📄 Documentação Oficial da BeautifulSoup</a></p>
+<input type="text" id="search_field" placeholder="Buscar método, seletor ou atributo BS4...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th>
+<th>Comando / Método</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td></td><td><code>BeautifulSoup(html, 'html.parser')</code></td><td>Cria o objeto soup usando o parser padrão do Python</td><td><code>soup = BeautifulSoup(html, 'html.parser')</code></td></tr>
+<tr><td></td><td><code>BeautifulSoup(html, 'lxml')</code></td><td>Cria o objeto soup usando o parser LXML (mais rápido)</td><td><code>soup = BeautifulSoup(html, 'lxml')</code></td></tr>
+<tr><td></td><td><code>soup.prettify()</code></td><td>Formata o HTML com identação para facilitar a leitura</td><td><code>print(soup.prettify())</code></td></tr>
+
+<tr><td></td><td><code>soup.find()</code></td><td>Encontra o primeiro elemento que corresponde aos critérios</td><td><code>soup.find('h1')</code></td></tr>
+<tr><td></td><td><code>soup.find_all()</code></td><td>Retorna uma lista com todos os elementos encontrados</td><td><code>soup.find_all('a')</code></td></tr>
+<tr><td></td><td><code>Busca por ID</code></td><td>Filtra elementos pelo atributo id</td><td><code>soup.find(id='main-title')</code></td></tr>
+<tr><td></td><td><code>Busca por Classe (CSS)</code></td><td>Filtra elementos pelo atributo class (use class_)</td><td><code>soup.find_all('div', class_='content')</code></td></tr>
+<tr><td></td><td><code>Busca por Atributos</code></td><td>Passa um dicionário de atributos para a busca</td><td><code>soup.find('input', {'type': 'text'})</code></td></tr>
+
+<tr><td></td><td><code>soup.select()</code></td><td>Busca elementos usando seletores CSS (retorna lista)</td><td><code>soup.select('div > ul li.item')</code></td></tr>
+<tr><td></td><td><code>soup.select_one()</code></td><td>Busca o primeiro elemento via seletor CSS</td><td><code>soup.select_one('#header .logo')</code></td></tr>
+
+<tr><td></td><td><code>tag.text / .get_text()</code></td><td>Extraira apenas o texto dentro da tag e suas filhas</td><td><code>item.get_text(strip=True)</code></td></tr>
+<tr><td></td><td><code>tag['atributo']</code></td><td>Acede ao valor de um atributo específico (como href)</td><td><code>link['href']</code></td></tr>
+<tr><td></td><td><code>tag.get('attr')</code></td><td>Acede ao atributo de forma segura (retorna None se não existir)</td><td><code>tag.get('src')</code></td></tr>
+<tr><td></td><td><code>tag.name</code></td><td>Retorna o nome da tag (ex: 'div', 'p')</td><td><code>tag.name</code></td></tr>
+
+<tr><td></td><td><code>tag.parent</code></td><td>Acede à tag pai do elemento atual</td><td><code>tag.parent</code></td></tr>
+<tr><td></td><td><code>tag.contents</code></td><td>Retorna uma lista dos filhos diretos da tag</td><td><code>tag.contents</code></td></tr>
+<tr><td></td><td><code>tag.find_next_sibling()</code></td><td>Encontra o próximo elemento "irmão" no mesmo nível</td><td><code>tag.find_next_sibling('p')</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

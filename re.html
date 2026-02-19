@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>RegEx (re) Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+/* Estilo para a coluna de índice */
+.col-index { width: 50px; text-align: center; font-weight: bold; color: #7f8c8d; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🔍 RegEx (re) Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://docs.python.org/3/library/re.html" target="_blank">📄 Documentação Oficial do Módulo re</a></p>
+<input type="text" id="search_field" placeholder="Buscar função, metacaractere ou padrão RegEx...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th>
+<th>Comando / Metacaractere</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>re.search()</code></td><td>Busca a primeira ocorrência do padrão na string</td><td><code>re.search(r'\d', texto)</code></td></tr>
+<tr><td class="col-index">2</td><td><code>re.match()</code></td><td>Verifica se o padrão ocorre no início da string</td><td><code>re.match(r'Ola', texto)</code></td></tr>
+<tr><td class="col-index">3</td><td><code>re.findall()</code></td><td>Retorna uma lista com todas as ocorrências</td><td><code>re.findall(r'\w+', texto)</code></td></tr>
+<tr><td class="col-index">4</td><td><code>re.finditer()</code></td><td>Retorna um iterador com objetos de match</td><td><code>re.finditer(r'\d+', texto)</code></td></tr>
+<tr><td class="col-index">5</td><td><code>re.sub()</code></td><td>Substitui as ocorrências do padrão por um texto</td><td><code>re.sub(r'\s+', '_', texto)</code></td></tr>
+<tr><td class="col-index">6</td><td><code>re.split()</code></td><td>Divide a string nos locais onde o padrão ocorre</td><td><code>re.split(r'[,;]', texto)</code></td></tr>
+<tr><td class="col-index">7</td><td><code>re.compile()</code></td><td>Compila um padrão para reuso (performance)</td><td><code>padrao = re.compile(r'\d{5}')</code></td></tr>
+
+<tr><td class="col-index">8</td><td><code>.</code></td><td>Qualquer caractere (exceto nova linha)</td><td><code>r'p.to' # pato, puto, peto</code></td></tr>
+<tr><td class="col-index">9</td><td><code>^</code></td><td>Início da string ou linha</td><td><code>r'^Início'</code></td></tr>
+<tr><td class="col-index">10</td><td><code>$</code></td><td>Fim da string ou linha</td><td><code>r'Fim$'</code></td></tr>
+<tr><td class="col-index">11</td><td><code>*</code></td><td>Zero ou mais ocorrências</td><td><code>r'ba*' # b, ba, baaa</code></td></tr>
+<tr><td class="col-index">12</td><td><code>+</code></td><td>Uma ou mais ocorrências</td><td><code>r'ba+' # ba, baaa</code></td></tr>
+<tr><td class="col-index">13</td><td><code>?</code></td><td>Zero ou uma ocorrência (opcional)</td><td><code>r'fala?' # fal, fala</code></td></tr>
+<tr><td class="col-index">14</td><td><code>{n, m}</code></td><td>De n até m ocorrências</td><td><code>r'\d{2,4}' # 12, 123, 1234</code></td></tr>
+<tr><td class="col-index">15</td><td><code>|</code></td><td>Operador OU (Alternância)</td><td><code>r'carro|moto'</code></td></tr>
+
+<tr><td class="col-index">16</td><td><code>\d</code></td><td>Qualquer dígito (0-9)</td><td><code>r'\d+'</code></td></tr>
+<tr><td class="col-index">17</td><td><code>\D</code></td><td>Qualquer caractere que NÃO seja dígito</td><td><code>r'\D+'</code></td></tr>
+<tr><td class="col-index">18</td><td><code>\w</code></td><td>Qualquer alfanumérico (letras, números, _)</td><td><code>r'\w+'</code></td></tr>
+<tr><td class="col-index">19</td><td><code>\W</code></td><td>Qualquer caractere NÃO alfanumérico</td><td><code>r'\W+'</code></td></tr>
+<tr><td class="col-index">20</td><td><code>\s</code></td><td>Qualquer espaço em branco (espaço, tab, \n)</td><td><code>r'\s+'</code></td></tr>
+<tr><td class="col-index">21</td><td><code>\S</code></td><td>Qualquer caractere que NÃO seja espaço</td><td><code>r'\S+'</code></td></tr>
+<tr><td class="col-index">22</td><td><code>\b</code></td><td>Limite de palavra (início ou fim)</td><td><code>r'\bgato\b'</code></td></tr>
+
+<tr><td class="col-index">23</td><td><code>[abc]</code></td><td>Qualquer um dos caracteres entre colchetes</td><td><code>r'[aeiou]'</code></td></tr>
+<tr><td class="col-index">24</td><td><code>[^abc]</code></td><td>Qualquer caractere EXCETO os entre colchetes</td><td><code>r'[^0-9]'</code></td></tr>
+<tr><td class="col-index">25</td><td><code>[a-z]</code></td><td>Qualquer caractere em um intervalo</td><td><code>r'[A-Z]'</code></td></tr>
+<tr><td class="col-index">26</td><td><code>( )</code></td><td>Cria um grupo de captura</td><td><code>r'(\d{2})/(\d{2})'</code></td></tr>
+<tr><td class="col-index">27</td><td><code>(?: )</code></td><td>Grupo de não-captura</td><td><code>r'(?:\.com|\.org)'</code></td></tr>
+
+<tr><td class="col-index">28</td><td><code>re.IGNORECASE</code></td><td>Ignora maiúsculas/minúsculas (re.I)</td><td><code>re.search(p, t, re.I)</code></td></tr>
+<tr><td class="col-index">29</td><td><code>re.MULTILINE</code></td><td>Faz ^ e $ funcionarem em cada linha (re.M)</td><td><code>re.findall(p, t, re.M)</code></td></tr>
+<tr><td class="col-index">30</td><td><code>re.DOTALL</code></td><td>Faz o ponto (.) aceitar nova linha (re.S)</td><td><code>re.match(p, t, re.S)</code></td></tr>
+
+<tr><td class="col-index">31</td><td><code>match.group()</code></td><td>Retorna a string encontrada</td><td><code>res.group(0)</code></td></tr>
+<tr><td class="col-index">32</td><td><code>match.start()</code></td><td>Retorna o índice inicial do match</td><td><code>res.start()</code></td></tr>
+<tr><td class="col-index">33</td><td><code>match.end()</code></td><td>Retorna o índice final do match</td><td><code>res.end()</code></td></tr>
+<tr><td class="col-index">34</td><td><code>match.span()</code></td><td>Retorna uma tupla com (início, fim)</td><td><code>res.span()</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

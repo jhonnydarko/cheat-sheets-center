@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Power Query (M) Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+/* Estilo para a coluna de índice */
+td:first-child, th:first-child { text-align: center; width: 50px; font-weight: bold; background: #fcfcfc; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>⚙️ Power Query (M) Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://learn.microsoft.com/en-us/powerquery-m/" target="_blank">📊 Documentação Oficial da Linguagem M</a></p>
+<input type="text" id="search_field" placeholder="Buscar função, transformações ou palavras-chave...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th>#</th>
+<th>Comando / Função / Parâmetro</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td>1</td><td><code>Instalação (SDK)</code></td><td>Linguagem nativa, mas para dev usa-se o SDK no VS Code</td><td><code>pip install powerquery-sdk</code></td></tr>
+<tr><td>2</td><td><code>let ... in</code></td><td>Estrutura básica de qualquer consulta M</td><td><code>let Fonte = ... in Fonte</code></td></tr>
+
+<tr><td>3</td><td><code>Text.From()</code></td><td>Converte um valor para texto</td><td><code>Text.From(123)</code></td></tr>
+<tr><td>4</td><td><code>Text.Upper()</code></td><td>Converte texto para maiúsculas</td><td><code>Text.Upper("m")</code></td></tr>
+<tr><td>5</td><td><code>Text.Lower()</code></td><td>Converte texto para minúsculas</td><td><code>Text.Lower("M")</code></td></tr>
+<tr><td>6</td><td><code>Text.Proper()</code></td><td>Primeira letra de cada palavra em maiúscula</td><td><code>Text.Proper("ola mundo")</code></td></tr>
+<tr><td>7</td><td><code>Text.Trim()</code></td><td>Remove espaços no início e fim</td><td><code>Text.Trim("  texto  ")</code></td></tr>
+<tr><td>8</td><td><code>Text.Length()</code></td><td>Retorna o número de caracteres</td><td><code>Text.Length("Power")</code></td></tr>
+<tr><td>9</td><td><code>Text.Contains()</code></td><td>Verifica se um texto existe dentro de outro</td><td><code>Text.Contains([Col], "Erro")</code></td></tr>
+<tr><td>10</td><td><code>Text.Combine()</code></td><td>Concatena uma lista de textos</td><td><code>Text.Combine({"A", "B"}, "-")</code></td></tr>
+<tr><td>11</td><td><code>Text.Start()</code></td><td>Extrai N caracteres do início</td><td><code>Text.Start("Brasil", 3)</code></td></tr>
+<tr><td>12</td><td><code>Text.End()</code></td><td>Extrai N caracteres do fim</td><td><code>Text.End("Brasil", 2)</code></td></tr>
+<tr><td>13</td><td><code>Text.Replace()</code></td><td>Substitui um texto por outro</td><td><code>Text.Replace("A-B", "-", "/")</code></td></tr>
+<tr><td>14</td><td><code>Text.BetweenDelimiters()</code></td><td>Extrai texto entre delimitadores</td><td><code>Text.BetweenDelimiters("x[y]z", "[", "]")</code></td></tr>
+
+<tr><td>15</td><td><code>Table.SelectColumns()</code></td><td>Mantém apenas as colunas especificadas</td><td><code>Table.SelectColumns(Tab, {"ID"})</code></td></tr>
+<tr><td>16</td><td><code>Table.RemoveColumns()</code></td><td>Exclui colunas específicas</td><td><code>Table.RemoveColumns(Tab, {"Obs"})</code></td></tr>
+<tr><td>17</td><td><code>Table.RenameColumns()</code></td><td>Renomeia colunas (lista de listas)</td><td><code>Table.RenameColumns(T, {{"De", "Para"}})</code></td></tr>
+<tr><td>18</td><td><code>Table.FilterRows()</code></td><td>Filtra linhas baseado em condição</td><td><code>Table.FilterRows(T, each [Venda] > 10)</code></td></tr>
+<tr><td>19</td><td><code>Table.AddColumn()</code></td><td>Adiciona uma nova coluna personalizada</td><td><code>Table.AddColumn(T, "Nova", each [A] + [B])</code></td></tr>
+<tr><td>20</td><td><code>Table.TransformColumnTypes()</code></td><td>Define o tipo de dados das colunas</td><td><code>Table.TransformColumnTypes(T, {{"Qtd", Int64.Type}})</code></td></tr>
+<tr><td>21</td><td><code>Table.Sort()</code></td><td>Ordena a tabela por colunas</td><td><code>Table.Sort(T, {{"Data", Order.Ascending}})</code></td></tr>
+<tr><td>22</td><td><code>Table.Group()</code></td><td>Agrupa linhas (o "Group By" do SQL)</td><td><code>Table.Group(T, {"Ano"}, {{"Total", each List.Sum([V])}})</code></td></tr>
+<tr><td>23</td><td><code>Table.Pivot()</code></td><td>Transforma linhas em colunas (Dinâmica)</td><td><code>Table.Pivot(T, {"Jan", "Fev"}, "Mes", "Valor")</code></td></tr>
+<tr><td>24</td><td><code>Table.Unpivot()</code></td><td>Transforma colunas em linhas</td><td><code>Table.UnpivotOtherColumns(T, {"ID"}, "Atrib", "Val")</code></td></tr>
+<tr><td>25</td><td><code>Table.Distinct()</code></td><td>Remove linhas duplicadas</td><td><code>Table.Distinct(T)</code></td></tr>
+<tr><td>26</td><td><code>Table.FirstN()</code></td><td>Retorna as primeiras N linhas</td><td><code>Table.FirstN(T, 10)</code></td></tr>
+<tr><td>27</td><td><code>Table.LastN()</code></td><td>Retorna as últimas N linhas</td><td><code>Table.LastN(T, 5)</code></td></tr>
+<tr><td>28</td><td><code>Table.Buffer()</code></td><td>Carrega a tabela em memória para performance</td><td><code>Table.Buffer(Fonte)</code></td></tr>
+<tr><td>29</td><td><code>Table.Join()</code></td><td>Une duas tabelas (Merge)</td><td><code>Table.Join(T1, "ID", T2, "ID")</code></td></tr>
+<tr><td>30</td><td><code>Table.NestedJoin()</code></td><td>Merge que resulta em colunas de tabela</td><td><code>Table.NestedJoin(T1, "ID", T2, "ID", "New")</code></td></tr>
+<tr><td>31</td><td><code>Table.ExpandTableColumn()</code></td><td>Expande uma coluna de tabela aninhada</td><td><code>Table.ExpandTableColumn(T, "Col", {"Sub"})</code></td></tr>
+
+<tr><td>32</td><td><code>List.Sum()</code></td><td>Soma todos os itens de uma lista</td><td><code>List.Sum({1, 2, 3})</code></td></tr>
+<tr><td>33</td><td><code>List.Average()</code></td><td>Calcula a média de uma lista</td><td><code>List.Average({10, 20})</code></td></tr>
+<tr><td>34</td><td><code>List.Max()</code></td><td>Retorna o valor máximo</td><td><code>List.Max([Preço])</code></td></tr>
+<tr><td>35</td><td><code>List.Min()</code></td><td>Retorna o valor mínimo</td><td><code>List.Min([Data])</code></td></tr>
+<tr><td>36</td><td><code>List.Count()</code></td><td>Conta o número de itens</td><td><code>List.Count(Tabela[ID])</code></td></tr>
+<tr><td>37</td><td><code>List.Distinct()</code></td><td>Valores únicos de uma lista</td><td><code>List.Distinct({1, 1, 2})</code></td></tr>
+<tr><td>38</td><td><code>List.Generate()</code></td><td>Gera lista baseada em loop/condição</td><td><code>List.Generate(()=>1, each _ < 10, each _ + 1)</code></td></tr>
+<tr><td>39</td><td><code>List.Dates()</code></td><td>Cria lista de datas sequenciais</td><td><code>List.Dates(#date(2023,1,1), 365, #duration(1,0,0,0))</code></td></tr>
+
+<tr><td>40</td><td><code>Date.From()</code></td><td>Converte valor para Data</td><td><code>Date.From("2023-01-01")</code></td></tr>
+<tr><td>41</td><td><code>Date.AddDays()</code></td><td>Adiciona dias a uma data</td><td><code>Date.AddDays([Data], 7)</code></td></tr>
+<tr><td>42</td><td><code>Date.Year()</code></td><td>Extrai o ano da data</td><td><code>Date.Year(DateTime.LocalNow())</code></td></tr>
+<tr><td>43</td><td><code>Date.Month()</code></td><td>Extrai o mês da data</td><td><code>Date.Month([Data])</code></td></tr>
+<tr><td>44</td><td><code>Date.EndOfMonth()</code></td><td>Retorna o último dia do mês</td><td><code>Date.EndOfMonth([Data])</code></td></tr>
+<tr><td>45</td><td><code>Date.ToText()</code></td><td>Formata data como texto</td><td><code>Date.ToText([Data], "dd/MM/yyyy")</code></td></tr>
+<tr><td>46</td><td><code>DateTime.LocalNow()</code></td><td>Data e hora atual do sistema</td><td><code>DateTime.LocalNow()</code></td></tr>
+<tr><td>47</td><td><code>Duration.Days()</code></td><td>Extrai apenas os dias de uma duração</td><td><code>Duration.Days([Fim] - [Início])</code></td></tr>
+
+<tr><td>48</td><td><code>if ... then ... else</code></td><td>Estrutura condicional</td><td><code>if [V] > 0 then "OK" else "Erro"</code></td></tr>
+<tr><td>49</td><td><code>try ... otherwise</code></td><td>Tratamento de erros</td><td><code>try Number.From("A") otherwise 0</code></td></tr>
+<tr><td>50</td><td><code>and / or / not</code></td><td>Operadores lógicos</td><td><code>if [A]=1 and [B]=2 then true else false</code></td></tr>
+
+<tr><td>51</td><td><code>Excel.Workbook()</code></td><td>Acessa dados de um arquivo Excel</td><td><code>Excel.Workbook(File.Contents("C:\a.xlsx"))</code></td></tr>
+<tr><td>52</td><td><code>Sql.Database()</code></td><td>Conecta ao SQL Server</td><td><code>Sql.Database("Servidor", "Banco")</code></td></tr>
+<tr><td>53</td><td><code>Csv.Document()</code></td><td>Lê documentos CSV</td><td><code>Csv.Document(Fonte, [Delimiter=","])</code></td></tr>
+<tr><td>54</td><td><code>Web.Contents()</code></td><td>Acessa uma URL ou API</td><td><code>Web.Contents("https://api.exemplo.com")</code></td></tr>
+<tr><td>55</td><td><code>Json.Document()</code></td><td>Converte conteúdo JSON em M</td><td><code>Json.Document(Web.Contents(url))</code></td></tr>
+
+<tr><td>56</td><td><code>Number.Round()</code></td><td>Arredonda valores numéricos</td><td><code>Number.Round(1.234, 2)</code></td></tr>
+<tr><td>57</td><td><code>Number.FromText()</code></td><td>Converte texto para número</td><td><code>Number.FromText("100")</code></td></tr>
+<tr><td>58</td><td><code>Table.FillDown()</code></td><td>Preenche valores nulos com o anterior</td><td><code>Table.FillDown(T, {"Coluna"})</code></td></tr>
+<tr><td>59</td><td><code>Table.FillUp()</code></td><td>Preenche valores nulos com o próximo</td><td><code>Table.FillUp(T, {"Coluna"})</code></td></tr>
+<tr><td>60</td><td><code>Table.ReplaceValue()</code></td><td>Substitui valores específicos na tabela</td><td><code>Table.ReplaceValue(T, "A", "B", replacer, {"Col"})</code></td></tr>
+<tr><td>61</td><td><code>Table.Transpose()</code></td><td>Inverte linhas e colunas</td><td><code>Table.Transpose(Tabela)</code></td></tr>
+<tr><td>62</td><td><code>Table.DemoteHeaders()</code></td><td>Transforma o cabeçalho na primeira linha</td><td><code>Table.DemoteHeaders(T)</code></td></tr>
+<tr><td>63</td><td><code>Table.PromoteHeaders()</code></td><td>Transforma a primeira linha em cabeçalho</td><td><code>Table.PromoteHeaders(T)</code></td></tr>
+<tr><td>64</td><td><code>Table.Repeat()</code></td><td>Repete a tabela N vezes</td><td><code>Table.Repeat(T, 2)</code></td></tr>
+<tr><td>65</td><td><code>Table.Skip()</code></td><td>Pula N linhas iniciais</td><td><code>Table.Skip(T, 1)</code></td></tr>
+<tr><td>66</td><td><code>Table.ReverseRows()</code></td><td>Inverte a ordem das linhas</td><td><code>Table.ReverseRows(T)</code></td></tr>
+<tr><td>67</td><td><code>Table.Sample()</code></td><td>Retorna amostra aleatória de linhas</td><td><code>Table.Sample(T, 10)</code></td></tr>
+<tr><td>68</td><td><code>Table.TransformRows()</code></td><td>Aplica função em cada linha (gera lista)</td><td><code>Table.TransformRows(T, each [V]*2)</code></td></tr>
+<tr><td>69</td><td><code>Record.Field()</code></td><td>Acessa campo de um registro</td><td><code>Record.Field(Reg, "Nome")</code></td></tr>
+<tr><td>70</td><td><code>Value.Type()</code></td><td>Retorna o tipo de um valor</td><td><code>Value.Type(1)</code></td></tr>
+<tr><td>71</td><td><code>Type.Is()</code></td><td>Verifica se um tipo é compatível</td><td><code>Type.Is(Value.Type(1), type number)</code></td></tr>
+<tr><td>72</td><td><code>Binary.Decompress()</code></td><td>Descompacta arquivos (GZip)</td><td><code>Binary.Decompress(Bin, Compression.GZip)</code></td></tr>
+<tr><td>73</td><td><code>Splitter.SplitTextByDelimiter()</code></td><td>Divide texto por delimitador</td><td><code>Splitter.SplitTextByDelimiter(",")("a,b")</code></td></tr>
+<tr><td>74</td><td><code>Number.Abs()</code></td><td>Valor absoluto (módulo)</td><td><code>Number.Abs(-10)</code></td></tr>
+<tr><td>75</td><td><code>Number.Mod()</code></td><td>Resto da divisão</td><td><code>Number.Mod(10, 3)</code></td></tr>
+<tr><td>76</td><td><code>Number.Power()</code></td><td>Potenciação</td><td><code>Number.Power(2, 3)</code></td></tr>
+<tr><td>77</td><td><code>Text.Repeat()</code></td><td>Repete um texto N vezes</td><td><code>Text.Repeat("*", 5)</code></td></tr>
+<tr><td>78</td><td><code>Text.PositionOf()</code></td><td>Posição de um caractere</td><td><code>Text.PositionOf("Abc", "b")</code></td></tr>
+<tr><td>79</td><td><code>Date.DayOfWeek()</code></td><td>Número do dia da semana</td><td><code>Date.DayOfWeek([Data])</code></td></tr>
+<tr><td>80</td><td><code>Date.WeekOfYear()</code></td><td>Número da semana no ano</td><td><code>Date.WeekOfYear([Data])</code></td></tr>
+<tr><td>81</td><td><code>Date.IsLeapYear()</code></td><td>Verifica se o ano é bissexto</td><td><code>Date.IsLeapYear([Data])</code></td></tr>
+<tr><td>82</td><td><code>Time.Hour()</code></td><td>Extrai a hora</td><td><code>Time.Hour(DateTime.LocalNow())</code></td></tr>
+<tr><td>83</td><td><code>Time.Minute()</code></td><td>Extrai o minuto</td><td><code>Time.Minute([Hora])</code></td></tr>
+<tr><td>84</td><td><code>Table.Buffer()</code></td><td>Melhora performance de Joins repetidos</td><td><code>Table.Buffer(Tabela)</code></td></tr>
+<tr><td>85</td><td><code>Expression.Evaluate()</code></td><td>Executa código M dinâmico (texto)</td><td><code>Expression.Evaluate("1+1")</code></td></tr>
+<tr><td>86</td><td><code>Diagnostics.Trace()</code></td><td>Gera logs de depuração</td><td><code>Diagnostics.Trace(TraceLevel.Info, "Msg", Val)</code></td></tr>
+<tr><td>87</td><td><code>List.First()</code></td><td>Primeiro item da lista</td><td><code>List.First({1,2})</code></td></tr>
+<tr><td>88</td><td><code>List.Last()</code></td><td>Último item da lista</td><td><code>List.Last({1,2})</code></td></tr>
+<tr><td>89</td><td><code>List.PositionOf()</code></td><td>Índice de um item na lista</td><td><code>List.PositionOf({"A","B"}, "B")</code></td></tr>
+<tr><td>90</td><td><code>List.Zip()</code></td><td>Combina listas por posição</td><td><code>List.Zip({{1,2}, {"a","b"}})</code></td></tr>
+<tr><td>91</td><td><code>List.Transform()</code></td><td>Aplica função a todos itens da lista</td><td><code>List.Transform({1,2}, each _ + 1)</code></td></tr>
+<tr><td>92</td><td><code>List.Select()</code></td><td>Filtra itens da lista</td><td><code>List.Select({1..10}, each _ > 5)</code></td></tr>
+<tr><td>93</td><td><code>List.RemoveMatchingItems()</code></td><td>Remove itens específicos da lista</td><td><code>List.RemoveMatchingItems({1,2,3}, {2})</code></td></tr>
+<tr><td>94</td><td><code>Table.ColumnNames()</code></td><td>Lista com nomes das colunas</td><td><code>Table.ColumnNames(T)</code></td></tr>
+<tr><td>95</td><td><code>Table.RowCount()</code></td><td>Total de linhas da tabela</td><td><code>Table.RowCount(T)</code></td></tr>
+<tr><td>96</td><td><code>Table.ColumnCount()</code></td><td>Total de colunas da tabela</td><td><code>Table.ColumnCount(T)</code></td></tr>
+<tr><td>97</td><td><code>Int64.Type</code></td><td>Tipo de dado: Inteiro 64 bits</td><td><code>type number</code></td></tr>
+<tr><td>98</td><td><code>Currency.Type</code></td><td>Tipo de dado: Moeda</td><td><code>type number</code></td></tr>
+<tr><td>99</td><td><code>Function.Invoke()</code></td><td>Chama uma função dinamicamente</td><td><code>Function.Invoke(MinhaFn, {arg1})</code></td></tr>
+
+<tr><td>100</td><td><code>Table.Schema()</code></td><td>Retorna informações detalhadas sobre a estrutura da tabela</td><td><code>Table.Schema(Tabela)</code></td></tr>
+<tr><td>101</td><td><code>Text.Clean()</code></td><td>Remove caracteres de controle não imprimíveis</td><td><code>Text.Clean([Coluna])</code></td></tr>
+<tr><td>102</td><td><code>Text.PadStart()</code></td><td>Preenche o início do texto até um comprimento</td><td><code>Text.PadStart("5", 3, "0")</code></td></tr>
+<tr><td>103</td><td><code>Text.PadEnd()</code></td><td>Preenche o fim do texto até um comprimento</td><td><code>Text.PadEnd("5", 3, "0")</code></td></tr>
+<tr><td>104</td><td><code>Number.ToText()</code></td><td>Converte número para texto com formatação</td><td><code>Number.ToText(123, "D4")</code></td></tr>
+<tr><td>105</td><td><code>List.NonNullCount()</code></td><td>Conta itens não nulos em uma lista</td><td><code>List.NonNullCount({1, null, 3})</code></td></tr>
+<tr><td>106</td><td><code>List.Product()</code></td><td>Multiplica todos os itens de uma lista</td><td><code>List.Product({2, 3, 4})</code></td></tr>
+<tr><td>107</td><td><code>List.Median()</code></td><td>Retorna a mediana de uma lista</td><td><code>List.Median({1, 5, 10})</code></td></tr>
+<tr><td>108</td><td><code>List.StandardDeviation()</code></td><td>Desvio padrão da amostra de uma lista</td><td><code>List.StandardDeviation({1, 2, 3})</code></td></tr>
+<tr><td>109</td><td><code>Date.Day()</code></td><td>Retorna o dia do mês</td><td><code>Date.Day(#date(2026, 2, 18))</code></td></tr>
+<tr><td>110</td><td><code>Date.DayOfYear()</code></td><td>Retorna o dia do ano (1-366)</td><td><code>Date.DayOfYear([Data])</code></td></tr>
+<tr><td>111</td><td><code>Date.StartOfMonth()</code></td><td>Retorna o primeiro dia do mês</td><td><code>Date.StartOfMonth([Data])</code></td></tr>
+<tr><td>112</td><td><code>Date.StartOfWeek()</code></td><td>Retorna o primeiro dia da semana</td><td><code>Date.StartOfWeek([Data])</code></td></tr>
+<tr><td>113</td><td><code>Date.EndOfWeek()</code></td><td>Retorna o último dia da semana</td><td><code>Date.EndOfWeek([Data])</code></td></tr>
+<tr><td>114</td><td><code>Date.StartOfQuarter()</code></td><td>Retorna o início do trimestre</td><td><code>Date.StartOfQuarter([Data])</code></td></tr>
+<tr><td>115</td><td><code>Date.EndOfQuarter()</code></td><td>Retorna o fim do trimestre</td><td><code>Date.EndOfQuarter([Data])</code></td></tr>
+<tr><td>116</td><td><code>Date.StartOfYear()</code></td><td>Retorna o primeiro dia do ano</td><td><code>Date.StartOfYear([Data])</code></td></tr>
+<tr><td>117</td><td><code>Date.EndOfYear()</code></td><td>Retorna o último dia do ano</td><td><code>Date.EndOfYear([Data])</code></td></tr>
+<tr><td>118</td><td><code>Date.AddMonths()</code></td><td>Adiciona ou subtrai meses de uma data</td><td><code>Date.AddMonths([Data], -1)</code></td></tr>
+<tr><td>119</td><td><code>Date.AddQuarters()</code></td><td>Adiciona trimestres a uma data</td><td><code>Date.AddQuarters([Data], 1)</code></td></tr>
+<tr><td>120</td><td><code>Date.AddWeeks()</code></td><td>Adiciona semanas a uma data</td><td><code>Date.AddWeeks([Data], 2)</code></td></tr>
+<tr><td>121</td><td><code>Date.AddYears()</code></td><td>Adiciona anos a uma data</td><td><code>Date.AddYears([Data], 5)</code></td></tr>
+<tr><td>122</td><td><code>DateTime.ToText()</code></td><td>Converte DateTime para texto formatado</td><td><code>DateTime.ToText([DT], "yyyy-MM")</code></td></tr>
+<tr><td>123</td><td><code>DateTime.Date()</code></td><td>Extrai apenas a parte da data de um DateTime</td><td><code>DateTime.Date([DataHora])</code></td></tr>
+<tr><td>124</td><td><code>DateTime.Time()</code></td><td>Extrai apenas a parte da hora de um DateTime</td><td><code>DateTime.Time([DataHora])</code></td></tr>
+<tr><td>125</td><td><code>DateTimeZone.UtcNow()</code></td><td>Data e hora atual em UTC</td><td><code>DateTimeZone.UtcNow()</code></td></tr>
+<tr><td>126</td><td><code>DateTimeZone.SwitchZone()</code></td><td>Altera o fuso horário sem mudar a hora</td><td><code>DateTimeZone.SwitchZone([DTZ], -3)</code></td></tr>
+<tr><td>127</td><td><code>Duration.TotalHours()</code></td><td>Duração total convertida em horas</td><td><code>Duration.TotalHours([Fim]-[Ini])</code></td></tr>
+<tr><td>128</td><td><code>Duration.TotalMinutes()</code></td><td>Duração total convertida em minutos</td><td><code>Duration.TotalMinutes([Fim]-[Ini])</code></td></tr>
+<tr><td>129</td><td><code>Duration.From()</code></td><td>Converte um valor para o tipo duração</td><td><code>Duration.From("1.02:03:04")</code></td></tr>
+<tr><td>130</td><td><code>Number.Power()</code></td><td>Eleva um número a uma potência</td><td><code>Number.Power(10, 2)</code></td></tr>
+<tr><td>131</td><td><code>Number.Sqrt()</code></td><td>Calcula a raiz quadrada</td><td><code>Number.Sqrt(16)</code></td></tr>
+<tr><td>132</td><td><code>Number.IsEven()</code></td><td>Verifica se o número é par</td><td><code>Number.IsEven(4)</code></td></tr>
+<tr><td>133</td><td><code>Number.IsOdd()</code></td><td>Verifica se o número é ímpar</td><td><code>Number.IsOdd(3)</code></td></tr>
+<tr><td>134</td><td><code>Number.Sign()</code></td><td>Retorna 1 (pos), -1 (neg) ou 0</td><td><code>Number.Sign(-50)</code></td></tr>
+<tr><td>135</td><td><code>Table.AddIndexColumn()</code></td><td>Adiciona coluna de índice sequencial</td><td><code>Table.AddIndexColumn(T, "Ind", 1, 1)</code></td></tr>
+<tr><td>136</td><td><code>Table.ReplaceMatchingRows()</code></td><td>Substitui linhas inteiras que coincidem</td><td><code>Table.ReplaceMatchingRows(T, {{R1, R2}})</code></td></tr>
+<tr><td>137</td><td><code>Table.FindText()</code></td><td>Filtra a tabela por qualquer ocorrência de texto</td><td><code>Table.FindText(T, "Pesquisa")</code></td></tr>
+<tr><td>138</td><td><code>Table.First()</code></td><td>Retorna o primeiro registro da tabela</td><td><code>Table.First(Tabela)</code></td></tr>
+<tr><td>139</td><td><code>Table.Last()</code></td><td>Retorna o último registro da tabela</td><td><code>Table.Last(Tabela)</code></td></tr>
+<tr><td>140</td><td><code>Table.Range()</code></td><td>Retorna um subconjunto de linhas a partir do índice</td><td><code>Table.Range(T, 5, 10)</code></td></tr>
+<tr><td>141</td><td><code>Table.Partition()</code></td><td>Divide a tabela em uma lista de tabelas</td><td><code>Table.Partition(T, "Col", 3, hash)</code></td></tr>
+<tr><td>142</td><td><code>Table.SplitColumn()</code></td><td>Divide coluna por delimitador</td><td><code>Table.SplitColumn(T, "C", Splitter.SplitBy...)</code></td></tr>
+<tr><td>143</td><td><code>Table.ToRecords()</code></td><td>Converte a tabela em uma lista de registros</td><td><code>Table.ToRecords(Tabela)</code></td></tr>
+<tr><td>144</td><td><code>Table.ToColumns()</code></td><td>Converte a tabela em uma lista de listas (colunas)</td><td><code>Table.ToColumns(Tabela)</code></td></tr>
+<tr><td>145</td><td><code>Table.FromRecords()</code></td><td>Cria uma tabela a partir de lista de registros</td><td><code>Table.FromRecords({[A=1], [A=2]})</code></td></tr>
+<tr><td>146</td><td><code>Table.FromList()</code></td><td>Converte uma lista em uma tabela</td><td><code>Table.FromList(Lista, Splitter.SplitByNone())</code></td></tr>
+<tr><td>147</td><td><code>Table.PrefixColumns()</code></td><td>Adiciona prefixo a todos os nomes de colunas</td><td><code>Table.PrefixColumns(T, "Pre")</code></td></tr>
+<tr><td>148</td><td><code>Table.TransformColumns()</code></td><td>Aplica funções a colunas específicas</td><td><code>Table.TransformColumns(T, {"Preço", each _ * 1.1})</code></td></tr>
+<tr><td>149</td><td><code>Table.PositionOf()</code></td><td>Retorna o índice da primeira linha encontrada</td><td><code>Table.PositionOf(T, Registro)</code></td></tr>
+<tr><td>150</td><td><code>Record.ToTable()</code></td><td>Converte um registro em uma tabela (Nome/Valor)</td><td><code>Record.ToTable([ID=1, Nome="A"])</code></td></tr>
+<tr><td>151</td><td><code>Record.AddField()</code></td><td>Adiciona um novo campo a um registro</td><td><code>Record.AddField(Reg, "Novo", 10)</code></td></tr>
+<tr><td>152</td><td><code>Record.RemoveFields()</code></td><td>Remove campos de um registro</td><td><code>Record.RemoveFields(Reg, "Obs")</code></td></tr>
+<tr><td>153</td><td><code>Record.HasFields()</code></td><td>Verifica se o registro contém os campos</td><td><code>Record.HasFields(Reg, {"ID"})</code></td></tr>
+<tr><td>154</td><td><code>Record.FieldNames()</code></td><td>Retorna lista com nomes dos campos do registro</td><td><code>Record.FieldNames(Reg)</code></td></tr>
+<tr><td>155</td><td><code>List.FirstN()</code></td><td>Retorna os primeiros N itens da lista</td><td><code>List.FirstN({1..10}, 3)</code></td></tr>
+<tr><td>156</td><td><code>List.LastN()</code></td><td>Retorna os últimos N itens da lista</td><td><code>List.LastN({1..10}, 3)</code></td></tr>
+<tr><td>157</td><td><code>List.Sort()</code></td><td>Ordena os itens da lista</td><td><code>List.Sort(Lista, Order.Descending)</code></td></tr>
+<tr><td>158</td><td><code>List.Buffer()</code></td><td>Armazena a lista em memória (estabilidade)</td><td><code>List.Buffer(Lista)</code></td></tr>
+<tr><td>159</td><td><code>List.ReplaceValue()</code></td><td>Substitui valores em uma lista</td><td><code>List.ReplaceValue(L, "a", "b", Replacer.ReplaceText)</code></td></tr>
+<tr><td>160</td><td><code>List.Accumulate()</code></td><td>Reduz uma lista a um valor (tipo Reduce/Fold)</td><td><code>List.Accumulate({1..5}, 0, (state, current) => state + current)</code></td></tr>
+<tr><td>161</td><td><code>List.Positions()</code></td><td>Gera lista de índices (0 a N) da lista original</td><td><code>List.Positions(Lista)</code></td></tr>
+<tr><td>162</td><td><code>List.Random()</code></td><td>Gera uma lista de números aleatórios</td><td><code>List.Random(5)</code></td></tr>
+<tr><td>163</td><td><code>List.Sequence()</code></td><td>Cria uma sequência numérica</td><td><code>List.Numbers(1, 10, 1)</code></td></tr>
+<tr><td>164</td><td><code>List.MatchesAll()</code></td><td>Verifica se todos os itens atendem à condição</td><td><code>List.MatchesAll({2,4}, each Number.IsEven(_))</code></td></tr>
+<tr><td>165</td><td><code>List.MatchesAny()</code></td><td>Verifica se ao menos um item atende à condição</td><td><code>List.MatchesAny({1,2}, each _ > 1)</code></td></tr>
+<tr><td>166</td><td><code>List.Union()</code></td><td>Une listas removendo duplicatas</td><td><code>List.Union({{1,2}, {2,3}})</code></td></tr>
+<tr><td>167</td><td><code>List.Intersect()</code></td><td>Retorna apenas itens comuns a várias listas</td><td><code>List.Intersect({{1,2}, {2,3}})</code></td></tr>
+<tr><td>168</td><td><code>List.Difference()</code></td><td>Itens que existem na primeira mas não na segunda</td><td><code>List.Difference({1,2}, {2})</code></td></tr>
+<tr><td>169</td><td><code>Text.ToList()</code></td><td>Converte texto em lista de caracteres</td><td><code>Text.ToList("ABC")</code></td></tr>
+<tr><td>170</td><td><code>Text.Format()</code></td><td>Formata strings usando argumentos</td><td><code>Text.Format("Olá #[n]", [n="Mundo"])</code></td></tr>
+<tr><td>171</td><td><code>Value.Metadata()</code></td><td>Acessa metadados de um valor</td><td><code>Value.Metadata(Valor)</code></td></tr>
+<tr><td>172</td><td><code>Value.RemoveMetadata()</code></td><td>Limpa metadados de um objeto</td><td><code>Value.RemoveMetadata(Valor)</code></td></tr>
+<tr><td>173</td><td><code>Replacer.ReplaceText()</code></td><td>Função auxiliar para substituição de texto</td><td><code>Table.ReplaceValue(..., Replacer.ReplaceText, ...)</code></td></tr>
+<tr><td>174</td><td><code>Replacer.ReplaceValue()</code></td><td>Função auxiliar para substituição de valores exatos</td><td><code>Table.ReplaceValue(..., Replacer.ReplaceValue, ...)</code></td></tr>
+<tr><td>175</td><td><code>Logical.From()</code></td><td>Converte valor para lógico</td><td><code>Logical.From(1)</code></td></tr>
+<tr><td>176</td><td><code>Binary.ToText()</code></td><td>Converte binário para texto (ex: Base64)</td><td><code>Binary.ToText(Bin, BinaryEncoding.Base64)</code></td></tr>
+<tr><td>177</td><td><code>Binary.FromText()</code></td><td>Converte texto (Base64) para binário</td><td><code>Binary.FromText("base64string", BinaryEncoding.Base64)</code></td></tr>
+<tr><td>178</td><td><code>Folder.Files()</code></td><td>Lista arquivos em uma pasta</td><td><code>Folder.Files("C:\Dados")</code></td></tr>
+<tr><td>179</td><td><code>Folder.Contents()</code></td><td>Lista arquivos e subpastas</td><td><code>Folder.Contents("C:&quot;)</code></td></tr>
+<tr><td>180</td><td><code>File.Contents()</code></td><td>Lê o conteúdo binário de um arquivo</td><td><code>File.Contents("C:\doc.txt")</code></td></tr>
+<tr><td>181</td><td><code>Lines.FromBinary()</code></td><td>Lê binário como lista de linhas de texto</td><td><code>Lines.FromBinary(Bin)</code></td></tr>
+<tr><td>182</td><td><code>Json.FromValue()</code></td><td>Converte um objeto M para JSON binário</td><td><code>Json.FromValue([id=1])</code></td></tr>
+<tr><td>183</td><td><code>Uri.BuildQueryString()</code></td><td>Cria string de parâmetros para URL</td><td><code>Uri.BuildQueryString([q="power", id="1"])</code></td></tr>
+<tr><td>184</td><td><code>Web.Page()</code></td><td>Extrai tabelas de uma página HTML</td><td><code>Web.Page(Web.Contents(url))</code></td></tr>
+<tr><td>185</td><td><code>Combiner.CombineTextByDelimiter()</code></td><td>Função para combinar textos com separador</td><td><code>Combiner.CombineTextByDelimiter(";")({"a","b"})</code></td></tr>
+<tr><td>186</td><td><code>QuoteStyle.None</code></td><td>Opção para ignorar aspas em CSV</td><td><code>Csv.Document(f, [QuoteStyle=QuoteStyle.None])</code></td></tr>
+<tr><td>187</td><td><code>ExtraValues.Error</code></td><td>Lança erro se houver mais colunas que o esperado</td><td><code>Table.FromList(L, splitter, col, ExtraValues.Error)</code></td></tr>
+<tr><td>188</td><td><code>Percentage.Type</code></td><td>Tipo de dado: Percentual</td><td><code>type number</code></td></tr>
+<tr><td>189</td><td><code>Double.Type</code></td><td>Tipo de dado: Número decimal flutuante</td><td><code>Double.Type</code></td></tr>
+<tr><td>190</td><td><code>Byte.Type</code></td><td>Tipo de dado: Inteiro de 8 bits</td><td><code>Int8.Type</code></td></tr>
+<tr><td>191</td><td><code>Occurrence.First</code></td><td>Opção para pegar apenas a primeira ocorrência</td><td><code>Text.PositionOf(t, "a", Occurrence.First)</code></td></tr>
+<tr><td>192</td><td><code>Occurrence.All</code></td><td>Opção para pegar todas as ocorrências</td><td><code>Text.PositionOf(t, "a", Occurrence.All)</code></td></tr>
+<tr><td>193</td><td><code>GroupKind.Global</code></td><td>Agrupamento padrão (tabela inteira)</td><td><code>Table.Group(T, "Col", {..}, GroupKind.Global)</code></td></tr>
+<tr><td>194</td><td><code>GroupKind.Local</code></td><td>Agrupamento por blocos sequenciais de linhas</td><td><code>Table.Group(T, "Col", {..}, GroupKind.Local)</code></td></tr>
+<tr><td>195</td><td><code>JoinKind.LeftOuter</code></td><td>Tipo de união: Esquerda (Padrão)</td><td><code>JoinKind.LeftOuter</code></td></tr>
+<tr><td>196</td><td><code>JoinKind.RightOuter</code></td><td>Tipo de união: Direita</td><td><code>JoinKind.RightOuter</code></td></tr>
+<tr><td>197</td><td><code>JoinKind.Inner</code></td><td>Tipo de união: Apenas correspondentes</td><td><code>JoinKind.Inner</code></td></tr>
+<tr><td>198</td><td><code>JoinKind.FullOuter</code></td><td>Tipo de união: Todas as linhas de ambas</td><td><code>JoinKind.FullOuter</code></td></tr>
+<tr><td>199</td><td><code>JoinKind.LeftAnti</code></td><td>Tipo de união: Apenas linhas que não existem na direita</td><td><code>JoinKind.LeftAnti</code></td></tr>
+
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

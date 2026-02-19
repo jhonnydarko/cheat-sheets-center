@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>CSS Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+.col-index { width: 40px; text-align: center; font-weight: bold; color: #7f8c8d; background: #f9f9f9; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🎨 CSS Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://developer.mozilla.org/pt-BR/docs/Web/CSS" target="_blank">📄 Documentação Oficial MDN CSS</a></p>
+<input type="text" id="search_field" placeholder="Buscar propriedade, seletor ou valor CSS...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th style="width: 30px;">#</th> <th>Propriedade / Seletor</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>npm install sass</code></td><td>Instala o pré-processador Sass (via Node/Pip)</td><td><code>pip install libsass</code> (Alternativa Python)</td></tr>
+<tr><td class="col-index">2</td><td><code>color</code></td><td>Define a cor do texto</td><td><code>color: #ff0000;</code></td></tr>
+<tr><td class="col-index">3</td><td><code>background-color</code></td><td>Define a cor de fundo</td><td><code>background-color: blue;</code></td></tr>
+<tr><td class="col-index">4</td><td><code>font-size</code></td><td>Tamanho da fonte</td><td><code>font-size: 16px;</code></td></tr>
+<tr><td class="col-index">5</td><td><code>font-weight</code></td><td>Peso/Espessura da fonte</td><td><code>font-weight: bold;</code></td></tr>
+<tr><td class="col-index">6</td><td><code>text-align</code></td><td>Alinhamento do texto</td><td><code>text-align: center;</code></td></tr>
+<tr><td class="col-index">7</td><td><code>margin</code></td><td>Espaço externo ao redor do elemento</td><td><code>margin: 10px 20px;</code></td></tr>
+<tr><td class="col-index">8</td><td><code>padding</code></td><td>Espaço interno (entre borda e conteúdo)</td><td><code>padding: 5%;</code></td></tr>
+<tr><td class="col-index">9</td><td><code>border</code></td><td>Define borda (largura, estilo, cor)</td><td><code>border: 1px solid black;</code></td></tr>
+<tr><td class="col-index">10</td><td><code>width</code></td><td>Largura de um elemento</td><td><code>width: 100px;</code></td></tr>
+
+<tr><td class="col-index">11</td><td><code>height</code></td><td>Altura de um elemento</td><td><code>height: 50vh;</code></td></tr>
+<tr><td class="col-index">12</td><td><code>display: block</code></td><td>Elemento ocupa a linha inteira</td><td><code>display: block;</code></td></tr>
+<tr><td class="col-index">13</td><td><code>display: inline-block</code></td><td>Em linha, mas permite largura/altura</td><td><code>display: inline-block;</code></td></tr>
+<tr><td class="col-index">14</td><td><code>display: flex</code></td><td>Ativa o layout Flexbox</td><td><code>display: flex;</code></td></tr>
+<tr><td class="col-index">15</td><td><code>justify-content</code></td><td>Alinha itens no eixo principal (Flex)</td><td><code>justify-content: center;</code></td></tr>
+<tr><td class="col-index">16</td><td><code>align-items</code></td><td>Alinha itens no eixo transversal (Flex)</td><td><code>align-items: center;</code></td></tr>
+<tr><td class="col-index">17</td><td><code>flex-direction</code></td><td>Direção dos itens flex</td><td><code>flex-direction: column;</code></td></tr>
+<tr><td class="col-index">18</td><td><code>display: grid</code></td><td>Ativa o layout Grid</td><td><code>display: grid;</code></td></tr>
+<tr><td class="col-index">19</td><td><code>grid-template-columns</code></td><td>Define as colunas do Grid</td><td><code>grid-template-columns: 1fr 1fr;</code></td></tr>
+<tr><td class="col-index">20</td><td><code>gap</code></td><td>Espaço entre itens de Flex/Grid</td><td><code>gap: 15px;</code></td></tr>
+
+<tr><td class="col-index">21</td><td><code>position: relative</code></td><td>Posição relativa ao seu lugar original</td><td><code>position: relative;</code></td></tr>
+<tr><td class="col-index">22</td><td><code>position: absolute</code></td><td>Posição relativa ao pai posicionado</td><td><code>position: absolute; top: 0;</code></td></tr>
+<tr><td class="col-index">23</td><td><code>position: fixed</code></td><td>Fixa o elemento na janela do navegador</td><td><code>position: fixed;</code></td></tr>
+<tr><td class="col-index">24</td><td><code>position: sticky</code></td><td>Fixa ao rolar (dentro do pai)</td><td><code>position: sticky; top: 10px;</code></td></tr>
+<tr><td class="col-index">25</td><td><code>z-index</code></td><td>Ordem de empilhamento (eixo Z)</td><td><code>z-index: 999;</code></td></tr>
+<tr><td class="col-index">26</td><td><code>top / bottom / left / right</code></td><td>Coordenadas de posicionamento</td><td><code>left: 50px;</code></td></tr>
+
+<tr><td class="col-index">27</td><td><code>border-radius</code></td><td>Arredonda os cantos</td><td><code>border-radius: 50%;</code></td></tr>
+<tr><td class="col-index">28</td><td><code>box-shadow</code></td><td>Sombra externa no elemento</td><td><code>box-shadow: 2px 2px 5px grey;</code></td></tr>
+<tr><td class="col-index">29</td><td><code>text-shadow</code></td><td>Sombra no texto</td><td><code>text-shadow: 1px 1px black;</code></td></tr>
+<tr><td class="col-index">30</td><td><code>opacity</code></td><td>Nível de transparência (0 a 1)</td><td><code>opacity: 0.5;</code></td></tr>
+<tr><td class="col-index">31</td><td><code>visibility</code></td><td>Mostra ou esconde sem remover espaço</td><td><code>visibility: hidden;</code></td></tr>
+<tr><td class="col-index">32</td><td><code>overflow</code></td><td>Lida com conteúdo que transborda</td><td><code>overflow: scroll;</code></td></tr>
+<tr><td class="col-index">33</td><td><code>background-image</code></td><td>Define imagem de fundo</td><td><code>url('imagem.jpg');</code></td></tr>
+<tr><td class="col-index">34</td><td><code>background-size</code></td><td>Tamanho da imagem de fundo</td><td><code>background-size: cover;</code></td></tr>
+<tr><td class="col-index">35</td><td><code>cursor</code></td><td>Muda o ponteiro do mouse</td><td><code>cursor: pointer;</code></td></tr>
+
+<tr><td class="col-index">36</td><td><code>font-family</code></td><td>Define a família da fonte</td><td><code>font-family: Arial;</code></td></tr>
+<tr><td class="col-index">37</td><td><code>line-height</code></td><td>Espaçamento entre linhas</td><td><code>line-height: 1.5;</code></td></tr>
+<tr><td class="col-index">38</td><td><code>text-decoration</code></td><td>Sublinhado, tachado, etc.</td><td><code>text-decoration: none;</code></td></tr>
+<tr><td class="col-index">39</td><td><code>text-transform</code></td><td>Maiúsculas ou minúsculas</td><td><code>text-transform: uppercase;</code></td></tr>
+<tr><td class="col-index">40</td><td><code>letter-spacing</code></td><td>Espaço entre letras</td><td><code>letter-spacing: 2px;</code></td></tr>
+<tr><td class="col-index">41</td><td><code>white-space</code></td><td>Tratamento de espaços em branco</td><td><code>white-space: nowrap;</code></td></tr>
+<tr><td class="col-index">42</td><td><code>text-overflow</code></td><td>Trata texto longo que não cabe</td><td><code>text-overflow: ellipsis;</code></td></tr>
+
+<tr><td class="col-index">43</td><td><code>:hover</code></td><td>Estilo ao passar o mouse</td><td><code>a:hover { color: red; }</code></td></tr>
+<tr><td class="col-index">44</td><td><code>:active</code></td><td>Estilo ao clicar</td><td><code>button:active { ... }</code></td></tr>
+<tr><td class="col-index">45</td><td><code>:nth-child()</code></td><td>Seleciona o enésimo filho</td><td><code>li:nth-child(2n)</code></td></tr>
+<tr><td class="col-index">46</td><td><code>:first-child</code></td><td>Seleciona o primeiro filho</td><td><code>p:first-child</code></td></tr>
+<tr><td class="col-index">47</td><td><code>::before</code></td><td>Insere conteúdo antes do elemento</td><td><code>p::before { content: "➤"; }</code></td></tr>
+<tr><td class="col-index">48</td><td><code>::after</code></td><td>Insere conteúdo depois do elemento</td><td><code>span::after { content: "!"; }</code></td></tr>
+
+<tr><td class="col-index">49</td><td><code>transition</code></td><td>Suaviza mudanças de propriedades</td><td><code>transition: all 0.3s;</code></td></tr>
+<tr><td class="col-index">50</td><td><code>transform: rotate()</code></td><td>Rotaciona um elemento</td><td><code>transform: rotate(45deg);</code></td></tr>
+<tr><td class="col-index">51</td><td><code>transform: scale()</code></td><td>Aumenta ou diminui o tamanho</td><td><code>transform: scale(1.2);</code></td></tr>
+<tr><td class="col-index">52</td><td><code>transform: translate()</code></td><td>Move o elemento nos eixos X/Y</td><td><code>transform: translateX(10px);</code></td></tr>
+<tr><td class="col-index">53</td><td><code>@keyframes</code></td><td>Define etapas de uma animação</td><td><code>@keyframes piscar { ... }</code></td></tr>
+<tr><td class="col-index">54</td><td><code>animation</code></td><td>Aplica uma animação</td><td><code>animation: piscar 2s infinite;</code></td></tr>
+
+<tr><td class="col-index">55</td><td><code>@media</code></td><td>Aplica estilos baseados na tela</td><td><code>@media (max-width: 600px)</code></td></tr>
+<tr><td class="col-index">56</td><td><code>max-width</code></td><td>Largura máxima</td><td><code>max-width: 100%;</code></td></tr>
+<tr><td class="col-index">57</td><td><code>min-height</code></td><td>Altura mínima</td><td><code>min-height: 100vh;</code></td></tr>
+<tr><td class="col-index">58</td><td><code>object-fit</code></td><td>Como imagem cabe no container</td><td><code>object-fit: contain;</code></td></tr>
+
+<tr><td class="col-index">59</td><td><code>--var-name</code></td><td>Declaração de variável CSS</td><td><code>--cor-primaria: #333;</code></td></tr>
+<tr><td class="col-index">60</td><td><code>var()</code></td><td>Uso de variável CSS</td><td><code>color: var(--cor-primaria);</code></td></tr>
+<tr><td class="col-index">61</td><td><code>calc()</code></td><td>Realiza cálculos matemáticos</td><td><code>width: calc(100% - 20px);</code></td></tr>
+<tr><td class="col-index">62</td><td><code>box-sizing</code></td><td>Define como tamanho é calculado</td><td><code>box-sizing: border-box;</code></td></tr>
+<tr><td class="col-index">63</td><td><code>filter: blur()</code></td><td>Aplica desfoque</td><td><code>filter: blur(5px);</code></td></tr>
+<tr><td class="col-index">64</td><td><code>filter: grayscale()</code></td><td>Deixa o elemento em cinza</td><td><code>filter: grayscale(100%);</code></td></tr>
+<tr><td class="col-index">65</td><td><code>aspect-ratio</code></td><td>Define proporção de tela</td><td><code>aspect-ratio: 16 / 9;</code></td></tr>
+
+<tr><td class="col-index">66</td><td><code>list-style</code></td><td>Estilo de marcadores de lista</td><td><code>list-style: none;</code></td></tr>
+<tr><td class="col-index">67</td><td><code>outline</code></td><td>Linha externa (não afeta layout)</td><td><code>outline: 2px solid blue;</code></td></tr>
+<tr><td class="col-index">68</td><td><code>flex-wrap</code></td><td>Quebra de linha no Flexbox</td><td><code>flex-wrap: wrap;</code></td></tr>
+<tr><td class="col-index">69</td><td><code>grid-area</code></td><td>Nomeia ou posiciona item no Grid</td><td><code>grid-area: header;</code></td></tr>
+<tr><td class="col-index">70</td><td><code>user-select</code></td><td>Controla se o texto pode ser copiado</td><td><code>user-select: none;</code></td></tr>
+<tr><td class="col-index">71</td><td><code>pointer-events</code></td><td>Controla resposta a cliques</td><td><code>pointer-events: none;</code></td></tr>
+<tr><td class="col-index">72</td><td><code>scroll-behavior</code></td><td>Suaviza a rolagem interna</td><td><code>scroll-behavior: smooth;</code></td></tr>
+<tr><td class="col-index">73</td><td><code>clip-path</code></td><td>Corta o elemento em formas</td><td><code>clip-path: circle(50%);</code></td></tr>
+<tr><td class="col-index">74</td><td><code>mix-blend-mode</code></td><td>Como cores se misturam com o fundo</td><td><code>mix-blend-mode: multiply;</code></td></tr>
+<tr><td class="col-index">75</td><td><code>backdrop-filter</code></td><td>Filtro no fundo atrás do elemento</td><td><code>backdrop-filter: blur(10px);</code></td></tr>
+<tr><td class="col-index">76</td><td><code>column-count</code></td><td>Divide texto em colunas</td><td><code>column-count: 3;</code></td></tr>
+<tr><td class="col-index">77</td><td><code>resize</code></td><td>Permite redimensionar elementos</td><td><code>resize: both;</code></td></tr>
+<tr><td class="col-index">78</td><td><code>writing-mode</code></td><td>Direção do texto (vertical/horiz)</td><td><code>writing-mode: vertical-rl;</code></td></tr>
+<tr><td class="col-index">79</td><td><code>accent-color</code></td><td>Cor de inputs (checkbox/radio)</td><td><code>accent-color: green;</code></td></tr>
+<tr><td class="col-index">80</td><td><code>all: unset</code></td><td>Reseta todas as propriedades</td><td><code>all: unset;</code></td></tr>
+<tr><td class="col-index">81</td><td><code>vertical-align</code></td><td>Alinhamento vertical (inline)</td><td><code>vertical-align: middle;</code></td></tr>
+<tr><td class="col-index">82</td><td><code>word-break</code></td><td>Onde quebrar palavras longas</td><td><code>word-break: break-all;</code></td></tr>
+<tr><td class="col-index">83</td><td><code>hyphens</code></td><td>Hifenização automática</td><td><code>hyphens: auto;</code></td></tr>
+<tr><td class="col-index">84</td><td><code>float</code></td><td>Faz elemento flutuar</td><td><code>float: left;</code></td></tr>
+<tr><td class="col-index">85</td><td><code>clear</code></td><td>Limpa efeitos de float</td><td><code>clear: both;</code></td></tr>
+<tr><td class="col-index">86</td><td><code>mask-image</code></td><td>Aplica máscara de transparência</td><td><code>mask-image: linear-gradient(...);</code></td></tr>
+<tr><td class="col-index">87</td><td><code>column-gap</code></td><td>Espaço entre colunas de texto</td><td><code>column-gap: 20px;</code></td></tr>
+<tr><td class="col-index">88</td><td><code>border-collapse</code></td><td>Une bordas de tabelas</td><td><code>border-collapse: collapse;</code></td></tr>
+<tr><td class="col-index">89</td><td><code>empty-cells</code></td><td>Mostra/esconde células vazias</td><td><code>empty-cells: hide;</code></td></tr>
+<tr><td class="col-index">90</td><td><code>caption-side</code></td><td>Posição do título da tabela</td><td><code>caption-side: bottom;</code></td></tr>
+<tr><td class="col-index">91</td><td><code>perspective</code></td><td>Profundidade 3D</td><td><code>perspective: 1000px;</code></td></tr>
+<tr><td class="col-index">92</td><td><code>backface-visibility</code></td><td>Oculta verso de elemento 3D</td><td><code>backface-visibility: hidden;</code></td></tr>
+<tr><td class="col-index">93</td><td><code>isolation</code></td><td>Cria novo contexto de empilhamento</td><td><code>isolation: isolate;</code></td></tr>
+<tr><td class="col-index">94</td><td><code>shape-outside</code></td><td>Envolve texto em formas complexas</td><td><code>shape-outside: circle();</code></td></tr>
+<tr><td class="col-index">95</td><td><code>will-change</code></td><td>Dica ao navegador sobre mudanças</td><td><code>will-change: transform;</code></td></tr>
+<tr><td class="col-index">96</td><td><code>content-visibility</code></td><td>Otimização de renderização</td><td><code>content-visibility: auto;</code></td></tr>
+<tr><td class="col-index">97</td><td><code>contain</code></td><td>Isolamento de performance</td><td><code>contain: paint;</code></td></tr>
+<tr><td class="col-index">98</td><td><code>counter-reset</code></td><td>Cria contadores CSS</td><td><code>counter-reset: seção;</code></td></tr>
+<tr><td class="col-index">99</td><td><code>counter-increment</code></td><td>Incrementa contador</td><td><code>counter-increment: seção;</code></td></tr>
+<tr><td class="col-index">100</td><td><code>!important</code></td><td>Força prioridade máxima</td><td><code>color: red !important;</code></td></tr>
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

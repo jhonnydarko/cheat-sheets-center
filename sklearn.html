@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Scikit-learn Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+/* Estilo opcional para a coluna de índice */
+.col-index { width: 30px; text-align: center; color: #7f8c8d; font-weight: bold; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>⚙️ Scikit-learn Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://scikit-learn.org/stable/" target="_blank">📄 Documentação Oficial do Sklearn</a></p>
+<input type="text" id="search_field" placeholder="Buscar modelo, métrica ou transformador...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th>
+<th>Módulo / Função</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>train_test_split</code></td><td>Divide os dados em conjuntos de treino e teste</td><td><code>X_train, X_test, y_train, y_test = train_test_split(X, y)</code></td></tr>
+<tr><td class="col-index">2</td><td><code>StandardScaler()</code></td><td>Padroniza características (média=0, variância=1)</td><td><code>scaler.fit_transform(X_train)</code></td></tr>
+<tr><td class="col-index">3</td><td><code>LabelEncoder()</code></td><td>Converte rótulos de texto em números (0, 1, 2...)</td><td><code>le.fit_transform(['sim', 'não'])</code></td></tr>
+<tr><td class="col-index">4</td><td><code>OneHotEncoder()</code></td><td>Cria variáveis dummy (binárias) para categorias</td><td><code>ohe.fit_transform(X[['cor']])</code></td></tr>
+
+<tr><td class="col-index">5</td><td><code>LinearRegression()</code></td><td>Regressão Linear simples ou múltipla</td><td><code>model = LinearRegression().fit(X, y)</code></td></tr>
+<tr><td class="col-index">6</td><td><code>RandomForestRegressor()</code></td><td>Regressão usando florestas aleatórias</td><td><code>rf.fit(X_train, y_train)</code></td></tr>
+
+<tr><td class="col-index">7</td><td><code>LogisticRegression()</code></td><td>Classificação Linear (apesar do nome)</td><td><code>clf.fit(X_train, y_train)</code></td></tr>
+<tr><td class="col-index">8</td><td><code>KNeighborsClassifier()</code></td><td>Classificação baseada em vizinhos próximos (KNN)</td><td><code>knn = KNeighborsClassifier(n_neighbors=3)</code></td></tr>
+<tr><td class="col-index">9</td><td><code>SVC()</code></td><td>Máquinas de Vetores de Suporte (Support Vector Machines)</td><td><code>svc.fit(X_train, y_train)</code></td></tr>
+<tr><td class="col-index">10</td><td><code>DecisionTreeClassifier()</code></td><td>Árvore de Decisão para classificação</td><td><code>tree.fit(X_train, y_train)</code></td></tr>
+
+<tr><td class="col-index">11</td><td><code>KMeans()</code></td><td>Agrupa dados em K clusters baseados em distância</td><td><code>kmeans = KMeans(n_clusters=3).fit(X)</code></td></tr>
+
+<tr><td class="col-index">12</td><td><code>.fit(X, y)</code></td><td>Treina o modelo com os dados fornecidos</td><td><code>model.fit(X_train, y_train)</code></td></tr>
+<tr><td class="col-index">13</td><td><code>.predict(X)</code></td><td>Faz previsões para novos dados</td><td><code>y_pred = model.predict(X_test)</code></td></tr>
+<tr><td class="col-index">14</td><td><code>.predict_proba(X)</code></td><td>Retorna a probabilidade de cada classe (classificadores)</td><td><code>model.predict_proba(X_test)</code></td></tr>
+<tr><td class="col-index">15</td><td><code>.score(X, y)</code></td><td>Retorna a precisão média do modelo</td><td><code>model.score(X_test, y_test)</code></td></tr>
+
+<tr><td class="col-index">16</td><td><code>accuracy_score()</code></td><td>Calcula a precisão (acertos totais)</td><td><code>accuracy_score(y_test, y_pred)</code></td></tr>
+<tr><td class="col-index">17</td><td><code>confusion_matrix()</code></td><td>Gera matriz de confusão (Erros Tipo I e II)</td><td><code>confusion_matrix(y_test, y_pred)</code></td></tr>
+<tr><td class="col-index">18</td><td><code>classification_report()</code></td><td>Relatório com Precision, Recall e F1-Score</td><td><code>print(classification_report(y_test, y_pred))</code></td></tr>
+<tr><td class="col-index">19</td><td><code>mean_squared_error()</code></td><td>Erro Quadrático Médio (para regressão)</td><td><code>mse(y_test, y_pred)</code></td></tr>
+
+<tr><td class="col-index">20</td><td><code>GridSearchCV()</code></td><td>Busca exaustiva pelos melhores hiperparâmetros</td><td><code>grid.fit(X_train, y_train)</code></td></tr>
+<tr><td class="col-index">21</td><td><code>cross_val_score()</code></td><td>Avalia o modelo usando validação cruzada</td><td><code>cross_val_score(model, X, y, cv=5)</code></td></tr>
+
+<tr><td class="col-index">22</td><td><code>Pipeline()</code></td><td>Encadeia transformações e modelo final num objeto só</td><td><code>Pipeline([('scaler', StandardScaler()), ('svc', SVC())])</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    // Busca apenas no conteúdo das colunas de texto (ignorando o índice para a busca)
+    let cells = Array.from(row.querySelectorAll("td")).slice(1); 
+    let text = cells.map(td => td.innerText).join(" ").toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

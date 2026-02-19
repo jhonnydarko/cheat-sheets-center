@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Pydot Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+/* Estilo para a coluna de índice */
+.col-index { width: 40px; text-align: center; color: #888; font-weight: bold; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🌿 Pydot Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://github.com/pydot/pydot" target="_blank">📄 Repositório Oficial do Pydot (GitHub)</a></p>
+<input type="text" id="search_field" placeholder="Buscar comando de instalação, método ou atributo pydot...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th class="col-index">#</th>
+<th>Comando / Função / Parâmetro</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>pip install pydot</code></td><td>Instalação da biblioteca via PIP</td><td><code>!pip install pydot</code></td></tr>
+<tr><td class="col-index">2</td><td><code>import pydot</code></td><td>Importa a biblioteca principal</td><td><code>import pydot</code></td></tr>
+<tr><td class="col-index">3</td><td><code>pydot.Dot()</code></td><td>Cria um novo objeto de grafo</td><td><code>graph = pydot.Dot()</code></td></tr>
+<tr><td class="col-index">4</td><td><code>graph_type='graph'</code></td><td>Define o grafo como não direcionado</td><td><code>pydot.Dot(graph_type='graph')</code></td></tr>
+<tr><td class="col-index">5</td><td><code>graph_type='digraph'</code></td><td>Define o grafo como direcionado (padrão)</td><td><code>pydot.Dot(graph_type='digraph')</code></td></tr>
+
+<tr><td class="col-index">6</td><td><code>pydot.Node()</code></td><td>Cria um novo nó</td><td><code>node = pydot.Node("A")</code></td></tr>
+<tr><td class="col-index">7</td><td><code>graph.add_node()</code></td><td>Adiciona um nó ao grafo</td><td><code>graph.add_node(node)</code></td></tr>
+<tr><td class="col-index">8</td><td><code>name=</code></td><td>Define o identificador do nó</td><td><code>pydot.Node(name="Inicio")</code></td></tr>
+<tr><td class="col-index">9</td><td><code>label=</code></td><td>Texto visível dentro do nó</td><td><code>node.set_label("Meu Nó")</code></td></tr>
+<tr><td class="col-index">10</td><td><code>shape='box'</code></td><td>Define o formato do nó como caixa</td><td><code>node.set_shape('box')</code></td></tr>
+<tr><td class="col-index">11</td><td><code>shape='circle'</code></td><td>Define o formato como círculo</td><td><code>node.set_shape('circle')</code></td></tr>
+<tr><td class="col-index">12</td><td><code>shape='ellipse'</code></td><td>Define o formato como elipse</td><td><code>node.set_shape('ellipse')</code></td></tr>
+<tr><td class="col-index">13</td><td><code>shape='diamond'</code></td><td>Define o formato como diamante</td><td><code>node.set_shape('diamond')</code></td></tr>
+<tr><td class="col-index">14</td><td><code>style='filled'</code></td><td>Preenche o interior do nó</td><td><code>node.set_style('filled')</code></td></tr>
+<tr><td class="col-index">15</td><td><code>fillcolor=</code></td><td>Cor de preenchimento do nó</td><td><code>node.set_fillcolor('lightblue')</code></td></tr>
+<tr><td class="col-index">16</td><td><code>color=</code></td><td>Cor da borda do nó</td><td><code>node.set_color('red')</code></td></tr>
+<tr><td class="col-index">17</td><td><code>fontcolor=</code></td><td>Cor do texto do nó</td><td><code>node.set_fontcolor('blue')</code></td></tr>
+<tr><td class="col-index">18</td><td><code>fontsize=</code></td><td>Tamanho da fonte do nó</td><td><code>node.set_fontsize(12)</code></td></tr>
+
+<tr><td class="col-index">19</td><td><code>pydot.Edge()</code></td><td>Cria uma conexão entre dois nós</td><td><code>edge = pydot.Edge("A", "B")</code></td></tr>
+<tr><td class="col-index">20</td><td><code>graph.add_edge()</code></td><td>Adiciona a aresta ao grafo</td><td><code>graph.add_edge(edge)</code></td></tr>
+<tr><td class="col-index">21</td><td><code>label=</code></td><td>Adiciona texto à linha da aresta</td><td><code>edge.set_label("conexão")</code></td></tr>
+<tr><td class="col-index">22</td><td><code>color=</code></td><td>Define a cor da linha da aresta</td><td><code>edge.set_color('green')</code></td></tr>
+<tr><td class="col-index">23</td><td><code>arrowhead=</code></td><td>Estilo da ponta da seta</td><td><code>edge.set_arrowhead('vee')</code></td></tr>
+<tr><td class="col-index">24</td><td><code>arrowsize=</code></td><td>Tamanho da ponta da seta</td><td><code>edge.set_arrowsize(2)</code></td></tr>
+<tr><td class="col-index">25</td><td><code>style='dashed'</code></td><td>Linha da aresta tracejada</td><td><code>edge.set_style('dashed')</code></td></tr>
+<tr><td class="col-index">26</td><td><code>style='dotted'</code></td><td>Linha da aresta pontilhada</td><td><code>edge.set_style('dotted')</code></td></tr>
+<tr><td class="col-index">27</td><td><code>penwidth=</code></td><td>Espessura da linha da aresta</td><td><code>edge.set_penwidth(2.5)</code></td></tr>
+<tr><td class="col-index">28</td><td><code>dir='both'</code></td><td>Direção da seta (both, forward, back, none)</td><td><code>edge.set_dir('both')</code></td></tr>
+
+<tr><td class="col-index">29</td><td><code>graph.write_raw()</code></td><td>Salva o código DOT puro em arquivo</td><td><code>graph.write_raw('file.dot')</code></td></tr>
+<tr><td class="col-index">30</td><td><code>graph.write_png()</code></td><td>Exporta o grafo como imagem PNG</td><td><code>graph.write_png('output.png')</code></td></tr>
+<tr><td class="col-index">31</td><td><code>graph.write_pdf()</code></td><td>Exporta o grafo como PDF</td><td><code>graph.write_pdf('output.pdf')</code></td></tr>
+<tr><td class="col-index">32</td><td><code>graph.write_svg()</code></td><td>Exporta o grafo como vetor SVG</td><td><code>graph.write_svg('output.svg')</code></td></tr>
+<tr><td class="col-index">33</td><td><code>graph.write_jpg()</code></td><td>Exporta o grafo como imagem JPG</td><td><code>graph.write_jpg('output.jpg')</code></td></tr>
+<tr><td class="col-index">34</td><td><code>graph.to_string()</code></td><td>Retorna a representação DOT em string</td><td><code>print(graph.to_string())</code></td></tr>
+<tr><td class="col-index">35</td><td><code>pydot.graph_from_dot_file()</code></td><td>Lê um arquivo .dot e cria um objeto</td><td><code>g = pydot.graph_from_dot_file('in.dot')</code></td></tr>
+<tr><td class="col-index">36</td><td><code>pydot.graph_from_dot_data()</code></td><td>Cria grafo a partir de string DOT</td><td><code>g = pydot.graph_from_dot_data(data)</code></td></tr>
+
+<tr><td class="col-index">37</td><td><code>rankdir='LR'</code></td><td>Orientação Esquerda para Direita</td><td><code>graph.set_rankdir('LR')</code></td></tr>
+<tr><td class="col-index">38</td><td><code>rankdir='TB'</code></td><td>Orientação Cima para Baixo (Padrão)</td><td><code>graph.set_rankdir('TB')</code></td></tr>
+<tr><td class="col-index">39</td><td><code>bgcolor=</code></td><td>Cor de fundo do grafo</td><td><code>graph.set_bgcolor('ivory')</code></td></tr>
+<tr><td class="col-index">40</td><td><code>label=</code></td><td>Título global do grafo</td><td><code>graph.set_label('Meu Fluxograma')</code></td></tr>
+<tr><td class="col-index">41</td><td><code>labelloc='t'</code></td><td>Posição do título (t: topo, b: base)</td><td><code>graph.set_labelloc('t')</code></td></tr>
+<tr><td class="col-index">42</td><td><code>nodesep=</code></td><td>Espaço entre nós em polegadas</td><td><code>graph.set_nodesep(0.5)</code></td></tr>
+<tr><td class="col-index">43</td><td><code>ranksep=</code></td><td>Espaço entre níveis do grafo</td><td><code>graph.set_ranksep(1.0)</code></td></tr>
+<tr><td class="col-index">44</td><td><code>splines='ortho'</code></td><td>Arestas em ângulos retos</td><td><code>graph.set_splines('ortho')</code></td></tr>
+<tr><td class="col-index">45</td><td><code>concentrate=True</code></td><td>Mescla arestas paralelas em uma</td><td><code>graph.set_concentrate(True)</code></td></tr>
+
+<tr><td class="col-index">46</td><td><code>pydot.Cluster()</code></td><td>Cria um grupo de nós (caixa visual)</td><td><code>cluster = pydot.Cluster('c1')</code></td></tr>
+<tr><td class="col-index">47</td><td><code>graph.add_subgraph()</code></td><td>Adiciona um subgrafo ao principal</td><td><code>graph.add_subgraph(cluster)</code></td></tr>
+<tr><td class="col-index">48</td><td><code>label=</code></td><td>Rótulo do cluster</td><td><code>cluster.set_label('Módulo A')</code></td></tr>
+
+<tr><td class="col-index">49</td><td><code>graph.get_nodes()</code></td><td>Retorna lista de todos os nós</td><td><code>nodes = graph.get_nodes()</code></td></tr>
+<tr><td class="col-index">50</td><td><code>graph.get_edges()</code></td><td>Retorna lista de todas as arestas</td><td><code>edges = graph.get_edges()</code></td></tr>
+<tr><td class="col-index">51</td><td><code>graph.get_node()</code></td><td>Busca um nó específico pelo nome</td><td><code>n = graph.get_node('A')[0]</code></td></tr>
+<tr><td class="col-index">52</td><td><code>graph.get_subgraphs()</code></td><td>Retorna lista de subgrafos</td><td><code>subs = graph.get_subgraphs()</code></td></tr>
+<tr><td class="col-index">53</td><td><code>graph.del_node()</code></td><td>Remove um nó do grafo</td><td><code>graph.del_node('A')</code></td></tr>
+<tr><td class="col-index">54</td><td><code>graph.del_edge()</code></td><td>Remove uma aresta específica</td><td><code>graph.del_edge('A', 'B')</code></td></tr>
+
+<tr><td class="col-index">55</td><td><code>shape='plaintext'</code></td><td>Nó sem bordas, apenas texto</td><td><code>node.set_shape('plaintext')</code></td></tr>
+<tr><td class="col-index">56</td><td><code>fixedsize=True</code></td><td>Força o tamanho fixo do nó</td><td><code>node.set_fixedsize(True)</code></td></tr>
+<tr><td class="col-index">57</td><td><code>width=</code></td><td>Largura do nó</td><td><code>node.set_width(1.5)</code></td></tr>
+<tr><td class="col-index">58</td><td><code>height=</code></td><td>Altura do nó</td><td><code>node.set_height(0.5)</code></td></tr>
+<tr><td class="col-index">59</td><td><code>peripheries=</code></td><td>Número de bordas concêntricas</td><td><code>node.set_peripheries(2)</code></td></tr>
+<tr><td class="col-index">60</td><td><code>tooltip=</code></td><td>Texto ao passar o mouse (SVG/HTML)</td><td><code>node.set_tooltip('Dica')</code></td></tr>
+
+<tr><td class="col-index">61</td><td><code>constraint='false'</code></td><td>Aresta não afeta o layout do ranking</td><td><code>edge.set_constraint('false')</code></td></tr>
+<tr><td class="col-index">62</td><td><code>weight=</code></td><td>Peso da aresta (importância no layout)</td><td><code>edge.set_weight(10)</code></td></tr>
+<tr><td class="col-index">63</td><td><code>minlen=</code></td><td>Comprimento mínimo da aresta</td><td><code>edge.set_minlen(2)</code></td></tr>
+<tr><td class="col-index">64</td><td><code>headlabel=</code></td><td>Rótulo próximo à ponta da seta</td><td><code>edge.set_headlabel('fim')</code></td></tr>
+<tr><td class="col-index">65</td><td><code>taillabel=</code></td><td>Rótulo próximo ao início da seta</td><td><code>edge.set_taillabel('inicio')</code></td></tr>
+<tr><td class="col-index">66</td><td><code>labeldistance=</code></td><td>Distância dos rótulos auxiliares</td><td><code>edge.set_labeldistance(3)</code></td></tr>
+<tr><td class="col-index">67</td><td><code>labelangle=</code></td><td>Ângulo dos rótulos auxiliares</td><td><code>edge.set_labelangle(45)</code></td></tr>
+
+<tr><td class="col-index">68</td><td><code>fontname=</code></td><td>Define a família da fonte</td><td><code>node.set_fontname('Arial')</code></td></tr>
+<tr><td class="col-index">69</td><td><code>color='transparent'</code></td><td>Torna a borda invisível</td><td><code>node.set_color('transparent')</code></td></tr>
+<tr><td class="col-index">70</td><td><code>colorscheme=</code></td><td>Usa esquemas de cores pré-definidos</td><td><code>node.set_colorscheme('spectral9')</code></td></tr>
+
+<tr><td class="col-index">71</td><td><code>pydot.__version__</code></td><td>Verifica a versão instalada</td><td><code>pydot.__version__</code></td></tr>
+<tr><td class="col-index">72</td><td><code>pydot.find_graphviz()</code></td><td>Tenta localizar os binários do Graphviz</td><td><code>pydot.find_graphviz()</code></td></tr>
+<tr><td class="col-index">73</td><td><code>graph.create_png()</code></td><td>Retorna bytes da imagem PNG em memória</td><td><code>img_bytes = graph.create_png()</code></td></tr>
+<tr><td class="col-index">74</td><td><code>graph.create_dot()</code></td><td>Retorna bytes do formato DOT</td><td><code>dot_bytes = graph.create_dot()</code></td></tr>
+<tr><td class="col-index">75</td><td><code>prog='dot'</code></td><td>Usa o motor de layout DOT</td><td><code>graph.write_png('f.png', prog='dot')</code></td></tr>
+<tr><td class="col-index">76</td><td><code>prog='neato'</code></td><td>Usa motor de layout de mola</td><td><code>graph.write_png('f.png', prog='neato')</code></td></tr>
+<tr><td class="col-index">77</td><td><code>prog='fdp'</code></td><td>Layout para grafos não direcionados</td><td><code>graph.write_png('f.png', prog='fdp')</code></td></tr>
+<tr><td class="col-index">78</td><td><code>prog='sfdp'</code></td><td>Layout para grafos gigantes</td><td><code>graph.write_png('f.png', prog='sfdp')</code></td></tr>
+<tr><td class="col-index">79</td><td><code>prog='twopi'</code></td><td>Layout radial</td><td><code>graph.write_png('f.png', prog='twopi')</code></td></tr>
+<tr><td class="col-index">80</td><td><code>prog='circo'</code></td><td>Layout circular</td><td><code>graph.write_png('f.png', prog='circo')</code></td></tr>
+<tr><td class="col-index">81</td><td><code>node.get_attributes()</code></td><td>Retorna dicionário de atributos do nó</td><td><code>attrs = node.get_attributes()</code></td></tr>
+<tr><td class="col-index">82</td><td><code>edge.get_source()</code></td><td>Retorna o nome do nó de origem</td><td><code>src = edge.get_source()</code></td></tr>
+<tr><td class="col-index">83</td><td><code>edge.get_destination()</code></td><td>Retorna o nome do nó de destino</td><td><code>dst = edge.get_destination()</code></td></tr>
+<tr><td class="col-index">84</td><td><code>graph.set_type()</code></td><td>Muda tipo para 'graph' ou 'digraph'</td><td><code>graph.set_type('graph')</code></td></tr>
+<tr><td class="col-index">85</td><td><code>pydot.quote_if_necessary()</code></td><td>Escapa strings para sintaxe DOT</td><td><code>pydot.quote_if_necessary('Nó 1')</code></td></tr>
+<tr><td class="col-index">86</td><td><code>comment=</code></td><td>Adiciona comentário no arquivo DOT</td><td><code>graph.set_comment('Gerado via Python')</code></td></tr>
+<tr><td class="col-index">87</td><td><code>overlap='false'</code></td><td>Evita sobreposição de nós (layouts não-dot)</td><td><code>graph.set_overlap('false')</code></td></tr>
+<tr><td class="col-index">88</td><td><code>ratio='fill'</code></td><td>Ajusta proporção da imagem</td><td><code>graph.set_ratio('fill')</code></td></tr>
+<tr><td class="col-index">89</td><td><code>size="10,10!"</code></td><td>Força tamanho máximo da imagem final</td><td><code>graph.set_size("10,10!")</code></td></tr>
+<tr><td class="col-index">90</td><td><code>charset="UTF-8"</code></td><td>Define codificação de caracteres</td><td><code>graph.set_charset("UTF-8")</code></td></tr>
+<tr><td class="col-index">91</td><td><code>pydot.call_graphviz()</code></td><td>Chamada direta de baixo nível ao Graphviz</td><td><code>pydot.call_graphviz('dot', ...)</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

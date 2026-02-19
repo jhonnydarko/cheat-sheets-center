@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Matplotlib Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+/* Estilo para a nova coluna de índice */
+td:first-child, th:first-child { text-align: center; width: 40px; font-weight: bold; background: #fcfcfc; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🎨 Matplotlib Cheat Sheet (pyplot)</h1>
+<p style="text-align:left;"><a href="https://matplotlib.org/stable/contents.html" target="_blank">📄 Documentação Oficial do Matplotlib</a></p>
+<input type="text" id="search_field" placeholder="Buscar comando, tipo de gráfico ou parâmetro...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th>#</th>
+<th>Comando / Função</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td>1</td><td><code>plt.figure()</code></td><td>Cria uma nova figura (janela do gráfico)</td><td><code>plt.figure(figsize=(8,4))</code></td></tr>
+<tr><td>2</td><td><code>plt.subplots()</code></td><td>Cria figura e eixos simultaneamente (Orientado a Objetos)</td><td><code>fig, ax = plt.subplots()</code></td></tr>
+<tr><td>3</td><td><code>plt.show()</code></td><td>Exibe o gráfico na tela</td><td><code>plt.show()</code></td></tr>
+<tr><td>4</td><td><code>plt.savefig()</code></td><td>Salva o gráfico em arquivo (PNG, PDF, SVG)</td><td><code>plt.savefig('plot.png', dpi=300)</code></td></tr>
+
+<tr><td>5</td><td><code>plt.plot()</code></td><td>Gráfico de linha básico</td><td><code>plt.plot(x, y, label='Seno')</code></td></tr>
+<tr><td>6</td><td><code>plt.scatter()</code></td><td>Gráfico de dispersão (pontos)</td><td><code>plt.scatter(x, y, color='red')</code></td></tr>
+<tr><td>7</td><td><code>plt.bar() / plt.barh()</code></td><td>Gráfico de barras verticais / horizontais</td><td><code>plt.bar(categorias, valores)</code></td></tr>
+<tr><td>8</td><td><code>plt.hist()</code></td><td>Histograma de frequências</td><td><code>plt.hist(dados, bins=20)</code></td></tr>
+<tr><td>9</td><td><code>plt.boxplot()</code></td><td>Diagrama de caixa (estatística)</td><td><code>plt.boxplot(dados)</code></td></tr>
+<tr><td>10</td><td><code>plt.pie()</code></td><td>Gráfico de pizza</td><td><code>plt.pie(fatias, labels=labels)</code></td></tr>
+<tr><td>11</td><td><code>plt.stackplot()</code></td><td>Gráfico de áreas empilhadas</td><td><code>plt.stackplot(x, y1, y2)</code></td></tr>
+<tr><td>12</td><td><code>plt.errorbar()</code></td><td>Gráfico de linha com barras de erro</td><td><code>plt.errorbar(x, y, yerr=0.2)</code></td></tr>
+
+<tr><td>13</td><td><code>plt.title()</code></td><td>Adiciona um título ao gráfico</td><td><code>plt.title('Vendas 2024')</code></td></tr>
+<tr><td>14</td><td><code>plt.xlabel() / plt.ylabel()</code></td><td>Nomeia os eixos X e Y</td><td><code>plt.xlabel('Meses')</code></td></tr>
+<tr><td>15</td><td><code>plt.legend()</code></td><td>Exibe a legenda (baseada no 'label' dos plots)</td><td><code>plt.legend(loc='upper right')</code></td></tr>
+<tr><td>16</td><td><code>plt.grid()</code></td><td>Adiciona linhas de grade</td><td><code>plt.grid(True, linestyle='--')</code></td></tr>
+<tr><td>17</td><td><code>plt.xlim() / plt.ylim()</code></td><td>Define os limites visíveis dos eixos</td><td><code>plt.xlim(0, 100)</code></td></tr>
+<tr><td>18</td><td><code>plt.xticks() / plt.yticks()</code></td><td>Define os marcadores (ticks) dos eixos</td><td><code>plt.xticks([0, 1, 2], ['A', 'B', 'C'])</code></td></tr>
+
+<tr><td>19</td><td><code>color=</code> / <code>c=</code></td><td>Define a cor (ex: 'r', 'blue', '#FFFFFF')</td><td><code>color='green'</code></td></tr>
+<tr><td>20</td><td><code>linestyle=</code> / <code>ls=</code></td><td>Estilo da linha ('-', '--', ':', '-.')</td><td><code>ls='--'</code></td></tr>
+<tr><td>21</td><td><code>linewidth=</code> / <code>lw=</code></td><td>Espessura da linha</td><td><code>lw=2.5</code></td></tr>
+<tr><td>22</td><td><code>marker=</code></td><td>Símbolo do ponto ('o', 's', '^', 'x', '*')</td><td><code>marker='o'</code></td></tr>
+<tr><td>23</td><td><code>alpha=</code></td><td>Transparência (0.0 a 1.0)</td><td><code>alpha=0.5</code></td></tr>
+
+<tr><td>24</td><td><code>plt.subplot()</code></td><td>Adiciona um subplot em uma grade (estilo funcional)</td><td><code>plt.subplot(2, 1, 1)</code></td></tr>
+<tr><td>25</td><td><code>plt.tight_layout()</code></td><td>Ajusta automaticamente o espaçamento entre subplots</td><td><code>plt.tight_layout()</code></td></tr>
+<tr><td>26</td><td><code>plt.clf() / plt.close()</code></td><td>Limpa a figura atual / Fecha a janela</td><td><code>plt.close()</code></td></tr>
+
+<tr><td>27</td><td><code>plt.style.use()</code></td><td>Aplica um tema visual pré-definido</td><td><code>plt.style.use('ggplot')</code></td></tr>
+<tr><td>28</td><td><code>plt.style.available</code></td><td>Lista todos os estilos disponíveis</td><td><code>plt.style.available</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>

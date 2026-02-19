@@ -1,0 +1,69 @@
+
+<!-- ===================== BLOCO INCIAL ===================== -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>xxxxxxxxxxxx Cheat Sheet</title>
+
+<style>
+body { font-family: Arial; padding: 20px; background: #f4f4f4; }
+input { width: 100%; padding: 10px; margin-bottom: 20px; }
+table { width: 100%; border-collapse: collapse; background: white; }
+th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+th { background: #222; color: white; }
+tr:hover { background: #eee; }
+</style>
+</head>
+
+<!-- ===================== FIM BLOCO INCIAL ===================== -->
+
+<!-- MENU PADRÃO PARA TODAS AS PÁGINAS -->
+<nav>
+  <div class="links">
+    <a href="index.html">Home</a>
+  </div>
+</nav>
+
+<!-- ===================== LINGUAGEM CABEÇALHO ===================== -->
+<h1>🧠 xxxxxxxxxxxx Cheat Sheet</h1>
+
+<input type="text" id="search_field" placeholder="Buscar comando xxxxxxxxxxxx...">
+
+<table id="LeanguageTable">
+<tr>
+<th>Comando / Função</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+
+</thead>
+
+<!-- ===================== LINGUAGEM CABEÇALHO ===================== -->
+
+<tbody>
+
+
+
+</tbody>
+</table>
+
+<!-- ===================== FIM LINGUAGEM ===================== -->
+
+<!-- ===================== BUSCADOR ===================== -->
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tr");
+  for (let i = 1; i < rows.length; i++) {
+    let text = rows[i].innerText.toLowerCase();
+    rows[i].style.display = text.includes(filter) ? "" : "none";
+  }
+});
+</script>
+
+<!-- ===================== FIM BUSCADOR ===================== -->
+
+</body>
+</html>
