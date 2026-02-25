@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>dbt Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+.col-index { width: 40px; text-align: center; font-weight: bold; color: #7f8c8d; background: #f9f9f9; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="home.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🔨 dbt Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://docs.getdbt.com/" target="_blank">📄 Documentação Oficial do dbt</a></p>
+<input type="text" id="search_field" placeholder="Buscar comando, macro ou configuração...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th style="width: 30px;">#</th> <th>Comando / Função</th>
+<th>Descrição</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>pip install dbt-core</code></td><td>Instala o motor principal do dbt</td><td><code>pip install dbt-core</code></td></tr>
+<tr><td class="col-index">2</td><td><code>pip install dbt-postgres</code></td><td>Instala o conector para PostgreSQL</td><td><code>pip install dbt-postgres</code></td></tr>
+<tr><td class="col-index">3</td><td><code>pip install dbt-snowflake</code></td><td>Instala o conector para Snowflake</td><td><code>pip install dbt-snowflake</code></td></tr>
+<tr><td class="col-index">4</td><td><code>pip install dbt-bigquery</code></td><td>Instala o conector para BigQuery</td><td><code>pip install dbt-bigquery</code></td></tr>
+<tr><td class="col-index">5</td><td><code>pip install dbt-redshift</code></td><td>Instala o conector para Redshift</td><td><code>pip install dbt-redshift</code></td></tr>
+<tr><td class="col-index">6</td><td><code>dbt init</code></td><td>Cria a estrutura de pastas de um novo projeto</td><td><code>dbt init analytics_v1</code></td></tr>
+<tr><td class="col-index">7</td><td><code>dbt debug</code></td><td>Testa a conexão e valida o arquivo profiles.yml</td><td><code>dbt debug</code></td></tr>
+<tr><td class="col-index">8</td><td><code>dbt deps</code></td><td>Baixa pacotes externos (como dbt_utils)</td><td><code>dbt deps</code></td></tr>
+<tr><td class="col-index">9</td><td><code>dbt clean</code></td><td>Apaga as pastas dbt_packages e logs</td><td><code>dbt clean</code></td></tr>
+<tr><td class="col-index">10</td><td><code>dbt --version</code></td><td>Verifica as versões instaladas</td><td><code>dbt --version</code></td></tr>
+
+<tr><td class="col-index">11</td><td><code>dbt run</code></td><td>Compila e executa modelos no banco</td><td><code>dbt run</code></td></tr>
+<tr><td class="col-index">12</td><td><code>dbt test</code></td><td>Roda testes de integridade e dados</td><td><code>dbt test</code></td></tr>
+<tr><td class="col-index">13</td><td><code>dbt seed</code></td><td>Carrega CSVs da pasta /seeds para o banco</td><td><code>dbt seed</code></td></tr>
+<tr><td class="col-index">14</td><td><code>dbt build</code></td><td>Executa run, test, seed e snapshot em ordem</td><td><code>dbt build</code></td></tr>
+<tr><td class="col-index">15</td><td><code>dbt snapshot</code></td><td>Roda capturas de histórico (SCD Type 2)</td><td><code>dbt snapshot</code></td></tr>
+<tr><td class="col-index">16</td><td><code>dbt docs generate</code></td><td>Gera o catálogo de documentação JSON</td><td><code>dbt docs generate</code></td></tr>
+<tr><td class="col-index">17</td><td><code>dbt docs serve</code></td><td>Inicia site local com o grafo de linhagem</td><td><code>dbt docs serve</code></td></tr>
+<tr><td class="col-index">18</td><td><code>dbt compile</code></td><td>Converte Jinja para SQL puro sem rodar</td><td><code>dbt compile</code></td></tr>
+<tr><td class="col-index">19</td><td><code>dbt list</code></td><td>Lista todos os recursos do projeto</td><td><code>dbt ls</code></td></tr>
+<tr><td class="col-index">20</td><td><code>dbt parse</code></td><td>Analisa o projeto apenas para ver erros de sintaxe</td><td><code>dbt parse</code></td></tr>
+<tr><td class="col-index">21</td><td><code>dbt source freshness</code></td><td>Verifica o atraso das tabelas de origem</td><td><code>dbt source freshness</code></td></tr>
+<tr><td class="col-index">22</td><td><code>dbt run-operation</code></td><td>Executa uma macro específica manualmente</td><td><code>dbt run-operation my_macro</code></td></tr>
+<tr><td class="col-index">23</td><td><code>dbt show</code></td><td>Mostra prévia do resultado de um modelo</td><td><code>dbt show --select stg_users</code></td></tr>
+<tr><td class="col-index">24</td><td><code>dbt retry</code></td><td>Executa apenas o que falhou na rodada anterior</td><td><code>dbt retry</code></td></tr>
+<tr><td class="col-index">25</td><td><code>dbt run --full-refresh</code></td><td>Recria tabelas incrementais do zero</td><td><code>dbt run --full-refresh</code></td></tr>
+
+<tr><td class="col-index">26</td><td><code>--select model_name</code></td><td>Filtra por um modelo específico</td><td><code>dbt run -s orders</code></td></tr>
+<tr><td class="col-index">27</td><td><code>--select path.to.models</code></td><td>Roda todos os modelos de uma pasta</td><td><code>dbt run -s models/marts</code></td></tr>
+<tr><td class="col-index">28</td><td><code>--select model+</code></td><td>Roda o modelo e todos os filhos dele</td><td><code>dbt run -s users+</code></td></tr>
+<tr><td class="col-index">29</td><td><code>--select +model</code></td><td>Roda o modelo e todos os pais dele</td><td><code>dbt run -s +orders</code></td></tr>
+<tr><td class="col-index">30</td><td><code>--select @model</code></td><td>Roda o modelo, pais, filhos e dependentes indiretos</td><td><code>dbt run -s @orders</code></td></tr>
+<tr><td class="col-index">31</td><td><code>--exclude model</code></td><td>Roda tudo exceto o modelo citado</td><td><code>dbt run --exclude heavy_model</code></td></tr>
+<tr><td class="col-index">32</td><td><code>--select tag:finance</code></td><td>Roda modelos marcados com uma tag</td><td><code>dbt run -s tag:finance</code></td></tr>
+<tr><td class="col-index">33</td><td><code>--select config.materialized:table</code></td><td>Filtra por tipo de materialização</td><td><code>dbt run -s config.materialized:table</code></td></tr>
+<tr><td class="col-index">34</td><td><code>--select source:my_src+</code></td><td>Roda tudo que depende de uma fonte específica</td><td><code>dbt run -s source:erp+</code></td></tr>
+<tr><td class="col-index">35</td><td><code>--select state:modified</code></td><td>Roda apenas o que foi alterado (Git)</td><td><code>dbt run -s state:modified</code></td></tr>
+<tr><td class="col-index">36</td><td><code>--target prod</code></td><td>Muda o ambiente de execução</td><td><code>dbt run -t prod</code></td></tr>
+<tr><td class="col-index">37</td><td><code>--vars '{"key": "val"}'</code></td><td>Passa variáveis para o código via CLI</td><td><code>dbt run --vars '{"date": "2023-01-01"}'</code></td></tr>
+<tr><td class="col-index">38</td><td><code>--threads 8</code></td><td>Define o número de consultas paralelas</td><td><code>dbt run --threads 8</code></td></tr>
+<tr><td class="col-index">39</td><td><code>--fail-fast</code></td><td>Para tudo no primeiro erro encontrado</td><td><code>dbt run --fail-fast</code></td></tr>
+<tr><td class="col-index">40</td><td><code>--quiet</code></td><td>Reduz a saída de log no terminal</td><td><code>dbt run --quiet</code></td></tr>
+
+<tr><td class="col-index">41</td><td><code>{{ ref('') }}</code></td><td>Referencia outro modelo dbt</td><td><code>from {{ ref('stg_sales') }}</code></td></tr>
+<tr><td class="col-index">42</td><td><code>{{ source('', '') }}</code></td><td>Referencia uma tabela bruta (Source)</td><td><code>from {{ source('raw', 'logs') }}</code></td></tr>
+<tr><td class="col-index">43</td><td><code>{{ config() }}</code></td><td>Define propriedades do modelo</td><td><code>{{ config(materialized='view') }}</code></td></tr>
+<tr><td class="col-index">44</td><td><code>{{ var('') }}</code></td><td>Usa variável definida no dbt_project.yml</td><td><code>where dt > '{{ var("start_date") }}'</code></td></tr>
+<tr><td class="col-index">45</td><td><code>{{ env_var('') }}</code></td><td>Busca valor do sistema operacional</td><td><code>{{ env_var('DB_PASSWORD') }}</code></td></tr>
+<tr><td class="col-index">46</td><td><code>{% set var = ... %}</code></td><td>Cria variável local no arquivo</td><td><code>{% set total = 100 %}</code></td></tr>
+<tr><td class="col-index">47</td><td><code>{% if ... %}{% endif %}</code></td><td>Bloco condicional Jinja</td><td><code>{% if target.name == 'dev' %}</code></td></tr>
+<tr><td class="col-index">48</td><td><code>{% for i in ... %}</code></td><td>Loop para repetir código SQL</td><td><code>{% for col in ['id', 'name'] %}</code></td></tr>
+<tr><td class="col-index">49</td><td><code>{{ target.name }}</code></td><td>Retorna o nome do perfil ativo</td><td><code>{{ target.name }}</code></td></tr>
+<tr><td class="col-index">50</td><td><code>{{ target.schema }}</code></td><td>Retorna o schema padrão atual</td><td><code>{{ target.schema }}</code></td></tr>
+<tr><td class="col-index">51</td><td><code>{{ this }}</code></td><td>Refere-se ao nome da própria tabela atual</td><td><code>insert into {{ this }}</code></td></tr>
+<tr><td class="col-index">52</td><td><code>is_incremental()</code></td><td>Checa se é uma rodada incremental</td><td><code>{% if is_incremental() %}</code></td></tr>
+<tr><td class="col-index">53</td><td><code>{{ log("msg") }}</code></td><td>Escreve no console durante a compilação</td><td><code>{{ log("Rodando...", info=True) }}</code></td></tr>
+<tr><td class="col-index">54</td><td><code>{{ return() }}</code></td><td>Retorna um valor em uma macro</td><td><code>{{ return(my_val) }}</code></td></tr>
+<tr><td class="col-index">55</td><td><code>{% macro name() %}</code></td><td>Inicia definição de uma função reutilizável</td><td><code>{% macro grant_select() %}</code></td></tr>
+<tr><td class="col-index">56</td><td><code>adapter.dispatch()</code></td><td>Escolhe macro baseada no tipo de banco</td><td><code>{{ adapter.dispatch('macro_name')() }}</code></td></tr>
+<tr><td class="col-index">57</td><td><code>run_query()</code></td><td>Executa SQL e traz os dados para o Jinja</td><td><code>{% set res = run_query(sql) %}</code></td></tr>
+<tr><td class="col-index">58</td><td><code>execute</code></td><td>Flag que indica se o dbt está em execução</td><td><code>{% if execute %}</code></td></tr>
+<tr><td class="col-index">59</td><td><code>exceptions.raise_compiler_error</code></td><td>Gera erro e para o processo</td><td><code>{{ exceptions.raise_compiler_error("Erro!") }}</code></td></tr>
+<tr><td class="col-index">60</td><td><code>{{ doc('') }}</code></td><td>Importa descrição de um arquivo markdown</td><td><code>description: '{{ doc("orders_doc") }}'</code></td></tr>
+
+<tr><td class="col-index">61</td><td><code>materialized='table'</code></td><td>Cria uma tabela física</td><td><code>config(materialized='table')</code></td></tr>
+<tr><td class="col-index">62</td><td><code>materialized='view'</code></td><td>Cria uma visão lógica</td><td><code>config(materialized='view')</code></td></tr>
+<tr><td class="col-index">63</td><td><code>materialized='incremental'</code></td><td>Apenas anexa novos dados</td><td><code>config(materialized='incremental')</code></td></tr>
+<tr><td class="col-index">64</td><td><code>materialized='ephemeral'</code></td><td>Vira uma CTE em outros modelos</td><td><code>config(materialized='ephemeral')</code></td></tr>
+<tr><td class="col-index">65</td><td><code>unique_key</code></td><td>Define chave para update incremental</td><td><code>unique_key='id'</code></td></tr>
+<tr><td class="col-index">66</td><td><code>incremental_strategy</code></td><td>Estratégia: merge, delete+insert ou append</td><td><code>incremental_strategy='merge'</code></td></tr>
+<tr><td class="col-index">67</td><td><code>on_schema_change</code></td><td>Como lidar com colunas novas no incremental</td><td><code>on_schema_change='fail'</code></td></tr>
+<tr><td class="col-index">68</td><td><code>pre_hook</code></td><td>SQL que roda ANTES do modelo</td><td><code>pre_hook="sql_aqui"</code></td></tr>
+<tr><td class="col-index">69</td><td><code>post_hook</code></td><td>SQL que roda DEPOIS do modelo</td><td><code>post_hook="grant select..."</code></td></tr>
+<tr><td class="col-index">70</td><td><code>alias</code></td><td>Muda o nome da tabela no banco final</td><td><code>config(alias='vendas_final')</code></td></tr>
+<tr><td class="col-index">71</td><td><code>schema</code></td><td>Define um schema específico para o modelo</td><td><code>config(schema='marketing')</code></td></tr>
+<tr><td class="col-index">72</td><td><code>database</code></td><td>Define o banco de dados/database final</td><td><code>config(database='raw_zone')</code></td></tr>
+<tr><td class="col-index">73</td><td><code>tags: []</code></td><td>Agrupa modelos para seleção facilitada</td><td><code>tags: ['daily', 'pii']</code></td></tr>
+<tr><td class="col-index">74</td><td><code>not_null</code></td><td>Teste de valor não nulo (YAML)</td><td><code>- tests: [not_null]</code></td></tr>
+<tr><td class="col-index">75</td><td><code>unique</code></td><td>Teste de valores únicos (YAML)</td><td><code>- tests: [unique]</code></td></tr>
+<tr><td class="col-index">76</td><td><code>accepted_values</code></td><td>Teste de lista de valores permitidos</td><td><code>values: ['shipped', 'placed']</code></td></tr>
+<tr><td class="col-index">77</td><td><code>relationships</code></td><td>Teste de chave estrangeira</td><td><code>to: ref('users'), field: id</code></td></tr>
+<tr><td class="col-index">78</td><td><code>severity: warn</code></td><td>Faz o teste não falhar o pipeline</td><td><code>severity: warn</code></td></tr>
+<tr><td class="col-index">79</td><td><code>persist_docs</code></td><td>Leva descrições para os comentários do banco</td><td><code>persist_docs: {"columns": true}</code></td></tr>
+<tr><td class="col-index">80</td><td><code>quote: true</code></td><td>Força aspas em nomes de colunas</td><td><code>quote: true</code></td></tr>
+
+<tr><td class="col-index">81</td><td><code>dbt_utils.surrogate_key</code></td><td>Cria hash MD5 de colunas</td><td><code>{{ dbt_utils.surrogate_key(['id', 'dt']) }}</code></td></tr>
+<tr><td class="col-index">82</td><td><code>dbt_utils.star</code></td><td>Seleciona tudo exceto colunas X, Y</td><td><code>{{ dbt_utils.star(ref('tbl'), except=['pass']) }}</code></td></tr>
+<tr><td class="col-index">83</td><td><code>dbt_utils.pivot</code></td><td>Transforma linhas em colunas</td><td><code>{{ dbt_utils.pivot('status', ['a', 'b']) }}</code></td></tr>
+<tr><td class="col-index">84</td><td><code>dbt_utils.unpivot</code></td><td>Transforma colunas em linhas</td><td><code>{{ dbt_utils.unpivot(ref('tabela'), cast_to='str') }}</code></td></tr>
+<tr><td class="col-index">85</td><td><code>dbt_utils.date_spine</code></td><td>Gera uma série temporal de datas</td><td><code>{{ dbt_utils.date_spine("day", "2020-01-01") }}</code></td></tr>
+<tr><td class="col-index">86</td><td><code>check_cols</code></td><td>Snapshot: verifica colunas para mudanças</td><td><code>check_cols: ['email', 'status']</code></td></tr>
+<tr><td class="col-index">87</td><td><code>strategy: 'timestamp'</code></td><td>Snapshot: usa coluna de data para mudar</td><td><code>updated_at: 'updated_at'</code></td></tr>
+<tr><td class="col-index">88</td><td><code>dbt run --select state:failed</code></td><td>Tenta rodar apenas o que falhou no CI</td><td><code>dbt run -s state:failed</code></td></tr>
+<tr><td class="col-index">89</td><td><code>graph.nodes</code></td><td>Acessa metadados do projeto via Jinja</td><td><code>{{ graph.nodes.values() }}</code></td></tr>
+<tr><td class="col-index">90</td><td><code>modules.datetime</code></td><td>Usa biblioteca datetime do Python no Jinja</td><td><code>{{ modules.datetime.datetime.now() }}</code></td></tr>
+<tr><td class="col-index">91</td><td><code>dbt clone</code></td><td>Clona tabelas entre ambientes (Snowflake/BQ)</td><td><code>dbt clone --select tag:heavy</code></td></tr>
+<tr><td class="col-index">92</td><td><code>dbt run --defer</code></td><td>Usa tabelas de prod se as de dev não existem</td><td><code>dbt run --defer --state path/</code></td></tr>
+<tr><td class="col-index">93</td><td><code>adapter.get_columns_in_relation</code></td><td>Lista colunas de uma tabela no banco</td><td><code>adapter.get_columns_in_relation(this)</code></td></tr>
+<tr><td class="col-index">94</td><td><code>dbt build --dry-run</code></td><td>Simula a execução sem aplicar</td><td><code>dbt build --dry-run</code></td></tr>
+<tr><td class="col-index">95</td><td><code>quote_columns: false</code></td><td>Desativa aspas automáticas em seeds</td><td><code>quote_columns: false</code></td></tr>
+<tr><td class="col-index">96</td><td><code>dispatch: macro_namespace</code></td><td>Configura prioridade de pacotes</td><td><code>dispatch: [{'macro_namespace': 'util'}]</code></td></tr>
+<tr><td class="col-index">97</td><td><code>store_failures: true</code></td><td>Salva registros que falharam no teste em tabela</td><td><code>store_failures: true</code></td></tr>
+<tr><td class="col-index">98</td><td><code>limit 100</code></td><td>Usado com target.name para economizar em dev</td><td><code>{% if target.name == 'dev' %} limit 100 {% endif %}</code></td></tr>
+<tr><td class="col-index">99</td><td><code>dbt run-operation grant_access</code></td><td>Macro comum para permissões pós-run</td><td><code>dbt run-operation grant_access --args '{"role": "bi"}'</code></td></tr>
+<tr><td class="col-index">100</td><td><code>generate_schema_name</code></td><td>Macro especial para customizar nomes de schema</td><td><code>{% macro generate_schema_name(...) %}</code></td></tr>
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>
