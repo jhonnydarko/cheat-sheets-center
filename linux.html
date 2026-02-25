@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Linux Terminal Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+.col-index { width: 40px; text-align: center; font-weight: bold; color: #7f8c8d; background: #f9f9f9; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="home.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>🐧 Linux Terminal Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://man7.org/linux/man-pages/" target="_blank">📄 Documentação Oficial (Man Pages)</a></p>
+<input type="text" id="search_field" placeholder="Buscar comando, flag ou funcionalidade do Linux...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th style="width: 30px;">#</th> <th>Comando / Função</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>sudo apt install</code></td><td>Instala pacotes no Debian/Ubuntu</td><td><code>sudo apt install git</code></td></tr>
+<tr><td class="col-index">2</td><td><code>sudo yum install</code></td><td>Instala pacotes no RHEL/CentOS</td><td><code>sudo yum install docker</code></td></tr>
+<tr><td class="col-index">3</td><td><code>sudo pacman -S</code></td><td>Instala pacotes no Arch Linux</td><td><code>sudo pacman -S vim</code></td></tr>
+
+<tr><td class="col-index">4</td><td><code>ls</code></td><td>Lista arquivos e diretórios</td><td><code>ls -la</code></td></tr>
+<tr><td class="col-index">5</td><td><code>cd</code></td><td>Muda de diretório</td><td><code>cd /var/www</code></td></tr>
+<tr><td class="col-index">6</td><td><code>pwd</code></td><td>Mostra o caminho do diretório atual</td><td><code>pwd</code></td></tr>
+<tr><td class="col-index">7</td><td><code>mkdir</code></td><td>Cria um novo diretório</td><td><code>mkdir nova_pasta</code></td></tr>
+<tr><td class="col-index">8</td><td><code>rmdir</code></td><td>Remove um diretório vazio</td><td><code>rmdir pasta_vazia</code></td></tr>
+<tr><td class="col-index">9</td><td><code>cp</code></td><td>Copia arquivos ou diretórios</td><td><code>cp arq.txt arq_backup.txt</code></td></tr>
+<tr><td class="col-index">10</td><td><code>mv</code></td><td>Move ou renomeia arquivos/diretórios</td><td><code>mv antigo.txt novo.txt</code></td></tr>
+<tr><td class="col-index">11</td><td><code>rm</code></td><td>Remove arquivos ou diretórios</td><td><code>rm -rf pasta_com_conteudo</code></td></tr>
+<tr><td class="col-index">12</td><td><code>touch</code></td><td>Cria um arquivo vazio</td><td><code>touch notas.txt</code></td></tr>
+<tr><td class="col-index">13</td><td><code>find</code></td><td>Busca arquivos no sistema</td><td><code>find . -name "*.log"</code></td></tr>
+<tr><td class="col-index">14</td><td><code>locate</code></td><td>Busca rápida de arquivos (via banco de dados)</td><td><code>locate config.php</code></td></tr>
+
+<tr><td class="col-index">15</td><td><code>cat</code></td><td>Exibe o conteúdo completo de um arquivo</td><td><code>cat /etc/passwd</code></td></tr>
+<tr><td class="col-index">16</td><td><code>head</code></td><td>Mostra as primeiras linhas de um arquivo</td><td><code>head -n 10 log.txt</code></td></tr>
+<tr><td class="col-index">17</td><td><code>tail</code></td><td>Mostra as últimas linhas de um arquivo</td><td><code>tail -f access.log</code></td></tr>
+<tr><td class="col-index">18</td><td><code>grep</code></td><td>Busca padrões dentro de arquivos</td><td><code>grep "Erro" sistema.log</code></td></tr>
+<tr><td class="col-index">19</td><td><code>less</code></td><td>Visualiza arquivos de forma paginada</td><td><code>less arquivo_grande.txt</code></td></tr>
+<tr><td class="col-index">20</td><td><code>nano</code></td><td>Editor de texto simples no terminal</td><td><code>nano config.conf</code></td></tr>
+<tr><td class="col-index">21</td><td><code>vim</code></td><td>Editor de texto avançado</td><td><code>vim script.sh</code></td></tr>
+<tr><td class="col-index">22</td><td><code>sed</code></td><td>Editor de fluxo para filtrar e transformar texto</td><td><code>sed 's/velho/novo/g' arq.txt</code></td></tr>
+<tr><td class="col-index">23</td><td><code>awk</code></td><td>Processamento de texto baseado em colunas</td><td><code>awk '{print $1}' tabela.txt</code></td></tr>
+<tr><td class="col-index">24</td><td><code>wc</code></td><td>Conta linhas, palavras e bytes</td><td><code>wc -l lista.txt</code></td></tr>
+<tr><td class="col-index">25</td><td><code>sort</code></td><td>Ordena linhas de texto</td><td><code>sort nomes.txt</code></td></tr>
+<tr><td class="col-index">26</td><td><code>uniq</code></td><td>Remove ou reporta linhas duplicadas</td><td><code>sort arq | uniq</code></td></tr>
+<tr><td class="col-index">27</td><td><code>diff</code></td><td>Compara o conteúdo de dois arquivos</td><td><code>diff arq1.txt arq2.txt</code></td></tr>
+<tr><td class="col-index">28</td><td><code>echo</code></td><td>Exibe uma linha de texto ou variável</td><td><code>echo "Olá Mundo"</code></td></tr>
+
+<tr><td class="col-index">29</td><td><code>chmod</code></td><td>Altera permissões de acesso</td><td><code>chmod +x script.sh</code></td></tr>
+<tr><td class="col-index">30</td><td><code>chown</code></td><td>Altera dono e grupo do arquivo</td><td><code>chown user:group arq.txt</code></td></tr>
+<tr><td class="col-index">31</td><td><code>sudo</code></td><td>Executa comando como superusuário</td><td><code>sudo update</code></td></tr>
+<tr><td class="col-index">32</td><td><code>useradd</code></td><td>Cria um novo usuário</td><td><code>sudo useradd fulano</code></td></tr>
+<tr><td class="col-index">33</td><td><code>passwd</code></td><td>Altera senha de um usuário</td><td><code>passwd fulano</code></td></tr>
+<tr><td class="col-index">34</td><td><code>whoami</code></td><td>Mostra o usuário atual logado</td><td><code>whoami</code></td></tr>
+<tr><td class="col-index">35</td><td><code>groups</code></td><td>Mostra os grupos do usuário</td><td><code>groups username</code></td></tr>
+
+<tr><td class="col-index">36</td><td><code>top</code></td><td>Monitora processos em tempo real</td><td><code>top</code></td></tr>
+<tr><td class="col-index">37</td><td><code>htop</code></td><td>Versão interativa e colorida do top</td><td><code>htop</code></td></tr>
+<tr><td class="col-index">38</td><td><code>ps</code></td><td>Lista processos em execução</td><td><code>ps aux</code></td></tr>
+<tr><td class="col-index">39</td><td><code>kill</code></td><td>Encerra um processo pelo PID</td><td><code>kill -9 1234</code></td></tr>
+<tr><td class="col-index">40</td><td><code>df</code></td><td>Mostra uso de espaço em disco</td><td><code>df -h</code></td></tr>
+<tr><td class="col-index">41</td><td><code>du</code></td><td>Mostra tamanho de diretórios/arquivos</td><td><code>du -sh *</code></td></tr>
+<tr><td class="col-index">42</td><td><code>free</code></td><td>Mostra uso da memória RAM</td><td><code>free -m</code></td></tr>
+<tr><td class="col-index">43</td><td><code>uname</code></td><td>Informações do Kernel e Sistema</td><td><code>uname -a</code></td></tr>
+<tr><td class="col-index">44</td><td><code>uptime</code></td><td>Tempo de atividade do sistema</td><td><code>uptime</code></td></tr>
+<tr><td class="col-index">45</td><td><code>lscpu</code></td><td>Detalhes da CPU</td><td><code>lscpu</code></td></tr>
+<tr><td class="col-index">46</td><td><code>lsusb</code></td><td>Lista dispositivos USB</td><td><code>lsusb</code></td></tr>
+<tr><td class="col-index">47</td><td><code>lspci</code></td><td>Lista dispositivos PCI</td><td><code>lspci</code></td></tr>
+<tr><td class="col-index">48</td><td><code>hostnamectl</code></td><td>Verifica ou altera nome da máquina</td><td><code>hostnamectl</code></td></tr>
+<tr><td class="col-index">49</td><td><code>dmesg</code></td><td>Mensagens de buffer do kernel</td><td><code>dmesg | grep sda</code></td></tr>
+
+<tr><td class="col-index">50</td><td><code>ip addr</code></td><td>Exibe endereços IP das interfaces</td><td><code>ip addr show</code></td></tr>
+<tr><td class="col-index">51</td><td><code>ping</code></td><td>Testa conectividade com um host</td><td><code>ping google.com</code></td></tr>
+<tr><td class="col-index">52</td><td><code>netstat</code></td><td>Estatísticas de rede e conexões</td><td><code>netstat -tuln</code></td></tr>
+<tr><td class="col-index">53</td><td><code>ss</code></td><td>Utilitário para investigar sockets</td><td><code>ss -lntu</code></td></tr>
+<tr><td class="col-index">54</td><td><code>ssh</code></td><td>Acesso remoto seguro</td><td><code>ssh user@ip-servidor</code></td></tr>
+<tr><td class="col-index">55</td><td><code>scp</code></td><td>Cópia de arquivos via SSH</td><td><code>scp arq.zip user@ip:/tmp</code></td></tr>
+<tr><td class="col-index">56</td><td><code>wget</code></td><td>Faz download de arquivos da web</td><td><code>wget http://site.com/arq.zip</code></td></tr>
+<tr><td class="col-index">57</td><td><code>curl</code></td><td>Transfere dados de ou para um servidor</td><td><code>curl -I google.com</code></td></tr>
+<tr><td class="col-index">58</td><td><code>nslookup</code></td><td>Consulta registros DNS</td><td><code>nslookup google.com</code></td></tr>
+<tr><td class="col-index">59</td><td><code>dig</code></td><td>Ferramenta avançada de consulta DNS</td><td><code>dig MX google.com</code></td></tr>
+<tr><td class="col-index">60</td><td><code>traceroute</code></td><td>Rastreia a rota de pacotes</td><td><code>traceroute 8.8.8.8</code></td></tr>
+<tr><td class="col-index">61</td><td><code>ifconfig</code></td><td>Configuração de interface (legado)</td><td><code>ifconfig eth0</code></td></tr>
+
+<tr><td class="col-index">62</td><td><code>tar</code></td><td>Manipula arquivos .tar, .gz, .bz2</td><td><code>tar -cvzf backup.tar.gz pasta/</code></td></tr>
+<tr><td class="col-index">63</td><td><code>zip</code></td><td>Compacta arquivos em .zip</td><td><code>zip arq.zip foto.jpg</code></td></tr>
+<tr><td class="col-index">64</td><td><code>unzip</code></td><td>Descompacta arquivos .zip</td><td><code>unzip arq.zip</code></td></tr>
+<tr><td class="col-index">65</td><td><code>gzip</code></td><td>Compacta arquivos em .gz</td><td><code>gzip arq.txt</code></td></tr>
+<tr><td class="col-index">66</td><td><code>gunzip</code></td><td>Descompacta arquivos .gz</td><td><code>gunzip arq.txt.gz</code></td></tr>
+
+<tr><td class="col-index">67</td><td><code>crontab</code></td><td>Agenda tarefas automáticas</td><td><code>crontab -e</code></td></tr>
+<tr><td class="col-index">68</td><td><code>at</code></td><td>Executa comando em horário específico</td><td><code>at 10:00 PM</code></td></tr>
+<tr><td class="col-index">69</td><td><code>bg</code></td><td>Manda um processo para segundo plano</td><td><code>bg %1</code></td></tr>
+<tr><td class="col-index">70</td><td><code>fg</code></td><td>Traz processo para o primeiro plano</td><td><code>fg %1</code></td></tr>
+<tr><td class="col-index">71</td><td><code>jobs</code></td><td>Lista tarefas em background no terminal</td><td><code>jobs</code></td></tr>
+<tr><td class="col-index">72</td><td><code>nohup</code></td><td>Executa comando imune a logouts</td><td><code>nohup ./script.sh &</code></td></tr>
+
+<tr><td class="col-index">73</td><td><code>journalctl</code></td><td>Consulta logs do Systemd</td><td><code>journalctl -u nginx</code></td></tr>
+<tr><td class="col-index">74</td><td><code>watch</code></td><td>Executa comando repetidamente</td><td><code>watch -n 1 date</code></td></tr>
+<tr><td class="col-index">75</td><td><code>history</code></td><td>Mostra histórico de comandos</td><td><code>history | grep docker</code></td></tr>
+<tr><td class="col-index">76</td><td><code>alias</code></td><td>Cria atalhos para comandos</td><td><code>alias ll='ls -la'</code></td></tr>
+<tr><td class="col-index">77</td><td><code>export</code></td><td>Define variáveis de ambiente</td><td><code>export PATH=$PATH:/novo/dir</code></td></tr>
+
+<tr><td class="col-index">78</td><td><code>clear</code></td><td>Limpa a tela do terminal</td><td><code>clear</code></td></tr>
+<tr><td class="col-index">79</td><td><code>exit</code></td><td>Encerra a sessão do terminal</td><td><code>exit</code></td></tr>
+<tr><td class="col-index">80</td><td><code>shutdown</code></td><td>Desliga ou reinicia o PC</td><td><code>sudo shutdown -h now</code></td></tr>
+<tr><td class="col-index">81</td><td><code>reboot</code></td><td>Reinicia o sistema</td><td><code>sudo reboot</code></td></tr>
+<tr><td class="col-index">82</td><td><code>man</code></td><td>Manual de instruções de um comando</td><td><code>man grep</code></td></tr>
+<tr><td class="col-index">83</td><td><code>whatis</code></td><td>Descrição curta de um comando</td><td><code>whatis bash</code></td></tr>
+<tr><td class="col-index">84</td><td><code>whereis</code></td><td>Localiza binário, fonte e manual</td><td><code>whereis python</code></td></tr>
+<tr><td class="col-index">85</td><td><code>which</code></td><td>Mostra o caminho do executável</td><td><code>which java</code></td></tr>
+<tr><td class="col-index">86</td><td><code>date</code></td><td>Exibe ou altera data e hora</td><td><code>date</code></td></tr>
+<tr><td class="col-index">87</td><td><code>cal</code></td><td>Exibe um calendário</td><td><code>cal 2024</code></td></tr>
+<tr><td class="col-index">88</td><td><code>mount</code></td><td>Monta sistemas de arquivos</td><td><code>mount /dev/sdb1 /mnt</code></td></tr>
+<tr><td class="col-index">89</td><td><code>umount</code></td><td>Desmonta sistemas de arquivos</td><td><code>umount /mnt</code></td></tr>
+<tr><td class="col-index">90</td><td><code>fdisk</code></td><td>Manipulador de tabela de partição</td><td><code>sudo fdisk -l</code></td></tr>
+<tr><td class="col-index">91</td><td><code>lsblk</code></td><td>Lista dispositivos de bloco (discos)</td><td><code>lsblk</code></td></tr>
+<tr><td class="col-index">92</td><td><code>dd</code></td><td>Converte e copia arquivos (clonagem)</td><td><code>dd if=iso of=/dev/sdc</code></td></tr>
+<tr><td class="col-index">93</td><td><code>ln</code></td><td>Cria links (atalhos)</td><td><code>ln -s arq link_simbolico</code></td></tr>
+<tr><td class="col-index">94</td><td><code>tree</code></td><td>Exibe diretórios em árvore</td><td><code>tree -L 2</code></td></tr>
+<tr><td class="col-index">95</td><td><code>stat</code></td><td>Detalhes sobre um arquivo/pasta</td><td><code>stat arq.txt</code></td></tr>
+<tr><td class="col-index">96</td><td><code>groups</code></td><td>Exibe os grupos do usuário</td><td><code>groups</code></td></tr>
+<tr><td class="col-index">97</td><td><code>id</code></td><td>Mostra UID e GID do usuário</td><td><code>id root</code></td></tr>
+<tr><td class="col-index">98</td><td><code>env</code></td><td>Lista variáveis de ambiente</td><td><code>env</code></td></tr>
+<tr><td class="col-index">99</td><td><code>grep -v</code></td><td>Filtra linhas que NÃO contêm padrão</td><td><code>grep -v "info" log.txt</code></td></tr>
+<tr><td class="col-index">100</td><td><code>sudo !!</code></td><td>Repete o último comando como sudo</td><td><code>sudo !!</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>
