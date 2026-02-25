@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Excel Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+.col-index { width: 40px; text-align: center; font-weight: bold; color: #7f8c8d; background: #f9f9f9; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; color: #d63384; font-family: 'Courier New', Courier, monospace; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>📊 Excel Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://support.microsoft.com/pt-br/excel" target="_blank">📄 Documentação Oficial do Excel</a></p>
+<input type="text" id="search_field" placeholder="Buscar função, fórmula ou recurso do Excel...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th style="width: 30px;">#</th> <th>Função / Comando</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>pip install openpyxl</code></td><td>Instala biblioteca Python para ler/escrever Excel</td><td><code>Terminal: pip install openpyxl</code></td></tr>
+<tr><td class="col-index">2</td><td><code>pip install pandas</code></td><td>Instala biblioteca para análise de dados Excel</td><td><code>Terminal: pip install pandas</code></td></tr>
+
+<tr><td class="col-index">3</td><td><code>=SOMA()</code></td><td>Soma todos os números em um intervalo</td><td><code>=SOMA(A1:A10)</code></td></tr>
+<tr><td class="col-index">4</td><td><code>=MÉDIA()</code></td><td>Calcula a média aritmética</td><td><code>=MÉDIA(B1:B50)</code></td></tr>
+<tr><td class="col-index">5</td><td><code>=CONT.VALORES()</code></td><td>Conta células que não estão vazias</td><td><code>=CONT.VALORES(A:A)</code></td></tr>
+<tr><td class="col-index">6</td><td><code>=CONT.NÚM()</code></td><td>Conta células que contêm apenas números</td><td><code>=CONT.NÚM(A1:C10)</code></td></tr>
+<tr><td class="col-index">7</td><td><code>=MÁXIMO()</code></td><td>Retorna o maior valor de um conjunto</td><td><code>=MÁXIMO(D1:D100)</code></td></tr>
+<tr><td class="col-index">8</td><td><code>=MÍNIMO()</code></td><td>Retorna o menor valor de um conjunto</td><td><code>=MÍNIMO(D1:D100)</code></td></tr>
+<tr><td class="col-index">9</td><td><code>=ARRED()</code></td><td>Arredonda um número para dígitos específicos</td><td><code>=ARRED(A1; 2)</code></td></tr>
+<tr><td class="col-index">10</td><td><code>=POTÊNCIA()</code></td><td>Eleva um número a uma potência</td><td><code>=POTÊNCIA(3; 2)</code></td></tr>
+<tr><td class="col-index">11</td><td><code>=RAIZ()</code></td><td>Calcula a raiz quadrada</td><td><code>=RAIZ(16)</code></td></tr>
+<tr><td class="col-index">12</td><td><code>=ABS()</code></td><td>Retorna o valor absoluto (sem sinal)</td><td><code>=ABS(-5)</code></td></tr>
+<tr><td class="col-index">13</td><td><code>=ALEATÓRIO()</code></td><td>Gera um número entre 0 e 1</td><td><code>=ALEATÓRIO()</code></td></tr>
+<tr><td class="col-index">14</td><td><code>=ALEATÓRIOENTRE()</code></td><td>Gera um número entre dois valores definidos</td><td><code>=ALEATÓRIOENTRE(1; 100)</code></td></tr>
+
+<tr><td class="col-index">15</td><td><code>=SE()</code></td><td>Verifica uma condição lógica</td><td><code>=SE(A1>10; "Sim"; "Não")</code></td></tr>
+<tr><td class="col-index">16</td><td><code>=E()</code></td><td>Verifica se todas as condições são verdadeiras</td><td><code>=E(A1>0; B1<10)</code></td></tr>
+<tr><td class="col-index">17</td><td><code>=OU()</code></td><td>Verifica se ao menos uma condição é verdadeira</td><td><code>=OU(A1="Sim"; B1="Sim")</code></td></tr>
+<tr><td class="col-index">18</td><td><code>=NÃO()</code></td><td>Inverte o valor lógico</td><td><code>=NÃO(A1="Pago")</code></td></tr>
+<tr><td class="col-index">19</td><td><code>=SES()</code></td><td>Verifica múltiplas condições (substitui SEs aninhados)</td><td><code>=SES(A1>9; "A"; A1>7; "B")</code></td></tr>
+<tr><td class="col-index">20</td><td><code>=SEERRO()</code></td><td>Retorna valor personalizado se houver erro</td><td><code>=SEERRO(A1/B1; 0)</code></td></tr>
+
+<tr><td class="col-index">21</td><td><code>=PROCV()</code></td><td>Procura um valor na vertical</td><td><code>=PROCV("ID01"; A:B; 2; 0)</code></td></tr>
+<tr><td class="col-index">22</td><td><code>=PROCH()</code></td><td>Procura um valor na horizontal</td><td><code>=PROCH("Jan"; A1:Z2; 2; 0)</code></td></tr>
+<tr><td class="col-index">23</td><td><code>=PROCX()</code></td><td>A busca mais moderna e flexível</td><td><code>=PROCX(E1; A:A; B:B)</code></td></tr>
+<tr><td class="col-index">24</td><td><code>=CORRESP()</code></td><td>Retorna a posição de um item no intervalo</td><td><code>=CORRESP("Venda"; A1:A10; 0)</code></td></tr>
+<tr><td class="col-index">25</td><td><code>=ÍNDICE()</code></td><td>Retorna o valor em uma posição específica</td><td><code>=ÍNDICE(B1:B10; 3)</code></td></tr>
+<tr><td class="col-index">26</td><td><code>=DESLOC()</code></td><td>Desloca a referência a partir de um ponto</td><td><code>=DESLOC(A1; 2; 1)</code></td></tr>
+<tr><td class="col-index">27</td><td><code>=INDIRETO()</code></td><td>Converte um texto em uma referência real</td><td><code>=INDIRETO("Plan2!A1")</code></td></tr>
+<tr><td class="col-index">28</td><td><code>=FILTRAR()</code></td><td>Filtra um intervalo com base em critérios</td><td><code>=FILTRAR(A1:B10; B1:B10>100)</code></td></tr>
+<tr><td class="col-index">29</td><td><code>=ÚNICO()</code></td><td>Extrai valores exclusivos de uma lista</td><td><code>=ÚNICO(A1:A50)</code></td></tr>
+<tr><td class="col-index">30</td><td><code>=CLASSIFICAR()</code></td><td>Ordena um intervalo dinamicamente</td><td><code>=CLASSIFICAR(A1:B10)</code></td></tr>
+
+<tr><td class="col-index">31</td><td><code>=CONCATENAR()</code></td><td>Une dois ou mais textos</td><td><code>=CONCATENAR(A1; " "; B1)</code></td></tr>
+<tr><td class="col-index">32</td><td><code>=TEXTO()</code></td><td>Formata números como texto</td><td><code>=TEXTO(HOJE(); "dd/mm/yyyy")</code></td></tr>
+<tr><td class="col-index">33</td><td><code>=ESQUERDA()</code></td><td>Pega X caracteres à esquerda</td><td><code>=ESQUERDA(A1; 3)</code></td></tr>
+<tr><td class="col-index">34</td><td><code>=DIREITA()</code></td><td>Pega X caracteres à direita</td><td><code>=DIREITA(A1; 3)</code></td></tr>
+<tr><td class="col-index">35</td><td><code>=EXT.TEXTO()</code></td><td>Extrai texto de qualquer posição</td><td><code>=EXT.TEXTO(A1; 2; 5)</code></td></tr>
+<tr><td class="col-index">36</td><td><code>=MAIÚSCULA()</code></td><td>Converte tudo para maiúsculas</td><td><code>=MAIÚSCULA("excel")</code></td></tr>
+<tr><td class="col-index">37</td><td><code>=MINÚSCULA()</code></td><td>Converte tudo para minúsculas</td><td><code>=MINÚSCULA("EXCEL")</code></td></tr>
+<tr><td class="col-index">38</td><td><code>=ARRUMAR()</code></td><td>Remove espaços extras no texto</td><td><code>=ARRUMAR(A1)</code></td></tr>
+<tr><td class="col-index">39</td><td><code>=SUBSTITUIR()</code></td><td>Troca um texto por outro</td><td><code>=SUBSTITUIR(A1; "."; ",")</code></td></tr>
+<tr><td class="col-index">40</td><td><code>=DIVIDIRTEXTO()</code></td><td>Divide texto em colunas por delimitador</td><td><code>=DIVIDIRTEXTO(A1; ";")</code></td></tr>
+
+<tr><td class="col-index">41</td><td><code>=HOJE()</code></td><td>Data atual do sistema</td><td><code>=HOJE()</code></td></tr>
+<tr><td class="col-index">42</td><td><code>=AGORA()</code></td><td>Data e hora atuais</td><td><code>=AGORA()</code></td></tr>
+<tr><td class="col-index">43</td><td><code>=DIA()</code></td><td>Extrai o dia de uma data</td><td><code>=DIA(A1)</code></td></tr>
+<tr><td class="col-index">44</td><td><code>=MÊS()</code></td><td>Extrai o mês de uma data</td><td><code>=MÊS(A1)</code></td></tr>
+<tr><td class="col-index">45</td><td><code>=ANO()</code></td><td>Extrai o ano de uma data</td><td><code>=ANO(A1)</code></td></tr>
+<tr><td class="col-index">46</td><td><code>=DIATRABALHOTOTAL()</code></td><td>Dias úteis entre duas datas</td><td><code>=DIATRABALHOTOTAL(A1; B1)</code></td></tr>
+<tr><td class="col-index">47</td><td><code>=DATADIF()</code></td><td>Diferença entre datas (anos, meses, dias)</td><td><code>=DATADIF(A1; B1; "d")</code></td></tr>
+<tr><td class="col-index">48</td><td><code>=FIMMES()</code></td><td>Último dia do mês após X meses</td><td><code>=FIMMES(HOJE(); 0)</code></td></tr>
+
+<tr><td class="col-index">49</td><td><code>=SOMASE()</code></td><td>Soma baseada em um critério</td><td><code>=SOMASE(A:A; ">1000")</code></td></tr>
+<tr><td class="col-index">50</td><td><code>=SOMASES()</code></td><td>Soma baseada em múltiplos critérios</td><td><code>=SOMASES(C:C; A:A; "Vendas"; B:B; ">10")</code></td></tr>
+<tr><td class="col-index">51</td><td><code>=CONT.SE()</code></td><td>Conta se atender a um critério</td><td><code>=CONT.SE(B:B; "Concluído")</code></td></tr>
+<tr><td class="col-index">52</td><td><code>=CONT.SES()</code></td><td>Conta se atender a vários critérios</td><td><code>=CONT.SES(A:A; "SP"; B:B; "RH")</code></td></tr>
+<tr><td class="col-index">53</td><td><code>=MÉDIASE()</code></td><td>Média baseada em critério</td><td><code>=MÉDIASE(A:A; "Frutas"; B:B)</code></td></tr>
+<tr><td class="col-index">54</td><td><code>=MODO.ÚNICO()</code></td><td>Retorna o valor que mais se repete (Moda)</td><td><code>=MODO.ÚNICO(A1:A20)</code></td></tr>
+<tr><td class="col-index">55</td><td><code>=MED()</code></td><td>Retorna a mediana dos números</td><td><code>=MED(A1:A50)</code></td></tr>
+
+<tr><td class="col-index">56</td><td><code>ALT + =</code></td><td>Atalho para AutoSoma</td><td>Teclado</td></tr>
+<tr><td class="col-index">57</td><td><code>CTRL + ;</code></td><td>Insere a data atual rapidamente</td><td>Teclado</td></tr>
+<tr><td class="col-index">58</td><td><code>CTRL + SHIFT + L</code></td><td>Ativa/Desativa Filtros</td><td>Teclado</td></tr>
+<tr><td class="col-index">59</td><td><code>F4</code></td><td>Fixa referências (Trava célula com $)</td><td><code>$A$1</code></td></tr>
+<tr><td class="col-index">60</td><td><code>=VALOR()</code></td><td>Converte texto numeral em número real</td><td><code>=VALOR("123")</code></td></tr>
+<tr><td class="col-index">61</td><td><code>=PRI.MAIÚSCULA()</code></td><td>Primeira letra de cada palavra em maiúscula</td><td><code>=PRI.MAIÚSCULA(A1)</code></td></tr>
+<tr><td class="col-index">62</td><td><code>=NÚM.CARACT()</code></td><td>Conta quantos caracteres há na célula</td><td><code>=NÚM.CARACT(A1)</code></td></tr>
+<tr><td class="col-index">63</td><td><code>=TIPO()</code></td><td>Retorna o tipo de dado (1=Núm, 2=Texto)</td><td><code>=TIPO(A1)</code></td></tr>
+<tr><td class="col-index">64</td><td><code>=ÉERROS()</code></td><td>Verifica se há qualquer erro</td><td><code>=ÉERROS(A1)</code></td></tr>
+<tr><td class="col-index">65</td><td><code>=ÉCÉL.VAZIA()</code></td><td>Verifica se a célula está vazia</td><td><code>=ÉCÉL.VAZIA(A1)</code></td></tr>
+<tr><td class="col-index">66</td><td><code>=ÉPAR()</code></td><td>Verifica se o número é par</td><td><code>=ÉPAR(2)</code></td></tr>
+<tr><td class="col-index">67</td><td><code>=ÉÍMPAR()</code></td><td>Verifica se o número é ímpar</td><td><code>=ÉÍMPAR(3)</code></td></tr>
+<tr><td class="col-index">68</td><td><code>=AGRUPARPOR()</code></td><td>Agrega dados por colunas (Novo Excel)</td><td><code>=AGRUPARPOR(A1:A10; B1:B10; SOMA)</code></td></tr>
+<tr><td class="col-index">69</td><td><code>=SEQUÊNCIA()</code></td><td>Gera uma lista de números sequenciais</td><td><code>=SEQUÊNCIA(10)</code></td></tr>
+<tr><td class="col-index">70</td><td><code>=MATRIZPARATEXTO()</code></td><td>Converte uma matriz em uma string</td><td><code>=MATRIZPARATEXTO(A1:B2)</code></td></tr>
+<tr><td class="col-index">71</td><td><code>=FREQÜÊNCIA()</code></td><td>Calcula a distribuição de valores</td><td><code>=FREQÜÊNCIA(A1:A10; B1:B3)</code></td></tr>
+<tr><td class="col-index">72</td><td><code>=PROCURAR()</code></td><td>Localiza posição de texto (Case-sensitive)</td><td><code>=PROCURAR("A"; "Abc")</code></td></tr>
+<tr><td class="col-index">73</td><td><code>=LOCALIZAR()</code></td><td>Localiza texto (Não diferencia maiúsculas)</td><td><code>=LOCALIZAR("a"; "Abc")</code></td></tr>
+<tr><td class="col-index">74</td><td><code>=CUMIPMT()</code></td><td>Calcula juros acumulados pagos</td><td>Financeira</td></tr>
+<tr><td class="col-index">75</td><td><code>=VF()</code></td><td>Calcula valor futuro de investimento</td><td>Financeira</td></tr>
+<tr><td class="col-index">76</td><td><code>=VP()</code></td><td>Calcula valor presente</td><td>Financeira</td></tr>
+<tr><td class="col-index">77</td><td><code>=PGTO()</code></td><td>Calcula pagamento mensal de empréstimo</td><td><code>=PGTO(0,01; 12; 5000)</code></td></tr>
+<tr><td class="col-index">78</td><td><code>=TAXA()</code></td><td>Calcula a taxa de juros por período</td><td>Financeira</td></tr>
+<tr><td class="col-index">79</td><td><code>=NPER()</code></td><td>Número de períodos de um investimento</td><td>Financeira</td></tr>
+<tr><td class="col-index">80</td><td><code>=TIR()</code></td><td>Taxa Interna de Retorno</td><td>Financeira</td></tr>
+<tr><td class="col-index">81</td><td><code>=DIATRABALHO()</code></td><td>Calcula data após X dias úteis</td><td>Datas</td></tr>
+<tr><td class="col-index">82</td><td><code>=HORA()</code></td><td>Extrai a hora de um valor de tempo</td><td><code>=HORA(AGORA())</code></td></tr>
+<tr><td class="col-index">83</td><td><code>=MINUTO()</code></td><td>Extrai os minutos</td><td>Tempo</td></tr>
+<tr><td class="col-index">84</td><td><code>=SEGUNDO()</code></td><td>Extrai os segundos</td><td>Tempo</td></tr>
+<tr><td class="col-index">85</td><td><code>=CONVERTER()</code></td><td>Converte unidades (m para km, etc)</td><td><code>=CONVERTER(100; "m"; "ft")</code></td></tr>
+<tr><td class="col-index">86</td><td><code>=DELTA()</code></td><td>Verifica se dois valores são iguais</td><td><code>=DELTA(A1; B1)</code></td></tr>
+<tr><td class="col-index">87</td><td><code>=DEGRAU()</code></td><td>Testa se valor é maior que um limite</td><td>Engenharia</td></tr>
+<tr><td class="col-index">88</td><td><code>=REPT()</code></td><td>Repete um texto X vezes</td><td><code>=REPT("*"; 5)</code></td></tr>
+<tr><td class="col-index">89</td><td><code>=EXATO()</code></td><td>Compara se dois textos são idênticos</td><td>Lógica</td></tr>
+<tr><td class="col-index">90</td><td><code>=LET()</code></td><td>Atribui nomes a resultados de cálculos</td><td><code>=LET(x; 5; x*2)</code></td></tr>
+<tr><td class="col-index">91</td><td><code>=LAMBDA()</code></td><td>Cria funções personalizadas sem VBA</td><td>Avançado</td></tr>
+<tr><td class="col-index">92</td><td><code>=MAP()</code></td><td>Aplica lambda a cada valor em matrizes</td><td>Avançado</td></tr>
+<tr><td class="col-index">93</td><td><code>=ESCOLHER()</code></td><td>Escolhe um valor de uma lista por índice</td><td><code>=ESCOLHER(2; "A"; "B"; "C")</code></td></tr>
+<tr><td class="col-index">94</td><td><code>=PARÂMETRO()</code></td><td>Avalia uma expressão contra uma lista</td><td>Lógica</td></tr>
+<tr><td class="col-index">95</td><td><code>=LIN()</code></td><td>Retorna o número da linha da célula</td><td><code>=LIN()</code></td></tr>
+<tr><td class="col-index">96</td><td><code>=COL()</code></td><td>Retorna o número da coluna</td><td><code>=COL()</code></td></tr>
+<tr><td class="col-index">97</td><td><code>=LINS()</code></td><td>Conta quantas linhas há num intervalo</td><td><code>=LINS(A1:A10)</code></td></tr>
+<tr><td class="col-index">98</td><td><code>=COLS()</code></td><td>Conta quantas colunas há num intervalo</td><td><code>=COLS(A1:E1)</code></td></tr>
+<tr><td class="col-index">99</td><td><code>=UNIRTEXTO()</code></td><td>Une textos com um delimitador específico</td><td><code>=UNIRTEXTO(", "; VERDADEIRO; A1:A5)</code></td></tr>
+<tr><td class="col-index">100</td><td><code>=INFO.DADOS.TABELA.DINÂMICA()</code></td><td>Extrai dados de uma Tabela Dinâmica</td><td>Relatórios</td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>
