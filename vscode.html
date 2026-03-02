@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>VS Code Shortcuts Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+.col-index { width: 40px; text-align: center; font-weight: bold; color: #7f8c8d; background: #f0f0f0; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+code { background: #f4f4f4; padding: 2px 6px; border-radius: 4px; color: #2980b9; font-family: 'Courier New', Courier, monospace; font-weight: bold; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="links">
+    <a href="index.html">🏠 Home</a>
+  </div>
+</nav>
+
+<h1>⚡ VS Code Shortcuts Cheat Sheet</h1>
+<p style="text-align:left;"><a href="https://code.visualstudio.com/docs/getstarted/keybindings" target="_blank">📄 Documentação Oficial de Atalhos</a></p>
+<input type="text" id="search_field" placeholder="Buscar atalho, comando ou funcionalidade...">
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th style="width: 30px;">#</th> <th>Comando / Atalho (Win/Linux)</th>
+<th>O que faz</th>
+<th>Equivalente Mac</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td class="col-index">1</td><td><code>pip install code</code></td><td>Comando via terminal para gerenciar extensões (CLI)</td><td><code>-</code></td></tr>
+<tr><td class="col-index">2</td><td><code>Ctrl + Shift + P</code></td><td>Abre a Paleta de Comandos (Command Palette)</td><td><code>Cmd + Shift + P</code></td></tr>
+<tr><td class="col-index">3</td><td><code>Ctrl + P</code></td><td>Busca rápida de arquivos pelo nome</td><td><code>Cmd + P</code></td></tr>
+<tr><td class="col-index">4</td><td><code>Ctrl + Shift + N</code></td><td>Abre uma nova janela (instância) do VS Code</td><td><code>Cmd + Shift + N</code></td></tr>
+
+<tr><td class="col-index">5</td><td><code>Ctrl + X</code></td><td>Recorta a linha atual (se nada estiver selecionado)</td><td><code>Cmd + X</code></td></tr>
+<tr><td class="col-index">6</td><td><code>Ctrl + C</code></td><td>Copia a linha atual</td><td><code>Cmd + C</code></td></tr>
+<tr><td class="col-index">7</td><td><code>Alt + Up / Down</code></td><td>Move a linha para cima ou para baixo</td><td><code>Opt + Up / Down</code></td></tr>
+<tr><td class="col-index">8</td><td><code>Shift + Alt + Up/Down</code></td><td>Copia a linha para cima ou para baixo</td><td><code>Shift + Opt + Up/Down</code></td></tr>
+<tr><td class="col-index">9</td><td><code>Ctrl + Shift + K</code></td><td>Exclui a linha atual</td><td><code>Cmd + Shift + K</code></td></tr>
+<tr><td class="col-index">10</td><td><code>Ctrl + Enter</code></td><td>Insere linha abaixo sem quebrar a atual</td><td><code>Cmd + Enter</code></td></tr>
+<tr><td class="col-index">11</td><td><code>Ctrl + Shift + Enter</code></td><td>Insere linha acima</td><td><code>Cmd + Shift + Enter</code></td></tr>
+
+<tr><td class="col-index">12</td><td><code>Alt + Clique</code></td><td>Insere múltiplos cursores manualmente</td><td><code>Opt + Clique</code></td></tr>
+<tr><td class="col-index">13</td><td><code>Ctrl + Alt + Up / Down</code></td><td>Insere cursor acima ou abaixo</td><td><code>Cmd + Opt + Up / Down</code></td></tr>
+<tr><td class="col-index">14</td><td><code>Ctrl + D</code></td><td>Seleciona a próxima ocorrência da palavra atual</td><td><code>Cmd + D</code></td></tr>
+<tr><td class="col-index">15</td><td><code>Ctrl + U</code></td><td>Desfaz a última operação de cursor</td><td><code>Cmd + U</code></td></tr>
+<tr><td class="col-index">16</td><td><code>Shift + Alt + I</code></td><td>Insere cursor no fim de cada linha selecionada</td><td><code>Shift + Opt + I</code></td></tr>
+<tr><td class="col-index">17</td><td><code>Ctrl + L</code></td><td>Seleciona a linha atual inteira</td><td><code>Cmd + L</code></td></tr>
+<tr><td class="col-index">18</td><td><code>Ctrl + Shift + L</code></td><td>Seleciona todas as ocorrências do termo atual</td><td><code>Cmd + Shift + L</code></td></tr>
+
+<tr><td class="col-index">19</td><td><code>Ctrl + F</code></td><td>Abre a busca interna no arquivo</td><td><code>Cmd + F</code></td></tr>
+<tr><td class="col-index">20</td><td><code>Ctrl + H</code></td><td>Substituir no arquivo atual</td><td><code>Cmd + Opt + F</code></td></tr>
+<tr><td class="col-index">21</td><td><code>Ctrl + Shift + F</code></td><td>Busca global em todo o projeto</td><td><code>Cmd + Shift + F</code></td></tr>
+<tr><td class="col-index">22</td><td><code>Ctrl + Shift + J</code></td><td>Filtros de busca avançados</td><td><code>Cmd + Shift + J</code></td></tr>
+<tr><td class="col-index">23</td><td><code>F3</code></td><td>Vai para a próxima ocorrência</td><td><code>Cmd + G</code></td></tr>
+<tr><td class="col-index">24</td><td><code>Shift + F3</code></td><td>Vai para a ocorrência anterior</td><td><code>Cmd + Shift + G</code></td></tr>
+
+<tr><td class="col-index">25</td><td><code>Ctrl + G</code></td><td>Ir para uma linha específica</td><td><code>Ctrl + G</code></td></tr>
+<tr><td class="col-index">26</td><td><code>Ctrl + T</code></td><td>Mostrar todos os Símbolos no Workspace</td><td><code>Cmd + T</code></td></tr>
+<tr><td class="col-index">27</td><td><code>Ctrl + Shift + O</code></td><td>Ir para um símbolo no arquivo (@)</td><td><code>Cmd + Shift + O</code></td></tr>
+<tr><td class="col-index">28</td><td><code>Ctrl + Shift + M</code></td><td>Abre o painel de Problemas (Erros/Avisos)</td><td><code>Cmd + Shift + M</code></td></tr>
+<tr><td class="col-index">29</td><td><code>F8</code></td><td>Vai para o próximo erro/aviso</td><td><code>F8</code></td></tr>
+<tr><td class="col-index">30</td><td><code>Ctrl + Shift + Tab</code></td><td>Navega pelo histórico de arquivos abertos</td><td><code>Ctrl + Shift + Tab</code></td></tr>
+
+<tr><td class="col-index">31</td><td><code>Ctrl + B</code></td><td>Alternar visibilidade da Barra Lateral</td><td><code>Cmd + B</code></td></tr>
+<tr><td class="col-index">32</td><td><code>Ctrl + \</code></td><td>Divide o editor em dois (Split View)</td><td><code>Cmd + \</code></td></tr>
+<tr><td class="col-index">33</td><td><code>Ctrl + 1 / 2 / 3</code></td><td>Focar no 1º, 2º ou 3º grupo de editores</td><td><code>Cmd + 1 / 2 / 3</code></td></tr>
+<tr><td class="col-index">34</td><td><code>Ctrl + W</code></td><td>Fechar o arquivo atual</td><td><code>Cmd + W</code></td></tr>
+<tr><td class="col-index">35</td><td><code>Ctrl + K + W</code></td><td>Fechar todos os arquivos abertos</td><td><code>Cmd + K + W</code></td></tr>
+<tr><td class="col-index">36</td><td><code>Ctrl + Shift + T</code></td><td>Reabre o último arquivo fechado</td><td><code>Cmd + Shift + T</code></td></tr>
+
+<tr><td class="col-index">37</td><td><code>Ctrl + Space</code></td><td>Aciona o IntelliSense (Sugestões)</td><td><code>Cmd + Space</code></td></tr>
+<tr><td class="col-index">38</td><td><code>Ctrl + Shift + Space</code></td><td>Dicas de parâmetros da função</td><td><code>Cmd + Shift + Space</code></td></tr>
+<tr><td class="col-index">39</td><td><code>Shift + Alt + F</code></td><td>Formatar documento (Prettier/Default)</td><td><code>Shift + Opt + F</code></td></tr>
+<tr><td class="col-index">40</td><td><code>F12</code></td><td>Ir para a definição (Go to Definition)</td><td><code>F12</code></td></tr>
+<tr><td class="col-index">41</td><td><code>Alt + F12</code></td><td>Espiar definição (Peek Definition)</td><td><code>Opt + F12</code></td></tr>
+<tr><td class="col-index">42</td><td><code>F2</code></td><td>Renomear símbolo em todo o projeto</td><td><code>F2</code></td></tr>
+<tr><td class="col-index">43</td><td><code>Ctrl + .</code></td><td>Correção rápida (Quick Fix)</td><td><code>Cmd + .</code></td></tr>
+<tr><td class="col-index">44</td><td><code>Ctrl + /</code></td><td>Comentar/Descomentar linha</td><td><code>Cmd + /</code></td></tr>
+<tr><td class="col-index">45</td><td><code>Shift + Alt + A</code></td><td>Comentar bloco de código</td><td><code>Shift + Opt + A</code></td></tr>
+
+<tr><td class="col-index">46</td><td><code>Ctrl + `</code></td><td>Alternar visibilidade do Terminal Integrado</td><td><code>Ctrl + `</code></td></tr>
+<tr><td class="col-index">47</td><td><code>Ctrl + Shift + `</code></td><td>Criar novo terminal</td><td><code>Ctrl + Shift + `</code></td></tr>
+<tr><td class="col-index">48</td><td><code>F5</code></td><td>Iniciar Debug / Continuar</td><td><code>F5</code></td></tr>
+<tr><td class="col-index">49</td><td><code>Shift + F5</code></td><td>Parar Debug</td><td><code>Shift + F5</code></td></tr>
+<tr><td class="col-index">50</td><td><code>F9</code></td><td>Alternar Breakpoint</td><td><code>F9</code></td></tr>
+
+<tr><td class="col-index">51</td><td><code>Ctrl + K + V</code></td><td>Visualizar Markdown ao lado</td><td><code>Cmd + K + V</code></td></tr>
+<tr><td class="col-index">52</td><td><code>Ctrl + K + Z</code></td><td>Modo Zen (Foco total)</td><td><code>Cmd + K + Z</code></td></tr>
+<tr><td class="col-index">53</td><td><code>Ctrl + + / -</code></td><td>Aumentar / Diminuir Zoom</td><td><code>Cmd + + / -</code></td></tr>
+<tr><td class="col-index">54</td><td><code>Ctrl + Shift + V</code></td><td>Prévia de Markdown</td><td><code>Cmd + Shift + V</code></td></tr>
+<tr><td class="col-index">55</td><td><code>Ctrl + Tab</code></td><td>Próximo arquivo</td><td><code>Ctrl + Tab</code></td></tr>
+<tr><td class="col-index">56</td><td><code>Ctrl + PageUp</code></td><td>Aba anterior</td><td><code>Cmd + PageUp</code></td></tr>
+<tr><td class="col-index">57</td><td><code>Ctrl + PageDown</code></td><td>Próxima aba</td><td><code>Cmd + PageDown</code></td></tr>
+<tr><td class="col-index">58</td><td><code>Ctrl + K + ←/→</code></td><td>Mover foco entre grupos de editores</td><td><code>Cmd + K + ←/→</code></td></tr>
+<tr><td class="col-index">59</td><td><code>Ctrl + J</code></td><td>Alternar Painel Inferior</td><td><code>Cmd + J</code></td></tr>
+<tr><td class="col-index">60</td><td><code>Ctrl + Shift + E</code></td><td>Abrir Explorador de Arquivos</td><td><code>Cmd + Shift + E</code></td></tr>
+<tr><td class="col-index">61</td><td><code>Ctrl + Shift + G</code></td><td>Abrir Controle de Código (Git)</td><td><code>Ctrl + Shift + G</code></td></tr>
+<tr><td class="col-index">62</td><td><code>Ctrl + Shift + D</code></td><td>Abrir Painel de Debug</td><td><code>Cmd + Shift + D</code></td></tr>
+<tr><td class="col-index">63</td><td><code>Ctrl + Shift + X</code></td><td>Abrir Painel de Extensões</td><td><code>Cmd + Shift + X</code></td></tr>
+<tr><td class="col-index">64</td><td><code>Ctrl + K + S</code></td><td>Abrir Atalhos de Teclado</td><td><code>Cmd + K + S</code></td></tr>
+<tr><td class="col-index">65</td><td><code>Ctrl + ,</code></td><td>Abrir Configurações (Settings)</td><td><code>Cmd + ,</code></td></tr>
+<tr><td class="col-index">66</td><td><code>Ctrl + Shift + [</code></td><td>Recolher (Fold) região de código</td><td><code>Cmd + Opt + [</code></td></tr>
+<tr><td class="col-index">67</td><td><code>Ctrl + Shift + ]</code></td><td>Expandir (Unfold) região de código</td><td><code>Cmd + Opt + ]</code></td></tr>
+<tr><td class="col-index">68</td><td><code>Ctrl + K + [</code></td><td>Recolher todas as sub-regiões</td><td><code>Cmd + K + [</code></td></tr>
+<tr><td class="col-index">69</td><td><code>Ctrl + K + ]</code></td><td>Expandir todas as sub-regiões</td><td><code>Cmd + K + ]</code></td></tr>
+<tr><td class="col-index">70</td><td><code>Ctrl + K + 0</code></td><td>Recolher todas as regiões</td><td><code>Cmd + K + 0</code></td></tr>
+<tr><td class="col-index">71</td><td><code>Ctrl + K + J</code></td><td>Expandir todas as regiões</td><td><code>Cmd + K + J</code></td></tr>
+<tr><td class="col-index">72</td><td><code>Ctrl + S</code></td><td>Salvar arquivo</td><td><code>Cmd + S</code></td></tr>
+<tr><td class="col-index">73</td><td><code>Ctrl + Shift + S</code></td><td>Salvar Como...</td><td><code>Cmd + Shift + S</code></td></tr>
+<tr><td class="col-index">74</td><td><code>Ctrl + K + S</code></td><td>Salvar Tudo</td><td><code>Cmd + Opt + S</code></td></tr>
+<tr><td class="col-index">75</td><td><code>Ctrl + N</code></td><td>Novo Arquivo</td><td><code>Cmd + N</code></td></tr>
+<tr><td class="col-index">76</td><td><code>Alt + Left</code></td><td>Voltar na navegação</td><td><code>Ctrl + -</code></td></tr>
+<tr><td class="col-index">77</td><td><code>Alt + Right</code></td><td>Avançar na navegação</td><td><code>Ctrl + Shift + -</code></td></tr>
+<tr><td class="col-index">78</td><td><code>Ctrl + F4</code></td><td>Fechar editor atual</td><td><code>Cmd + F4</code></td></tr>
+<tr><td class="col-index">79</td><td><code>Ctrl + K + F</code></td><td>Formatar seleção</td><td><code>Cmd + K + F</code></td></tr>
+<tr><td class="col-index">80</td><td><code>F11</code></td><td>Tela cheia</td><td><code>Cmd + Ctrl + F</code></td></tr>
+<tr><td class="col-index">81</td><td><code>Ctrl + Home</code></td><td>Início do arquivo</td><td><code>Cmd + Up</code></td></tr>
+<tr><td class="col-index">82</td><td><code>Ctrl + End</code></td><td>Fim do arquivo</td><td><code>Cmd + Down</code></td></tr>
+<tr><td class="col-index">83</td><td><code>Home</code></td><td>Início da linha</td><td><code>Home</code></td></tr>
+<tr><td class="col-index">84</td><td><code>End</code></td><td>Fim da linha</td><td><code>End</code></td></tr>
+<tr><td class="col-index">85</td><td><code>Ctrl + Left</code></td><td>Mover cursor por palavra (esquerda)</td><td><code>Opt + Left</code></td></tr>
+<tr><td class="col-index">86</td><td><code>Ctrl + Right</code></td><td>Mover cursor por palavra (direita)</td><td><code>Opt + Right</code></td></tr>
+<tr><td class="col-index">87</td><td><code>Ctrl + Backspace</code></td><td>Apagar palavra à esquerda</td><td><code>Cmd + Backspace</code></td></tr>
+<tr><td class="col-index">88</td><td><code>Ctrl + Delete</code></td><td>Apagar palavra à direita</td><td><code>Opt + Delete</code></td></tr>
+<tr><td class="col-index">89</td><td><code>Ctrl + Shift + \</code></td><td>Ir para colchete correspondente</td><td><code>Cmd + Shift + \</code></td></tr>
+<tr><td class="col-index">90</td><td><code>Alt + Shift + Right</code></td><td>Expandir seleção inteligente</td><td><code>Ctrl + Shift + Opt + Right</code></td></tr>
+<tr><td class="col-index">91</td><td><code>Alt + Shift + Left</code></td><td>Recolher seleção inteligente</td><td><code>Ctrl + Shift + Opt + Left</code></td></tr>
+<tr><td class="col-index">92</td><td><code>Ctrl + Shift + P > 'Theme'</code></td><td>Trocar tema de cores</td><td><code>Cmd + Shift + P</code></td></tr>
+<tr><td class="col-index">93</td><td><code>Ctrl + Shift + U</code></td><td>Mostrar painel de Output</td><td><code>Cmd + Shift + U</code></td></tr>
+<tr><td class="col-index">94</td><td><code>Ctrl + Shift + H</code></td><td>Substituir em todos os arquivos</td><td><code>Cmd + Shift + H</code></td></tr>
+<tr><td class="col-index">95</td><td><code>Ctrl + F2</code></td><td>Selecionar todas as ocorrências da seleção</td><td><code>Cmd + F2</code></td></tr>
+<tr><td class="col-index">96</td><td><code>Alt + PageDown</code></td><td>Rolar página para baixo</td><td><code>Opt + PageDown</code></td></tr>
+<tr><td class="col-index">97</td><td><code>Alt + PageUp</code></td><td>Rolar página para cima</td><td><code>Opt + PageUp</code></td></tr>
+<tr><td class="col-index">98</td><td><code>Ctrl + K + P</code></td><td>Copiar caminho do arquivo ativo</td><td><code>Cmd + K + P</code></td></tr>
+<tr><td class="col-index">99</td><td><code>Ctrl + K + O</code></td><td>Abrir pasta/projeto</td><td><code>Cmd + O</code></td></tr>
+<tr><td class="col-index">100</td><td><code>Ctrl + Q</code></td><td>Acesso rápido para visualização</td><td><code>Cmd + Q</code></td></tr>
+
+</tbody>
+</table>
+
+<script>
+document.getElementById("search_field").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#LeanguageTable tbody tr");
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>
