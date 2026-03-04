@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>xxxxxxxxxxxxxxxx Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+</style>
+</head>
+
+<body>
+<nav>
+  <a href="index.html">🏠 Home</a>
+</nav>
+
+<h1>xxxxxxxxxxxxxxxx</h1>
+
+<input type="text" id="search_field" placeholder="Buscar por qualquer texto...">
+
+<select id="filterTermo">
+  <option value="">Filtrar por Termo</option>
+</select>
+
+<select id="filterSetor">
+  <option value="">Filtrar por Setor/Área</option>
+</select>
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th>Termo</th>
+<th>Setor/Área</th>
+<th>Explicação Simples</th>
+</tr>
+</thead>
+
+  <tbody>
+ <tr><td><strong>OEE (Overall Equipment Effectiveness)</strong></td><td><span class="setor-badge">Indústria de Papel</span></td><td>Eficiência Global do Equipamento, medindo disponibilidade, performance e qualidade.</td></tr>
+
+</tbody>
+
+
+  </tbody>
+
+</table>
+
+<script>
+const searchField = document.getElementById("search_field");
+const filterTermo = document.getElementById("filterTermo");
+const filterSetor = document.getElementById("filterSetor");
+const rows = document.querySelectorAll("#LeanguageTable tbody tr");
+
+function populateFilters() {
+  const termos = new Set();
+  const setores = new Set();
+
+  rows.forEach(row => {
+    termos.add(row.cells[0].innerText);
+    setores.add(row.cells[1].innerText);
+  });
+
+  termos.forEach(t => filterTermo.innerHTML += `<option value="${t}">${t}</option>`);
+  setores.forEach(s => filterSetor.innerHTML += `<option value="${s}">${s}</option>`);
+}
+
+function applyFilters() {
+  const text = searchField.value.toLowerCase();
+  const termo = filterTermo.value.toLowerCase();
+  const setor = filterSetor.value.toLowerCase();
+
+  rows.forEach(row => {
+    const rowText = row.innerText.toLowerCase();
+    const rowTermo = row.cells[0].innerText.toLowerCase();
+    const rowSetor = row.cells[1].innerText.toLowerCase();
+
+    const matchText = rowText.includes(text);
+    const matchTermo = termo === "" || rowTermo === termo;
+    const matchSetor = setor === "" || rowSetor === setor;
+
+    row.style.display = (matchText && matchTermo && matchSetor) ? "" : "none";
+  });
+}
+
+searchField.addEventListener("keyup", applyFilters);
+filterTermo.addEventListener("change", applyFilters);
+filterSetor.addEventListener("change", applyFilters);
+
+populateFilters();
+</script>
+
+</body>
+</html>
