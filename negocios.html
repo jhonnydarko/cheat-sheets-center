@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Negócios Cheat Sheet</title>
+
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+th { background: #34495e; color: white; position: sticky; top: 0; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #eef2f7; }
+</style>
+</head>
+
+<body>
+<nav>
+  <a href="index.html">🏠 Home</a>
+</nav>
+
+<h1>⚡ Negócios Cheat Sheet</h1>
+
+<input type="text" id="search_field" placeholder="Buscar por qualquer texto...">
+
+<select id="filterTermo">
+  <option value="">Filtrar por Termo</option>
+</select>
+
+<select id="filterSetor">
+  <option value="">Filtrar por Setor/Área</option>
+</select>
+
+<table id="LeanguageTable">
+<thead>
+<tr>
+<th>Termo</th>
+<th>Setor/Área</th>
+<th>Explicação Simples</th>
+</tr>
+</thead>
+
+  <tbody>
+      <tr><td><strong>Canal Direto</strong></td><td><span class="setor-badge">Bens de Consumo</span></td><td>Venda direta da Santher para o grande varejo.</td></tr>
+      <tr><td><strong>Canal Indireto</strong></td><td><span class="setor-badge">Bens de Consumo</span></td><td>Quando a venda passa por um distribuidor.</td></tr>
+      <tr><td><strong>Clusterização</strong></td><td><span class="setor-badge">Bens de Consumo</span></td><td>Agrupar lojas ou clientes com comportamentos parecidos.</td></tr>
+      <tr><td><strong>Mix de Preço</strong></td><td><span class="setor-badge">Bens de Consumo</span></td><td>Estratégia de ter produtos caros e baratos no portfólio.</td></tr>
+      <tr><td><strong>Pack</strong></td><td><span class="setor-badge">Bens de Consumo</span></td><td>Embalagem com várias unidades (ex fardo de papel).</td></tr>
+      <tr><td><strong>Price Point</strong></td><td><span class="setor-badge">Bens de Consumo</span></td><td>O preço psicológico ideal para o consumidor.</td></tr>
+      <tr><td><strong>Private Label</strong></td><td><span class="setor-badge">Bens de Consumo</span></td><td>Marca própria do varejista.</td></tr>
+      <tr><td><strong>Ruptura Comercial</strong></td><td><span class="setor-badge">Bens de Consumo</span></td><td>Tem no estoque da loja, mas não está na prateleira.</td></tr>
+      <tr><td><strong>Ruptura de Estoque</strong></td><td><span class="setor-badge">Bens de Consumo</span></td><td>Não tem nem no depósito da loja.</td></tr>
+      <tr><td><strong>Big Data</strong></td><td><span class="setor-badge">BI e Tech</span></td><td>Volumes massivos de dados impossíveis de tratar no Excel.</td></tr>
+      <tr><td><strong>Cloud Computing</strong></td><td><span class="setor-badge">BI e Tech</span></td><td>Processamento em nuvem (Snowflake, Azure).</td></tr>
+      <tr><td><strong>Dashboard</strong></td><td><span class="setor-badge">BI e Tech</span></td><td>Painel visual de indicadores.</td></tr>
+      <tr><td><strong>Data Mining</strong></td><td><span class="setor-badge">BI e Tech</span></td><td>Mineração de padrões em grandes bases.</td></tr>
+      <tr><td><strong>Data Storytelling</strong></td><td><span class="setor-badge">BI e Tech</span></td><td>A arte de contar uma história usando dados.</td></tr>
+      <tr><td><strong>Drill-down</strong></td><td><span class="setor-badge">BI e Tech</span></td><td>Detalhar um dado (ex: de ano para mês).</td></tr>
+      <tr><td><strong>Low-code</strong></td><td><span class="setor-badge">BI e Tech</span></td><td>Ferramentas que exigem pouco código.</td></tr>
+      <tr><td><strong>SaaS</strong></td><td><span class="setor-badge">BI e Tech</span></td><td>Software como serviço.</td></tr>
+      <tr><td><strong>Scrum</strong></td><td><span class="setor-badge">BI e Tech</span></td><td>Metodologia ágil de gestão de projetos.</td></tr>
+      <tr><td><strong>Self-Service BI</strong></td><td><span class="setor-badge">BI e Tech</span></td><td>Quando o usuário final monta seu próprio relatório.</td></tr>
+      <tr><td><strong>Atacarejo</strong></td><td><span class="setor-badge">Comercial e Vendas</span></td><td>Mistura de atacado com varejo.</td></tr>
+      <tr><td><strong>Canal Alimentar</strong></td><td><span class="setor-badge">Comercial e Vendas</span></td><td>Supermercados e atacados.</td></tr>
+      <tr><td><strong>Canal Farma</strong></td><td><span class="setor-badge">Comercial e Vendas</span></td><td>Farmácias (importante para a Santher por causa de absorventes).</td></tr>
+      <tr><td><strong>Distribuidores</strong></td><td><span class="setor-badge">Comercial e Vendas</span></td><td>Empresas que compram da Santher e revendem para mercados pequenos.</td></tr>
+      <tr><td><strong>Headcount</strong></td><td><span class="setor-badge">Comercial e Vendas</span></td><td>Número de funcionários em uma equipe.</td></tr>
+      <tr><td><strong>Key Account</strong></td><td><span class="setor-badge">Comercial e Vendas</span></td><td>Grandes contas (ex: contas estratégicas).</td></tr>
+      <tr><td><strong>Pedido Sugerido</strong></td><td><span class="setor-badge">Comercial e Vendas</span></td><td>Algoritmo que diz quanto o cliente deve comprar.</td></tr>
+      <tr><td><strong>Pipeline</strong></td><td><span class="setor-badge">Comercial e Vendas</span></td><td>Fluxo de vendas em negociação.</td></tr>
+      <tr><td><strong>Rebaixa de Preço</strong></td><td><span class="setor-badge">Comercial e Vendas</span></td><td>Promoção forçada para girar estoque parado.</td></tr>
+      <tr><td><strong>Verba de Trade</strong></td><td><span class="setor-badge">Comercial e Vendas</span></td><td>Dinheiro dado ao varejista para fazer promoção.</td></tr>
+      <tr><td><strong>API</strong></td><td><span class="setor-badge">Dados e Inteligência</span></td><td>Conexão automática entre softwares (ex: puxar dados da Scanntech).</td></tr>
+      <tr><td><strong>Churn de Produto</strong></td><td><span class="setor-badge">Dados e Inteligência</span></td><td>Quando um produto específico deixa de performar.</td></tr>
+      <tr><td><strong>Data Cleansing</strong></td><td><span class="setor-badge">Dados e Inteligência</span></td><td>Higienização de dados (limpar nomes de cidades errados).</td></tr>
+      <tr><td><strong>Data Lake</strong></td><td><span class="setor-badge">Dados e Inteligência</span></td><td>Repositório de dados brutos.</td></tr>
+      <tr><td><strong>Data Warehouse</strong></td><td><span class="setor-badge">Dados e Inteligência</span></td><td>Armazém de dados organizados para análise.</td></tr>
+      <tr><td><strong>Elasticidade de Preço</strong></td><td><span class="setor-badge">Dados e Inteligência</span></td><td>Como a demanda muda quando o preço aumenta ou diminui.</td></tr>
+      <tr><td><strong>ETL</strong></td><td><span class="setor-badge">Dados e Inteligência</span></td><td>Extrair, Transformar e Carregar dados.</td></tr>
+      <tr><td><strong>Granularidade</strong></td><td><span class="setor-badge">Dados e Inteligência</span></td><td>O nível de detalhe do dado (por dia, por loja, por SKU).</td></tr>
+      <tr><td><strong>Linhagem de Dados</strong></td><td><span class="setor-badge">Dados e Inteligência</span></td><td>O caminho do dado da origem até o Power BI.</td></tr>
+      <tr><td><strong>Master Data</strong></td><td><span class="setor-badge">Dados e Inteligência</span></td><td>Dados mestre (cadastro único de produtos/clientes).</td></tr>
+      <tr><td><strong>Nielsen</strong></td><td><span class="setor-badge">Dados e Inteligência</span></td><td>Empresa que audita o mercado e fornece dados de Market Share.</td></tr>
+      <tr><td><strong>Scanntech</strong></td><td><span class="setor-badge">Dados e Inteligência</span></td><td>Plataforma que lê dados de PDV (caixa) em tempo real.</td></tr>
+      <tr><td><strong>Single Source of Truth</strong></td><td><span class="setor-badge">Dados e Inteligência</span></td><td>Única fonte da verdade (um dashboard oficial).</td></tr>
+      <tr><td><strong>RTM (Route to Market)</strong></td><td><span class="setor-badge">Estratégia</span></td><td>O caminho que o produto faz da fábrica até o consumidor.</td></tr>
+      <tr><td><strong>Break-even</strong></td><td><span class="setor-badge">Financeiro e Operacional</span></td><td>Ponto de equilíbrio onde despesa e receita se igualam.</td></tr>
+      <tr><td><strong>CAPEX</strong></td><td><span class="setor-badge">Financeiro e Operacional</span></td><td>Investimento em bens de capital (máquinas, software).</td></tr>
+      <tr><td><strong>EBITDA</strong></td><td><span class="setor-badge">Financeiro e Operacional</span></td><td>Lucro antes de juros, impostos, depreciação e amortização.</td></tr>
+      <tr><td><strong>Forecast</strong></td><td><span class="setor-badge">Financeiro e Operacional</span></td><td>Previsão de vendas/gastos para os próximos meses.</td></tr>
+      <tr><td><strong>Gap Analysis</strong></td><td><span class="setor-badge">Financeiro e Operacional</span></td><td>Análise da diferença entre onde estamos e onde queremos chegar.</td></tr>
+      <tr><td><strong>Headroom</strong></td><td><span class="setor-badge">Financeiro e Operacional</span></td><td>Espaço de crescimento em um mercado.</td></tr>
+      <tr><td><strong>KPI</strong></td><td><span class="setor-badge">Financeiro e Operacional</span></td><td>Indicador Chave de Performance.</td></tr>
+      <tr><td><strong>Margem Bruta</strong></td><td><span class="setor-badge">Financeiro e Operacional</span></td><td>Receita total menos o custo dos produtos vendidos.</td></tr>
+      <tr><td><strong>Markup</strong></td><td><span class="setor-badge">Financeiro e Operacional</span></td><td>Margem de lucro adicionada ao custo do produto.</td></tr>
+      <tr><td><strong>OPEX</strong></td><td><span class="setor-badge">Financeiro e Operacional</span></td><td>Despesas operacionais diárias.</td></tr>
+      <tr><td><strong>P&L (Profit and Loss)</strong></td><td><span class="setor-badge">Financeiro e Operacional</span></td><td>Demonstração de lucros e perdas.</td></tr>
+      <tr><td><strong>ROI</strong></td><td><span class="setor-badge">Financeiro e Operacional</span></td><td>Retorno sobre investimento.</td></tr>
+      <tr><td><strong>Target</strong></td><td><span class="setor-badge">Financeiro e Operacional</span></td><td>Meta.</td></tr>
+      <tr><td><strong>Backlog</strong></td><td><span class="setor-badge">Logística e Supply Chain</span></td><td>Pedidos pendentes de entrega.</td></tr>
+      <tr><td><strong>Cross-docking</strong></td><td><span class="setor-badge">Logística e Supply Chain</span></td><td>Sistema onde a mercadoria chega e já sai para entrega (sem estoque).</td></tr>
+      <tr><td><strong>DOH (Days on Hand)</strong></td><td><span class="setor-badge">Logística e Supply Chain</span></td><td>Dias de estoque disponível na mão para suprir a demanda.</td></tr>
+      <tr><td><strong>FIFO</strong></td><td><span class="setor-badge">Logística e Supply Chain</span></td><td>First In, First Out (O primeiro que entra é o primeiro que sai).</td></tr>
+      <tr><td><strong>Inbound</strong></td><td><span class="setor-badge">Logística e Supply Chain</span></td><td>Logística de entrada (matéria-prima para a fábrica).</td></tr>
+      <tr><td><strong>Lead Time</strong></td><td><span class="setor-badge">Logística e Supply Chain</span></td><td>Tempo entre o pedido do cliente e a entrega do produto.</td></tr>
+      <tr><td><strong>Logística Reversa</strong></td><td><span class="setor-badge">Logística e Supply Chain</span></td><td>Devolução de produtos estragados ou vencidos.</td></tr>
+      <tr><td><strong>OTIF</strong></td><td><span class="setor-badge">Logística e Supply Chain</span></td><td>On Time In Full (Entregue no prazo e sem faltas).</td></tr>
+      <tr><td><strong>Outbound</strong></td><td><span class="setor-badge">Logística e Supply Chain</span></td><td>Logística de saída (produto acabado para o cliente).</td></tr>
+      <tr><td><strong>Paletização</strong></td><td><span class="setor-badge">Logística e Supply Chain</span></td><td>Organização dos produtos em paletes para transporte.</td></tr>
+      <tr><td><strong>Picking</strong></td><td><span class="setor-badge">Logística e Supply Chain</span></td><td>Separação de produtos no armazém.</td></tr>
+      <tr><td><strong>Safety Stock</strong></td><td><span class="setor-badge">Logística e Supply Chain</span></td><td>Estoque de segurança.</td></tr>
+      <tr><td><strong>SKU</strong></td><td><span class="setor-badge">Logística e Supply Chain</span></td><td>Stock Keeping Unit. Código de cada variação de produto.</td></tr>
+      <tr><td><strong>SKU Rationalization</strong></td><td><span class="setor-badge">Logística e Supply Chain</span></td><td>Corte de produtos que não vendem bem do portfólio.</td></tr>
+      <tr><td><strong>Stockout</strong></td><td><span class="setor-badge">Logística e Supply Chain</span></td><td>Sinônimo de ruptura (falta de estoque).</td></tr>
+      <tr><td><strong>Benchmark</strong></td><td><span class="setor-badge">Marketing</span></td><td>Comparação com as melhores práticas do mercado.</td></tr>
+      <tr><td><strong>Brand Awareness</strong></td><td><span class="setor-badge">Marketing</span></td><td>Reconhecimento da marca pelo público.</td></tr>
+      <tr><td><strong>Branding</strong></td><td><span class="setor-badge">Marketing</span></td><td>Gestão da marca.</td></tr>
+      <tr><td><strong>Cannibalization</strong></td><td><span class="setor-badge">Marketing</span></td><td>Quando um produto novo "rouba" vendas de outro produto da marca.</td></tr>
+      <tr><td><strong>Category Management</strong></td><td><span class="setor-badge">Marketing</span></td><td>Gestão de uma categoria inteira (ex: Higiene Pessoal).</td></tr>
+      <tr><td><strong>Facing</strong></td><td><span class="setor-badge">Marketing</span></td><td>Número de unidades de um produto visíveis na frente da gôndola.</td></tr>
+      <tr><td><strong>Market Share</strong></td><td><span class="setor-badge">Marketing</span></td><td>A "fatia do bolo" que sua marca domina no mercado total.</td></tr>
+      <tr><td><strong>NPS</strong></td><td><span class="setor-badge">Marketing</span></td><td>Net Promoter Score (Satisfação do cliente).</td></tr>
+      <tr><td><strong>Planograma</strong></td><td><span class="setor-badge">Marketing</span></td><td>Desenho técnico de como os produtos devem estar na prateleira.</td></tr>
+      <tr><td><strong>Ponto Extra</strong></td><td><span class="setor-badge">Marketing</span></td><td>Exposição fora da gôndola (ex: ilha de produtos).</td></tr>
+      <tr><td><strong>Price Index</strong></td><td><span class="setor-badge">Marketing</span></td><td>Comparação do seu preço com o preço médio do concorrente.</td></tr>
+      <tr><td><strong>Público-alvo</strong></td><td><span class="setor-badge">Marketing</span></td><td>Perfil de quem consome.</td></tr>
+      <tr><td><strong>Sazonalidade</strong></td><td><span class="setor-badge">Marketing</span></td><td>Flutuações de venda em épocas específicas (ex: inverno).</td></tr>
+      <tr><td><strong>Share de Gôndola</strong></td><td><span class="setor-badge">Marketing</span></td><td>Espaço físico que sua marca ocupa na prateleira.</td></tr>
+      <tr><td><strong>Shopper</strong></td><td><span class="setor-badge">Marketing</span></td><td>Quem compra o produto (nem sempre é quem consome).</td></tr>
+      <tr><td><strong>Top of Mind</strong></td><td><span class="setor-badge">Marketing</span></td><td>A primeira marca que o consumidor lembra na categoria.</td></tr>
+      <tr><td><strong>Trade Marketing</strong></td><td><span class="setor-badge">Marketing</span></td><td>Estratégia focada em como o produto aparece no ponto de venda.</td></tr>
+      <tr><td><strong>FMCG</strong></td><td><span class="setor-badge">Mercado</span></td><td>Fast-Moving Consumer Goods (Bens de consumo de massa).</td></tr>
+      <tr><td><strong>B2B</strong></td><td><span class="setor-badge">Negócios</span></td><td>Business to Business (Venda de empresa para empresa).</td></tr>
+      <tr><td><strong>B2C</strong></td><td><span class="setor-badge">Negócios</span></td><td>Business to Consumer (Venda de empresa para o consumidor).</td></tr>
+      <tr><td><strong>Gôndola</strong></td><td><span class="setor-badge">Varejo</span></td><td>A prateleira onde os produtos ficam expostos.</td></tr>
+      <tr><td><strong>Sell-out</strong></td><td><span class="setor-badge">Varejo</span></td><td>Venda do varejista para o consumidor final.</td></tr>
+      <tr><td><strong>Churn Rate</strong></td><td><span class="setor-badge">Vendas</span></td><td>Taxa de perda de clientes.</td></tr>
+      <tr><td><strong>PDV</strong></td><td><span class="setor-badge">Vendas</span></td><td>Ponto de Venda (o local físico onde a venda acontece).</td></tr>
+      <tr><td><strong>Positiveção</strong></td><td><span class="setor-badge">Vendas</span></td><td>Percentual de clientes que efetuaram compra no mês.</td></tr>
+      <tr><td><strong>Ruptura</strong></td><td><span class="setor-badge">Vendas</span></td><td>Quando o produto falta na prateleira (estoque zero).</td></tr>
+      <tr><td><strong>Sell-in</strong></td><td><span class="setor-badge">Vendas</span></td><td>Venda da fábrica para o varejista.</td></tr>
+      <tr><td><strong>Ticket Médio</strong></td><td><span class="setor-badge">Vendas</span></td><td>Valor médio gasto por venda/pedido.</td></tr>
+
+  </tbody>
+
+</table>
+
+<script>
+const searchField = document.getElementById("search_field");
+const filterTermo = document.getElementById("filterTermo");
+const filterSetor = document.getElementById("filterSetor");
+const rows = document.querySelectorAll("#LeanguageTable tbody tr");
+
+function populateFilters() {
+  const termos = new Set();
+  const setores = new Set();
+
+  rows.forEach(row => {
+    termos.add(row.cells[1].innerText);
+    setores.add(row.cells[2].innerText);
+  });
+
+  termos.forEach(t => filterTermo.innerHTML += `<option value="${t}">${t}</option>`);
+  setores.forEach(s => filterSetor.innerHTML += `<option value="${s}">${s}</option>`);
+}
+
+function applyFilters() {
+  const text = searchField.value.toLowerCase();
+  const termo = filterTermo.value.toLowerCase();
+  const setor = filterSetor.value.toLowerCase();
+
+  rows.forEach(row => {
+    const rowText = row.innerText.toLowerCase();
+    const rowTermo = row.cells[1].innerText.toLowerCase();
+    const rowSetor = row.cells[2].innerText.toLowerCase();
+
+    const matchText = rowText.includes(text);
+    const matchTermo = termo === "" || rowTermo === termo;
+    const matchSetor = setor === "" || rowSetor === setor;
+
+    row.style.display = (matchText && matchTermo && matchSetor) ? "" : "none";
+  });
+}
+
+searchField.addEventListener("keyup", applyFilters);
+filterTermo.addEventListener("change", applyFilters);
+filterSetor.addEventListener("change", applyFilters);
+
+populateFilters();
+</script>
+
+</body>
+</html>
