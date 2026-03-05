@@ -5,7 +5,6 @@
 <title>Negócios Cheat Sheet</title>
 
 <style>
-/* CSS ORIGINAL PRESERVADO .*/
 body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
 nav { background: #2c3e50; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
 nav a { color: white; text-decoration: none; font-weight: bold; }
@@ -28,7 +27,6 @@ tr:hover { background: #eef2f7; }
 
 .setor-badge { background: #e8f0fe; color: #1a73e8; padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: 500; }
 
-/* ESTILOS DA PAGINAÇÃO */
 .pagination-container { display: flex; justify-content: center; align-items: center; margin: 20px 0; gap: 20px; }
 .pagination-btn { padding: 10px 25px; cursor: pointer; background: #2c3e50; color: white; border: none; border-radius: 5px; font-weight: bold; }
 .pagination-btn:disabled { background: #bdc3c7; cursor: not-allowed; }
@@ -84,7 +82,6 @@ const selSetor = document.getElementById("filterSetor");
 const selTermo = document.getElementById("filterTermo");
 const inpSearch = document.getElementById("search_field");
 
-// 1. CARREGAMENTO DO CSV (COM 4 COLUNAS)
 async function loadData() {
   try {
     const response = await fetch('data/negocios.csv');
@@ -93,62 +90,80 @@ async function loadData() {
     const text = decoder.decode(buffer);
     
     const lines = text.split(/\r?\n/).filter(l => l.trim() !== "");
-    lines.shift(); 
+    lines.shift(); // remove header
 
     masterData = lines.map(line => {
       const parts = line.split(';');
       return {
-        termo: parts[0]?.trim() || "",
-        setor: parts[1]?.trim() || "",
-        economico: parts[2]?.trim() || "", // MAPEAMENTO DA NOVA COLUNA
-        explicacao: parts[3]?.trim() || ""  // EXPLICAÇÃO AGORA É O ÍNDICE 3
+        termo: (parts[0] || "").trim(),
+        setor: (parts[1] || "").trim(),
+        explicacao: (parts[2] || "").trim(), 
+        economico: (parts[3] || "").trim() 
       };
     });
 
-    updateDropdowns(); 
-    applyFilters();
+    // Aplica filtros iniciais e atualiza dropdowns
+    applyFilters();       // popula filteredData e renderiza a tabela
+    updateDropdowns();    // agora atualiza os selects com base em filteredData
     
     document.getElementById('loadingStatus').style.display = 'none';
   } catch (err) {
+    console.error(err);
     document.getElementById('loadingStatus').innerText = "Erro ao carregar CSV.";
   }
 }
 
-// 2. LÓGICA DE FILTRO CRUZADO
+// LÓGICA DE FILTRO CRUZADO CORRIGIDA
 function updateDropdowns() {
-  const currentSetor = selSetor.value;
-  const currentTermo = selTermo.value;
+  // Usa os dados já filtrados (se houver). Caso contrário, usa o masterData.
+  const source = (Array.isArray(filteredData) && filteredData.length > 0) ? filteredData : masterData;
 
-  const availableSetores = [...new Set(
-    masterData
-      .filter(i => !currentTermo || i.termo === currentTermo)
-      .map(i => i.setor)
-  )].sort();
+  // Salva o que o usuário já selecionou
+  const selectedSetor = selSetor.value;
+  const selectedTermo = selTermo.value;
 
-  const availableTermos = [...new Set(
-    masterData
-      .filter(i => !currentSetor || i.setor === currentSetor)
-      .map(i => i.termo)
-  )].sort();
+  // 1. Atualiza o Select de SETOR baseado no conjunto atual (search + termo selecionado + setor selecionado)
+  const validSetores = [...new Set(
+    source
+      .map(item => item.setor)
+      .filter(s => s) // remove strings vazias
+  )];
 
-  renderOptions(selSetor, availableSetores, currentSetor, "Filtrar por Setor/Área");
-  renderOptions(selTermo, availableTermos, currentTermo, "Filtrar por Termo");
+  // 2. Atualiza o Select de TERMO baseado no conjunto atual
+  const validTermos = [...new Set(
+    source
+      .map(item => item.termo)
+      .filter(t => t)
+  )];
+
+  // Garante que a seleção atual continue visível (útil se um filtro momentaneamente retirou a opção)
+  if (selectedSetor && !validSetores.includes(selectedSetor)) validSetores.push(selectedSetor);
+  if (selectedTermo && !validTermos.includes(selectedTermo)) validTermos.push(selectedTermo);
+
+  validSetores.sort((a,b) => a.localeCompare(b, 'pt-BR'));
+  validTermos.sort((a,b) => a.localeCompare(b, 'pt-BR'));
+
+  // Reconstrói as opções
+  populateSelect(selSetor, validSetores, selectedSetor, "Filtrar por Setor/Área");
+  populateSelect(selTermo, validTermos, selectedTermo, "Filtrar por Termo");
 }
 
-function renderOptions(selectElement, optionsArray, currentValue, defaultLabel) {
-  let html = `<option value="">${defaultLabel}</option>`;
-  optionsArray.forEach(opt => {
-    const selected = opt === currentValue ? "selected" : "";
-    html += `<option value="${opt}" ${selected}>${opt}</option>`;
+function populateSelect(selectElement, options, currentValue, defaultText) {
+  let html = `<option value="">${defaultText}</option>`;
+  options.forEach(opt => {
+    // escape simples de aspas para evitar quebrar o HTML
+    const safeOpt = opt.replace(/"/g,'&quot;');
+    const isSelected = opt === currentValue ? "selected" : "";
+    html += `<option value="${safeOpt}" ${isSelected}>${opt}</option>`;
   });
   selectElement.innerHTML = html;
 }
 
-// 3. APLICAÇÃO DOS FILTROS
 function handleFilterChange(resetPage) {
   if(resetPage) currentPage = 1;
-  updateDropdowns();
+  // Primeiro aplicamos os filtros aos dados, depois atualizamos as listas dos menus
   applyFilters();
+  updateDropdowns();
 }
 
 function applyFilters() {
@@ -157,8 +172,7 @@ function applyFilters() {
   const termo = selTermo.value;
 
   filteredData = masterData.filter(item => {
-    // A busca automática agora também procura na nova coluna "economico"
-    const matchSearch = Object.values(item).some(val => val.toLowerCase().includes(search));
+    const matchSearch = search === "" || Object.values(item).some(val => val.toLowerCase().includes(search));
     const matchSetor = !setor || item.setor === setor;
     const matchTermo = !termo || item.termo === termo;
     return matchSearch && matchSetor && matchTermo;
@@ -167,7 +181,6 @@ function applyFilters() {
   renderPage();
 }
 
-// 4. RENDERIZAÇÃO DA TABELA ATUALIZADA
 function renderPage() {
   const tbody = document.getElementById("tableBody");
   tbody.innerHTML = "";
@@ -179,14 +192,15 @@ function renderPage() {
   pageItems.forEach(item => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
-      <td><strong>${item.termo}</strong></td>
-      <td><span class="setor-badge">${item.setor}</span></td>
-      <td>${item.economico}</td> <td>${item.explicacao}</td>
+      <td><strong>${escapeHtml(item.termo)}</strong></td>
+      <td><span class="setor-badge">${escapeHtml(item.setor)}</span></td>
+      <td>${escapeHtml(item.explicacao)}</td>
+      <td>${escapeHtml(item.economico)}</td>
     `;
     tbody.appendChild(tr);
   });
 
-  const totalPages = Math.ceil(filteredData.length / itemsPerPage) || 1;
+  const totalPages = Math.max(1, Math.ceil(filteredData.length / itemsPerPage));
   document.getElementById("pageInfo").innerText = `Página ${currentPage} de ${totalPages} (${filteredData.length} itens)`;
   document.getElementById("btnPrev").disabled = currentPage === 1;
   document.getElementById("btnNext").disabled = currentPage === totalPages;
@@ -196,6 +210,16 @@ function changePage(step) {
   currentPage += step;
   renderPage();
   window.scrollTo(0, 0);
+}
+
+// Pequena função de escape para evitar injeção HTML
+function escapeHtml(unsafe) {
+  return (unsafe || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
 window.onload = loadData;
